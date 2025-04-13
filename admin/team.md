@@ -32,9 +32,9 @@
 - Mark Escarrilla [(GitHub)](https://yscmark.github.io/about-me/)
   - 3rd Year
   - Math-CS Major
-- Emily Cai [(GitHub)](https://github.com/emilyycaii)
+- Emily Cai [(GitHub)](https://emilyycaii.github.io/CSE-110-Lab-1/)
 
-  I am a third year, first year transfer, CS major.
+  I am a third year, first year transfer, CS major. I like watching movies on my free time.
 - Victoria (Vicky) Tran [(GitHub)](https://victoriatr6n.github.io/cse110lab1/)
 
   Hi! I'm Vicky, I'm a second-year computer science major. Some of my hobbies include playing tennis, drawing/painting, and listening to music. 
