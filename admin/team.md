@@ -1,5 +1,5 @@
 # Team Name
-<img src="Brand.jpg" alt="Brand image" width="300" height="300">
+<img src="brand.png" alt="Brand image" width="300" height="300">
 
 ## Team Values
 - A
