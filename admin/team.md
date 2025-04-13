@@ -13,6 +13,9 @@
     - [ ] It's good to ask questions! There are no bad questions. 
 
 ## Our Team
+- Gautam Mohandas [(GitHub)](https://github.com/GMohandas13/CSE110)
+
+  - Hi, I'm Gautam! I'm a third-year transfer student majoring in Computer Science. I enjoy watching basketball and building cars.
 - Carl Casares [GitHub link](https://cacasares.github.io/CSE110PgsProj/)
 
   Hello! I'm Carl, I'm a fourth-year math-c.s. major. I love rock climbing and drawing!
