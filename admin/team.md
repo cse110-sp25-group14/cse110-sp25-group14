@@ -7,6 +7,8 @@
 - C
 
 ## Our Team
+- Eric Wang [GitHub link](https://j5995.github.io/Github-Pages/)
+  Hi, I'm Eric. I'm a third-year computer engineering major at UCSD. I enjoy playing basketball and petting cats in my free time.
 - Travis Huang [GitHub link](https://github.com/travishuang24)
   I am a third-year transfer student majoring in Computer Science
 - Mark Escarrilla [GitHub link](https://yscmark.github.io/about-me/)
