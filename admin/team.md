@@ -7,6 +7,9 @@
 - C
 
 ## Our Team
+- Srideep Dornala [GitHub link](https://srideep9.github.io/CSE-110-Lab-1/)
+  - 2nd Year
+  - Computer Science Major
 - Eric Wang [GitHub link](https://j5995.github.io/Github-Pages/)
   Hi, I'm Eric. I'm a third-year computer engineering major at UCSD. I enjoy playing basketball and petting cats in my free time.
 - Travis Huang [GitHub link](https://github.com/travishuang24)
