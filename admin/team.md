@@ -1,5 +1,5 @@
 # Team Name
-<img src="Brand.jpg" alt="Brand image" width="300" height="300">
+<img src="brand.png" alt="Brand image" width="300" height="300">
 
 ## Team Values
 - A
@@ -7,6 +7,11 @@
 - C
 
 ## Our Team
+- Member 1 [GitHub link](link here)
+- Member 2 [GitHub link](link here)
+- Mark Escarrilla [GitHub link](https://yscmark.github.io/about-me/)
+  - 3rd Year
+  - Math-CS Major
 - Emily Cai [GitHub link](https://github.com/emilyycaii)
   I am a third year, first year transfer, CS major.<<<<<<< emilyycaii-patch-1
 - Victoria (Vicky) Tran [GitHub link](https://victoriatr6n.github.io/cse110lab1/)
