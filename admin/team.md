@@ -1,4 +1,4 @@
-# Team Name
+# Team Name: G14
 <img src="brand.png" alt="Brand image" width="300" height="300">
 
 ## Team Values
@@ -16,13 +16,13 @@
 - Gautam Mohandas [(GitHub)](https://github.com/GMohandas13/CSE110)
 
   - Hi, I'm Gautam! I'm a third-year transfer student majoring in Computer Science. I enjoy watching basketball and building cars.
-- Carl Casares [GitHub link](https://cacasares.github.io/CSE110PgsProj/)
+- Carl Casares [(GitHub)](https://cacasares.github.io/CSE110PgsProj/)
 
   Hello! I'm Carl, I'm a fourth-year math-c.s. major. I love rock climbing and drawing!
-- Aarush Mehrotra is a third-year double major in Math-CS and Economics. I am currently an HPC Intern at the San Diego Supercomputer Center and a member of the UCSD Supercomputer and Triathlon teams. [View my GitHub here](github.com/iAarush)
-- Srideep Dornala [GitHub link](https://srideep9.github.io/CSE-110-Lab-1/)
-  - 2nd Year
-  - Computer Science Major
+- Aarush Mehrotra [(Github)](https://github.com/iAarush) 
+    - Hi! I'm a a third-year double major in Math-CS and Economics. I am currently an HPC Intern at the San Diego Supercomputer Center and a member of the UCSD Supercomputer and Triathlon teams. 
+- Srideep Dornala [(GitHub)](https://srideep9.github.io/CSE-110-Lab-1/)
+  - Hi! I'm Srideep, and I'm a 2nd Year Computer Science Major.
 - Eric Wang [(GitHub)](https://j5995.github.io/Github-Pages/)
 
   Hi, I'm Eric. I'm a third-year computer engineering major at UCSD. I enjoy playing basketball and petting cats in my free time.
