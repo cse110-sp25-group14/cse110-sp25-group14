@@ -9,6 +9,6 @@
 ## Our Team
 - Member 1 [GitHub link](link here)
 - Member 2 [GitHub link](link here)
-- Member 3 [GitHub link](link here)
+- Srideep Dornala [GitHub link](https://srideep9.github.io/CSE-110-Lab-1/)
 
 [Team Intro Video](videos/placeholder.txt)
