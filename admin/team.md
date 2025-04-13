@@ -10,6 +10,6 @@
 - Member 1 [GitHub link](link here)
 - Member 2 [GitHub link](link here)
 - Member 3 [GitHub link](link here)
-- Aarush Mehrotra: [View my GitHub here](github.com/iAarush)
+- Aarush Mehrotra is a third-year double major in Math-CS and Economics. I am currently an HPC Intern at the San Diego Supercomputer Center and a member of the UCSD Supercomputer and Triathlon teams. [View my GitHub here](github.com/iAarush)
 
 [Team Intro Video](videos/placeholder.txt)
