@@ -19,7 +19,7 @@
 - Carl Casares [(GitHub)](https://cacasares.github.io/CSE110PgsProj/)
 
   Hello! I'm Carl, I'm a fourth-year math-c.s. major. I love rock climbing and drawing!
-- Aarush Mehrotra [(Github)](https://github.com/iAarush) 
+- Aarush Mehrotra [(Github)](https://github.com/iAarush/cse-110) 
     - Hi! I'm a a third-year double major in Math-CS and Economics. I am currently an HPC Intern at the San Diego Supercomputer Center and a member of the UCSD Supercomputer and Triathlon teams. 
 - Srideep Dornala [(GitHub)](https://srideep9.github.io/CSE-110-Lab-1/)
   - Hi! I'm Srideep, and I'm a 2nd Year Computer Science Major.
