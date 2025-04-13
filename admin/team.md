@@ -7,8 +7,8 @@
 - C
 
 ## Our Team
-- Member 1 [GitHub link](link here)
-- Member 2 [GitHub link](link here)
+- Travis Huang [GitHub link](https://github.com/travishuang24)
+  I am a third-year transfer student majoring in Computer Science
 - Mark Escarrilla [GitHub link](https://yscmark.github.io/about-me/)
   - 3rd Year
   - Math-CS Major
