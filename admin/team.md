@@ -11,5 +11,6 @@
 - Member 2 [GitHub link](link here)
 - Member 3 [GitHub link](link here)
 - Emily Cai [GitHub link](https://github.com/emilyycaii)
+  I am a third year, first year transfer, CS major.
 
 [Team Intro Video](videos/placeholder.txt)
