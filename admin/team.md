@@ -2,11 +2,18 @@
 <img src="brand.png" alt="Brand image" width="300" height="300">
 
 ## Team Values
-- A
-- B
-- C
+    - [ ] No micromanaging, but a respect for everyone else on the team and responsibility for our share of the work 
+    - [ ] Get things done early, ideally one day before
+    - [ ] Read things immediately 
+    - [ ] React to messages on slack to show that they've been read 
+    - [ ] Meetings: 
+            - Work meetings are better in person, updates can be online 
+            - Meet once a week for now, consider increasing once workload increases 
+    - [ ] People with web dev/internship experience will help explain things once coding begins 
+    - [ ] It's good to ask questions! There are no bad questions. 
 
 ## Our Team
+- Aarush Mehrotra is a third-year double major in Math-CS and Economics. I am currently an HPC Intern at the San Diego Supercomputer Center and a member of the UCSD Supercomputer and Triathlon teams. [View my GitHub here](github.com/iAarush)
 - Srideep Dornala [GitHub link](https://srideep9.github.io/CSE-110-Lab-1/)
   - 2nd Year
   - Computer Science Major
