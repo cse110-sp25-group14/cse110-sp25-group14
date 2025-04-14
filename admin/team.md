@@ -39,4 +39,4 @@
 
   Hi! I'm Vicky, I'm a second-year computer science major. Some of my hobbies include playing tennis, drawing/painting, and listening to music. 
 
-[Team Intro Video](videos/placeholder.txt)
+[Team Intro Video](admin/videos/teamintro.mov)
