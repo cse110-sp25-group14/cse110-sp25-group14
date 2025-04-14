@@ -13,30 +13,31 @@
     - [ ] It's good to ask questions! There are no bad questions. 
 
 ## Our Team
-- Gautam Mohandas [(GitHub)](https://gmohandas13.github.io/CSE110/#hi-my-name-is-gautam-mohandas)
 
+- Emily Cai [(GitHub)](https://emilyycaii.github.io/CSE-110-Lab-1/)
+  - I am a third year, first year transfer, CS major.
+- Victoria (Vicky) Tran [(GitHub)](https://victoriatr6n.github.io/cse110lab1/)
+    - Hi! I'm Vicky, I'm a second-year computer science major. Some of my hobbies include playing tennis, drawing/painting, and listening to music.
+- Gautam Mohandas [(GitHub)](https://gmohandas13.github.io/CSE110/#hi-my-name-is-gautam-mohandas)
   - Hi, I'm Gautam! I'm a third-year transfer student majoring in Computer Science. I enjoy watching basketball and building cars.
 - Carl Casares [(GitHub)](https://cacasares.github.io/CSE110PgsProj/)
-
-  Hello! I'm Carl, I'm a fourth-year math-c.s. major. I love rock climbing and drawing!
-- Aarush Mehrotra [(Github)](https://github.com/iAarush/cse-110) 
+  - Hello! I'm Carl, I'm a fourth-year math-c.s. major. I love rock climbing and drawing!
+- Aarush Mehrotra [(Github)](https://iaarush.github.io/cse-110/) 
     - Hi! I'm a a third-year double major in Math-CS and Economics. I am currently an HPC Intern at the San Diego Supercomputer Center and a member of the UCSD Supercomputer and Triathlon teams. 
 - Srideep Dornala [(GitHub)](https://srideep9.github.io/CSE-110-Lab-1/)
   - Hi! I'm Srideep, and I'm a 2nd Year Computer Science Major.
 - Eric Wang [(GitHub)](https://j5995.github.io/Github-Pages/)
-
-  Hi, I'm Eric. I'm a third-year computer engineering major at UCSD. I enjoy playing basketball and petting cats in my free time.
-- Travis Huang [(GitHub)](https://github.com/travishuang24)
-
-  I am a third-year transfer student majoring in Computer Science
+    - Hi, I'm Eric. I'm a third-year computer engineering major at UCSD. I enjoy playing basketball and petting cats in my free time.
+- Travis Huang [(GitHub)](https://travishuang24.github.io/CSE110Lab1/)
+  - I am a third-year transfer student majoring in Computer Science. I love playing soccer, watching Kdramas, and listening to music. 
 - Mark Escarrilla [(GitHub)](https://yscmark.github.io/about-me/)
   - 3rd Year
   - Math-CS Major
 - Emily Cai [(GitHub)](https://emilyycaii.github.io/CSE-110-Lab-1/)
-
-  I am a third year, first year transfer, CS major. I like watching movies on my free time.
+  - I am a third year, first year transfer, CS major. I like watching movies on my free time.
 - Victoria (Vicky) Tran [(GitHub)](https://victoriatr6n.github.io/cse110lab1/)
-
-  Hi! I'm Vicky, I'm a second-year computer science major. Some of my hobbies include playing tennis, drawing/painting, and listening to music. 
-
+    - Hi! I'm Vicky, I'm a second-year computer science major. Some of my hobbies include playing tennis, drawing/painting, and listening to music.
+- Nilay Bhoot [(GitHub)](https://github.com/nbhoot665/GithubPagesProj/blob/main/index.md)
+  - Hi! I am Nilay, I am a 4th year math-cs major. I like to lift, play tennis, go out clubbing and listen to music
+ 
 [Team Intro Video](admin/videos/teamintro.mov)
