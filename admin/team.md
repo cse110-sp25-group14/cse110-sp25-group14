@@ -14,7 +14,7 @@
 
 ## Our Team
 
-- Emily Cai [(GitHub)](https://github.com/emilyycaii)
+- Emily Cai [(GitHub)](https://emilyycaii.github.io/CSE-110-Lab-1/)
   - I am a third year, first year transfer, CS major.
 - Victoria (Vicky) Tran [(GitHub)](https://victoriatr6n.github.io/cse110lab1/)
     - Hi! I'm Vicky, I'm a second-year computer science major. Some of my hobbies include playing tennis, drawing/painting, and listening to music.
@@ -22,7 +22,7 @@
   - Hi, I'm Gautam! I'm a third-year transfer student majoring in Computer Science. I enjoy watching basketball and building cars.
 - Carl Casares [(GitHub)](https://cacasares.github.io/CSE110PgsProj/)
   - Hello! I'm Carl, I'm a fourth-year math-c.s. major. I love rock climbing and drawing!
-- Aarush Mehrotra [(Github)](https://github.com/iAarush/cse-110) 
+- Aarush Mehrotra [(Github)](https://iaarush.github.io/cse-110/) 
     - Hi! I'm a a third-year double major in Math-CS and Economics. I am currently an HPC Intern at the San Diego Supercomputer Center and a member of the UCSD Supercomputer and Triathlon teams. 
 - Srideep Dornala [(GitHub)](https://srideep9.github.io/CSE-110-Lab-1/)
   - Hi! I'm Srideep, and I'm a 2nd Year Computer Science Major.
