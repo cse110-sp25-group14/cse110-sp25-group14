@@ -13,8 +13,14 @@
     - [ ] It's good to ask questions! There are no bad questions. 
 
 ## Our Team
-- Gautam Mohandas [(GitHub)](https://gmohandas13.github.io/CSE110/#hi-my-name-is-gautam-mohandas)
 
+- Emily Cai [GitHub link](https://github.com/emilyycaii)
+- 
+  I am a third year, first year transfer, CS major.
+- Victoria (Vicky) Tran [GitHub link](https://victoriatr6n.github.io/cse110lab1/)
+- 
+  Hi! I'm Vicky, I'm a second-year computer science major. Some of my hobbies include playing tennis, drawing/painting, and listening to music.
+- Gautam Mohandas [(GitHub)](https://gmohandas13.github.io/CSE110/#hi-my-name-is-gautam-mohandas)
   - Hi, I'm Gautam! I'm a third-year transfer student majoring in Computer Science. I enjoy watching basketball and building cars.
 - Carl Casares [(GitHub)](https://cacasares.github.io/CSE110PgsProj/)
 
@@ -26,9 +32,9 @@
 - Eric Wang [(GitHub)](https://j5995.github.io/Github-Pages/)
 
   Hi, I'm Eric. I'm a third-year computer engineering major at UCSD. I enjoy playing basketball and petting cats in my free time.
-- Travis Huang [(GitHub)](https://github.com/travishuang24)
+- Travis Huang [(GitHub)](https://travishuang24.github.io/CSE110Lab1/)
 
-  I am a third-year transfer student majoring in Computer Science
+  I am a third-year transfer student majoring in Computer Science. I love playing soccer, watching Kdramas, and listening to music. 
 - Mark Escarrilla [(GitHub)](https://yscmark.github.io/about-me/)
   - 3rd Year
   - Math-CS Major
