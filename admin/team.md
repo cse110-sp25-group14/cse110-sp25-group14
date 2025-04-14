@@ -37,6 +37,8 @@
   I am a third year, first year transfer, CS major. I like watching movies on my free time.
 - Victoria (Vicky) Tran [(GitHub)](https://victoriatr6n.github.io/cse110lab1/)
 
-  Hi! I'm Vicky, I'm a second-year computer science major. Some of my hobbies include playing tennis, drawing/painting, and listening to music. 
+  Hi! I'm Vicky, I'm a second-year computer science major. Some of my hobbies include playing tennis, drawing/painting, and listening to music.
+
+  Hi I'm Nilay, I am a 4th year math-cs major. I like to lift, play tennis and go out.
 
 [Team Intro Video](admin/videos/teamintro.mov)
