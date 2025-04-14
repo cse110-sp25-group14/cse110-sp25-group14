@@ -13,7 +13,7 @@
     - [ ] It's good to ask questions! There are no bad questions. 
 
 ## Our Team
-- Gautam Mohandas [(GitHub)](https://github.com/GMohandas13/CSE110)
+- Gautam Mohandas [(GitHub)](https://gmohandas13.github.io/CSE110/#hi-my-name-is-gautam-mohandas)
 
   - Hi, I'm Gautam! I'm a third-year transfer student majoring in Computer Science. I enjoy watching basketball and building cars.
 - Carl Casares [(GitHub)](https://cacasares.github.io/CSE110PgsProj/)
