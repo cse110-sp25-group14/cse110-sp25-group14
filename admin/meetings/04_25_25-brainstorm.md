@@ -42,10 +42,10 @@
 	- **Focus on lighter colors first**
 	- 
 - **Creative freedom with card designs:**
-		- Pokémon theme
-		- CSE-themed / Powell Library-themed
-		- Animals
-		- Sports (e.g., soccer players, NBA team logos)
+	- Pokémon theme
+	- CSE-themed / Powell Library-themed
+	- Animals
+	- Sports (e.g., Soccer players, NBA team logos)
 - **Consider implementing daily challenges**
 
 - **User Persona Considerations:**
