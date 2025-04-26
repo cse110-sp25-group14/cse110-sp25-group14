@@ -45,7 +45,7 @@
     - Pokémon theme
 	- CSE-themed / Powell Library-themed
 	- Animals
-	- Sports (e.g., soccer players, NBA team logos)
+	- Sports (e.g., Soccer players, NBA team logos)
 - **Consider implementing daily challenges**
 
 - **User Persona Considerations:**
