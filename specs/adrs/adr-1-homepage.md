@@ -29,7 +29,7 @@ After deciding on creating a memory card game inspired by the human benchmark we
 
 ## Decision Outcome
 
-Chosen option: A combination of Victoria and Carl's design because after viewing both as a team, we loved many elements from Victoria's design, especially how she chose squares with rounded corners to create a "friendlier" look. We combined the strong elements of her design with the strong elements of Carl's design. Emily then helped with finalizing which font we will use to further communicate the type of website we were going for: a website welcoming to all ages from both extremes of age groups.  .
+Chosen option: A combination of Victoria and Carl's design because after viewing both as a team, we loved many elements from Victoria's design, especially how she chose squares with rounded corners to create a "friendlier" look. We combined the strong elements of her design with the strong elements of Carl's design. Emily then helped with finalizing which font we will use to further communicate the type of website we were going for: a website welcoming to all ages from both extremes of age groups.  
 
 <!-- This is an optional element. Feel free to remove. -->
 ### Consequences
@@ -40,7 +40,7 @@ Chosen option: A combination of Victoria and Carl's design because after viewing
 <!-- This is an optional element. Feel free to remove. -->
 ### Confirmation
 
-This decision was confired through critiques and advice as the UI/UX team developed these designs and finally through a team vote from two options where the font was different. Ultimately, the fonts Baloo, Baloo 2, and Konkhmer Sleokchher won by popular vote (7) vs the fonts Pridi and Kiwi Maru (1).   
+This decision was confired through critiques and advice as the UI/UX team developed these designs and finally through a team vote from two options where the font was different. Ultimately, the combined design of Victoria and Carl's work with the fonts Baloo, Baloo 2, and Konkhmer Sleokchher won by popular vote (7) vs the fonts Pridi and Kiwi Maru (1).   
 
 <!-- This is an optional element. Feel free to remove. -->
 ## Pros and Cons of the Options
