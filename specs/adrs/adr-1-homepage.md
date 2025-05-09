@@ -11,13 +11,13 @@ informed: {Aarush, Gautam, Mark, Eric, Travis, Nilay}
 
 ## Context and Problem Statement
 
-After deciding on creating a memory card game inspired by the human benchmark website, the UI/UX team worked to design how our team will approach creating it with our own flare. Described below is what we developed as a team afer consulting similar products and designing together.
+After deciding on creating a memory card game inspired by the human benchmark website, the UI/UX team worked to design how our team will approach creating it with our own flair. Described below is what we developed as a team after consulting similar products and designing together.
 
 <!-- This is an optional element. Feel free to remove. -->
 ## Decision Drivers
 
 * We considered the two extreme sides of a memory card matching game. The first are older users who want the UI/UX to be straightforward and not too complicated.
-* The second extreme are younger users who hope to see bright and fun colors through a pretty interface. 
+* The second extreme is younger users who hope to see bright and fun colors through a pretty interface. 
 * We researched successful existing sites with similar games such as New York Times and the Human Benchmark website to take inspiration from their designs. 
 * We wanted our group identity to shine through our design. We considered our group colors: green and blue and our "G14" logo.  
 
@@ -40,7 +40,7 @@ Chosen option: A combination of Victoria and Carl's design because after viewing
 <!-- This is an optional element. Feel free to remove. -->
 ### Confirmation
 
-This decision was confired through critiques and advice as the UI/UX team developed these designs and finally through a team vote from two options where the font was different. Ultimately, the combined design of Victoria and Carl's work with the fonts Baloo, Baloo 2, and Konkhmer Sleokchher won by popular vote (7) vs the fonts Pridi and Kiwi Maru (1).   
+This decision was confirmed through critiques and advice as the UI/UX team developed these designs and finally through a team vote from two options where the font was different. Ultimately, the combined design of Victoria and Carl's work with the fonts Baloo, Baloo 2, and Konkhmer Sleokchher won by popular vote (7) vs the fonts Pridi and Kiwi Maru (1).   
 
 <!-- This is an optional element. Feel free to remove. -->
 ## Pros and Cons of the Options
