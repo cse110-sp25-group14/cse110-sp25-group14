@@ -1,0 +1,49 @@
+name: update-readme-docs
+
+on:
+  push:
+    branches: [main]              # adjust
+    paths:
+      - "src/**/*.js"
+      - "jsdoc.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4     # Node only for the runner
+        with:
+          node-version: 20
+
+      - name: Build Markdown from JSDoc
+        run: |
+          npm --silent install -g jsdoc-to-markdown
+          jsdoc2md --configure jsdoc.json src/**/*.js > api.md
+
+      - name: Inject into README
+        run: |
+          awk '/<!-- API DOCS START -->/{print;exit}' README.md > new.md
+          cat api.md >> new.md
+          echo '<!-- API DOCS END -->' >> new.md
+          # append everything that was originally after the END marker
+          awk 'p;/<!-- API DOCS END -->/{p=1}' README.md >> new.md
+          mv new.md README.md
+
+      - name: Generate TOC
+        uses: technote-space/toc-generator@v4
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOC_TITLE: '## Table of contents'
+          FILENAME: README.md
+
+      - name: Commit if anything changed
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: README.md
+          message: 'docs: refresh API section [skip ci]'
