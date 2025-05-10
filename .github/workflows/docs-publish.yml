@@ -1,0 +1,37 @@
+name: docs-publish
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**/*.js'
+      - 'jsdoc.json'
+
+permissions:
+  contents: write          # needed by the PR‑creating step
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+
+      - run: |
+          npm -g i jsdoc-to-markdown
+          jsdoc2md --configure jsdoc.json src/**/*.js > api.md
+          awk '/<!-- API DOCS START -->/{print;exit}' README.md > README.new
+          cat api.md >> README.new
+          echo '<!-- API DOCS END -->' >> README.new
+          awk 'p;/<!-- API DOCS END -->/{p=1}' README.md >> README.new
+          mv README.new README.md
+
+      - name: Open docs PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: docs-auto-${{ github.run_number }}
+          title: 'chore(docs): refresh JSDoc section'
+          commit-message: 'docs: auto‑generate README API section'
+          body: 'Automated JSDoc build after merge to `main`.'
+          add-paths: README.md
