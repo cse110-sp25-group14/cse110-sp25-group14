@@ -12,5 +12,5 @@
 	"tagname-specialchars": true,
 	"tagname-lowercase": true,
 	"id-unique": true,
-	"space-tab-mixed-disabled": tab,
+	"space-tab-mixed-disabled": "tab"
 }
