@@ -11,6 +11,5 @@
 	"alt-require": true,
 	"tagname-specialchars": true,
 	"tagname-lowercase": true,
-	"id-unique": true,
-	"space-tab-mixed-disabled": "tab"
+	"id-unique": true
 }

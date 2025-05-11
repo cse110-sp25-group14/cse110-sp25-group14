@@ -1,1 +1,3 @@
-const test = testing
+const test = true;
+if(test){
+};
