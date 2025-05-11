@@ -1,0 +1,69 @@
+# CSE 110 4/17 UI/UX Meeting
+
+## GOALS
+
+- Go over inspiration board  
+  [Figma Inspiration Board](https://www.figma.com/design/1keWHLNfD4mBfjQmjCnogf/WARM-UP?node-id=0-1&p=f&t=4WGAcLp0Jm0Nw9cP-0)  
+- Take any input or suggestions  
+- **MAKE CARD DESIGNS MORE SIMPLE - JUST SUIT SYMBOL AND NUMBER**  
+- GREEN AND BLUE  
+
+- Go over WIP Prototype, obtain input and suggestions  
+  [Figma WIP Prototype](https://www.figma.com/design/1keWHLNfD4mBfjQmjCnogf/WARM-UP?node-id=1-2&p=f&t=4WGAcLp0Jm0Nw9cP-0)  
+
+### Recap Features
+
+- One page (at least for now)  
+- Two buttons (if we can):
+  - Shuffle (Main priority)  
+  - Deal  
+- Based on code, we deal 5 cards at a time, so 5 white spots  
+
+### Animation
+
+- Flip  
+  - Flip With CSS: [W3Schools Flip Card](https://www.w3schools.com/howto/howto_css_flip_card.asp)  
+- Shuffle  
+  - What is shuffle? Just the animation or full shuffle?  
+  - Put a couple of cards on the screen, then shuffle  
+  - Small shuffle: [CodePen Example](https://codepen.io/Muskelkraft/pen/oJpMNW) (seems more doable)  
+  - Big Shuffle: [deck.of.cards](https://deck.of.cards/) (seems complicated)  
+
+---
+
+## MEETING NOTES
+
+- **MAKE CARD DESIGNS MORE SIMPLE - JUST SUIT SYMBOL AND NUMBER**  
+- Center suit and number  
+- One image for back of cards  
+- Cards will all mostly look the same  
+- One reference image of suits, selects x leftmost pixels  
+- Add text to add number  
+- Green and blue color scheme  
+- We are prioritizing flip and shuffle for now  
+- Design group 14 as back of cards  
+
+### Shuffle
+
+- What is shuffle? Just the animation or full shuffle?  
+- Put a couple of cards on the screen, then shuffle  
+- **SHUFFLE BUTTON SETS OFF RANDOMIZER AND THEN PLAY AN ANIMATION**
+
+---
+
+## Frontend
+
+- **Carl**
+  - Design cards  
+  - 4 (1 per suit)  
+  - Polish Figma so easier to follow  
+
+- **Vicky**
+  - Logo for back of card  
+
+---
+
+## TODO
+
+- Start frontend ASAP  
+- How to divide work???
