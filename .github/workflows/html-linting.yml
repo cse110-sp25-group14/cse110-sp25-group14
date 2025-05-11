@@ -12,6 +12,11 @@ jobs: # the things being executed
             - name: Install Dependencies
               run: npm install
 
+            - name: Set up Node.Js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+
             #- name: Unit Test
             #run: npm test ./__tests__/sum.test.js # the actual testing line
             #- name: Unit Test2
