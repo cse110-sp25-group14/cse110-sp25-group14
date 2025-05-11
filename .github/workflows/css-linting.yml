@@ -1,0 +1,16 @@
+name: Stylelint Test # name of the test
+
+on: [push] # the Github Action will activate "on" the event that you "push" to the repo
+
+jobs: # the things being executed
+    tests: # the name of your status check, will become important when you do branch protection
+        runs-on: ubuntu-latest # which device on Github's server that you are running the Actions on
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4 # using version 4 of Actions
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: StyleLint test
+              run: npx stylelint "**/*.css"

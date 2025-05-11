@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "htmlhint": "^1.1.4"
+  },
+  "dependencies": {
+    "eslint": "^9.26.0",
+    "stylelint": "^16.19.1",
+    "stylelint-config-standard": "^38.0.0"
+  },
+  "type": "module"
+}
