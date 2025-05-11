@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "htmlhint": "^1.1.4"
+  },
+  "dependencies": {
+    "eslint": "^9.26.0"
+  },
+  "type": "module"
+}
