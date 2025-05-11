@@ -6,7 +6,9 @@ jobs: # the things being executed
     tests: # the name of your status check, will become important when you do branch protection
         runs-on: ubuntu-latest # which device on Github's server that you are running the Actions on
         steps:
+            - name: Checkout Code
             - uses: actions/checkout@v4 # using version 4 of Actions
+
             - name: Install Dependencies
               run: npm install
 
@@ -15,5 +17,11 @@ jobs: # the things being executed
             #- name: Unit Test2
             #run: npm test ./__tests__/unit.test.js
 
-            - name: HTMLHint Test
-              run: npx htmlhint "**/*.html"
+            #- name: HTMLHint Test
+            #run: npx htmlhint "**/*.html"
+
+            #- name: HTML Validator
+            #uses:
+
+            - name: ESLint Test
+              run: npx eslint .
