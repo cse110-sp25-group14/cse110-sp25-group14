@@ -1,11 +1,7 @@
----
-# These are optional metadata elements. Feel free to remove any of them.
-status: {accepted}
-date: {2025-04-24 is when the decision was made}
-decision-makers: {Aarush, Gautam, Victoria, Emily, Carl, Srideep, Eric, Mark}
-consulted: {Aarush, Gautam, Victoria, Emily, Carl, Srideep, Eric, Mark}
-informed: {Travis, Nilay, Kilhoon}
----
+| status | date | decision-makers | consulted | informed |
+| --- | --- | --- | --- | --- |
+| accepted | 2025-04-24 is when the decision was made | Aarush, Gautam, Victoria, Emily, Carl, Srideep, Eric, Mark | Aarush, Gautam, Victoria, Emily, Carl, Srideep, Eric, Mark | Travis, Nilay, Kilhoon |
+
 
 # Topic of Project: Memory Card Game/Human Benchmark Games
 
