@@ -5,6 +5,7 @@
 ## What already works
 
 * **Pull‑request review rule**
+  
   Branch protection requires:
 
   1. All status checks defined below must succeed.
@@ -12,6 +13,7 @@
      The rule prevents direct pushes to `main`; team members work in feature branches and open PRs.
 
 * **Automated linting on every push and pull request** (GitHub Actions)
+  
   Three separate workflow files live in `.github/workflows/`, one per language:
 
   | Language | Workflow file   | Linter            | Command                    |
@@ -27,7 +29,9 @@
   3. Runs the linter command shown above.
   4. Exits with code 1 if violations are found; this blocks the PR.
 
-* **Version‑controlled rule sets**
+* **Version‑controlled rule sets (Unfinalized)**
+  
+  We still need to finalize these as a group
 
   ```jsonc
   // .HTMLHintrc
@@ -47,6 +51,7 @@
   	"id-unique": true
   }
   ```
+  
   ```jsonc
   // .stylelintrc.json
   {
@@ -57,6 +62,7 @@
     	}
   }
   ```
+  
   ```jsonc
   // eslint.config.js
   rules: {
@@ -73,6 +79,7 @@
 * **Unit tests** – We will add unit testing for functions we write before Phase 2. This will be ready to go by the time we are writing actual code for our project.
 * **Documentation generation** – Run `npm run docs` (JSDoc) in CI and publish to the `gh-pages` branch.
 * **HTML/CSS validation** – Integrate the official W3C validator action to catch spec‑level issues that lint rules might miss.
+* **Finalize lint rulesets** - After a team meeting to decide on exact rulesets, the updated configs will replace the draft versions.
 
 ---
 
