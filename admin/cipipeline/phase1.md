@@ -77,7 +77,7 @@
 ## What is still missing / in progress
 
 * **Unit tests** – We will add unit testing for functions we write before Phase 2. This will be ready to go by the time we are writing actual code for our project.
-* **Documentation generation** – Run `npm run docs` (JSDoc) in CI and publish to the `gh-pages` branch.
+* **Documentation generation** – Run `npm run docs` (JSDoc) in CI and publish to the repo.
 * **HTML/CSS validation** – Integrate the official W3C validator action to catch spec‑level issues that lint rules might miss.
 * **Finalize lint rulesets** - After a team meeting to decide on exact rulesets, the updated configs will replace the draft versions.
 
