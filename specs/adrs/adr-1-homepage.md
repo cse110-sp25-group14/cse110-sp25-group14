@@ -1,11 +1,7 @@
----
-# These are optional metadata elements. Feel free to remove any of them.
-status: {accepted}
-date: {2025-04-26 when the decision was last updated}
-decision-makers: {Victoria, Emily, Carl}
-consulted: {Aarush, Gautam, Mark, Eric, Travis, Nilay}
-informed: {Aarush, Gautam, Mark, Eric, Travis, Nilay}
----
+| status | date | decision-makers | consulted | informed |
+| --- | --- | --- | --- | --- |
+| accepted | 2025-04-26 when the decision was last updated | Victoria, Emily, Carl | Aarush, Gautam, Mark, Eric, Travis, Nilay | Aarush, Gautam, Mark, Eric, Travis, Nilay |
+
 
 # MVP-UI/UX Design of Homepage and Two Games
 
