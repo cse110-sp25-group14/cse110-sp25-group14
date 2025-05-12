@@ -30,12 +30,40 @@
 * **Version‑controlled rule sets**
 
   ```jsonc
-  // .HTMLHintrc (excerpt)
-  { "doctype-html5": true, "html-lang-require": true, "id-unique": true }
-  // .stylelintrc.json (excerpt)
-  { "extends": ["stylelint-config-standard"], "rules": { "block-no-empty": true } }
-  // eslint.config.js (excerpt)
-  rules: { "no-unused-vars": "error", "semi": "error" }
+  // .HTMLHintrc
+  {
+  	"doctype-html5": true,
+  	"doctype-first": true,
+  	"html-lang-require": true,
+  	"title-require": true,
+  	"attr-lowercase": true,
+  	"attr-no-duplication": true,
+  	"attr-no-unnecessary-whitespace": true,
+  	"attr-value-double-quotes": true,
+  	"attr-whitespace": true,
+  	"alt-require": true,
+  	"tagname-specialchars": true,
+  	"tagname-lowercase": true,
+  	"id-unique": true
+  }
+  ```
+  ```jsonc
+  // .stylelintrc.json
+  {
+  	"extends": ["stylelint-config-standard"],
+  	"rules": {
+  		"block-no-empty": true,
+  		"selector-class-pattern": "^[a-z][a-zA-Z0-9]+$"
+    	}
+  }
+  ```
+  ```jsonc
+  // eslint.config.js
+  rules: {
+			"no-unused-vars": "error",
+			"no-undef": "error",
+			"semi": "error"
+		}
   ```
 
 ---
