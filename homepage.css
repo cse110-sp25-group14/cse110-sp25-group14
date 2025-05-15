@@ -1,0 +1,146 @@
+/* --- Base reset / global styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: "Inter", Arial, sans-serif;
+    color: #111;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* --- Banner --- */
+  .banner {
+    background: #a8bfb3;     /* soft green-grey */
+    padding: 1.25rem 0;
+    text-align: center;
+  }
+  
+  .banner h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+  }
+  
+  /* --- Intro section --- */
+  .intro {
+    text-align: center;
+    margin: 2rem 0 3rem;
+  }
+  
+  .welcome {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  
+  /* speech-bubble style */
+  .tagline {
+    display: inline-block;
+    background: #d4e9ff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+  
+  /* primary CTA */
+  .primary-btn {
+    background: #162d44;
+    color: #fff;
+    padding: 0.75rem 2.25rem;
+    border: none;
+    border-radius: 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.25s;
+  }
+  
+  .primary-btn:hover { opacity: 0.85; }
+  
+  /* --- Games grid --- */
+  .games {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 3rem;
+  }
+  
+  /* individual card */
+  .game-card {
+    background: #d0ecec;
+    border-radius: 1.25rem;
+    width: 260px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .game-card h3 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  /* icon board areas */
+  .icon-board {
+    display: grid;
+    margin: 0.75rem 0 1.5rem;
+  }
+  
+  /* chick grid (2 rows × 3 columns) */
+  .chicks {
+    grid-template-columns: repeat(3, 40px);
+    gap: 8px;
+    font-size: 1.75rem;
+  }
+  
+  /* blue squares grid (3×3) */
+  .grid {
+    grid-template-columns: repeat(3, 36px);
+    gap: 6px;
+  }
+  
+  .grid span {
+    width: 36px;
+    height: 36px;
+    background: #173554;
+    border-radius: 4px;
+    display: block;
+  }
+  
+  /* action buttons at bottom of card */
+  .actions {
+    background: #eef6f6;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .sec-btn {
+    background: #71adbf;
+    border: none;
+    border-radius: 1rem;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: filter 0.2s;
+  }
+  
+  .sec-btn:hover { filter: brightness(110%); }
+
+  .ghost {
+    background: #b3d8e1;
+  }
+  
+  

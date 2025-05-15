@@ -3,19 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Webpage</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    h1 {
-      color: #333;
-    }
-  </style>
+  <title>Human Benchmark</title>
+
+  <!-- Link out to the separate style sheet -->
+  <link rel="stylesheet" href="homepage.css" />
 </head>
+
 <body>
-  <h1>Welcome to My Webpage</h1>
-  <p>This is a simple HTML page.</p>
+  <!-- Top banner -->
+  <header class="banner">
+    <h1>Human Benchmark</h1>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2 class="welcome">Welcome [user]!</h2>
+
+      <p class="tagline">How sharp is your brain today?</p>
+
+      <button class="primary-btn">let’s find out</button>
+    </section>
+
+    <!-- Game cards -->
+    <section class="games">
+      <!-- Matching card -->
+      <article class="game-card">
+        <h3>Matching</h3>
+
+        <div class="icon-board chicks">
+          <!-- Little chick emoji placeholders; replace with images if you like -->
+          <span>🐥</span><span>🐤</span><span>🐤</span>
+          <span>🐤</span><span>🐥</span><span>🐤</span>
+        </div>
+
+        <div class="actions">
+          <button class="sec-btn">Play</button>
+          <button class="sec-btn ghost">Records</button>
+        </div>
+      </article>
+
+      <!-- Sequence card -->
+      <article class="game-card">
+        <h3>Sequence</h3>
+
+        <div class="icon-board grid">
+          <!-- 3 × 3 grid of squares -->
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </div>
+
+        <div class="actions">
+          <button class="sec-btn">Play</button>
+          <button class="sec-btn ghost">Records</button>
+        </div>
+      </article>
+    </section>
+  </main>
 </body>
 </html>
