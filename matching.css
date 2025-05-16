@@ -38,8 +38,52 @@ body {
     transform: translateX(-50%);
     margin: 0;
 }
-
-#stats-grid{
-    flex-wrap: wrap;
-    justify-items: center;
+.stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: 800;
 }
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    column-gap: 150px;
+    justify-content: center;
+}
+
+.row {
+    display: contents;
+    align-self: left;
+}
+
+.column {
+    text-align: left;
+}
+
+#card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 110px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.card-row {
+    display: contents;
+}
+
+.card {
+    background-color: #BFE9E7;
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+}
+
