@@ -2,11 +2,13 @@ name: General Issue
 description: Use this template to start general issues for the project. (Replace examples with your inputs)
 
 body:
-  - type: markdown
+  - type: textarea
+    id: description
     attributes:
-      value: |
-        ## Description of the Issue  
-        A clear and concise description of what’s wrong or what you want to achieve.  
+      label: Description of the Issue
+      description: What’s wrong or what are you trying to achieve?
+      placeholder: |
+        Ex: “When I click Save, the form clears but nothing is sent to the server.”
 
   - type: textarea
     id: goals
