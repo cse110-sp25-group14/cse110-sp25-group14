@@ -15,4 +15,3 @@ _Ex._ “On **Save**, run client‑side validation, then POST JSON to the endpoi
 
 # Additional Context
 Add any other context, logs, screenshots, or links to related issues/PRs.  
-_Ex._ “Browser console shows no errors. Screenshot: ![console-log](https://…)”
