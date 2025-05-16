@@ -1,0 +1,38 @@
+name: General Issue
+description: Use this template to start general issues for the project. (Replace examples with your inputs)
+title: ''
+labels: []
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Description of the Issue  
+        A clear and concise description of what’s wrong or what you want to achieve.  
+
+  - type: textarea
+    id: goals
+    attributes:
+      label: Goals
+      description: What are the objectives of this issue and how will they be solved?
+      placeholder: |
+        - Fix the bug in feature X.  
+        - Make sure all tests in the CI/CD Pipeline pass.  
+        - Validate solution with others before pushing.
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the Solution
+      description: What do you want to happen?
+      placeholder: |
+        Ex. The submit button should no longer cause the website to crash.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Add any other context, logs, screenshots, or related links.
+      placeholder: |
+        Ex. Browser console shows no errors. Screenshot: (Link to Screenshot)
