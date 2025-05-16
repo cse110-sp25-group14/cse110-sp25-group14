@@ -91,9 +91,13 @@
   
   /* icon board areas */
   .icon-board {
+    height: 90px; /* or minimum required to fit your 3x3 grid */
     display: grid;
-    margin: 0.75rem 0 1.5rem;
+    align-items: center;
+    justify-content: center;
   }
+  
+  
   
   /* chick grid (2 rows × 3 columns) */
   .chicks {
@@ -104,13 +108,13 @@
   
   /* blue squares grid (3×3) */
   .grid {
-    grid-template-columns: repeat(3, 36px);
-    gap: 6px;
+    grid-template-columns: repeat(3, 24px);
+    gap: 2px;
   }
   
   .grid span {
-    width: 36px;
-    height: 36px;
+    width: 24px;
+    height: 24px;
     background: #173554;
     border-radius: 4px;
     display: block;
@@ -143,4 +147,22 @@
     background: #b3d8e1;
   }
   
+  footer {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
   
+  .footer-icon {
+    font-size: 1.5rem;
+  }
+  .toggle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #1a1a1a;
+  }
