@@ -1,8 +1,5 @@
 name: General Issue
 description: Use this template to start general issues for the project. (Replace examples with your inputs)
-title: ''
-labels: []
-assignees: []
 
 body:
   - type: markdown
