@@ -1,5 +1,5 @@
-name: General Issue
-description: Use this template to start general issues for the project. (Replace examples with your inputs)
+name: Code-Related Issue
+description: Use this template to start code-related issues for the project.
 
 body:
   - type: textarea
@@ -27,6 +27,14 @@ body:
       description: What do you want to happen?
       placeholder: |
         Ex. The submit button should no longer cause the website to crash.
+
+  - type: textarea
+    id: files
+    attributes:
+      label: Relevant Files
+      description: What files are/were relevant to this issue?
+      placeholder: |
+        Ex. index.html, styles.css etc.
 
   - type: textarea
     id: context
