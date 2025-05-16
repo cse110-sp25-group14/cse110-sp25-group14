@@ -17,7 +17,7 @@
 
 - Front-end  
 - Back-end  
-- After week 4 or 5, can exchange roles  
+- After week 4 or 5, we can exchange roles  
 - Aim to increase experience in all aspects of software engineering  
 
 ## Tools & Tracking
