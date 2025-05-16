@@ -1,13 +1,3 @@
----
-name: General Issue
-about: Use this template to start general issues for the project. (Replace examples
-  with your inputs)
-title: ''
-labels: ''
-assignees: ''
-
----
-
 # Description of the Issue
 A clear and concise description of what’s wrong or what you want to achieve.  
 _Ex._ “When I click **Save**, the form clears but nothing is sent to the server.”
