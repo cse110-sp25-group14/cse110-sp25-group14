@@ -38,6 +38,7 @@ body {
     transform: translateX(-50%);
     margin: 0;
 }
+
 .stats {
     display: flex;
     justify-content: center;
@@ -56,7 +57,6 @@ body {
 
 .row {
     display: contents;
-    align-self: left;
 }
 
 .column {
