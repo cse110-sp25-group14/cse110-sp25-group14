@@ -6,7 +6,7 @@
   }
   
   body {
-    font-family: "Inter", Arial, sans-serif;
+    font-family: Arial, sans-serif;
     color: #111;
     background: #fafafa;
     display: flex;
@@ -19,10 +19,7 @@
     background: #a8bfb3;     /* soft green-grey */
     padding: 1.25rem 0;
     text-align: center;
-    /* font-family: "Special Gothic Expanded One", sans-serif;
-    font-weight: 400;
-    font-style: normal; */
-    font-family: 'Baloo';font-size: 22px;
+    font-family: "Baloo";font-size: 22px;
   }
   
   .banner h1 {
@@ -40,8 +37,8 @@
     font-size: 1.75rem;
     font-weight: 600;
     margin-bottom: 1.25rem;
-    font-family: "Special Gothic Expanded One", sans-serif;
-    font-weight: 400;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 600;
     font-style: normal;
   }
   
@@ -53,7 +50,15 @@
     border-radius: 9999px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin-bottom: 2rem;
-    font-weight: 500;
+    font-family: "Konkhmer Sleokchher", system-ui;
+    font-weight: 50;
+    font-style: normal;
+  }
+
+  .question {
+    font-family: "Koulen", sans-serif;
+    font-weight: 400;
+    font-style: normal;
   }
   
   /* primary CTA */
@@ -66,6 +71,9 @@
     font-size: 1rem;
     cursor: pointer;
     transition: opacity 0.25s;
+    font-family: "Konkhmer Sleokchher", system-ui;
+    font-weight: 50;
+    font-style: normal;
   }
   
   .primary-btn:hover { opacity: 0.85; }
@@ -95,7 +103,17 @@
     font-size: 1.5rem;
     font-weight: 700;
   }
-  
+  .matching{
+    font-family: "Patua One", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .sequence {
+    font-family: "Patua One", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
   /* icon board areas */
   .icon-board {
     height: 90px; /* or minimum required to fit your 3x3 grid */
@@ -103,8 +121,6 @@
     align-items: center;
     justify-content: center;
   }
-  
-  
   
   /* chick grid (2 rows × 3 columns) */
   .chicks {
@@ -146,6 +162,7 @@
     font-size: 0.9rem;
     cursor: pointer;
     transition: filter 0.2s;
+    font-family: "Pathway Extreme", sans-serif;
   }
   
   .sec-btn:hover { filter: brightness(110%); }
