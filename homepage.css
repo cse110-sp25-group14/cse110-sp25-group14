@@ -19,6 +19,10 @@
     background: #a8bfb3;     /* soft green-grey */
     padding: 1.25rem 0;
     text-align: center;
+    /* font-family: "Special Gothic Expanded One", sans-serif;
+    font-weight: 400;
+    font-style: normal; */
+    font-family: 'Baloo';font-size: 22px;
   }
   
   .banner h1 {
@@ -36,12 +40,15 @@
     font-size: 1.75rem;
     font-weight: 600;
     margin-bottom: 1.25rem;
+    font-family: "Special Gothic Expanded One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
   }
   
   /* speech-bubble style */
   .tagline {
     display: inline-block;
-    background: #d4e9ff;
+    background: #CAE9FF;
     padding: 0.75rem 1.5rem;
     border-radius: 9999px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -51,7 +58,7 @@
   
   /* primary CTA */
   .primary-btn {
-    background: #162d44;
+    background: #1C4966;
     color: #fff;
     padding: 0.75rem 2.25rem;
     border: none;
@@ -74,7 +81,7 @@
   
   /* individual card */
   .game-card {
-    background: #d0ecec;
+    background: #BEE9E8;
     border-radius: 1.25rem;
     width: 260px;
     overflow: hidden;
@@ -131,7 +138,7 @@
   }
   
   .sec-btn {
-    background: #71adbf;
+    background: #62B6CB;
     border: none;
     border-radius: 1rem;
     color: #fff;
@@ -144,7 +151,7 @@
   .sec-btn:hover { filter: brightness(110%); }
 
   .ghost {
-    background: #b3d8e1;
+    background: #62B6CB;
   }
   
   footer {
@@ -157,9 +164,13 @@
     padding: 0 1rem;
   }
   
-  .footer-icon {
+  .footer-icon button {
     font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
+  
   .toggle {
     width: 30px;
     height: 30px;
