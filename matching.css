@@ -47,7 +47,7 @@ body {
     font-weight: 800;
 }
 
-.statsGrid {
+.stats-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 10px;
@@ -71,7 +71,7 @@ body {
     margin-top: 30px;
 }
 
-.cardRow {
+.card-row {
     display: contents;
 }
 
