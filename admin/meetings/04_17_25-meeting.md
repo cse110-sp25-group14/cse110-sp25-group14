@@ -35,7 +35,7 @@
 
 - **MAKE CARD DESIGNS MORE SIMPLE - JUST SUIT SYMBOL AND NUMBER**  
 - Center suit and number  
-- One image for back of cards  
+- One image for the back of cards  
 - Cards will all mostly look the same  
 - One reference image of suits, selects x leftmost pixels  
 - Add text to add number  
