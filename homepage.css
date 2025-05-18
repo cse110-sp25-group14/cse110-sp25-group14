@@ -19,7 +19,7 @@
     background: #a8bfb3;     /* soft green-grey */
     padding: 1.25rem 0;
     text-align: center;
-    font-family: "Baloo";
+    font-family: "Baloo", sans-serif;
     font-size: 22px;
   }
   
@@ -39,7 +39,6 @@
     font-weight: 600;
     margin-bottom: 1.25rem;
     font-family: "Baloo 2", sans-serif;
-    font-weight: 600;
     font-style: normal;
   }
   
