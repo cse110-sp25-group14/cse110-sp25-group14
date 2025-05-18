@@ -19,7 +19,7 @@
     background: #a8bfb3;     /* soft green-grey */
     padding: 1.25rem 0;
     text-align: center;
-    font-family: "Baloo", sans-serif;
+    font-family: Baloo, sans-serif;
     font-size: 22px;
   }
   
@@ -48,7 +48,7 @@
     background: #CAE9FF;
     padding: 0.75rem 1.5rem;
     border-radius: 9999px;
-    box-shadow: 0 2px 4px rgb(255, 255, 255);
+    box-shadow: 0 2px 4px rgb(255 255 255);
     margin-bottom: 2rem;
     font-family: "Konkhmer Sleokchher", system-ui;
     font-weight: 50;
@@ -56,7 +56,7 @@
   }
 
   .question {
-    font-family: "Koulen", sans-serif;
+    font-family: Koulen, sans-serif;
     font-weight: 400;
     font-style: normal;
   }
@@ -152,7 +152,7 @@
     padding: 1rem 0.5rem;
     display: flex;
     justify-content: space-evenly;
-    border-top: 1px solid rgb(255, 255, 255);
+    border-top: 1px solid rgb(255 255 255);
   }
   
   .sec-btn {
