@@ -1,0 +1,259 @@
+/* --- Base reset / global styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    color: #111;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* --- Banner --- */
+  .banner {
+    background: #a8bfb3;     /* soft green-grey */
+    padding: 1.25rem 0;
+    text-align: center;
+    font-family: Baloo, sans-serif;
+    font-size: 22px;
+  }
+  
+  .banner h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+  }
+  
+  /* --- Intro section --- */
+  .intro {
+    text-align: center;
+    margin: 2rem 0 3rem;
+  }
+  
+  .welcome {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    font-family: "Baloo 2", sans-serif;
+    font-style: normal;
+  }
+  
+  /* speech-bubble style */
+  .tagline {
+    display: inline-block;
+    background: #CAE9FF;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 2px 4px rgb(255 255 255);
+    margin-bottom: 2rem;
+    font-family: "Konkhmer Sleokchher", system-ui;
+    font-weight: 50;
+    font-style: normal;
+  }
+
+  .question {
+    font-family: Koulen, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  /* primary CTA */
+  .primary-btn {
+    background: #1C4966;
+    color: #fff;
+    padding: 0.75rem 2.25rem;
+    border: none;
+    border-radius: 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.25s;
+    font-family: "Konkhmer Sleokchher", system-ui;
+    font-weight: 50;
+    font-style: normal;
+  }
+  
+  .primary-btn:hover { opacity: 0.85; }
+  
+  /* --- Games grid --- */
+  .games {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 3rem;
+  }
+  
+  /* individual card */
+  .game-card {
+    background: #BEE9E8;
+    border-radius: 1.25rem;
+    width: 260px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .game-card h3 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .matching{
+    font-family: "Patua One", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .sequence {
+    font-family: "Patua One", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* chick grid (2 rows × 3 columns) */
+  .chicks {
+    grid-template-columns: repeat(3, 40px);
+    gap: 8px;
+    font-size: 1.75rem;
+  }
+
+  /* icon board areas */
+  .icon-board {
+    height: 90px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* blue squares grid (3×3) */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 24px);
+    gap: 2px;
+  }
+  
+  .grid span {
+    width: 24px;
+    height: 24px;
+    background: #173554;
+    border-radius: 4px;
+    display: block;
+  }
+  
+  /* action buttons at bottom of card */
+  .actions {
+    background: #eef6f6;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 1px solid rgb(255 255 255);
+  }
+  
+  .sec-btn {
+    background: #62B6CB;
+    border: none;
+    border-radius: 1rem;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: filter 0.2s;
+    font-family: "Pathway Extreme", sans-serif;
+  }
+  
+  .sec-btn:hover { filter: brightness(110%); }
+
+  .ghost {
+    background: #62B6CB;
+  }
+  
+  footer {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+  
+  .footer-icon button {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .toggle {
+    width: 50px;
+    height: 26px;
+    border-radius: 13px;
+    background: #ccc;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .toggle::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Move circle right when in dark mode */
+  body.dark .toggle {
+    background: #444;
+  }
+  
+  body.dark .toggle::before {
+    transform: translateX(24px);
+  }
+  
+  body.dark {
+    background: #20202C;
+    color: #fff;
+  }
+  
+  body.dark .banner {
+    background: #779F77;
+    color: #fff;
+  }
+  
+  body.dark .game-card {
+    background: #76A276;
+  }
+  
+  body.dark .actions {
+    background: #256C73;
+  }
+  
+  body.dark .primary-btn {
+    background: #1C4966;
+    color: #fff;
+  }
+  
+  body.dark .sec-btn {
+    background: #191A1A;
+  }
+
+  body.dark .tagline{
+    background: #589458 ;
+  }
+
+  body.dark .grid span{
+    background: #fff;
+  }
+  
