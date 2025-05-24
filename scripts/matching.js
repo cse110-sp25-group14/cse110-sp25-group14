@@ -18,7 +18,7 @@ let lockBoard = false;
 
 //shuffle cards
 function shuffle(array) {
-  array.sort(() => 0.5 - Math.random());
+	array.sort(() => 0.5 - Math.random());
 }
 
 //appends the value of each card hidden to user

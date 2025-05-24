@@ -6,13 +6,13 @@ function init() {
 	backButton.querySelector("img").addEventListener("click", ()=>{
 		window.location.href = "homepage.html";
 	});
-    initializeCardList();
-    playCards();
+	initializeCardList();
+	playCards();
 };
 
 let cardList = [];
 function initializeCardList(){
-    const grid = document.getElementById("card-grid");
+	const grid = document.getElementById("card-grid");
 	const rows = grid.getElementsByClassName("card-row");
 	for(let i = 0; i<rows.length; i+=1){
 		const cardArr = rows[i].getElementsByClassName("card");
@@ -26,48 +26,34 @@ function initializeCardList(){
 let cards = [];
 
 function appendRandom(array){
-    array.push(Math.floor(Math.random() * 8));
+	array.push(Math.floor(Math.random() * 8));
 }
 
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
 
 async function playCards(){
-    appendRandom(cards);
+	appendRandom(cards);
 	for(let j = 0; j<cards.length; j+=1){
 		const cardElement = cardList[cards[j]];
-        cardElement.classList.add("unflipped");
-        setTimeout(()=>{
+		cardElement.classList.add("unflipped");
+		setTimeout(()=>{
 			flipCard(cardElement);
-        }, 500);
-        flipCard(cardElement);
-        await timer(1000);
+		}, 500);
+		flipCard(cardElement);
+		await timer(1000);
 	}
 }
 
 function flipCard(card){
-    if(card.classList.contains("unflipped")){
-	    card.style.backgroundColor = "purple";
-	    card.classList.add("flipped");
+	if(card.classList.contains("unflipped")){
+		card.style.backgroundColor = "purple";
+		card.classList.add("flipped");
 		card.classList.remove("unflipped");
-    }
-    else{
-	    card.style.backgroundColor = "#BFE9E7";
-	    card.classList.add("unflipped");
+	}
+	else{
+		card.style.backgroundColor = "#BFE9E7";
+		card.classList.add("unflipped");
 		card.classList.remove("flipped");
-    }
-}
-
-function createBoard(){
-    const grid = document.getElementById("card-grid");
-	const rows = grid.getElementsByClassName("card-row");
-	shuffle(cards);
-	for(let i = 0; i<rows.length; i+=1){
-		const cardArr = rows[i].getElementsByClassName("card");
-		for(let j = 0; j<cardArr.length; j+=1){
-			const cardElement = cardArr[j];
-			cardElement.dataset.number = cards[j+i*rows.length];
-			cardElement.addEventListener("click", flipCard);
-		}
 	}
 }
