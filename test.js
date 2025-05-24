@@ -1,5 +1,5 @@
 let test = true;
 let val = false;
-if(test){
-    test = val;
-};
+if (test) {
+	test = val;
+}
