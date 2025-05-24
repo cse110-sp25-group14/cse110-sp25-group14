@@ -20,7 +20,7 @@ function initializeCardList(){
 			cardList.push(cardElement);
 		}
 	}
-    playCards();
+	playCards();
 }
 
 let cards = [];
@@ -36,49 +36,49 @@ async function playCards(){
 	appendRandom(cards);
 	for(let j = 0; j<cards.length; j+=1){
 		const cardElement = cardList[cards[j]];
-        cardElement.removeEventListener("click", checkClicked, false);
+		cardElement.removeEventListener("click", checkClicked, false);
 		cardElement.classList.add("unflipped");
-        flipCard(cardElement);
+		flipCard(cardElement);
 		setTimeout(()=>{
 			flipCard(cardElement);
 		}, 500);
 		await timer(1000);
 	}
-    for(let i = 0; i<cardList.length; i+=1){
-       	const cardElement = cardList[i]; 
-        cardElement.addEventListener("click", checkClicked);
-    }
+	for(let i = 0; i<cardList.length; i+=1){
+		const cardElement = cardList[i]; 
+		cardElement.addEventListener("click", checkClicked);
+	}
 }
 
 async function checkClicked(){
-    this.classList.add("unflipped");
-    if(this != cardList[cards[currPointer]]){
-        endGame();
-        setTimeout(()=>{
-		    flipCard(this);
-	    }, 500);
-	    flipCard(this);
-        return;
-    }
+	this.classList.add("unflipped");
+	if(this != cardList[cards[currPointer]]){
+		endGame();
+		setTimeout(()=>{
+			flipCard(this);
+		}, 500);
+		flipCard(this);
+		return;
+	}
 	setTimeout(()=>{
 		flipCard(this);
 	}, 500);
 	flipCard(this);
 	await timer(500);
-    
-    currPointer += 1;
-    if(currPointer == cards.length){
-        currPointer = 0;
-        playCards();
-    }
+	
+	currPointer += 1;
+	if(currPointer == cards.length){
+		currPointer = 0;
+		playCards();
+	}
 }
 
 function endGame(){
-    for(let i = 0; i<cardList.length; i+=1){
-       	const cardElement = cardList[i]; 
-        cardElement.removeEventListener("click", checkClicked, false);
-    }
-    console.log("game end");
+	for(let i = 0; i<cardList.length; i+=1){
+		const cardElement = cardList[i]; 
+		cardElement.removeEventListener("click", checkClicked, false);
+	}
+	console.log("game end");
 }
 
 function flipCard(card){
