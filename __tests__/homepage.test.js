@@ -1,3 +1,4 @@
+import { expect, test } from "@jest/globals";
 import { shuffle } from "../scripts/matching.js";
 
 test("shuffle properly shuffles array", () => {
@@ -8,7 +9,7 @@ test("shuffle properly shuffles array", () => {
 	for (let i = 0; i < 100; i++) {
 		shuffle(arr);
 		if (JSON.stringify(arr) === JSON.stringify(orig)) {
-			sameOrderCount++
+			sameOrderCount++;
 		}
 	}
 
