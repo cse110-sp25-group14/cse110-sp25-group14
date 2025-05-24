@@ -17,7 +17,7 @@ let secondCard = null;
 let lockBoard = false;
 
 //shuffle cards
-function shuffle(array) {
+export function shuffle(array) {
   array.sort(() => 0.5 - Math.random());
 }
 
