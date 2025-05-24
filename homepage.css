@@ -1,4 +1,11 @@
 /* --- Base reset / global styles --- */
+
+
+/* --- RESPONSIVE ROOT FONT SIZE --- */
+html { font-size: 100%; }                /* 16 px */
+@media (max-width: 480px)  { html { font-size: 93.75%; } } /* 15 px phones */
+@media (min-width: 1600px){ html { font-size: 112.5%; } }  /* 18 px widescreens */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -80,11 +87,12 @@
   
   /* --- Games grid --- */
   .games {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, max-content));
     gap: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding-bottom: 3rem;
+    padding: 0 1rem 3rem;
+    justify-content: center;   /* centers the whole grid */
+    justify-items: center;
   }
   
   /* individual card */
