@@ -8,6 +8,7 @@ function init() {
 		window.location.href = "homepage.html";
 	});
 	createBoard();
+	startStopwatch();
 }
 
 //initialize cards to match, can use numbers or file names
@@ -20,6 +21,27 @@ let lockBoard = false;
 export function shuffle(array) {
 	array.sort(() => 0.5 - Math.random());
 }
+
+let startTime = null;
+let stopwatchInterval = null;
+
+function startStopwatch() {
+	startTime = Date.now();
+	stopwatchInterval = setInterval(() => {
+		const elapsedTime = Date.now() - startTime;
+		const seconds = Math.floor(elapsedTime / 1000);
+		const mins = Math.floor(seconds / 60);
+		const secs = seconds % 60;
+
+		document.getElementById("stopwatch").textContent = 
+		`${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+	}, 1000);
+}
+
+function stopStopwatch(){
+	clearInterval(stopwatchInterval);
+}
+
 
 //appends the value of each card hidden to user
 function createBoard() {
@@ -57,6 +79,13 @@ function checkMatch() {
 		firstCard.classList.add("matched");
 		secondCard.classList.add("matched");
 		resetBoard();
+
+		const matchedCards = document.querySelectorAll('.matched').length;
+		if (matchedCards === cards.length){
+			stopStopwatch();
+			alert("You Suck !");
+		}
+
 	} else {
 		lockBoard = true;
 		setTimeout(() => {
