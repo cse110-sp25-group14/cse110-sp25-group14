@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener("DOMContentLoaded", init);
 function init() {
 	const homeBtn = document.getElementById("homepage-btn");
 	homeBtn.addEventListener("click", ()=>{
