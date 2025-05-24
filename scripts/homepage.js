@@ -9,12 +9,21 @@ function init() {
 	const matchingRecBtn = document.getElementById("matching_record");
 	const sequenceBtn = document.getElementById("sequence_button");
 	const sequenceRecBtn = document.getElementById("sequence_record");
+	const letsFindOutBtn = document.getElementById("lets_find_out_btn");
 
 	matchingBtn.addEventListener("click", matching_page);
 	sequenceBtn.addEventListener("click", sequence_page);
 	matchingRecBtn.addEventListener("click", leaderboard_page);
 	sequenceRecBtn.addEventListener("click", leaderboard_page);
 	leaderboardBtn.addEventListener("click", leaderboard_page);
+	letsFindOutBtn.addEventListener("click", random_game_page);
+}
+
+
+function random_game_page() {
+	const games = ["matching.html", "sequence.html"];
+	const randomIndex = Math.floor(Math.random() * games.length);
+	window.location.href = games[randomIndex];
 }
 
 function leaderboard_page(){
