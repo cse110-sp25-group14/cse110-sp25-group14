@@ -38,7 +38,7 @@ html { font-size: 100%; }                /* 16 px */
   /* --- Intro section --- */
   .intro {
     text-align: center;
-    margin: 2rem 0 3rem;
+    margin: clamp(1rem, 5vw,3rem) 0;
   }
   
   .welcome {
