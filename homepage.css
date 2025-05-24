@@ -262,4 +262,26 @@ html { font-size: 100%; }                /* 16 px */
   body.dark .grid span{
     background: #fff;
   }
+
+  /* ----------  TABLET BREAKPOINT ---------- */
+@media (max-width: 768px) {
+  .tagline   { padding: 0.6rem 1.25rem; }
+  .primary-btn { padding: 0.6rem 1.8rem; }
+}
+
+/* ----------  PHONE BREAKPOINT ---------- */
+@media (max-width: 480px) {
+  .banner h1 { font-size: 1.75rem; }
+  .welcome   { font-size: 1.4rem; }
+  
+  /* shrink chick emoji grid */
+  .chicks    { grid-template-columns: repeat(3, 30px); font-size: 1.4rem; }
+  
+  /* shrink blue squares */
+  .grid      { grid-template-columns: repeat(3, 20px); }
+  .grid span { width: 20px; height: 20px; }
+}
+
+/* kill grey flash on mobile Safari when tapping buttons */
+button { -webkit-tap-highlight-color: transparent; }
   
