@@ -264,6 +264,7 @@ body.dark .grid span   { background: #fff; }
   }
 
   .grid            { grid-template-columns: repeat(3, 20px); }
+  
   .grid span { 
     width: 20px;
     height: 20px; 
