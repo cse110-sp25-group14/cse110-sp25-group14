@@ -51,7 +51,7 @@ async function playCards(){
 		setTimeout(()=>{
 			flipCard(cardElement);
 		}, 400);
-		await timer(1000);
+		await timer(500);
 	}
 	for(let i = 0; i<cardList.length; i+=1){
 		const cardElement = cardList[i]; 
@@ -89,7 +89,7 @@ async function checkClicked(){
 			const cardElement = cardList[i]; 
 			lock(cardElement);
 		}
-		await timer(1000);
+		await timer(500);
 		playCards();
 	}
 }
