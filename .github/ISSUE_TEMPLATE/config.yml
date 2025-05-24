@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Group Slack
+    url: https://cse110group14.slack.com/ssb/redirect
+    about: Ask questions on the slack channel for help with issues.
+  - name: Contact the TAs or Professor using main Slack
+    url: https://cse110spring2025group.slack.com/ssb/redirect
+    about: Contact TAs or Professors if you encounter blockers you can’t resolve as a team.
