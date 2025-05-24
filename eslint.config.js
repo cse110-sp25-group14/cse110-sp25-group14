@@ -15,6 +15,7 @@ export default defineConfig([
 		rules: {
 			"@stylistic/indent": ["error", "tab"],
 			"@stylistic/quotes": ["error", "double"],
+			"@stylistic/semi": ["error"]
 		},
 	},
 ]);
