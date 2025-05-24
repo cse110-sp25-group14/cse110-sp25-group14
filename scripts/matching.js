@@ -1,12 +1,27 @@
+//wait for all elements to load before starting up
+window.addEventListener('DOMContentLoaded', init);
+
+//initialize board
+function init() {
+  const backButton = document.getElementById("page-info");
+  backButton.addEventListener("click", ()=>{
+    window.location.href = "homepage.html";
+  });
+  createBoard();
+}
+
+//initialize cards to match, can use numbers or file names
 const cards = ["1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", "7", "8", "8"]; // can expand
 let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
 
+//shuffle cards
 function shuffle(array) {
   array.sort(() => 0.5 - Math.random());
 }
 
+//appends the value of each card hidden to user
 function createBoard() {
   const grid = document.getElementById("card-grid")
   const rows = grid.getElementsByClassName("card-row");
@@ -19,16 +34,9 @@ function createBoard() {
       cardElement.addEventListener("click", flipCard);
     }
   }
-  /*cards.forEach(number => {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.dataset.letter = number;
-    card.textContent = ""; // hidden initially
-    card.addEventListener("click", flipCard);
-    board.appendChild(card);
-  });*/
 }
 
+//flips card and changes the img src, then checks if it matches with the first card if it is the second card
 function flipCard() {
   if (lockBoard || this === firstCard || this.classList.contains("matched")) return;
   const image = this.querySelector("img");
@@ -43,6 +51,7 @@ function flipCard() {
   }
 }
 
+//checks if the two cards match, and updates the data of the cards if they do
 function checkMatch() {
   if (firstCard.dataset.number === secondCard.dataset.number) {
     firstCard.classList.add("matched");
@@ -64,8 +73,3 @@ function resetBoard() {
   [firstCard, secondCard, lockBoard] = [null, null, false];
 }
 
-window.addEventListener('DOMContentLoaded', init);
-
-async function init() {
-  createBoard();
-}
