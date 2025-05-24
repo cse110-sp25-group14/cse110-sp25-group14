@@ -6,16 +6,20 @@ import stylistic from "@stylistic/eslint-plugin";
 export default defineConfig([
 	{
 		files: ["**/*.js"],
-		plugins: { js, "@stylistic": stylistic },
+		plugins: { 
+			js, 
+			"@stylistic": stylistic, 
+		},
 		extends: ["js/recommended"],
-		languageOptions: {globals: {...globals.browser,}}
-	},
-
-	{
+		languageOptions: {
+			globals: {
+				...globals.browser,				
+			}
+		},
 		rules: {
 			"@stylistic/indent": ["error", "tab"],
 			"@stylistic/quotes": ["error", "double"],
-			"@stylistic/semi": ["error"]
+			"@stylistic/semi": ["error"],
 		},
 	},
 ]);
