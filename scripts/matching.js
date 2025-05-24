@@ -23,7 +23,7 @@ function shuffle(array) {
 
 //appends the value of each card hidden to user
 function createBoard() {
-  const grid = document.getElementById("card-grid")
+  const grid = document.getElementById("card-grid");
   const rows = grid.getElementsByClassName("card-row");
   shuffle(cards);
   for(let i = 0; i<rows.length; i+=1){
