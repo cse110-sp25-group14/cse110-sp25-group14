@@ -220,10 +220,15 @@ button {
 }
 
 .toggle::before {
+  content: "";
+  position: absolute;
   top: 3px;
   left: 3px;
   width: 20px;
   height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
 }
 
 /* dark mode overrides */
@@ -264,7 +269,7 @@ body.dark .grid span   { background: #fff; }
   }
 
   .grid            { grid-template-columns: repeat(3, 20px); }
-  
+
   .grid span { 
     width: 20px;
     height: 20px; 
