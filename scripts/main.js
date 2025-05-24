@@ -15,7 +15,8 @@ function init() {
 
 //decreaing timing function??
 
-//record.. 
+//record
+
 
 //flip card function..
 
