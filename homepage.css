@@ -99,7 +99,8 @@ html { font-size: 100%; }                /* 16 px */
   .game-card {
     background: #BEE9E8;
     border-radius: 1.25rem;
-    width: 260px;
+    width: 100%;
+    max-width: 320px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
