@@ -71,7 +71,7 @@ body {
     box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
     /* main {
         justify-content: center;
     } */
@@ -93,8 +93,7 @@ body {
         grid-template-columns: repeat(3, 0.3fr);
         gap: 2vh 2vw;
         justify-items: center;
-        align-items: center;
-        max-width: 320px; /* 3 cards * 100px + 2 gaps * 10px */
+        max-width: 320px;
         margin-left: auto;
         margin-right: auto;
         padding: 0;
@@ -107,7 +106,7 @@ body {
         min-width: 40px;
         min-height: 40px;
         border-radius: 15px;
-        margin-top: 0px;
+        margin-top: 0;
     }
 
 }
