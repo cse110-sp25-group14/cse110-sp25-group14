@@ -49,7 +49,12 @@ function init() {
 	letsFindOutBtn.addEventListener("click", random_game_page);
 }
 
-
+/**
+ * @function randomgame_page
+ * @description
+ * This function redirects the user to the leaderboard page.
+ * This function is called when the user clicks on the leaderboard button
+ */
 function random_game_page() {
 	const games = ["matching.html", "sequence.html"];
 	const randomIndex = Math.floor(Math.random() * games.length);
