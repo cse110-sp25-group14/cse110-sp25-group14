@@ -38,15 +38,15 @@ function startStopwatch() {
 }
 
 function stopStopwatch(){
-  //save time if it beats record
+	//save time if it beats record
 	clearInterval(stopwatchInterval);
 }
 
 
 //appends the value of each card hidden to user
 function createBoard() {
-  unflipAll();
-  startStopwatch();
+	unflipAll();
+	startStopwatch();
 	const grid = document.getElementById("card-grid");
 	const rows = grid.getElementsByClassName("card-row");
 	shuffle(cards);
@@ -56,25 +56,24 @@ function createBoard() {
 			const cardElement = cardArr[j];
 			cardElement.dataset.number = cards[j+i*rows.length];
 			cardElement.addEventListener("click", flipCard);
-      
-      //for testing
-      // const image = cardElement.querySelector("img");
-      // image.src = `./assets/matching${cardElement.dataset.number}.svg`;
-      // cardElement.classList.add("matched");
-      if(cardElement.classList.contains("matched")){
-        cardElement.classList.remove("matched");
-      }
+			//for testing
+			// const image = cardElement.querySelector("img");
+			// image.src = `./assets/matching${cardElement.dataset.number}.svg`;
+			// cardElement.classList.add("matched");
+			if(cardElement.classList.contains("matched")){
+				cardElement.classList.remove("matched");
+			}
 		}
 	}
-  endGame();
+	endGame();
 }
 
 function unflipAll(){
-  const cardArr = document.getElementsByClassName("card");
-  for(let i = 0; i<cardArr.length; i+=1){
-    cardArr[i].className = "card";
-    cardArr[i].querySelector("img").src = "./assets/G14.png";
-  }
+	const cardArr = document.getElementsByClassName("card");
+	for(let i = 0; i<cardArr.length; i+=1){
+		cardArr[i].className = "card";
+		cardArr[i].querySelector("img").src = "./assets/G14.png";
+	}
 }
 
 //flips card and changes the img src, then checks if it matches with the first card if it is the second card
@@ -83,7 +82,6 @@ function flipCard() {
 	const image = this.querySelector("img");
 	image.src = `./assets/matching${this.dataset.number}.svg`;
 	this.classList.add("flipped");
-
 	if (!firstCard) {
 		firstCard = this;
 	} else {
@@ -103,9 +101,9 @@ function checkMatch() {
 		if (matchedCards === cards.length){
 			stopStopwatch();
 			setTimeout(() =>{
-        endGame();
-      }, 200);
-      return;
+				endGame();
+			}, 200);
+			return;
 		}
 
 	} else {
@@ -128,8 +126,8 @@ function resetBoard() {
 
 //stop the stopwatch before calling endGame
 function endGame(){
-  resetBoard();
-  const playButton = document.getElementById("start-btn");
+	resetBoard();
+	const playButton = document.getElementById("start-btn");
 	playButton.style.display = "block";
-  playButton.addEventListener("click", createBoard);
+	playButton.addEventListener("click", createBoard);
 }
