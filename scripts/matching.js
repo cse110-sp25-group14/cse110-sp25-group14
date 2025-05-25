@@ -1,5 +1,6 @@
 //wait for all elements to load before starting up
 window.addEventListener("DOMContentLoaded", init);
+let moves = 0;
 
 //initialize board
 function init() {
@@ -53,6 +54,10 @@ function flipCard() {
 
 //checks if the two cards match, and updates the data of the cards if they do
 function checkMatch() {
+
+	moves += 1;
+	document.getElementById("move-counter").textContent = `Moves - ${moves}`;
+
 	if (firstCard.dataset.number === secondCard.dataset.number) {
 		firstCard.classList.add("matched");
 		secondCard.classList.add("matched");
