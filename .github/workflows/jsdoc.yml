@@ -11,10 +11,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4                      # 1️⃣ code
-      - uses: actions/setup-node@v4                    # 2️⃣ Node 20 + cache
+      - uses: actions/checkout@v4                   
+      - uses: actions/setup-node@v4                 
         with:
           node-version: 20
           cache: npm
-      - run: npm ci                                    # 3️⃣ deps
-      - run: npm run docs                              # 4️⃣ build docs → ./docs
+      - run: npm ci                                    
+      - run: npm run docs                              
