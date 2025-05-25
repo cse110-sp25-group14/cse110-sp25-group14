@@ -1,4 +1,4 @@
-name: Build JSDoc
+name: Build & Publish JSDoc
 
 on:
   push:
@@ -21,3 +21,11 @@ jobs:
           cache: npm
       - run: npm ci                                    # 3️⃣ deps
       - run: npm run docs                              # 4️⃣ build docs → ./docs
+
+      # Publish ./docs to the gh-pages branch
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4            # 5️⃣ deploy
+        with:
+          publish_dir: ./scripts/docs
+          publish_branch: gh-pages
+          commit_message: "docs: auto-deploy ${{ github.sha }}"
