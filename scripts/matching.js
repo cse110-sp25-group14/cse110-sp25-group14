@@ -40,7 +40,7 @@ function createBoard() {
 function flipCard() {
 	if (lockBoard || this === firstCard || this.classList.contains("matched")) return;
 	const image = this.querySelector("img");
-	image.src = `./assets/matching${this.dataset.number}.png`;
+	image.src = `./assets/matching${this.dataset.number}.svg`;
 	this.classList.add("flipped");
 
 	if (!firstCard) {
