@@ -1,10 +1,7 @@
 name: Build & Publish JSDoc
 
-on:
-  push:
-    branches: [main]          # rebuild on every commit to main
-  workflow_dispatch:          # manual trigger button
-  pull_request:               # optional – show docs in PR checks
+on: [push]
+  
 
 permissions:                  # let the workflow push to gh-pages
   contents: write
