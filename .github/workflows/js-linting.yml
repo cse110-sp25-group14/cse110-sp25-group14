@@ -15,5 +15,3 @@ jobs: # the things being executed
             - name: ESLint test
               run: npx eslint .
 
-            - name: JSDocs
-              run: npm run docs
