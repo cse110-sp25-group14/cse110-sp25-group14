@@ -8,7 +8,8 @@ function init() {
 	backButton.querySelector("img").addEventListener("click", ()=>{
 		window.location.href = "homepage.html";
 	});
-	createBoard();
+	const playButton = document.getElementById("start-btn");
+	playButton.addEventListener("click", createBoard);
 }
 
 //initialize cards to match, can use numbers or file names
@@ -16,14 +17,40 @@ const cards = ["1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", 
 let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
+let startTime = null;
+let stopwatchInterval = null;
 
 //shuffle cards
 export function shuffle(array) {
 	array.sort(() => 0.5 - Math.random());
 }
 
+
+//starts stopwatch
+function startStopwatch() {
+	startTime = Date.now();
+	stopwatchInterval = setInterval(() => {
+		const elapsedTime = Date.now() - startTime;
+		const seconds = Math.floor(elapsedTime / 1000);
+		const mins = Math.floor(seconds / 60);
+		const secs = seconds % 60;
+
+		document.getElementById("stopwatch").textContent = 
+		`${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+	}, 1000);
+}
+
+function stopStopwatch(){
+	//save time if it beats record
+	clearInterval(stopwatchInterval);
+}
+
+
 //appends the value of each card hidden to user
 function createBoard() {
+	hideButton();
+	unflipAll();
+	startStopwatch();
 	const grid = document.getElementById("card-grid");
 	const rows = grid.getElementsByClassName("card-row");
 	shuffle(cards);
@@ -33,17 +60,38 @@ function createBoard() {
 			const cardElement = cardArr[j];
 			cardElement.dataset.number = cards[j+i*rows.length];
 			cardElement.addEventListener("click", flipCard);
+			//for testing: makes all cards face up and matched
+			// const image = cardElement.querySelector("img");
+			// image.src = `./assets/matching${cardElement.dataset.number}.svg`;
+			// cardElement.classList.add("matched");
+			if(cardElement.classList.contains("matched")){
+				cardElement.classList.remove("matched");
+			}
 		}
 	}
+}
+
+//unflips all cards when game resets
+function unflipAll(){
+	const cardArr = document.getElementsByClassName("card");
+	for(let i = 0; i<cardArr.length; i+=1){
+		cardArr[i].className = "card";
+		cardArr[i].querySelector("img").src = "./assets/G14.png";
+	}
+}
+
+//hides play button (this function is temporary; will change once frontend has result and start implemented)
+function hideButton(){
+	const playButton = document.getElementById("start-btn");
+	playButton.style.display = "none";
 }
 
 //flips card and changes the img src, then checks if it matches with the first card if it is the second card
 function flipCard() {
 	if (lockBoard || this === firstCard || this.classList.contains("matched")) return;
 	const image = this.querySelector("img");
-	image.src = `./assets/matching${this.dataset.number}.png`;
+	image.src = `./assets/matching${this.dataset.number}.svg`;
 	this.classList.add("flipped");
-
 	if (!firstCard) {
 		firstCard = this;
 	} else {
@@ -62,6 +110,16 @@ function checkMatch() {
 		firstCard.classList.add("matched");
 		secondCard.classList.add("matched");
 		resetBoard();
+
+		const matchedCards = document.querySelectorAll(".matched").length;
+		if (matchedCards === cards.length){
+			stopStopwatch();
+			setTimeout(() =>{
+				endGame();
+			}, 200);
+			return;
+		}
+
 	} else {
 		lockBoard = true;
 		setTimeout(() => {
@@ -74,7 +132,16 @@ function checkMatch() {
 	}
 }
 
+
+//resets values every time match occurs
 function resetBoard() {
 	[firstCard, secondCard, lockBoard] = [null, null, false];
 }
 
+//stop the stopwatch before calling endGame
+function endGame(){
+	resetBoard();
+	const playButton = document.getElementById("start-btn");
+	playButton.style.display = "block";
+	playButton.addEventListener("click", createBoard);
+}
