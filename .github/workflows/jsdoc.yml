@@ -1,0 +1,23 @@
+name: Build JSDoc
+
+on:
+  push:
+    branches: [main]          # rebuild on every commit to main
+  workflow_dispatch:          # manual trigger button
+  pull_request:               # optional – show docs in PR checks
+
+permissions:                  # let the workflow push to gh-pages
+  contents: write
+  pages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4                      # 1️⃣ code
+      - uses: actions/setup-node@v4                    # 2️⃣ Node 20 + cache
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci                                    # 3️⃣ deps
+      - run: npm run docs                              # 4️⃣ build docs → ./docs
