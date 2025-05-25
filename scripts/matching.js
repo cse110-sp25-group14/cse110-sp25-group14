@@ -16,15 +16,16 @@ const cards = ["1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", 
 let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
+let startTime = null;
+let stopwatchInterval = null;
 
 //shuffle cards
 export function shuffle(array) {
 	array.sort(() => 0.5 - Math.random());
 }
 
-let startTime = null;
-let stopwatchInterval = null;
 
+//starts stopwatch
 function startStopwatch() {
 	startTime = Date.now();
 	stopwatchInterval = setInterval(() => {
@@ -58,7 +59,7 @@ function createBoard() {
 			const cardElement = cardArr[j];
 			cardElement.dataset.number = cards[j+i*rows.length];
 			cardElement.addEventListener("click", flipCard);
-			//for testing
+			//for testing: makes all cards face up and matched
 			// const image = cardElement.querySelector("img");
 			// image.src = `./assets/matching${cardElement.dataset.number}.svg`;
 			// cardElement.classList.add("matched");
@@ -69,6 +70,7 @@ function createBoard() {
 	}
 }
 
+//unflips all cards when game resets
 function unflipAll(){
 	const cardArr = document.getElementsByClassName("card");
 	for(let i = 0; i<cardArr.length; i+=1){
@@ -77,6 +79,7 @@ function unflipAll(){
 	}
 }
 
+//hides play button (this function is temporary; will change once frontend has result and start implemented)
 function hideButton(){
 	const playButton = document.getElementById("start-btn");
 	playButton.style.display = "none";
