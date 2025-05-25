@@ -7,7 +7,8 @@ function init() {
 	backButton.querySelector("img").addEventListener("click", ()=>{
 		window.location.href = "homepage.html";
 	});
-	createBoard();
+	const playButton = document.getElementById("start-btn");
+	playButton.addEventListener("click", createBoard);
 }
 
 //initialize cards to match, can use numbers or file names
@@ -45,6 +46,7 @@ function stopStopwatch(){
 
 //appends the value of each card hidden to user
 function createBoard() {
+	hideButton();
 	unflipAll();
 	startStopwatch();
 	const grid = document.getElementById("card-grid");
@@ -65,7 +67,6 @@ function createBoard() {
 			}
 		}
 	}
-	endGame();
 }
 
 function unflipAll(){
@@ -74,6 +75,11 @@ function unflipAll(){
 		cardArr[i].className = "card";
 		cardArr[i].querySelector("img").src = "./assets/G14.png";
 	}
+}
+
+function hideButton(){
+	const playButton = document.getElementById("start-btn");
+	playButton.style.display = "none";
 }
 
 //flips card and changes the img src, then checks if it matches with the first card if it is the second card
