@@ -34,7 +34,7 @@ function startStopwatch() {
 		const secs = seconds % 60;
 
 		document.getElementById("stopwatch").textContent = 
-		`${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+		`${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
 	}, 1000);
 }
 
@@ -80,7 +80,7 @@ function checkMatch() {
 		secondCard.classList.add("matched");
 		resetBoard();
 
-		const matchedCards = document.querySelectorAll('.matched').length;
+		const matchedCards = document.querySelectorAll(".matched").length;
 		if (matchedCards === cards.length){
 			stopStopwatch();
 			alert("You Suck !");
