@@ -5,19 +5,23 @@ let game;
 
 beforeEach(() => {
 	document.body.innerHTML = `
-	<div id="start-btn"></div>
-	<div id="move-counter"></div>
-	<div id="stopwatch"></div>
-	<div id="card-grid">
-		<div class="card-row">
-			<div class="card"><img></div>
-			<div class="card"><img></div>
+		<div id="stopwatch"></div>
+		<div id="move-counter"></div>
+		<div id="record-moves"></div>
+		<div id="record-time"></div>
+
+		<div id="card-grid">
+			<div class="card-row">
+				<div class="card"><img></div>
+				<div class="card"><img></div>
+			</div>
+			<div class="card-row">
+				<div class="card"><img></div>
+				<div class="card"><img></div>
+			</div>
 		</div>
-		<div class="card-row">
-			<div class="card"><img></div>
-			<div class="card"><img></div>
-		</div>
-	</div>
+
+		<div id="start-btn"></div>
 	`;
 
 	game = new MatchingGame();
@@ -119,4 +123,18 @@ test("checkMatch updates data of matching cards", () => {
 
 	expect(cards[0].classList.contains("matched")).toBe(true);
 	expect(cards[1].classList.contains("matched")).toBe(true);
+});
+
+test("endGame updates record moves and record time", () => {
+	game.moves = 5;
+	game.bestMoves = 10;
+	game.startTime = new Date(Date.now() - 2000);
+	game.bestTime = 4000;
+
+	game.endGame();
+
+	const recordMoves = document.getElementById("record-moves");
+	const recordTime = document.getElementById("record-time");
+	expect(recordMoves.textContent).toBe("Record Moves - 5");
+	expect(recordTime.textContent).toBe("Record Time - 00:02");
 });
