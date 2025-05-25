@@ -8,7 +8,6 @@ function init() {
 		window.location.href = "homepage.html";
 	});
 	createBoard();
-	startStopwatch();
 }
 
 //initialize cards to match, can use numbers or file names
@@ -39,12 +38,15 @@ function startStopwatch() {
 }
 
 function stopStopwatch(){
+  //save time if it beats record
 	clearInterval(stopwatchInterval);
 }
 
 
 //appends the value of each card hidden to user
 function createBoard() {
+  unflipAll();
+  startStopwatch();
 	const grid = document.getElementById("card-grid");
 	const rows = grid.getElementsByClassName("card-row");
 	shuffle(cards);
@@ -54,8 +56,25 @@ function createBoard() {
 			const cardElement = cardArr[j];
 			cardElement.dataset.number = cards[j+i*rows.length];
 			cardElement.addEventListener("click", flipCard);
+      
+      //for testing
+      // const image = cardElement.querySelector("img");
+      // image.src = `./assets/matching${cardElement.dataset.number}.svg`;
+      // cardElement.classList.add("matched");
+      if(cardElement.classList.contains("matched")){
+        cardElement.classList.remove("matched");
+      }
 		}
 	}
+  endGame();
+}
+
+function unflipAll(){
+  const cardArr = document.getElementsByClassName("card");
+  for(let i = 0; i<cardArr.length; i+=1){
+    cardArr[i].className = "card";
+    cardArr[i].querySelector("img").src = "./assets/G14.png";
+  }
 }
 
 //flips card and changes the img src, then checks if it matches with the first card if it is the second card
@@ -83,7 +102,10 @@ function checkMatch() {
 		const matchedCards = document.querySelectorAll(".matched").length;
 		if (matchedCards === cards.length){
 			stopStopwatch();
-			alert("You Suck !");
+			setTimeout(() =>{
+        endGame();
+      }, 200);
+      return;
 		}
 
 	} else {
@@ -98,7 +120,16 @@ function checkMatch() {
 	}
 }
 
+
+//resets values every time match occurs
 function resetBoard() {
 	[firstCard, secondCard, lockBoard] = [null, null, false];
 }
 
+//stop the stopwatch before calling endGame
+function endGame(){
+  resetBoard();
+  const playButton = document.getElementById("start-btn");
+	playButton.style.display = "block";
+  playButton.addEventListener("click", createBoard);
+}
