@@ -1,6 +1,8 @@
 //wait for all elements to load before starting up
 window.addEventListener("DOMContentLoaded", init);
 let moves = 0;
+let bestMoves = Infinity;
+let bestTime  = Infinity;
 
 //initialize board
 function init() {
@@ -48,6 +50,8 @@ function stopStopwatch(){
 
 //appends the value of each card hidden to user
 function createBoard() {
+	moves = 0;
+	document.getElementById("move-counter").textContent = "Moves - 0";
 	hideButton();
 	unflipAll();
 	startStopwatch();
@@ -140,6 +144,25 @@ function resetBoard() {
 
 //stop the stopwatch before calling endGame
 function endGame(){
+
+	const elapsedTime = Date.now() - startTime;
+
+	if (moves < bestMoves) {
+		bestMoves = moves;
+		document.getElementById("record-moves").textContent =
+		`Record Moves - ${bestMoves}`;
+	}
+
+	if (elapsedTime < bestTime) {
+		bestTime = elapsedTime;
+		const totalSec = Math.floor(bestTime / 1000);
+		const mins     = Math.floor(totalSec / 60);
+		const secs     = totalSec % 60;
+		document.getElementById("record-time").textContent =
+		`Record Time - ${mins.toString().padStart(2,"0")}:${secs
+			.toString().padStart(2,"0")}`;
+	}
+
 	resetBoard();
 	const playButton = document.getElementById("start-btn");
 	playButton.style.display = "block";
