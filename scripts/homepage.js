@@ -2,7 +2,21 @@
 window.addEventListener("DOMContentLoaded", init);
 
 
-// Starts program, all functions calls originate here
+/**
+ * Initializes button event listeners for page navigation.
+ *
+ * @function init
+ * @description
+ * Sets up the main interface by linking DOM buttons to their
+ * respective navigation functions. Each button directs the user
+ * to either a game page or the leaderboard.
+ *
+ * @see matching_page
+ * @see sequence_page
+ * @see leaderboard_page
+ *
+ *
+ */
 function init() {
 	//insert functions/eventListeners to functions
 	const leaderboardBtn = document.getElementById("leaderboard-btn");
@@ -33,48 +47,8 @@ function init() {
 	sequenceRecBtn.addEventListener("click", records_page);
 	leaderboardBtn.addEventListener("click", records_page);
 	letsFindOutBtn.addEventListener("click", random_game_page);
-
-	if (localStorage.getItem("darkMode") === "enabled") {
-		document.body.classList.add("dark");
-		if (sunIcon && moonIcon) {
-			sunIcon.style.opacity = "0";
-			moonIcon.style.opacity = "1";
-		}
-	}
-
-	updateTooltip();
-
-	if (darkmodeToggle) {
-		darkmodeToggle.addEventListener("click", function() {
-			document.body.classList.toggle("dark");
-			
-			const isDarkmode = document.body.classList.contains("dark");
-			
-			if (this.sunIcon && this.moonIcon) {
-				if (isDarkmode) {
-					this.sunIcon.style.opacity = "0";
-					this.moonIcon.style.opacity = "1";
-				} else {
-					this.sunIcon.style.opacity = "1";
-					this.moonIcon.style.opacity = "0";
-				}
-			}
-			
-			localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
-
-			updateTooltip();
-		});
-	}
-
-	if (localStorage.getItem("darkMode") === "enabled") {
-		document.body.classList.add("dark");
-		
-		if (sunIcon && moonIcon) {
-			sunIcon.style.opacity = "0";
-			moonIcon.style.opacity = "1";
-		}
-	}
 }
+
 
 function random_game_page() {
 	const games = ["matching.html", "sequence.html"];
@@ -82,15 +56,24 @@ function random_game_page() {
 	window.location.href = games[randomIndex];
 }
 
-
-function records_page(){
-	window.location.href = "records.html";
+function leaderboard_page(){
+	window.location.href = "leaderboard.html";
 }
-
+/**
+ * @function matching_page
+ * @description
+ * Redirects the user to the matching game page.
+ * This function is called when the user clicks on the matching button
+ */
 function matching_page(){
 	window.location.href = "matching.html";
 }
-
+/**
+ * @function sequence_page
+ * @description
+ * Redirects the user to the sequence game page.
+ * This function is called when the user clicks on the sequence button 
+ */
 function sequence_page(){
 	window.location.href = "sequence.html";
 }
