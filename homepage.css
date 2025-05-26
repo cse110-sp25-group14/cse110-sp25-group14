@@ -1,259 +1,277 @@
 /* --- Base reset / global styles --- */
+
+/* --- RESPONSIVE ROOT FONT SIZE ----------------------------------------- */
+html { font-size: 100%; }                 /* 16 px */
+
+@media (width <= 480px) {                 /* phones */
+  html { font-size: 93.75%; }             /* 15 px */
+}
+
+@media (width >= 1600px) {                /* ultra-wide */
+  html { font-size: 112.5%; }             /* 18 px */
+}
+
+/* ----------------------------------------------------------------------- */
+
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    color: #111;
-    background: #fafafa;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  /* --- Banner --- */
-  .banner {
-    background: #a8bfb3;     /* soft green-grey */
-    padding: 1.25rem 0;
-    text-align: center;
-    font-family: Baloo, sans-serif;
-    font-size: 22px;
-  }
-  
-  .banner h1 {
-    font-size: 2.25rem;
-    font-weight: 700;
-  }
-  
-  /* --- Intro section --- */
-  .intro {
-    text-align: center;
-    margin: 2rem 0 3rem;
-  }
-  
-  .welcome {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-bottom: 1.25rem;
-    font-family: "Baloo 2", sans-serif;
-    font-style: normal;
-  }
-  
-  /* speech-bubble style */
-  .tagline {
-    display: inline-block;
-    background: #CAE9FF;
-    padding: 0.75rem 1.5rem;
-    border-radius: 9999px;
-    box-shadow: 0 2px 4px rgb(255 255 255);
-    margin-bottom: 2rem;
-    font-family: "Konkhmer Sleokchher", system-ui;
-    font-weight: 50;
-    font-style: normal;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  .question {
-    font-family: Koulen, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  /* primary CTA */
-  .primary-btn {
-    background: #1C4966;
-    color: #fff;
-    padding: 0.75rem 2.25rem;
-    border: none;
-    border-radius: 1.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: opacity 0.25s;
-    font-family: "Konkhmer Sleokchher", system-ui;
-    font-weight: 50;
-    font-style: normal;
-  }
-  
-  .primary-btn:hover { opacity: 0.85; }
-  
-  /* --- Games grid --- */
-  .games {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding-bottom: 3rem;
-  }
-  
-  /* individual card */
-  .game-card {
-    background: #BEE9E8;
-    border-radius: 1.25rem;
-    width: 260px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .game-card h3 {
-    margin: 1rem 0 0.5rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
+body {
+  font-family: Arial, sans-serif;
+  color: #111;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  .matching{
-    font-family: "Patua One", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .sequence {
-    font-family: "Patua One", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
+/* --- Banner --- */
+.banner {
+  background: #a8bfb3;                  /* soft green-grey */
+  padding: 1.25rem 0;
+  text-align: center;
+  font-family: Baloo, sans-serif;
+  font-size: 22px;
+}
 
-  /* chick grid (2 rows × 3 columns) */
+.banner h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+/* --- Intro section --- */
+.intro {
+  text-align: center;
+  margin: clamp(1rem, 5vw, 3rem) 0;
+}
+
+.welcome {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  font-family: "Baloo 2", sans-serif;
+  font-style: normal;
+}
+
+/* speech-bubble */
+.tagline {
+  display: inline-block;
+  background: #CAE9FF;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 4px rgb(255 255 255);
+  margin-bottom: 2rem;
+  font-family: "Konkhmer Sleokchher", system-ui;
+  font-weight: 50;
+  font-style: normal;
+}
+
+.question {
+  font-family: Koulen, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* primary CTA */
+.primary-btn {
+  background: #1C4966;
+  color: #fff;
+  padding: 0.75rem 2.25rem;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.25s;
+  font-family: "Konkhmer Sleokchher", system-ui;
+  font-weight: 50;
+  font-style: normal;
+}
+
+.primary-btn:hover { opacity: 0.85; }
+
+/* --- Games grid --- */
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, max-content));
+  gap: 2rem;
+  padding: 0 1rem 3rem;
+  justify-content: center;
+  justify-items: center;
+}
+
+/* individual card */
+.game-card {
+  background: #BEE9E8;
+  border-radius: 1.25rem;
+  width: 100%;
+  max-width: 320px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-card h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.matching,
+.sequence {
+  font-family: "Patua One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* chick grid (2×3) */
+.chicks {
+  grid-template-columns: repeat(3, 40px);
+  gap: 8px;
+  font-size: 1.75rem;
+}
+
+/* icon board */
+.icon-board {
+  height: 90px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+/* blue squares grid (3×3) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 24px);
+  gap: 2px;
+}
+
+.grid span {
+  width: 24px;
+  height: 24px;
+  background: #173554;
+  border-radius: 4px;
+  display: block;
+}
+
+/* action buttons */
+.actions {
+  background: #eef6f6;
+  width: 100%;
+  padding: 1rem 0.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  border-top: 1px solid rgb(255 255 255);
+}
+
+.sec-btn {
+  background: #62B6CB;
+  border: none;
+  border-radius: 1rem;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: filter 0.2s;
+  font-family: "Pathway Extreme", sans-serif;
+}
+
+.sec-btn:hover { filter: brightness(110%); }
+
+.ghost { background: #62B6CB; }
+
+/* footer */
+footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+/* lowest-specificity rule FIRST */
+button {
+  -webkit-tap-highlight-color: transparent;   /* mobile Safari flash */
+  font-size: 1rem;
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* more specific */
+.icon button,
+.footer-icon button {
+  font-size: 1.5rem;
+}
+
+/* toggle */
+.toggle {
+  width: 50px;
+  height: 26px;
+  border-radius: 13px;
+  background: #ccc;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.toggle::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* dark mode overrides */
+body.dark .toggle { background: #444; }
+body.dark .toggle::before { transform: translateX(24px); }
+
+body.dark {
+  background: #20202C;
+  color: #fff;
+}
+
+body.dark .banner      { background: #779F77; }
+body.dark .game-card   { background: #76A276; }
+body.dark .actions     { background: #256C73; }
+body.dark .primary-btn { background: #1C4966; }
+body.dark .sec-btn     { background: #191A1A; }
+body.dark .tagline     { background: #589458; }
+body.dark .grid span   { background: #fff; }
+
+/* ----------  TABLET BREAKPOINT ---------- */
+
+@media (width <= 768px) {
+
+  .tagline     { padding: 0.6rem 1.25rem; }
+  .primary-btn { padding: 0.6rem 1.8rem; }
+}
+
+/* ----------  PHONE BREAKPOINT ---------- */
+
+@media (width <= 480px) {
+
+  .banner h1 { font-size: 1.75rem; }
+  .welcome   { font-size: 1.4rem; }
+
   .chicks {
-    grid-template-columns: repeat(3, 40px);
-    gap: 8px;
-    font-size: 1.75rem;
+    grid-template-columns: repeat(3, 30px);
+    font-size: 1.4rem;
   }
 
-  /* icon board areas */
-  .icon-board {
-    height: 90px;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* blue squares grid (3×3) */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 24px);
-    gap: 2px;
-  }
-  
-  .grid span {
-    width: 24px;
-    height: 24px;
-    background: #173554;
-    border-radius: 4px;
-    display: block;
-  }
-  
-  /* action buttons at bottom of card */
-  .actions {
-    background: #eef6f6;
-    width: 100%;
-    padding: 1rem 0.5rem;
-    display: flex;
-    justify-content: space-evenly;
-    border-top: 1px solid rgb(255 255 255);
-  }
-  
-  .sec-btn {
-    background: #62B6CB;
-    border: none;
-    border-radius: 1rem;
-    color: #fff;
-    padding: 0.5rem 1.5rem;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: filter 0.2s;
-    font-family: "Pathway Extreme", sans-serif;
-  }
-  
-  .sec-btn:hover { filter: brightness(110%); }
+  .grid            { grid-template-columns: repeat(3, 20px); }
 
-  .ghost {
-    background: #62B6CB;
-  }
-  
-  footer {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 1rem;
-  }
-  
-  .footer-icon button {
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .toggle {
-    width: 50px;
-    height: 26px;
-    border-radius: 13px;
-    background: #ccc;
-    position: relative;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .toggle::before {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
+  .grid span { 
     width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: white;
-    transition: transform 0.3s ease;
+    height: 20px; 
   }
-  
-  /* Move circle right when in dark mode */
-  body.dark .toggle {
-    background: #444;
-  }
-  
-  body.dark .toggle::before {
-    transform: translateX(24px);
-  }
-  
-  body.dark {
-    background: #20202C;
-    color: #fff;
-  }
-  
-  body.dark .banner {
-    background: #779F77;
-    color: #fff;
-  }
-  
-  body.dark .game-card {
-    background: #76A276;
-  }
-  
-  body.dark .actions {
-    background: #256C73;
-  }
-  
-  body.dark .primary-btn {
-    background: #1C4966;
-    color: #fff;
-  }
-  
-  body.dark .sec-btn {
-    background: #191A1A;
-  }
-
-  body.dark .tagline{
-    background: #589458 ;
-  }
-
-  body.dark .grid span{
-    background: #fff;
-  }
-  
+}
