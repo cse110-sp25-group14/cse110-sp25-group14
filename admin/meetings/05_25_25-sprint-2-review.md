@@ -14,7 +14,7 @@ Gautam Mohandas, Aarush Mehrotra, Carl Casares, Victoria Tran, Emily Cai, Kilhoo
 |-------------|------------|
 | **Gautam** | Implemented timer functionality and end-of-game check for the Matching Game; preparing ADRs and other checkpoint deliverables. |
 | **Aarush** | Re-colored the logo (front-end); co-authored ADRs with Gautam; added `node_modules` to `.gitignore`; performed code reviews and merge-request support. |
-| **Eric** | Built page-navigation logic; integrated Matching Game and Sequence Game into routing so they load correctly. |
+| **Eric** | Built page-navigation logic; integrated Matching Game and Sequence Game into routing so they load correctly. Also created core game logic for both matching and sequence games. |
 | **Mark** | Finalized ESLint configuration; added unit-testing stage to CI pipeline; wrote unit tests for Matching Game logic. |
 | **Srideep** | Implemented randomization, move counting, record tracking, and assisted with end-of-game functionality. |
 | **Kilhoon** | Set up automated JS-doc generation; contributed to page navigation; pair-programmed on Matching and Sequence games. |
@@ -34,8 +34,8 @@ Gautam Mohandas, Aarush Mehrotra, Carl Casares, Victoria Tran, Emily Cai, Kilhoo
 
 ### 3. Process & Ops
 - **Issue templates:** Srideep added standardized templates (Bug, Task, Design/FIGMA).  
-- **Linters & Tests:** ESLint + unit tests now run in the pipeline; all checks green.  
-- **Docs:** Automated JS-docs generated with every push.  
+- **Linters & Tests:** ESLint + unit tests almost running in the pipeline.  
+- **Docs:** Automated JS-docs will be generated with every push; still testing functionality.  
 
 ---
 
