@@ -13,13 +13,6 @@ body {
     min-height: 100vh;
 }
 
-/* main {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    justify-content: flex-start;
-} */
-
 .banner {
     background: #a8bfb3;
     padding: 1.25rem 0;
@@ -68,14 +61,10 @@ body {
 
 #card-grid {
     display: grid;
-    grid-template-columns: repeat(4, 110px);
+    grid-template-columns: repeat(4, 110px); /*repeats 4 cards, column is 110px wide*/
     gap: 1vh 1vw;
     justify-content: center;
     margin-top: 30px;
-    /* max-width: 460px;        
-    max-height: 70vw;
-    margin-left: auto;
-    margin-right: auto; */
 }
 
 .card-row {
@@ -95,10 +84,6 @@ body {
 }
 
 @media (width <= 480px) {
-    /* main {
-        justify-content: center;
-    } */
-
     .banner h1 { 
         font-size: 1.75rem; 
     }
