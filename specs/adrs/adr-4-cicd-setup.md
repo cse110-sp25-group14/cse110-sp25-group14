@@ -1,6 +1,6 @@
 | status   | date decided | decision-makers                                                          | consulted                                                         | informed                        |
 |----------|--------------|--------------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------------|
-| accepted | 2025-05-25   | Aarush Mehrotra, Gautam Mohandas, Victoria Tran, Emily Cai, Carl Casares, Srideep Dornala, Eric Wang, Mark Escarrilla | Travis Huang, Nilay Patel, Kilhoon Kim | All team members via meetings |
+| accepted | 2025-05-25   | Aarush, Gautam, Victoria, Emily, Carl, Srideep, Eric, Mark | Travis, Nilay, Kilhoon| All team members via meetings |
 
 # ADR – Unified Linting Standard (ESLint + Stylelint + HTMLHint)
 
