@@ -1,0 +1,114 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #f7f7f7;
+    font-family: 'Baloo 2', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+ h1{
+    font-size: 45px;
+  }
+
+  /* Main result card styling */
+  #result-card {
+    background-color: #d2f2f7;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 450px;
+    width: 450px;
+    font-size: 40px;
+    
+  }
+  
+  .section h2 {
+    font-size: 30px;
+    margin: 5px 0;
+  }
+  
+  .section h1 {
+    text-align: center;
+  }
+
+ /* play again */
+  .play-again {
+    background-color: #4cbcd4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    max-width: 90%;
+    width: 350px;
+    font-weight:bolder;
+  }
+  
+  .play-again:hover {
+    background-color: #38a4bd;
+  }
+  
+  /* Footer styling */
+  footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-sizing: border-box;
+  }
+  
+  /* taken from homepage.css */
+  /* Optional: Style toggle & leaderboard */
+  .footer-icon button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .toggle {
+    width: 40px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 12px;
+  }
+  
+
+  button {
+    -webkit-tap-highlight-color: transparent;   /* mobile Safari flash */
+    font-size: 1rem;
+    font-family: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .icon button,
+  .footer-icon button {
+    font-size: 1.5rem;
+  }
+  
+  /* toggle */
+  .toggle {
+    width: 50px;
+    height: 26px;
+    border-radius: 13px;
+    background: #ccc;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
