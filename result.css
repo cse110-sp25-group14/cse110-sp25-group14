@@ -23,7 +23,7 @@
     background-color: #d2f2f7;
     padding: 30px 20px;
     border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgb(0,0,0);
     text-align: center;
     max-width: 450px;
     width: 450px;
@@ -35,7 +35,7 @@
     font-size: 30px;
     margin: 5px 0;
   }
-  
+
   .section h1 {
     text-align: center;
   }
@@ -60,6 +60,8 @@
     background-color: #38a4bd;
   }
   
+/* some code taken from homepage.css */
+
   /* Footer styling */
   footer {
     position: absolute;
@@ -71,23 +73,6 @@
     box-sizing: border-box;
   }
   
-  /* taken from homepage.css */
-  /* Optional: Style toggle & leaderboard */
-  .footer-icon button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .toggle {
-    width: 40px;
-    height: 24px;
-    background-color: #ccc;
-    border-radius: 12px;
-  }
-  
-
   button {
     -webkit-tap-highlight-color: transparent;   /* mobile Safari flash */
     font-size: 1rem;
@@ -111,4 +96,12 @@
     position: relative;
     cursor: pointer;
     transition: background 0.3s ease;
+  }
+  
+  /* Optional: Style toggle & leaderboard */
+  .footer-icon button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
   }
