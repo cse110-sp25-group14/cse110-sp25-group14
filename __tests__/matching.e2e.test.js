@@ -1,5 +1,5 @@
 beforeAll(async () => {
-	await page.goto("http://192.168.1.161:5500/matching.html");
+	await page.goto("http://localhost:3000/matching.html");
 });
 
 test("placeholder", async () => {
