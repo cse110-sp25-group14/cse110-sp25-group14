@@ -3,7 +3,9 @@
 		"@stylistic/eslint-plugin": "^4.2.0",
 		"htmlhint": "^1.1.4",
 		"jest": "^29.7.0",
-		"jest-environment-jsdom": "^29.7.0"
+		"jest-environment-jsdom": "^29.7.0",
+		"jest-puppeteer": "^11.0.0",
+		"puppeteer": "^24.9.0"
 	},
 	"dependencies": {
 		"eslint": "^9.26.0",
@@ -11,12 +13,12 @@
 		"stylelint-config-standard": "^38.0.0"
 	},
 	"scripts": {
-		"test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+		"test": "node --experimental-vm-modules ./node_modules/.bin/jest"
 	},
 	"type": "module",
 	"jest": {
 		"transform": {},
 		"verbose": true,
-		"testEnvironment": "jsdom"
+		"preset": "jest-puppeteer"
 	}
 }

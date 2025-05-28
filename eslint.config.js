@@ -21,5 +21,8 @@ export default defineConfig([
 			"@stylistic/quotes": ["error", "double"],
 			"@stylistic/semi": ["error"],
 		},
+		"env": {
+			"jest": true
+		}
 	},
 ]);
