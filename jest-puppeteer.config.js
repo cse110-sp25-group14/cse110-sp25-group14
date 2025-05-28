@@ -1,5 +1,6 @@
 export default {
 	launch: {
+		args: ["--no-sandbox", "--disable-setuid-sandbox"],
 		headless: true,
 	},
 	server: {
