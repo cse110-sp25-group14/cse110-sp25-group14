@@ -16,4 +16,4 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci                                    
-      - run: jsdoc -c jsdoc.json -d ./scripts                             
+      - run: jsdoc ./scripts/homepage.js ./scripts/sequence.js ./scripts/matching.js ./scripts/leaderboard.js                            
