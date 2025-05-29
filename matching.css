@@ -82,7 +82,7 @@ body {
     align-items: center;
     display: flex;
     box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
-    padding: 10px 5px 10px 5px;
+    padding: 10px 5px;
 }
 
 @media (width <= 480px) {
