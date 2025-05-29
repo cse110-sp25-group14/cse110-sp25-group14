@@ -1,9 +1,8 @@
 name: Build & Publish JSDoc
 
 on: [push]
-  
 
-permissions:                  # let the workflow push to gh-pages
+permissions:                 # let the workflow push to gh-pages
   contents: write
   pages: write
 
