@@ -1,50 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Human Benchmark</title>
-  <!-- Link out to the separate style sheet -->
-  <link rel="stylesheet" href="result.css" />
+  <title>Human Benchmark – Results</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Konkhmer+Sleokchher&family=Koulen&family=Pathway+Extreme:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Patua+One&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Koulen&display=swap" rel="stylesheet">
+
+  <!-- External styles -->
+  <link rel="stylesheet" href="result.css" />
 </head>
+
 <body>
-  <!-- Top banner -->
-  <header class="stats-banner"> 
-    <div class="back">
-        <!-- <button id="back-btn" aria-label="Go back"><img src="Vector.svg" alt="back button"> </button> -->
-    </div>
+  <!-- ── HEADER ─────────────────────────────────────────────── -->
+  <header class="stats-banner">
+    <!-- Back arrow (optional) -->
+    <button id="back-btn" class="back-btn" aria-label="Go back">←</button>
   </header>
-  <main>
+
+  <!-- ── MAIN (centers the card) ────────────────────────────── -->
+  <main id="content" aria-label="Score summary">
     <div id="result-card">
-        <div class="section">
-            <h1>Result</h1>
-            <h2 class="time">Time</h2>
-            <h2 class="current-time">Current: 02:30</h2>
-            <h2 class="record-time">Record: 01:01</h2>
-        </div>
-        <div class="section">
-            <h2 class="moves">Moves</h2>
-            <h2 class="current-moves">Current: 20</h2>
-            <h2 class="current-record">Record: 19</h2>
-        </div>
-        <button class="play-again">Play Again</button>
+      <!-- Section: Time -->
+      <div class="section">
+        <h1>RESULT</h1>
+
+        <h2 class="time">Time</h2>
+        <h2 class="current-time">Current: 02:30</h2>
+        <h2 class="record-time">Record: 01:01</h2>
+      </div>
+
+      <!-- Section: Moves -->
+      <div class="section">
+        <h2 class="moves">Moves</h2>
+        <h2 class="current-moves">Current: 20</h2>
+        <h2 class="current-record">Record: 19</h2>
+      </div>
+
+      <!-- CTA -->
+      <button class="play-again" aria-label="Play again">Play Again</button>
     </div>
   </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
   <footer>
     <div class="footer-icon">
       <button id="leaderboard-btn" aria-label="Go to leaderboard">📊</button>
-      <!-- <button id="leaderboard-btn" aria-label="Go to leaderboard"><img src="chart-simple-solid 1.svg" alt="leaderboard icon" width="40" height="40"></button> -->
     </div>
-    <div class="toggle" id="themeToggle"></div>
+
+    <div class="toggle" id="themeToggle"
+         role="switch" aria-checked="false"
+         aria-label="Toggle dark mode"></div>
   </footer>
+
+  <!-- ── SCRIPT ─────────────────────────────────────────────── -->
   <script>
+    /* Light / dark toggle */
     const toggle = document.getElementById('themeToggle');
     toggle.addEventListener('click', () => {
       document.body.classList.toggle('dark');
+      toggle.setAttribute('aria-checked',
+        document.body.classList.contains('dark'));
     });
   </script>
 </body>

@@ -1,107 +1,170 @@
-/* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background-color: #f7f7f7;
-    font-family: 'Baloo 2', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+/* ---------- RESET & ROOT ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
- h1{
-    font-size: 45px;
-  }
+:root {
+  --clr-bg-light: #ffffff;
+  --clr-bg-dark:  #0f1f27;
+  --clr-text:     #00344b;
+  --clr-card-grad: radial-gradient(140% 140% at 50% 10%, #d9f4ef 0%, #c6e5df 100%);
+  --clr-accent:        #59adc7;
+  --clr-accent-hover:  #4399b3;
+  --transition: 0.25s ease;
+}
 
-  /* Main result card styling */
-  #result-card {
-    background-color: #d2f2f7;
-    padding: 30px 20px;
-    border-radius: 20px;
-    box-shadow: 2px 5px 2px rgb(0 0 0 / 10%);
-    text-align: center;
-    max-width: 450px;
-    width: 450px;
-    font-size: 40px;
-    
-  }
-  
-  .section h2 {
-    font-size: 30px;
-    margin: 5px 0;
-  }
+/* ---------- BASE LAYOUT ---------- */
+body {
+  font-family: "Baloo 2", sans-serif;
+  background: var(--clr-bg-light);
+  color: var(--clr-text);
+  min-height: 100vh;
 
-  .section h1 {
-    text-align: center;
-  }
+  display: flex;           /* vertical stack */
+  flex-direction: column;
+}
 
- /* play again */
-  .play-again {
-    background-color: #4cbcd4;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 20px;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    max-width: 90%;
-    width: 350px;
-    font-weight:bolder;
-  }
-  
-  .play-again:hover {
-    background-color: #38a4bd;
-  }
-  
-/* some code taken from homepage.css */
+/* Dedicated centering wrapper so header/footer don't affect layout */
+main#content {
+  flex: 1;                 /* take remaining height between header & footer */
+  width: 100%;
 
-  /* Footer styling */
-  footer {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 30px;
-    box-sizing: border-box;
-  }
-  
-  button {
-    -webkit-tap-highlight-color: transparent;   /* mobile Safari flash */
-    font-size: 1rem;
-    font-family: inherit;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .icon button,
-  .footer-icon button {
-    font-size: 1.5rem;
-  }
-  
-  /* toggle */
-  .toggle {
-    width: 50px;
-    height: 26px;
-    border-radius: 13px;
-    background: #ccc;
-    position: relative;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  /* Optional: Style toggle & leaderboard */
-  .footer-icon button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-  }
+  display: flex;
+  align-items: center;     /* vertical */
+  justify-content: center; /* horizontal */
+}
+
+/* ---------- CARD ---------- */
+#result-card {
+  background: var(--clr-card-grad);
+  padding: 2.2rem 1.8rem;
+  border-radius: 1.4rem;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 12%);
+  text-align: center;
+  max-width: 26rem;       /* 416 px */
+  width: 90%;             /* scales down on phones */
+}
+
+h1 {
+  font-family: "Koulen", cursive;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  margin-bottom: .75rem;
+}
+
+h2 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin: .3rem 0;
+}
+.time,
+.moves {
+  font-size: 1.75rem;   /* larger */
+  font-weight: 800;     /* bolder */
+}
+
+.section:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- BUTTONS ---------- */
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.play-again {
+  background: var(--clr-accent);
+  color: #fff;
+  padding: .9rem 1.5rem;
+  border-radius: 1.9rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  width: 80%;
+  max-width: 18rem;
+}
+
+.play-again:hover {
+  background: var(--clr-accent-hover);
+  transform: translateY(-2px);
+}
+
+/* ---------- HEADER / BACK BTN ---------- */
+.stats-banner {
+  position: relative;
+  height: 4rem; /* just for spacing */
+}
+
+.back-btn {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  font-size: 2rem;
+  color: var(--clr-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  position: relative;
+  height: 4.5rem; /* enough tap room */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+.footer-icon button {
+  font-size: 2rem;
+  color: var(--clr-text);
+}
+
+/* ---------- TOGGLE ---------- */
+.toggle {
+  width: 56px;
+  height: 30px;
+  border-radius: 15px;
+  background: #e1e5ea;
+  position: relative;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.toggle::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform var(--transition);
+}
+
+/* ---------- DARK THEME ---------- */
+body.dark {
+  background: var(--clr-bg-dark);
+  color: #f4f9fb;
+}
+
+body.dark #result-card {
+  background: radial-gradient(140% 140% at 50% 10%, #10424e 0%, #0e373f 100%);
+}
+
+body.dark .toggle {
+  background: var(--clr-accent);
+}
+
+body.dark .toggle::before {
+  transform: translateX(26px);
+}
