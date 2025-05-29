@@ -1,18 +1,13 @@
-name: Build & Publish JSDoc
+name: Build JSDoc
 
 on: [push]
 
-permissions:                 # let the workflow push to gh-pages
-  contents: write
-  pages: write
-
 jobs:
-  build:
+  docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4                   
-      - uses: actions/setup-node@v4                 
-        with:
-          node-version: 20
-          cache: npm
-      - run: npm run docs            
+    - uses: actions/checkout@v4
+    - uses: andstor/jsdoc-action@v1
+      with:
+        source: ./scripts       # path to your code
+        destination: ./scripts/docs  # output directory
