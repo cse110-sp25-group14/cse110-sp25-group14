@@ -31,5 +31,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git add scripts/docs/
-        git commit -m "chore(docs): Update JSDoc" || echo "no chages to docs"
+        git commit -m "Update JSDoc" || echo "no chages to docs"
         git push
