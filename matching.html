@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Human Benchmark</title>
     <link rel="stylesheet" href="matching.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Konkhmer+Sleokchher&family=Koulen&family=Pathway+Extreme:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Patua+One&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <script src="./scripts/matching.js"></script> 
     <script type="module" src="./scripts/matching.js"></script>
 </head>
 
 <body>
-    <header class="banner">
+    <!-- <header class="banner">
         <h1>Human Benchmark</h1>
-    </header>
+    </header> -->
 
     <main>
         <div id="page-info">
@@ -23,11 +28,11 @@
             <div class="stats-grid">
                 <div class="row">
                     <p class="column">Time - <span id="stopwatch">00:00</span></p>
-                    <p class="column">Moves - 1</p>
+                    <p id="move-counter" class="column">Moves - 0</p>
                 </div>
                 <div class="row">
-                    <p class="column">Record Time - 00:10</p>
-                    <p class="column">Record Moves - 7</p>
+                    <p id="record-time"  class="column">Record Time - --:--</p>
+                    <p id="record-moves" class="column">Record Moves - --</p>
                 </div>
             </div>
         </div>
