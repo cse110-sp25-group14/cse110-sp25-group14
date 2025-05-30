@@ -22,6 +22,6 @@ jobs:
 
     - name: Commit and push generated docs
       run: |
-      git add scripts/docs/
-      git commit -m "chore(docs): Update JSDoc" || echo "no chages to docs"
-      git push
+        git add scripts/docs/
+        git commit -m "chore(docs): Update JSDoc" || echo "no chages to docs"
+        git push 
