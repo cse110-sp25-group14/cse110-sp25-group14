@@ -8,6 +8,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+    
+    - name: Set up Git user
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
     - name: Install dependencies
       run: npm install 
@@ -15,9 +20,8 @@ jobs:
     - name: JSdocs
       run: npm run docs
 
-    - name: Upload JSDoc
-      uses: actions/upload-artifact@v4
-      with:
-        name: jsdoc
-        path: ./scripts/docs/
-    
+    - name: Commit and push generated docs
+      run: |
+      git add scripts/docs/
+      git commit -m "chore(docs): Update JSDoc" || echo "no chages to docs"
+      git push
