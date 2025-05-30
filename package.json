@@ -1,14 +1,4 @@
 {
-  "name": "jsdoc_example",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "docs": "jsdoc -c jsdoc.json"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@stylistic/eslint-plugin": "^4.2.0",
     "htmlhint": "^1.1.4",
@@ -18,6 +8,9 @@
     "eslint": "^9.26.0",
     "stylelint": "^16.19.1",
     "stylelint-config-standard": "^38.0.0"
-  },
-  "type": "module"
+  }, 
+  "type": "module",
+  "scripts": {
+    "docs": "jsdoc"
+  }
 }
