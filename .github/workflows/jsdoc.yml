@@ -1,6 +1,10 @@
 name: Build JSDoc
 
-on: [push]
+on: 
+  push:
+    branches:
+      -51-automated-jsdoc-test
+  
 
 jobs:
   docs:
