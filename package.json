@@ -11,6 +11,6 @@
   }, 
   "type": "module",
   "scripts": {
-    "docs": "jsdoc"
+    "docs": "jsdoc -c jsdoc.json"
   }
 }
