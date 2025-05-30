@@ -8,6 +8,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: andstor/jsdoc-action@v1
-      with:
-        source_dir: ./scripts      # path to your code
-        output_dir: ./scripts/docs  # output directory
+
+    - name: Install dependencies
+    - run: npm install 
+
+    - name: JSdocs
+    - run: npm run docs
+    
