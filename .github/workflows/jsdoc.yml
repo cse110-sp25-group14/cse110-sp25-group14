@@ -14,4 +14,10 @@ jobs:
 
     - name: JSdocs
       run: npm run docs
+
+    - name: Upload JSDoc
+      uses: actions/upload-artifact@v4
+      with:
+        name: jsdoc
+        path: ./scripts/docs/
     
