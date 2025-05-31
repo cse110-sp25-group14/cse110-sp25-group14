@@ -1,6 +1,7 @@
 // run everything after page loads
 window.addEventListener("DOMContentLoaded", init);
 
+
 // Starts program, all functions calls originate here
 function init() {
 	//insert functions/eventListeners to functions
@@ -10,6 +11,7 @@ function init() {
 	const sequenceBtn = document.getElementById("sequence-button");
 	const sequenceRecBtn = document.getElementById("sequence-record");
 	const letsFindOutBtn = document.getElementById("lets-find-out-btn");
+	const toggle = document.getElementById('theme-toggle');
 
 	matchingBtn.addEventListener("click", matching_page);
 	sequenceBtn.addEventListener("click", sequence_page);
@@ -17,6 +19,25 @@ function init() {
 	sequenceRecBtn.addEventListener("click", leaderboard_page);
 	leaderboardBtn.addEventListener("click", leaderboard_page);
 	letsFindOutBtn.addEventListener("click", random_game_page);
+
+	let theme = "light";
+	const savedTheme = localStorage.getItem("theme");
+	if (savedTheme === "dark") {
+		document.body.classList.add("dark");
+		theme = "dark";
+	}
+
+	toggle.addEventListener("click", function () {
+		document.body.classList.toggle("dark");
+
+		if (document.body.classList.contains("dark")) {
+			theme = "dark";
+		} else {
+			theme = "light";
+		}
+
+		localStorage.setItem("theme", theme);
+	});
 }
 
 
