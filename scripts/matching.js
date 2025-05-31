@@ -80,7 +80,7 @@ function unflipAll(){
 	const cardArr = document.getElementsByClassName("card");
 	for(let i = 0; i<cardArr.length; i+=1){
 		cardArr[i].className = "card";
-		cardArr[i].querySelector("img").src = "./assets/G14.png";
+		cardArr[i].src = "./assets/G14.png";
 	}
 }
 
@@ -93,8 +93,7 @@ function hideButton(){
 //flips card and changes the img src, then checks if it matches with the first card if it is the second card
 function flipCard() {
 	if (lockBoard || this === firstCard || this.classList.contains("matched")) return;
-	const image = this.querySelector("img");
-	image.src = `./assets/matching${this.dataset.number}.svg`;
+	this.src = `./assets/matching${this.dataset.number}.svg`;
 	this.classList.add("flipped");
 	if (!firstCard) {
 		firstCard = this;
@@ -127,8 +126,8 @@ function checkMatch() {
 	} else {
 		lockBoard = true;
 		setTimeout(() => {
-			firstCard.querySelector("img").src = "./assets/G14.png";
-			secondCard.querySelector("img").src = "./assets/G14.png";
+			firstCard.src = "./assets/G14.png";
+			secondCard.src = "./assets/G14.png";
 			firstCard.classList.remove("flipped");
 			secondCard.classList.remove("flipped");
 			resetBoard();
