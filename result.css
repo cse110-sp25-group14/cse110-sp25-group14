@@ -7,10 +7,6 @@
   body {
     background-color: #f7f7f7;
     font-family: 'Baloo 2', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
   }
 
   .result {
@@ -22,9 +18,40 @@
     font-size: 55px;
   }
 
+  h1, h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.1;
+  }
+
+  /* back arrow styling */
+  #page-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    margin: 30px;
+    gap: 10px; 
+  }
+  
+  #content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+  }
+
+  #page-info img{
+    cursor: pointer;
+  } 
+
   /* Main result card styling */
   #result-card {
     background-color: #BEE9E8;
+    background-image: url("assets/blur-bg.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 30px 20px;
     border-radius: 20px;
     box-shadow: 2px 5px 2px rgb(0 0 0 / 10%);
@@ -36,7 +63,7 @@
   }
   
   .section h2 {
-    font-size: 30px;
+    font-size: 27px;
     margin: 5px 0;
     font-family: "Konkhmer Sleokchher", system-ui;
   }
@@ -46,11 +73,22 @@
   }
   
   h2.time {
-    font-size: 45px;
+    font-size: 33px;
+    margin-top: 25px;
+    font-weight: normal;
   }
 
   h2.moves{
-    font-size: 45px;
+    font-size: 33px;
+    margin-top: 25px;
+    font-weight: normal;
+  }
+
+  .current-time,
+  .record-time,
+  .current-moves,
+  .current-record {
+    font-weight: 400;
   }
 
   /* play again */
@@ -59,9 +97,9 @@
     color: white;
     border: none;
     padding: 10px 20px;
-    margin-top: 20px;
+    margin-top: 25px;
     border-radius: 25px;
-    font-size: 16px;
+    font-size: 23px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     max-width: 90%;
@@ -99,6 +137,12 @@
   .footer-icon button {
     font-size: 1.5rem;
   }
+
+  .footer-icon img{
+    width: 35px;
+    height: auto;
+    cursor: pointer;
+  } 
   
 /* toggle */
 .toggle {
@@ -126,21 +170,23 @@
   /* dark mode overrides */
   body.dark .toggle { background: #444; }
   body.dark .toggle::before { transform: translateX(24px); }
-  
-  .footer-icon button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
+
+  body.dark .footer-icon img {
+    content: url('assets/record-white.svg');
   }
 
   body.dark {
     background: #20202C;
     color: #fff;
   }
+
+  body.dark #page-info img {
+    content: url('assets/backarrow-white.svg');
+  }
   
   body.dark #result-card{ 
-    background: #174517;
+    background-color: #174517;
+    background-image: url("assets/blur-bg-darkmode.svg");
     color:#fff
   }
 
@@ -155,3 +201,4 @@
   body.dark .play-again:hover {
     background-color: #000;
   }
+

@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="result.css" />
 </head>
 <body>
-  <header class="stats-banner">
-    <!-- <button id="back-btn" class="back-btn" aria-label="Go back">←</button> -->
-  </header>
+  <div id="page-info">
+    <img src="assets/backarrow.svg" alt="black back arrow"/>
+  </div>
   <main id="content" aria-label="Score summary">
     <div id="result-card">
         <div class="section">
@@ -31,12 +31,13 @@
   </main>
   <footer>
     <div class="footer-icon">
-      <button id="leaderboard-btn" aria-label="Go to leaderboard">📊</button>
+      <img src="assets/record.svg" alt="leaderboard button"/>
     </div>
 
     <div class="toggle" id="themeToggle"
-         role="switch" aria-checked="false"
-         aria-label="Toggle dark mode"></div>
+      role="switch" aria-checked="false"
+      aria-label="Toggle dark mode">
+    </div>
   </footer>
   <script>
     /* Light / dark toggle */
