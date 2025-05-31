@@ -146,8 +146,8 @@ function resetBoard() {
 function endGame(){
 
 	const recordToSave = {
-    	moves: moves,
-    	time : document.getElementById("stopwatch").textContent
+		moves: moves,
+		time : document.getElementById("stopwatch").textContent
 	};
 	let history = JSON.parse(localStorage.getItem("matching")) || [];
 	history.push(recordToSave);
