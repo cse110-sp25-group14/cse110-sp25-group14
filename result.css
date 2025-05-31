@@ -147,10 +147,11 @@
   body.dark .play-again{ 
     background: #123012; 
   }
+  
   body.dark .result{
     color: #fff;
   }
 
   body.dark .play-again:hover {
-    background-color: #000000;
+    background-color: #000;
   }
