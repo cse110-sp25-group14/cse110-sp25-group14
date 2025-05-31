@@ -18,7 +18,7 @@
     color: #063635;
   }
 
- h1{
+  h1{
     font-size: 55px;
   }
 
@@ -53,7 +53,7 @@
     font-size: 45px;
   }
 
- /* play again */
+  /* play again */
   .play-again {
     background-color: #7DC3D4;
     color: white;
@@ -74,7 +74,7 @@
     background-color: #38a4bd;
   }
   
-/* some code taken from homepage.css */
+  /* some code taken from homepage.css */
 
   /* Footer styling */
   footer {
