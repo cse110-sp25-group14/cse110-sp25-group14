@@ -145,6 +145,14 @@ function resetBoard() {
 //stop the stopwatch before calling endGame
 function endGame(){
 
+	const recordToSave = {
+    	moves: moves,
+    	time : document.getElementById("stopwatch").textContent
+	};
+	let history = JSON.parse(localStorage.getItem("matching")) || [];
+	history.push(recordToSave);
+	localStorage.setItem("matching", JSON.stringify(history));
+
 	const elapsedTime = Date.now() - startTime;
 
 	if (moves < bestMoves) {
