@@ -11,7 +11,7 @@ function init() {
 	const sequenceBtn = document.getElementById("sequence-button");
 	const sequenceRecBtn = document.getElementById("sequence-record");
 	const letsFindOutBtn = document.getElementById("lets-find-out-btn");
-	const toggle = document.getElementById('theme-toggle');
+	const toggle = document.getElementById("theme-toggle");
 
 	matchingBtn.addEventListener("click", matching_page);
 	sequenceBtn.addEventListener("click", sequence_page);
