@@ -164,8 +164,8 @@ function endGame(){
 	if (elapsedTime < bestTime) {
 		bestTime = elapsedTime;
 		const totalSec = Math.floor(bestTime / 1000);
-		const mins     = Math.floor(totalSec / 60);
-		const secs     = totalSec % 60;
+		const mins = Math.floor(totalSec / 60);
+		const secs = totalSec % 60;
 		document.getElementById("record-time").textContent =
 		`Record Time - ${mins.toString().padStart(2,"0")}:${secs
 			.toString().padStart(2,"0")}`;
