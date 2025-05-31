@@ -1,28 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Human Benchmark – Results</title>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Koulen&display=swap" rel="stylesheet">
-
-  <!-- External styles -->
   <link rel="stylesheet" href="result.css" />
 </head>
-
 <body>
-  <!-- ── HEADER ─────────────────────────────────────────────── -->
   <header class="stats-banner">
-    <!-- Back arrow (optional) -->
     <button id="back-btn" class="back-btn" aria-label="Go back">←</button>
   </header>
-
-  <!-- ── MAIN (centers the card) ────────────────────────────── -->
   <main id="content" aria-label="Score summary">
     <div id="result-card">
         <div class="section">
@@ -39,8 +29,6 @@
         <button class="play-again">Play Again</button>
     </div>
   </main>
-
-  <!-- ── FOOTER ─────────────────────────────────────────────── -->
   <footer>
     <div class="footer-icon">
       <button id="leaderboard-btn" aria-label="Go to leaderboard">📊</button>
@@ -50,8 +38,6 @@
          role="switch" aria-checked="false"
          aria-label="Toggle dark mode"></div>
   </footer>
-
-  <!-- ── SCRIPT ─────────────────────────────────────────────── -->
   <script>
     /* Light / dark toggle */
     const toggle = document.getElementById('themeToggle');
