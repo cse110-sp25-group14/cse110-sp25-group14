@@ -41,6 +41,13 @@
     height: 75vh;
   }
 
+  /* styling the record button and the back arrow button */
+  #footer-icon img{
+    width: 35px;
+    height: auto;
+    cursor: pointer;
+  } 
+
   #page-info img{
     cursor: pointer;
   } 
@@ -134,15 +141,9 @@
   }
   
   .icon button,
-  .footer-icon button {
+  #footer-icon button {
     font-size: 1.5rem;
   }
-
-  .footer-icon img{
-    width: 35px;
-    height: auto;
-    cursor: pointer;
-  } 
   
 /* toggle */
 .toggle {
@@ -171,7 +172,7 @@
   body.dark .toggle { background: #444; }
   body.dark .toggle::before { transform: translateX(24px); }
 
-  body.dark .footer-icon img {
+  body.dark #footer-icon img {
     content: url('assets/record-white.svg');
   }
 
