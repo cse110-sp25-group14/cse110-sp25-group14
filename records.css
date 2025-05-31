@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Inter, Arial, sans-serif;
+    color: #111;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#page-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin: 30px;
+}
+
+#records-container {
+    background-color: #bee9e8;
+    height: 65vh;
+    width: 50vh;
+    justify-self: center;
+    border-radius: 30px;
+    box-shadow: 1px 2px 2px 2px rgb(0 0 0 / 15%);
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+
+#records-header {
+    background-color: #eaf4f4;
+    padding: 3% 5% 5% 5%;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    width: 100%;
+    text-align: center;
+    font-family: "Patua One", serif;
+    color: #063635;
+    font-size: 1.75rem;
+}
+
+#record-dropdown {
+    background-color: white;
+    margin-top: 1.5vh;
+    border-radius: 5px;
+    padding: 5px 5px;
+    width: 70%;
+    font-family: "Pathway Extreme";
+    font-weight: 700;
+    font-size: 0.70em;
+    text-align: center;
+    color: #5a5d6c;
+    border-color: #5a5d6c;
+}
+
+#best-title {
+    background-color: white;
+    width: 70%;
+    justify-self: center;
+    text-align: center;
+    margin-top: 2vh;
+    border-radius: 25px;
+    padding: 10px;
+    color: #063635;
+}
+
+#record-flex-container {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr; /* Rank, Time, Moves */
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+    justify-self: center;
+    font-size: 1.5rem;
+}
+
+#record-flex-container .header {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #063635;
+    border-radius: 8px;
+    padding: 4px 0;
+    margin-top: 1vh;
+}
+
+#record-flex-container .rank {
+    font-weight: bold;
+    color: white;
+    background-color: #62B6CB;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+#record-flex-container .time {
+    font-weight: bold;
+    color: white;
+    background-color: #62B6CB;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+#record-flex-container .moves {
+    font-weight: bold;
+    color: white;
+    background-color: #62B6CB;
+    padding: 5px;
+    border-radius: 20px;
+}
