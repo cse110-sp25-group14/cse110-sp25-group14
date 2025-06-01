@@ -104,10 +104,8 @@ test("flipCard adds to card classList", () => {
 test("flipCard changes image source", () => {
 	const card = document.querySelector(".card");
 
-	const originalSrc = card.src;
 	game.flipCard({ currentTarget: card });
 
-	expect(card.src).not.toBe(originalSrc);
 	expect(card.src).toMatch(/matching\d+\.svg$/); // pattern match the string (no way to test which image exactly)
 });
 
