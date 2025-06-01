@@ -184,3 +184,54 @@ body {
         margin-top: -6.5vh;
     }
 }
+
+ /* dark mode overrides */
+body.dark .toggle { background: #444; }
+body.dark .toggle::before { transform: translateX(24px); }
+
+body.dark {
+    background: #20202C;
+    color: #fff;
+}
+
+body.dark #page-info img {
+    content: url('assets/backarrow-white.svg');
+}
+
+body.dark #records-header{ 
+    background-color: #1B491B;
+    color:#fff
+}
+  
+body.dark .records-container{
+    color: #487B48;
+}
+
+body.dark .play-again:hover {
+    background-color: #000;
+}
+
+body.dark #record-flex-container .rank {
+    font-weight: bold;
+    color: white;
+    background-color: #174517;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+body.dark #record-flex-container .time {
+    font-weight: bold;
+    color: white;
+    background-color: #174517;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+body.dark #record-flex-container .moves {
+    font-weight: bold;
+    color: white;
+    background-color: #174517;
+    padding: 5px;
+    border-radius: 20px;
+}
+
