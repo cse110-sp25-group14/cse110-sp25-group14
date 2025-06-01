@@ -17,20 +17,24 @@ html { font-size: 100%; }                 /* 16 px */
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
 
 body {
   font-family: Arial, sans-serif;
-  color: #111;
+  color: #133D3C;
   background: #fafafa;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-image: url("assets/Title.svg");
+  background-repeat: no-repeat;
+  background-size: 500vw 100vh;  /* Cover entire viewport */
+  background-size: cover;
 }
 
 /* --- Banner --- */
-.banner {
-  background: #a8bfb3;                  /* soft green-grey */
+.banner {             /* soft green-grey */
   padding: 1.25rem 0;
   text-align: center;
   font-family: Baloo, sans-serif;
@@ -38,7 +42,7 @@ body {
 }
 
 .banner h1 {
-  font-size: 2.25rem;
+  font-size: 3.25rem;
   font-weight: 700;
 }
 
@@ -46,6 +50,7 @@ body {
 .intro {
   text-align: center;
   margin: clamp(1rem, 5vw, 3rem) 0;
+  font-family: "Baloo 2", sans-serif;
 }
 
 .welcome {
@@ -59,14 +64,12 @@ body {
 /* speech-bubble */
 .tagline {
   display: inline-block;
-  background: #CAE9FF;
   padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  box-shadow: 0 2px 4px rgb(255 255 255);
   margin-bottom: 2rem;
-  font-family: "Konkhmer Sleokchher", system-ui;
-  font-weight: 50;
+  font-family: "Baloo 2", sans-serif;
   font-style: normal;
+  font-size: 27px;
+  font-weight: 600;
 }
 
 .question {
@@ -112,6 +115,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
 .game-card h3 {
@@ -127,13 +131,6 @@ body {
   font-style: normal;
 }
 
-/* chick grid (2×3) */
-.chicks {
-  grid-template-columns: repeat(3, 40px);
-  gap: 8px;
-  font-size: 1.75rem;
-}
-
 /* icon board */
 .icon-board {
   height: 90px;
@@ -142,19 +139,24 @@ body {
   justify-content: center;
 }
 
-/* blue squares grid (3×3) */
-.grid {
+.matching-grid {
   display: grid;
-  grid-template-columns: repeat(3, 24px);
-  gap: 2px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px; 
+  padding: 1rem;
+  justify-items: center;
 }
 
-.grid span {
-  width: 24px;
-  height: 24px;
-  background: #173554;
-  border-radius: 4px;
-  display: block;
+.icon-board .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px; /* Reduced from 30px to make them closer */
+  padding: 0;
+}
+
+.item {
+  width: 30px;
+  height: 30px;
 }
 
 /* action buttons */
@@ -164,7 +166,7 @@ body {
   padding: 1rem 0.5rem;
   display: flex;
   justify-content: space-evenly;
-  border-top: 1px solid rgb(255 255 255);
+  margin-top: auto;
 }
 
 .sec-btn {
@@ -232,21 +234,43 @@ button {
 }
 
 /* dark mode overrides */
-body.dark .toggle { background: #444; }
-body.dark .toggle::before { transform: translateX(24px); }
+body.dark .toggle { 
+  background: #444; 
+}
+
+body.dark .toggle::before { 
+  transform: translateX(24px); 
+}
 
 body.dark {
   background: #20202C;
   color: #fff;
+  background-image: url("assets/dark-title.svg");
+  background-repeat: no-repeat;
+  background-size: 500vw 100vh;  /* Cover entire viewport */
+  background-size: cover;
 }
 
-body.dark .banner      { background: #779F77; }
-body.dark .game-card   { background: #76A276; }
-body.dark .actions     { background: #256C73; }
+body.dark .game-card   { 
+  background: #76A276; 
+}
+
+body.dark .matching{
+  color: #1B491C;
+}
+
+body.dark .sequence{
+  color: #1B491C;
+}
+
+body.dark .actions     { background: #1B491C; }
 body.dark .primary-btn { background: #1C4966; }
-body.dark .sec-btn     { background: #191A1A; }
-body.dark .tagline     { background: #589458; }
+body.dark .sec-btn     { background: #0F2B0F; }
 body.dark .grid span   { background: #fff; }
+
+body.dark #leaderboard-btn img {
+  content: url('assets/trophy-solid-white.svg');
+}
 
 /* ----------  TABLET BREAKPOINT ---------- */
 

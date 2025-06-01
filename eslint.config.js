@@ -20,8 +20,8 @@ export default defineConfig([
 		},
 		rules: {
 			"@stylistic/indent": ["error", "tab"],
-			"@stylistic/quotes": ["error", "double"],
-			"@stylistic/semi": ["error"]
-		}
+			"@stylistic/quotes": ["error", "double", { "allowTemplateLiterals": true }],
+			"@stylistic/semi": ["error"],
+		},
 	},
 ]);
