@@ -9,13 +9,12 @@ function init() {
 	const playButton = document.getElementById("start-btn");
 	playButton.addEventListener("click", initializeCardList);
 
-	const difficultySelection = document.getElementById("difficulty");
-	difficultySelection.addEventListener("change", (select) => {
-		selectedDifficulty = select.target.value;
-		setDifficulties();
-	});
+	const difficultySelection = document.getElementById("difficulty-btn");
+	difficultySelection.addEventListener("click", toggleDifficulty);
 
+	//set initial difficulty as well as dynamic button text and apply difficulty mods
 	setDifficulties();
+	updateDifficultyText();
 };
 
 //initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
@@ -26,6 +25,15 @@ let record = 0;
 let onTime = 400;
 let delayTime = 500;
 let selectedDifficulty = "easy";
+let gridSize = 3;
+let cardsInPlay = 9;
+
+//to pull values for dynamic text on difficulty button
+const difficultyLabels = {
+	easy: "Easy",
+	medium: "Medium",
+	hard: "Hard"
+};
 
 //timer is a promise that returns when the timeout ends
 const timer = ms => new Promise(res => setTimeout(res, ms));
@@ -35,7 +43,30 @@ function initializeCardList(){
 	const playButton = document.getElementById("start-btn");
 	playButton.style.display = "none";
 	currPointer = 0;
+	cardList = [];
+	cards = [];
+
+	//dynamically build grid based on chosen difficulty
 	const grid = document.getElementById("card-grid");
+	grid.innerHTML = "";
+
+	//update CSS to cover 3 grid option sizes instead of being a harcoded 3 x 3
+	grid.style.gridTemplateColumns = `repeat(${gridSize}, 110px)`;
+
+	//rebuild original HTML structure 
+	//each row is now a <div class="card-row">
+	//each card is now a <div class="card">
+	//structure added under #card-grid
+	for(let i = 0; i<gridSize; i+=1) {
+		const row = document.createElement("div");
+		row.className = "card-row";
+		for(let j = 0; j<gridSize; j+=1) {
+			const card = document.createElement("div");
+			card.className = "card";
+			row.appendChild(card);
+		}
+		grid.appendChild(row);
+	}
 	const rows = grid.getElementsByClassName("card-row");
 	for(let i = 0; i<rows.length; i+=1){
 		const cardArr = rows[i].getElementsByClassName("card");
@@ -47,26 +78,56 @@ function initializeCardList(){
 	playCards();
 }
 
-//appends a random number between 0-8 to the array, which are the indices of cardList
+//appends a random number in the current number of cards that are in play (diff-based) to the array, which are the indices of cardList
 function appendRandom(array){
-	array.push(Math.floor(Math.random() * 8));
+	array.push(Math.floor(Math.random() * cardsInPlay));
 }
 
+//since button is a toggle we want to make sure that click on easy moves it to medium
+//and clicking medium takes it to hard and repeats that loop
+function toggleDifficulty() {
+	switch (selectedDifficulty){
+		case "easy":
+			selectedDifficulty = "medium";
+			break;
+		case "medium":
+			selectedDifficulty = "hard";
+			break;
+		case "hard":
+			selectedDifficulty = "easy";
+			break;
+	}
+	setDifficulties();
+	updateDifficultyText();
+}
+
+//set the actual values that increase our idea of difficulty
 function setDifficulties() {
 	switch (selectedDifficulty){
 		case "easy":
 			onTime = 400;
 			delayTime = 500;
+			gridSize = 3;
+			cardsInPlay = 9;
 			break;
 		case "medium":
 			onTime = 200;
 			delayTime = 300;
+			gridSize = 4;
+			cardsInPlay = 16;
 			break;
 		case "hard":
 			onTime = 150;
 			delayTime = 250;
+			gridSize = 5;
+			cardsInPlay = 25;
 			break;
 	}
+}
+
+function updateDifficultyText() {
+	const button = document.getElementById("difficulty-btn");
+	button.querySelector("span").textContent = `Difficulty: ${difficultyLabels[selectedDifficulty]}`;
 }
 
 //async function, since timeouts are used extensively for better user experience. code adds one extra card to the current user sequence, then shows all of the current cards in order (user buttons should be locked before this call). it will then unlock every card on the page
