@@ -75,12 +75,14 @@ body {
     background-color: #BFE9E7;
     width: 100px;
     height: 100px;
+    aspect-ratio: 18/16;
     border-radius: 30px;
     margin-top: 15px;
     justify-content: center;
     align-items: center;
     display: flex;
     box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+    padding: 10px 5px;
 }
 
 @media (width <= 480px) {

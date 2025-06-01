@@ -8,10 +8,11 @@ function init() {
 	const leaderboardBtn = document.getElementById("leaderboard-btn");
 	const matchingBtn = document.getElementById("matching-button");
 	const matchingRecBtn = document.getElementById("matching-record");
-	const sequenceBtn = document.getElementById("sequence-button");
-	const sequenceRecBtn = document.getElementById("sequence-record");
-	const letsFindOutBtn = document.getElementById("lets-find-out-btn");
+	const sequenceBtn = document.getElementsByClassName("sec-btn")[2];
+	const sequenceRecBtn = document.getElementsByClassName("sec-btn ghost")[1];
+	const letsFindOutBtn = document.getElementsByClassName("primary-btn")[0];
 	const toggle = document.getElementById("theme-toggle");
+
 
 	matchingBtn.addEventListener("click", matching_page);
 	sequenceBtn.addEventListener("click", sequence_page);
