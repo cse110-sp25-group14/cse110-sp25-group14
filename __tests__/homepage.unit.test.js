@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import { expect, test } from "@jest/globals";
 import { shuffle } from "../scripts/matching.js";
 
