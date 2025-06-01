@@ -10,34 +10,34 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Konkhmer+Sleokchher&family=Koulen&family=Pathway+Extreme:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Patua+One&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
-  <script src="./scripts/homepage.js"></script>
 </head>
 <body>
   <!-- Top banner -->
   <header class="banner">
     <h1>Human Benchmark</h1>
+    <!-- <h2 class="welcome">Welcome!</h2> -->
   </header>
   <main>
     <section class="intro">
-      <h2 class="welcome">Welcome [user]!</h2>
       <p class="tagline">How sharp is your brain today
         <span class="question">?</span></p>
       <br> 
-      <button id="lets-find-out-btn" class="primary-btn">let’s find out</button>
+      <button class="primary-btn">Randomize Game</button>
     </section>
     <!-- Game cards -->
     <section class="games">
       <!-- Matching card -->
       <article class="game-card">
         <h3 class="matching">Matching</h3>
-        <div class="icon-board chicks">
-          <!-- Little chick emoji placeholders; replace with images if you like -->
-          <span>🐥</span><span>🐤</span><span>🐤</span>
-          <span>🐤</span><span>🐥</span><span>🐤</span>
+        <div class="matching-grid">
+          <img src="assets/orange.svg" alt="Orange" class="item">
+          <img src="assets/question.svg" alt="Question" class="item">
+          <img src="assets/question.svg" alt="Question" class="item">
+          <img src="assets/orange.svg" alt="Orange" class="item">
         </div>
         <div class="actions">
-          <button id="matching-button" class="sec-btn">Play</button>
-          <button id="matching-record" class="sec-btn ghost">Records</button>
+          <button class="sec-btn">Play</button>
+          <button class="sec-btn ghost">Records</button>
         </div>
       </article>
       <!-- Sequence card -->
@@ -45,28 +45,22 @@
         <h3 class="sequence">Sequence</h3>
         <div class="icon-board">
           <div class="grid">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <img src="assets/blue.svg" alt="Blue Box" class="item">
+            <img src="assets/blue.svg" alt="Blue Box" class="item">
+            <img src="assets/orange-rec.svg" alt="Orange Box" class="item">
+            <img src="assets/blue.svg" alt="Blue Box" class="item">
           </div>
         </div>
         <div class="actions">
-          <button id="sequence-button" class="sec-btn">Play</button>
-          <button id="sequence-record" class="sec-btn ghost">Records</button>
+          <button class="sec-btn">Play</button>
+          <button class="sec-btn ghost">Records</button>
         </div>
       </article>
     </section>
   </main>
   <footer>
     <div class="footer-icon">
-      <button id="leaderboard-btn" aria-label="Go to leaderboard">📊</button>
-      <!-- <button id="leaderboard-btn" aria-label="Go to leaderboard"><img src="chart-simple-solid 1.svg" alt="leaderboard icon" width="40" height="40"></button> -->
+      <button id="leaderboard-btn" aria-label="Go to leaderboard"><img id="trophy" img src="/assets/trophy-solid.svg" alt="trophy"/></button>
     </div>
     <div class="toggle" id="theme-toggle"></div>
   </footer>
