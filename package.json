@@ -15,7 +15,8 @@
 	},
 	"type": "module",
 	"scripts": {
-		"test": "node --experimental-vm-modules ./node_modules/.bin/jest",
+		"test:unit": "node --experimental-vm-modules ./node_modules/.bin/jest --testMatch '**/*.unit.test.js'",
+		"test:e2e": "node --experimental-vm-modules ./node_modules/.bin/jest --testMatch '**/*.e2e.test.js'",
 		"start": "http-server ./ -p 3000"
 	},
 	"jest": {
