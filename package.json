@@ -16,7 +16,7 @@
 	"type": "module",
 	"scripts": {
 		"test": "node --experimental-vm-modules ./node_modules/.bin/jest",
-		"start": "http-server ./public -p 3000"
+		"start": "http-server ./ -p 3000"
 	},
 	"jest": {
 		"transform": {},
