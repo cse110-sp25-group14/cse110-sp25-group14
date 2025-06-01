@@ -96,7 +96,6 @@ test("unflipAll sets all card images to the same image", () => {
 test("flipCard adds to card classList", () => {
 	const card = document.querySelector(".card");
 	card.src = "./assets/G14.png";
-	card.dataset.number = "1";
 
 	game.flipCard({ currentTarget: card });
 
@@ -106,6 +105,7 @@ test("flipCard adds to card classList", () => {
 test("flipCard changes image source", () => {
 	const card = document.querySelector(".card");
 	card.src = "./assets/G14.png";
+	card.dataset.number = "1";
 
 
 	const originalSrc = card.src;
