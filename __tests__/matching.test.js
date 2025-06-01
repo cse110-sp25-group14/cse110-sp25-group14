@@ -12,12 +12,12 @@ beforeEach(() => {
 
 		<div id="card-grid">
 			<div class="card-row">
-				<div class="card"><img></div>
-				<div class="card"><img></div>
+				<img class="card" />
+    			<img class="card" />
 			</div>
 			<div class="card-row">
-				<div class="card"><img></div>
-				<div class="card"><img></div>
+				<img class="card" />
+    			<img class="card" />
 			</div>
 		</div>
 
@@ -85,9 +85,9 @@ test("unflipAll sets all card images to the same image", () => {
 
 	// if all cards have the same image, they are all unflipped
 	const cards = document.getElementsByClassName("card");
-	const firstCardImage = cards[0].firstChild.src;
+	const firstCardImage = cards[0].src;
 	for (const card of cards) {
-		const cardImage = card.firstChild.src;
+		const cardImage = card.src;
 		expect(cardImage).not.toBe("");
 		expect(cardImage).toBe(firstCardImage);
 	}
@@ -95,6 +95,7 @@ test("unflipAll sets all card images to the same image", () => {
 
 test("flipCard adds to card classList", () => {
 	const card = document.querySelector(".card");
+	card.src = "./assets/G14.png";
 
 	game.flipCard({ currentTarget: card });
 
@@ -103,12 +104,15 @@ test("flipCard adds to card classList", () => {
 
 test("flipCard changes image source", () => {
 	const card = document.querySelector(".card");
+	card.src = "./assets/G14.png";
+	card.dataset.number = "1";
 
+
+	const originalSrc = card.src;
 	game.flipCard({ currentTarget: card });
 
-	const image = document.querySelector("img");
-
-	expect(image.src).not.toBe("");
+	expect(card.src).not.toBe(originalSrc);
+	expect(card.src).toMatch(/matching\d+\.svg$/); // pattern match the string (no way to test which image exactly)
 });
 
 test("checkMatch updates data of matching cards", () => {
