@@ -5,11 +5,12 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
 	//insert functions/eventListeners to functions
 	const leaderboardBtn = document.getElementById("leaderboard-btn");
-	const matchingBtn = document.getElementById("matching_button");
-	const matchingRecBtn = document.getElementById("matching_record");
-	const sequenceBtn = document.getElementById("sequence_button");
-	const sequenceRecBtn = document.getElementById("sequence_record");
-	const letsFindOutBtn = document.getElementById("lets_find_out_btn");
+	const matchingBtn = document.getElementById("matching-button");
+	const matchingRecBtn = document.getElementById("matching-record");
+	const sequenceBtn = document.getElementsByClassName("sec-btn")[2];
+	const sequenceRecBtn = document.getElementsByClassName("sec-btn ghost")[1];
+	const letsFindOutBtn = document.getElementsByClassName("primary-btn")[0];
+
 
 	matchingBtn.addEventListener("click", matching_page);
 	sequenceBtn.addEventListener("click", sequence_page);
