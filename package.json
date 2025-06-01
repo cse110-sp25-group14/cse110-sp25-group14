@@ -18,10 +18,5 @@
 		"test:unit": "node --experimental-vm-modules ./node_modules/.bin/jest --config jest.unit.config.js",
 		"test:e2e": "node --experimental-vm-modules ./node_modules/.bin/jest --config jest.e2e.config.js",
 		"start": "http-server ./ -p 3000"
-	},
-	"jest": {
-		"transform": {},
-		"verbose": true,
-		"preset": "jest-puppeteer"
 	}
 }
