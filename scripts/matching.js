@@ -148,7 +148,7 @@ export class MatchingGame {
 	endGame(){
 
 		const recordToSave = {
-			moves: moves,
+			moves: this.moves,
 			time : document.getElementById("stopwatch").textContent
 		};
 		let history = JSON.parse(localStorage.getItem("matching")) || [];
