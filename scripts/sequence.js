@@ -8,6 +8,14 @@ function init() {
 	});
 	const playButton = document.getElementById("start-btn");
 	playButton.addEventListener("click", initializeCardList);
+
+	const difficultySelection = document.getElementById("difficulty");
+	difficultySelection.addEventListener("change", (select) => {
+		selectedDifficulty = select.target.value;
+		setDifficulties();
+	});
+
+	setDifficulties();
 };
 
 //initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
@@ -15,6 +23,9 @@ let cardList = [];
 let cards = [];
 let currPointer = 0;
 let record = 0;
+let onTime = 400;
+let delayTime = 500;
+let selectedDifficulty = "easy";
 
 //timer is a promise that returns when the timeout ends
 const timer = ms => new Promise(res => setTimeout(res, ms));
@@ -41,6 +52,23 @@ function appendRandom(array){
 	array.push(Math.floor(Math.random() * 8));
 }
 
+function setDifficulties() {
+	switch (selectedDifficulty){
+		case "easy":
+			onTime = 400;
+			delayTime = 500;
+			break;
+		case "medium":
+			onTime = 200;
+			delayTime = 300;
+			break;
+		case "hard":
+			onTime = 150;
+			delayTime = 250;
+			break;
+	}
+}
+
 //async function, since timeouts are used extensively for better user experience. code adds one extra card to the current user sequence, then shows all of the current cards in order (user buttons should be locked before this call). it will then unlock every card on the page
 async function playCards(){
 	appendRandom(cards);
@@ -50,8 +78,8 @@ async function playCards(){
 		flipCard(cardElement);
 		setTimeout(()=>{
 			flipCard(cardElement);
-		}, 400);
-		await timer(500);
+		}, onTime);
+		await timer(delayTime);
 	}
 	for(let i = 0; i<cardList.length; i+=1){
 		const cardElement = cardList[i]; 
@@ -68,7 +96,7 @@ async function checkClicked(){
 		checkRecord(cards.length);
 		setTimeout(()=>{
 			flipCard(this);
-		}, 400);
+		}, onTime);
 		flipCard(this);
 		return;
 	}
@@ -78,9 +106,9 @@ async function checkClicked(){
 	}
 	setTimeout(()=>{
 		flipCard(this);
-	}, 400);
+	}, onTime);
 	flipCard(this);
-	await timer(400);
+	await timer(onTime);
 	unlock(this);
 	if(currPointer == cards.length){
 		checkRecord(cards.length);
@@ -89,7 +117,7 @@ async function checkClicked(){
 			const cardElement = cardList[i]; 
 			lock(cardElement);
 		}
-		await timer(500);
+		await timer(delayTime);
 		playCards();
 	}
 }
