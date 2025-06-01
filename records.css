@@ -23,18 +23,21 @@ body {
 
 #records-container {
     background-color: #bee9e8;
-    height: 65vh;
-    width: 50vh;
+    height: auto;
+    width: 30vw;
     justify-self: center;
     border-radius: 30px;
     box-shadow: 1px 2px 2px 2px rgb(0 0 0 / 15%);
-    margin-left: 3vw;
-    margin-right: 3vw;
+    padding-bottom: 2vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #records-header {
     background-color: #eaf4f4;
-    padding: 3% 5% 5% 5%;
+    padding: 3% 5% 5%;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     width: 100%;
@@ -48,14 +51,14 @@ body {
     background-color: white;
     margin-top: 1.5vh;
     border-radius: 5px;
-    padding: 5px 5px;
+    padding: 5px;
     width: 70%;
-    font-family: "Pathway Extreme";
+    font-family: "Pathway Extreme", sans-serif;
     font-weight: 700;
     font-size: 0.70em;
     text-align: center;
     color: #5a5d6c;
-    border-color: #5a5d6c;
+    border-color: #B3B2B3;
 }
 
 #best-title {
@@ -64,19 +67,38 @@ body {
     justify-self: center;
     text-align: center;
     margin-top: 2vh;
+    margin-bottom: 2vh;
     border-radius: 25px;
-    padding: 10px;
+    padding: 5px 5px 5vh;
     color: #063635;
+    font-family: "Konkhmer Sleokchher", sans-serif;
+}
+
+#header-dropdown {
+    display: block;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #063635;
+    border-radius: 15px;
+    padding: 5px;
+    margin-top: -8vh;
+    justify-self: center;
+    text-align: center;
+    color: #5a5d6c;
+    border-color: #B3B2B3;
+    width: 55%;
+    font-family: "Pathway Extreme", sans-serif;
 }
 
 #record-flex-container {
     display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr; /* Rank, Time, Moves */
+    grid-template-columns: .5fr 2fr 1fr; /* rank, time, moves */
     gap: 10px;
     align-items: center;
     text-align: center;
     justify-self: center;
     font-size: 1.5rem;
+    margin-top: 3vh;
 }
 
 #record-flex-container .header {
@@ -110,4 +132,56 @@ body {
     background-color: #62B6CB;
     padding: 5px;
     border-radius: 20px;
+}
+
+@media (width <= 480px) {
+    #records-container {
+        background-color: #bee9e8;
+        height: auto;
+        width: 90vw;
+        justify-self: center;
+        border-radius: 30px;
+        box-shadow: 1px 2px 2px 2px rgb(0 0 0 / 15%);
+        padding-bottom: 2vh;
+    }
+}
+
+@media (width <= 1024px) and (width > 480px) {
+    #records-container {
+        background-color: #bee9e8;
+        height: auto;
+        width: 65vw;
+        justify-self: center;
+        border-radius: 30px;
+        box-shadow: 1px 2px 2px 2px rgb(0 0 0 / 15%);
+        padding-bottom: 2vh;
+    }
+
+    #best-title {
+        margin-top: 2vh;
+    }
+
+    #header-dropdown {
+        margin-top: -8vh;
+    }
+}
+
+@media (width = 1024px) and (height = 600px){
+    #best-title {
+        padding: 5px 5px 8vh;
+    }
+
+    #header-dropdown {
+        margin-top: -10vh;
+    }
+}
+
+@media (height >= 1024px) and (height <= 1368px){
+    #best-title {
+        padding: 5px 5px 4vh;
+    }
+
+    #header-dropdown {
+        margin-top: -6.5vh;
+    }
 }
