@@ -82,7 +82,7 @@ export class MatchingGame {
 		const cardArr = document.getElementsByClassName("card");
 		for(let i = 0; i<cardArr.length; i+=1){
 			cardArr[i].className = "card";
-			cardArr[i].querySelector("img").src = "./assets/G14.png";
+			cardArr[i].src = "./assets/G14.png";
 		}
 	}
 
@@ -96,8 +96,7 @@ export class MatchingGame {
 	flipCard(event) {
 		const card = event.currentTarget;
 		if (this.lockBoard || card === this.firstCard || card.classList.contains("matched")) return;
-		const image = card.querySelector("img");
-		image.src = `./assets/matching${card.dataset.number}.svg`;
+		card.src = `./assets/matching${card.dataset.number}.svg`;
 		card.classList.add("flipped");
 		if (!this.firstCard) {
 			this.firstCard = card;
@@ -130,8 +129,8 @@ export class MatchingGame {
 		} else {
 			this.lockBoard = true;
 			setTimeout(() => {
-				this.firstCard.querySelector("img").src = "./assets/G14.png";
-				this.secondCard.querySelector("img").src = "./assets/G14.png";
+				this.firstCard.src = "./assets/G14.png";
+				this.secondCard.src = "./assets/G14.png";
 				this.firstCard.classList.remove("flipped");
 				this.secondCard.classList.remove("flipped");
 				this.resetBoard();

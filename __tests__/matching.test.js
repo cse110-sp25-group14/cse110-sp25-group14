@@ -12,12 +12,12 @@ beforeEach(() => {
 
 		<div id="card-grid">
 			<div class="card-row">
-				<div class="card"><img></div>
-				<div class="card"><img></div>
+				<img class="card" />
+    			<img class="card" />
 			</div>
 			<div class="card-row">
-				<div class="card"><img></div>
-				<div class="card"><img></div>
+				<img class="card" />
+    			<img class="card" />
 			</div>
 		</div>
 
@@ -95,6 +95,7 @@ test("unflipAll sets all card images to the same image", () => {
 
 test("flipCard adds to card classList", () => {
 	const card = document.querySelector(".card");
+	card.src = "./assets/G14.png";
 
 	game.flipCard({ currentTarget: card });
 
@@ -103,9 +104,12 @@ test("flipCard adds to card classList", () => {
 
 test("flipCard changes image source", () => {
 	const card = document.querySelector(".card");
+	card.src = "./assets/G14.png";
 
+	const originalSrc = card.src;
 	game.flipCard({ currentTarget: card });
 
+	expect(card.src).not.toBe(originalSrc);
 	expect(card.src).toMatch(/matching\d+\.svg$/); // pattern match the string (no way to test which image exactly)
 });
 
