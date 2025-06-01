@@ -75,7 +75,9 @@ function initializeCardList(){
 			cardList.push(cardElement);
 		}
 	}
-	playCards();
+	setTimeout(() => {
+		playCards();
+	}, 500);
 }
 
 //appends a random number in the current number of cards that are in play (diff-based) to the array, which are the indices of cardList
