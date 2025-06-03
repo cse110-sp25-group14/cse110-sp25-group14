@@ -277,14 +277,6 @@ footer {
   opacity: 0;
 }
 
-body.dark .theme-icon.sun {
-  opacity: 0;
-}
-
-body.dark .theme-icon.moon {
-  opacity: 1;
-}
-
 /* lowest-specificity rule FIRST */
 button {
   -webkit-tap-highlight-color: transparent;   /* mobile Safari flash */
