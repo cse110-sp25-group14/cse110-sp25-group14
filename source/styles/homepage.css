@@ -27,7 +27,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url("assets/Title.svg");
+  background-image: url("../../assets/title.svg");
   background-repeat: no-repeat;
   background-size: 500vw 100vh;  /* Cover entire viewport */
   background-size: cover;
