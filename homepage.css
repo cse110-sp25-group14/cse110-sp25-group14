@@ -194,6 +194,97 @@ footer {
   padding: 0.5rem 1rem;
 }
 
+/* toggle */
+.theme-toggle {
+  width: 50px;
+  height: 26px;
+  border-radius: 13px;
+  background: #ccc;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;  
+  justify-content: center;  
+  padding: 0;         
+  gap: 6px;
+}
+
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #133D3C;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.theme-toggle::after {
+  content: "Dark Mode";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.theme-toggle:hover::after {
+  opacity: 1;
+}
+
+.theme-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;       
+  height: 16px;    
+  position: relative;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+}
+
+.theme-icon svg {
+  width: 100%;      
+  height: 100%;
+  display: block;      
+}
+
+.theme-icon.sun {
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+}
+
+.theme-icon.moon {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+body.dark .theme-icon.sun {
+  opacity: 0;
+}
+
+body.dark .theme-icon.moon {
+  opacity: 1;
+}
+
 /* lowest-specificity rule FIRST */
 button {
   -webkit-tap-highlight-color: transparent;   /* mobile Safari flash */
@@ -210,36 +301,21 @@ button {
   font-size: 1.5rem;
 }
 
-/* toggle */
-.toggle {
-  width: 50px;
-  height: 26px;
-  border-radius: 13px;
-  background: #ccc;
-  position: relative;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.toggle::before {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 20px;
-  height: 20px;
-  background: white;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
 /* dark mode overrides */
-body.dark .toggle { 
-  background: #444; 
+body.dark .theme-toggle {
+  background: #444;
 }
 
-body.dark .toggle::before { 
-  transform: translateX(24px); 
+body.dark .theme-icon.sun {
+  opacity: 0;
+}
+
+body.dark .theme-icon.moon {
+  opacity: 1;
+}
+
+body.dark .theme-toggle::before {
+  transform: translateX(24px);
 }
 
 body.dark {
@@ -299,3 +375,5 @@ body.dark #leaderboard-btn img {
     height: 20px; 
   }
 }
+
+
