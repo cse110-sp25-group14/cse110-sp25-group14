@@ -241,12 +241,15 @@ body.dark .sequence{
 body.dark .actions {
   background: #1B491C;
 }
+
 body.dark .primary-btn { 
   background: #1C4966;
 }
+
 body.dark .sec-btn {
   background: #0F2B0F;
 }
+
 body.dark .grid span {
   background: #fff;
 }
@@ -259,16 +262,17 @@ body.dark #leaderboard-btn img {
   .tagline {
     padding: 0.6rem 1.25rem; 
   }
+  
   .primary-btn {
     padding: 0.6rem 1.8rem;
   }
 }
 
 @media (width <= 480px) {
-
   .banner h1 {
     font-size: 1.75rem;
   }
+
   .welcome {
     font-size: 1.4rem;
   }
