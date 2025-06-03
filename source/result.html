@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Human Benchmark – Results</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Konkhmer+Sleokchher&family=Koulen&family=Pathway+Extreme:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Patua+One&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/result.css" />
+</head>
+<body>
+  <div id="page-info">
+    <img src="../assets/backarrow.svg" alt="black back arrow"/>
+  </div>
+  <main id="content" aria-label="Score summary">
+    <div id="result-card">
+        <div class="section">
+            <h1 class="result">RESULT</h1>
+            <h2 class="time">Time</h2>
+            <h2 class="current-time">Current: 02:30</h2>
+            <h2 class="record-time">Record: 01:01</h2>
+        </div>
+        <div class="section">
+            <h2 class="moves">Moves</h2>
+            <h2 class="current-moves">Current: 20</h2>
+            <h2 class="current-record">Record: 19</h2>
+        </div>
+        <button class="play-again">Play Again</button>
+    </div>
+  </main>
+  <footer>
+    <div id="footer-icon">
+      <img src="../assets/record.svg" alt="leaderboard button"/>
+    </div>
+
+    <div class="toggle" id="theme-toggle"
+      role="switch" aria-checked="false"
+      aria-label="Toggle dark mode">
+    </div>
+  </footer>
+  <script>
+    /* Light / dark toggle */
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      toggle.setAttribute('aria-checked',
+        document.body.classList.contains('dark'));
+    });
+  </script>
+</body>
+</html>

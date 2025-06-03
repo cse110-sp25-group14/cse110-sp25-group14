@@ -1,5 +1,5 @@
 import { expect, test } from "@jest/globals";
-import { } from "../scripts/homepage.js";
+import { } from "../scripts/sequence.js";
 
 test("placeholder", () => {
 	expect(true).toBe(true);

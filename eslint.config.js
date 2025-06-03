@@ -18,7 +18,7 @@ export default defineConfig([
 		},
 		rules: {
 			"@stylistic/indent": ["error", "tab"],
-			"@stylistic/quotes": ["error", "double"],
+			"@stylistic/quotes": ["error", "double", { "allowTemplateLiterals": true }],
 			"@stylistic/semi": ["error"],
 		},
 	},
