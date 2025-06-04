@@ -276,7 +276,7 @@ body.dark #leaderboard-btn img {
   .welcome {
     font-size: 1.4rem;
   }
-
+  
   .chicks {
     grid-template-columns: repeat(3, 30px);
     font-size: 1.4rem;
