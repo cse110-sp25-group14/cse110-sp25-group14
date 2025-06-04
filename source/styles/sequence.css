@@ -19,6 +19,7 @@ body {
     justify-content: space-between;
     position: relative;
     margin: 30px;
+    margin-top: 8vh;
 }
 
 #sequence-title {
@@ -28,12 +29,42 @@ body {
     margin: 0;
     font-family: "Baloo 2", sans-serif;
     font-weight: 600;
+    font-size: 3rem;
+    color: #1C4966;
+}
+
+#start-btn {
+    display: block;
+    justify-self: center;
+    margin-bottom: 20px;
+    padding: 8px 35px;
+    font-size: 1.25em;
+    border-radius: 25px;
+    border-color: transparent;
+    background-color: #1C4966;
+    color: white;
+    font-family: "Pathway Extreme", sans-serif;
+    font-weight: 700;
+    box-shadow: 1px 2px 2px 1px rgb(0 0 0 / 20%);
 }
 
 #stats-grid{
     flex-wrap: wrap;
     justify-items: center;
     font-weight: 800;
+    color: #41677F;
+    font-family: "Konkhmer Sleokchher", sans-serif;
+}
+
+#difficulty-btn {
+    background-color: white;
+    box-shadow: 1px 2px 2px 1px rgb(0 0 0 / 20%);
+    font-size: 1rem;
+    border-color: #B3B2B3;
+    border-radius: 20px;
+    padding: 5px 25px;
+    border-style: solid;
+    border-width: 1px;
 }
 
 #card-grid {
@@ -83,7 +114,7 @@ body {
 
 @media (width <= 480px) and (width >= 380px) {
     #sequence-title {
-        font-size: 1.5rem; 
+        font-size: 2.25rem; 
     }
 
     #page-info img {
