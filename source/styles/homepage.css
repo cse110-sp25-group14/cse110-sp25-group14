@@ -1,0 +1,294 @@
+html { font-size: 100%; } /* 16 px */
+
+@media (width <= 480px) { /* phones */
+  html { font-size: 93.75%; } /* 15 px */
+}
+
+@media (width >= 1600px) { /* ultra-wide */
+  html { font-size: 112.5%; } /* 18 px */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #133D3C;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url('../../assets/title.svg');
+  background-repeat: no-repeat;
+  background-size: 500vw 100vh;
+  background-size: cover;
+}
+
+.banner {
+  padding: 1.25rem 0;
+  text-align: center;
+  font-family: Baloo, sans-serif;
+  font-size: 22px;
+}
+
+.banner h1 {
+  font-size: 3.25rem;
+  font-weight: 700;
+}
+
+.intro {
+  text-align: center;
+  margin: clamp(1rem, 5vw, 3rem) 0;
+  font-family: "Baloo 2", sans-serif;
+}
+
+.tagline {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 2rem;
+  font-family: "Baloo 2", sans-serif;
+  font-style: normal;
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.question {
+  font-family: Koulen, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.primary-btn {
+  background: #1C4966;
+  color: #fff;
+  padding: 0.75rem 2.25rem;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.25s;
+  font-family: "Konkhmer Sleokchher", system-ui;
+  font-weight: 50;
+  font-style: normal;
+}
+
+.primary-btn:hover { opacity: 0.85; }
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, max-content));
+  gap: 2rem;
+  padding: 0 1rem 3rem;
+  justify-content: center;
+  justify-items: center;
+}
+
+.game-card {
+  background: #BEE9E8;
+  border-radius: 1.25rem;
+  width: 100%;
+  max-width: 320px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.game-card h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.matching,
+.sequence {
+  font-family: "Patua One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.icon-board {
+  height: 90px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.matching-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px; 
+  padding: 1rem;
+  justify-items: center;
+}
+
+.icon-board .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  padding: 0;
+}
+
+.item {
+  width: 30px;
+  height: 30px;
+}
+
+.actions {
+  background: #eef6f6;
+  width: 100%;
+  padding: 1rem 0.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: auto;
+}
+
+.sec-btn {
+  background: #62B6CB;
+  border: none;
+  border-radius: 1rem;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: filter 0.2s;
+  font-family: "Pathway Extreme", sans-serif;
+}
+
+.sec-btn:hover { filter: brightness(110%); }
+
+.ghost { background: #62B6CB; }
+
+footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  font-size: 1rem;
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icon button,
+.footer-icon button {
+  font-size: 1.5rem;
+}
+
+.toggle {
+  width: 50px;
+  height: 26px;
+  border-radius: 13px;
+  background: #ccc;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.toggle::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* dark mode overrides */
+body.dark .toggle { 
+  background: #444; 
+}
+
+body.dark .toggle::before { 
+  transform: translateX(24px); 
+}
+
+body.dark {
+  background: #20202C;
+  color: #fff;
+  background-image: url("../../assets/dark-title.svg");
+  background-repeat: no-repeat;
+  background-size: 500vw 100vh;  /* Cover entire viewport */
+  background-size: cover;
+}
+
+body.dark .game-card   { 
+  background: #76A276; 
+}
+
+body.dark .matching{
+  color: #1B491C;
+}
+
+body.dark .sequence{
+  color: #1B491C;
+}
+
+body.dark .actions {
+  background: #1B491C;
+}
+
+body.dark .primary-btn { 
+  background: #1C4966;
+}
+
+body.dark .sec-btn {
+  background: #0F2B0F;
+}
+
+body.dark .grid span {
+  background: #fff;
+}
+
+body.dark #leaderboard-btn img {
+  content: url('../../assets/trophy-solid-white.svg');
+}
+
+@media (width <= 768px) {
+  .tagline {
+    padding: 0.6rem 1.25rem; 
+  }
+  
+  .primary-btn {
+    padding: 0.6rem 1.8rem;
+  }
+}
+
+@media (width <= 480px) {
+  .banner h1 {
+    font-size: 1.75rem;
+  }
+
+  .welcome {
+    font-size: 1.4rem;
+  }
+
+  .chicks {
+    grid-template-columns: repeat(3, 30px);
+    font-size: 1.4rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 20px);
+  }
+
+  .grid span { 
+    width: 20px;
+    height: 20px; 
+    color: black; 
+  }
+}
