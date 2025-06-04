@@ -1,17 +1,12 @@
-/* --- Base reset / global styles --- */
+html { font-size: 100%; } /* 16 px */
 
-/* --- RESPONSIVE ROOT FONT SIZE ----------------------------------------- */
-html { font-size: 100%; }                 /* 16 px */
-
-@media (width <= 480px) {                 /* phones */
-  html { font-size: 93.75%; }             /* 15 px */
+@media (width <= 480px) { /* phones */
+  html { font-size: 93.75%; } /* 15 px */
 }
 
-@media (width >= 1600px) {                /* ultra-wide */
-  html { font-size: 112.5%; }             /* 18 px */
+@media (width >= 1600px) { /* ultra-wide */
+  html { font-size: 112.5%; } /* 18 px */
 }
-
-/* ----------------------------------------------------------------------- */
 
 * {
   box-sizing: border-box;
@@ -27,14 +22,13 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url("assets/Title.svg");
+  background-image: url('../../assets/title.svg');
   background-repeat: no-repeat;
-  background-size: 500vw 100vh;  /* Cover entire viewport */
+  background-size: 500vw 100vh;
   background-size: cover;
 }
 
-/* --- Banner --- */
-.banner {             /* soft green-grey */
+.banner {
   padding: 1.25rem 0;
   text-align: center;
   font-family: Baloo, sans-serif;
@@ -46,22 +40,12 @@ body {
   font-weight: 700;
 }
 
-/* --- Intro section --- */
 .intro {
   text-align: center;
   margin: clamp(1rem, 5vw, 3rem) 0;
   font-family: "Baloo 2", sans-serif;
 }
 
-.welcome {
-  font-size: 1.75rem;
-  font-weight: 600;
-  margin-bottom: 1.25rem;
-  font-family: "Baloo 2", sans-serif;
-  font-style: normal;
-}
-
-/* speech-bubble */
 .tagline {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -78,7 +62,6 @@ body {
   font-style: normal;
 }
 
-/* primary CTA */
 .primary-btn {
   background: #1C4966;
   color: #fff;
@@ -95,7 +78,6 @@ body {
 
 .primary-btn:hover { opacity: 0.85; }
 
-/* --- Games grid --- */
 .games {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, max-content));
@@ -105,7 +87,6 @@ body {
   justify-items: center;
 }
 
-/* individual card */
 .game-card {
   background: #BEE9E8;
   border-radius: 1.25rem;
@@ -131,7 +112,6 @@ body {
   font-style: normal;
 }
 
-/* icon board */
 .icon-board {
   height: 90px;
   display: grid;
@@ -150,7 +130,7 @@ body {
 .icon-board .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3px; /* Reduced from 30px to make them closer */
+  gap: 3px;
   padding: 0;
 }
 
@@ -159,7 +139,6 @@ body {
   height: 30px;
 }
 
-/* action buttons */
 .actions {
   background: #eef6f6;
   width: 100%;
@@ -185,7 +164,6 @@ body {
 
 .ghost { background: #62B6CB; }
 
-/* footer */
 footer {
   margin-top: auto;
   display: flex;
@@ -194,9 +172,8 @@ footer {
   padding: 0.5rem 1rem;
 }
 
-/* lowest-specificity rule FIRST */
 button {
-  -webkit-tap-highlight-color: transparent;   /* mobile Safari flash */
+  -webkit-tap-highlight-color: transparent;
   font-size: 1rem;
   font-family: inherit;
   background: none;
@@ -204,13 +181,11 @@ button {
   cursor: pointer;
 }
 
-/* more specific */
 .icon button,
 .footer-icon button {
   font-size: 1.5rem;
 }
 
-/* toggle */
 .toggle {
   width: 50px;
   height: 26px;
@@ -245,7 +220,7 @@ body.dark .toggle::before {
 body.dark {
   background: #20202C;
   color: #fff;
-  background-image: url("assets/dark-title.svg");
+  background-image: url("../../assets/dark-title.svg");
   background-repeat: no-repeat;
   background-size: 500vw 100vh;  /* Cover entire viewport */
   background-size: cover;
@@ -263,36 +238,53 @@ body.dark .sequence{
   color: #1B491C;
 }
 
-body.dark .actions     { background: #1B491C; }
-body.dark .primary-btn { background: #1C4966; }
-body.dark .sec-btn     { background: #0F2B0F; }
-body.dark .grid span   { background: #fff; }
+body.dark .actions {
+  background: #1B491C;
+}
+
+body.dark .primary-btn { 
+  background: #1C4966;
+}
+
+body.dark .sec-btn {
+  background: #0F2B0F;
+}
+
+body.dark .grid span {
+  background: #fff;
+}
 
 body.dark #leaderboard-btn img {
-  content: url('assets/trophy-solid-white.svg');
+  content: url('../../assets/trophy-solid-white.svg');
 }
-
-/* ----------  TABLET BREAKPOINT ---------- */
 
 @media (width <= 768px) {
-
-  .tagline     { padding: 0.6rem 1.25rem; }
-  .primary-btn { padding: 0.6rem 1.8rem; }
+  .tagline {
+    padding: 0.6rem 1.25rem; 
+  }
+  
+  .primary-btn {
+    padding: 0.6rem 1.8rem;
+  }
 }
 
-/* ----------  PHONE BREAKPOINT ---------- */
-
 @media (width <= 480px) {
+  .banner h1 {
+    font-size: 1.75rem;
+  }
 
-  .banner h1 { font-size: 1.75rem; }
-  .welcome   { font-size: 1.4rem; }
+  .welcome {
+    font-size: 1.4rem;
+  }
 
   .chicks {
     grid-template-columns: repeat(3, 30px);
     font-size: 1.4rem;
   }
 
-  .grid            { grid-template-columns: repeat(3, 20px); }
+  .grid {
+    grid-template-columns: repeat(3, 20px);
+  }
 
   .grid span { 
     width: 20px;
