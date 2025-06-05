@@ -50,7 +50,8 @@ function generateGrid() {
 	grid.innerHTML = "";
 
 	//update CSS to cover 3 grid option sizes instead of being a harcoded 3 x 3
-	grid.style.gridTemplateColumns = `repeat(${gridSize}, 110px)`;
+	//also adding auto-resizing if to support page responsivness on other devices --- NEEDS TO BE TESTED
+	grid.style.gridTemplateColumns = `repeat(${gridSize}, minmax(60px, 1fr))`;
 
 	//rebuild original HTML structure 
 	//each row is now a <div class="card-row">
