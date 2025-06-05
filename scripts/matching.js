@@ -24,6 +24,10 @@ export class MatchingGame {
 		});
 		const playButton = document.getElementById("start-btn");
 		playButton.addEventListener("click", this.createBoard.bind(this));
+
+		if(localStorage.getItem('darkMode') === 'enabled') {
+			document.body.classList.add('dark');
+		}
 	}
 
 	//shuffle cards
