@@ -15,6 +15,10 @@ function init() {
 	//set initial difficulty as well as dynamic button text and apply difficulty mods
 	setDifficulties();
 	updateDifficultyText();
+	
+	if(localStorage.getItem('darkMode') === 'enabled') {
+		document.body.classList.add('dark');
+	}
 };
 
 //initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record

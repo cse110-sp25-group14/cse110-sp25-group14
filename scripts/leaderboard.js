@@ -4,4 +4,8 @@ function init() {
 	homeBtn.addEventListener("click", ()=>{
 		window.location.href = "homepage.html";
 	});
+
+	if(localStorage.getItem('darkMode') === 'enabled') {
+		document.body.classList.add('dark');
+	}
 }
