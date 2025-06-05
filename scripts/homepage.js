@@ -14,9 +14,9 @@ function init() {
 
 	matchingBtn.addEventListener("click", matching_page);
 	sequenceBtn.addEventListener("click", sequence_page);
-	matchingRecBtn.addEventListener("click", leaderboard_page);
-	sequenceRecBtn.addEventListener("click", leaderboard_page);
-	leaderboardBtn.addEventListener("click", leaderboard_page);
+	matchingRecBtn.addEventListener("click", records_page);
+	sequenceRecBtn.addEventListener("click", records_page);
+	leaderboardBtn.addEventListener("click", records_page);
 	letsFindOutBtn.addEventListener("click", random_game_page);
 }
 
@@ -27,8 +27,8 @@ function random_game_page() {
 	window.location.href = games[randomIndex];
 }
 
-function leaderboard_page(){
-	window.location.href = "leaderboard.html";
+function records_page(){
+	window.location.href = "records.html";
 }
 
 function matching_page(){
