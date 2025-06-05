@@ -15,9 +15,9 @@ function init() {
 	//set initial difficulty as well as dynamic button text and apply difficulty mods
 	setDifficulties();
 	updateDifficultyText();
-	
-	if(localStorage.getItem('darkMode') === 'enabled') {
-		document.body.classList.add('dark');
+
+	if(localStorage.getItem("darkMode") === "enabled") {
+		document.body.classList.add("dark");
 	}
 };
 

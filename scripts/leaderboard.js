@@ -5,7 +5,7 @@ function init() {
 		window.location.href = "homepage.html";
 	});
 
-	if(localStorage.getItem('darkMode') === 'enabled') {
-		document.body.classList.add('dark');
+	if(localStorage.getItem("darkMode") === "enabled") {
+		document.body.classList.add("dark");
 	}
 }
