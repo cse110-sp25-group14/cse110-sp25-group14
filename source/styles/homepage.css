@@ -199,7 +199,7 @@ footer {
   width: 50px;
   height: 26px;
   border-radius: 13px;
-  background: #ccc;
+  background: #ddd;
   position: relative;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -215,7 +215,7 @@ footer {
   position: absolute;
   width: 20px;
   height: 20px;
-  background: #133D3C;
+  background: #fff;
   border-radius: 50%;
   top: 3px;
   left: 3px;
@@ -245,36 +245,46 @@ footer {
 }
 
 .theme-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;       
-  height: 16px;    
   position: relative;
-  transition: opacity 0.3s ease;
-  flex-shrink: 0;
+  padding: 0;   
+  margin: 0;
+  object-fit: cover;
 }
 
 .theme-icon svg {
-  width: 100%;      
+  width: 100%;
   height: 100%;
-  display: block;      
+  display: block;
+  border-radius: 50%;
+  object-fit: cover; 
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .theme-icon.sun {
   position: absolute;
-  left: 6px;
+  left: 3px;
   top: 50%;
   transform: translateY(-50%);
   opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 .theme-icon.moon {
   position: absolute;
-  right: 6px;
+  right: 3px;
   top: 50%;
   transform: translateY(-50%);
   opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 /* lowest-specificity rule FIRST */
