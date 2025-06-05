@@ -305,7 +305,7 @@ button {
 
 /* dark mode overrides */
 body.dark .theme-toggle {
-  background: #444;
+  background: #fff;
 }
 
 body.dark .theme-icon.sun {
