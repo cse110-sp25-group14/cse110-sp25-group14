@@ -2,14 +2,14 @@ window.addEventListener("load", init);
 
 function init()
 {
-    const backButton = document.getElementById("back-arrow");
+	const backButton = document.getElementById("back-arrow");
 
-    backButton.addEventListener("click", () => {
-        window.location.href = "homepage.html";
-    });
+	backButton.addEventListener("click", () => {
+		window.location.href = "homepage.html";
+	});
 
-    if(localStorage.getItem("darkMode") === "enabled") {
-        document.body.classList.add("dark");
+	if(localStorage.getItem("darkMode") === "enabled") {
+		document.body.classList.add("dark");
  }
  
 }
