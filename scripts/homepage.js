@@ -10,6 +10,7 @@ function init() {
 	const sequenceBtn = document.getElementsByClassName("sec-btn")[2];
 	const sequenceRecBtn = document.getElementsByClassName("sec-btn ghost")[1];
 	const letsFindOutBtn = document.getElementsByClassName("primary-btn")[0];
+	const darkmodeToggle = document.getElementById('theme-toggle');
 
 
 	matchingBtn.addEventListener("click", matching_page);
@@ -18,7 +19,23 @@ function init() {
 	sequenceRecBtn.addEventListener("click", leaderboard_page);
 	leaderboardBtn.addEventListener("click", leaderboard_page);
 	letsFindOutBtn.addEventListener("click", random_game_page);
+
+	if(localStorage.getItem('darkMode') === 'enabled') {
+		document.body.classList.add('dark');
+	}
+
+	darkmodeToggle.addEventListener('click', () => {
+		document.body.classList.toggle('dark');
+	
+		if(document.body.classList.contains('dark')) {
+			localStorage.setItem('darkMode', 'enabled');
+		}
+		else {
+			localStorage.setItem('darkMode', 'disabled');
+		}
+	});
 }
+
 
 
 function random_game_page() {
@@ -28,7 +45,7 @@ function random_game_page() {
 }
 
 function leaderboard_page(){
-	window.location.href = "leaderboard.html";
+	window.location.href = "records.html";
 }
 
 function matching_page(){
