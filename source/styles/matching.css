@@ -13,34 +13,39 @@ body {
     min-height: 100vh;
 }
 
-.banner {
-    background: #a8bfb3;
-    padding: 1.25rem 0;
-    text-align: center;
-    font-family: Baloo, sans-serif;
-    font-size: 22px;
-}
-
-.banner h1 {
-    font-size: 2.25rem;
-    font-weight: 700;
-}
-
 #page-info {
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    margin: 30px;
+    margin: 20px;
+    margin-top: 8vh;
 }
 
-#matching-title{
+#matching-title {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
     font-family: "Baloo 2", sans-serif;
     font-weight: 600;
+    font-size: 3rem;
+    color: #1C4966;
+}
+
+#start-btn {
+    display: block;
+    justify-self: center;
+    margin-bottom: 20px;
+    padding: 8px 35px;
+    font-size: 1.25em;
+    border-radius: 25px;
+    border-color: transparent;
+    background-color: #1C4966;
+    color: white;
+    font-family: "Pathway Extreme", sans-serif;
+    font-weight: 700;
+    box-shadow: 1px 2px 2px 1px rgb(0 0 0 / 20%);
 }
 
 .stats {
@@ -57,6 +62,8 @@ body {
     gap: 10px;
     column-gap: 150px;
     justify-content: center;
+    color: #41677F;
+    font-family: "Konkhmer Sleokchher", sans-serif;
 }
 
 #card-grid {
@@ -86,12 +93,8 @@ body {
 }
 
 @media (width <= 480px) {
-    .banner h1 { 
-        font-size: 1.75rem; 
-    }
-
     #matching-title{
-        font-size: 1.5rem; 
+        font-size: 2.25rem; 
     }
     
     #card-grid {
@@ -105,14 +108,14 @@ body {
         margin-top: 5vh;
     }
 
-    .stats{
+    .stats {
         margin-top: 4vh;
         margin-left: 3vw;
         margin-right: 3vw;
         font-size: 85%;
     }
 
-    .stats-grid{
+    .stats-grid {
         column-gap: 40px;
     }
     
@@ -134,6 +137,5 @@ body {
         width: 25px;
         height: 25px;
     }
-
 }
 
