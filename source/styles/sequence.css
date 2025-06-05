@@ -74,6 +74,7 @@ body {
     margin-top: 30px;
 
     /*worried about accessibility on phone for hard mode testing auto fitting the size*/
+    /*NEEDS TO BE TESTED*/
     margin: auto;
     width: fit-content;
     max-width: 90vw;
