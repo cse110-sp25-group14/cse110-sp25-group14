@@ -10,11 +10,15 @@ function init() {
 	playButton.addEventListener("click", initializeCardList);
 
 	const difficultySelection = document.getElementById("difficulty-btn");
-	difficultySelection.addEventListener("click", toggleDifficulty);
+	difficultySelection.addEventListener("click", () =>{
+		toggleDifficulty();
+		generateGrid(); //re-generate grid on click, so toggled difficulty can be visualized 
+	});
 
 	//set initial difficulty as well as dynamic button text and apply difficulty mods
 	setDifficulties();
 	updateDifficultyText();
+	generateGrid();  //on page load add base grid 
 };
 
 //initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
@@ -38,16 +42,11 @@ const difficultyLabels = {
 //timer is a promise that returns when the timeout ends
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
-//initialize cards; first make play button go away, then push all cardElements in the page into the cardList array (cardList array doesn't change after this, it is only referenced), then runs playCards
-function initializeCardList(){
-	const playButton = document.getElementById("start-btn");
-	playButton.style.display = "none";
-	currPointer = 0;
-	cardList = [];
-	cards = [];
-
+//need to build dyanmically per click and on load so let's pull out the code that is inside initializeCardList that does that
+function generateGrid() {
 	//dynamically build grid based on chosen difficulty
 	const grid = document.getElementById("card-grid");
+	const rows = grid.getElementsByClassName("card-row");
 	grid.innerHTML = "";
 
 	//update CSS to cover 3 grid option sizes instead of being a harcoded 3 x 3
@@ -67,6 +66,20 @@ function initializeCardList(){
 		}
 		grid.appendChild(row);
 	}
+}
+
+
+//initialize cards; first make play button go away, then push all cardElements in the page into the cardList array (cardList array doesn't change after this, it is only referenced), then runs playCards
+function initializeCardList(){
+	const playButton = document.getElementById("start-btn");
+	playButton.style.display = "none";
+	currPointer = 0;
+	cardList = [];
+	cards = [];
+
+	generateGrid();
+
+	const grid = document.getElementById("card-grid");
 	const rows = grid.getElementsByClassName("card-row");
 	for(let i = 0; i<rows.length; i+=1){
 		const cardArr = rows[i].getElementsByClassName("card");
