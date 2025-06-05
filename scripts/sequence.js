@@ -46,7 +46,6 @@ const timer = ms => new Promise(res => setTimeout(res, ms));
 function generateGrid() {
 	//dynamically build grid based on chosen difficulty
 	const grid = document.getElementById("card-grid");
-	const rows = grid.getElementsByClassName("card-row");
 	grid.innerHTML = "";
 
 	//update CSS to cover 3 grid option sizes instead of being a harcoded 3 x 3
