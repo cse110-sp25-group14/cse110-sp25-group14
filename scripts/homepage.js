@@ -20,8 +20,8 @@ function init() {
 	leaderboardBtn.addEventListener("click", leaderboard_page);
 	letsFindOutBtn.addEventListener("click", random_game_page);
 
-	if(localStorage.getItem('darkMode') === "enabled") {
-		document.body.classList.add('dark');
+	if(localStorage.getItem("darkMode") === "enabled") {
+		document.body.classList.add("dark");
 	}
 
 	darkmodeToggle.addEventListener("click", () => {
