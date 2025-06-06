@@ -85,7 +85,7 @@ function init() {
 const numRanks = 3;
 
 function loadMatchingRecords() {
-	const matchingRecords = JSON.parse(localStorage.getItem("matching")) ?? [];
+	const matchingRecords = JSON.parse(localStorage.getItem("matching")) || [];
 
 	const selectedSort = document.getElementById("sort-dropdown").value;
 	let sortedRecords = [];
@@ -106,7 +106,7 @@ function loadMatchingRecords() {
 }
 
 function loadSequenceRecords() {
-	const sequenceRecords = JSON.parse(localStorage.getItem("sequence")) ?? [];
+	const sequenceRecords = JSON.parse(localStorage.getItem("sequence")) || [];
 
 	const selectedDifficulty = document.getElementById("difficulty-dropdown").value;
 	const sortedLevels = sequenceRecords
