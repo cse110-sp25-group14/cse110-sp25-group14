@@ -34,6 +34,7 @@ function init() {
 			difficultyDropdown.style.display = "none";
 			dropdownHeader.style.display = "";
 			dropdownHeader.textContent = "Best Matches";
+			loadMatchingRecords();
 
 		} else if (value === "sequence") {
 			matchingContainer.style.display = "none";
@@ -59,9 +60,34 @@ function init() {
 	difficultyDropdown.addEventListener("change", () => {
 		loadSequenceRecords();
 	});
+
+	sortByDropdown.addEventListener("change", () => {
+		loadMatchingRecords();
+	});
 }
 
 const numRanks = 3;
+
+function loadMatchingRecords() {
+	const matchingRecords = JSON.parse(localStorage.getItem("matching")) ?? [];
+
+	const selectedSort = document.getElementById("sort-dropdown").value;
+	let sortedRecords = [];
+	if (selectedSort == "moves") {
+		sortedRecords = matchingRecords.sort((a, b) => a.moves - b.moves);
+	} else {
+		sortedRecords = matchingRecords.sort((a, b) => a.time - b.time);
+	}
+	const sortedTimes = sortedRecords.map((record) => record.time);
+	const sortedMoves = sortedRecords.map((record) => record.moves);
+	
+	for (let i = 0; i < numRanks; i++) {
+		const time = document.querySelector(`p.time[data-rank="${i+1}"`);
+		const moves = document.querySelector(`p.moves[data-rank="${i+1}"`);
+		time.textContent = `${sortedTimes[i] ?? ""}`;
+		moves.textContent = `${sortedMoves[i] ?? ""}`;
+	}
+}
 
 function loadSequenceRecords() {
 	const sequenceRecords = JSON.parse(localStorage.getItem("sequence")) ?? [];
