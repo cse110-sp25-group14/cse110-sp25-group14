@@ -12,6 +12,7 @@ function init() {
 	const difficultySelection = document.getElementById("difficulty-btn");
 	difficultySelection.addEventListener("click", () =>{
 		toggleDifficulty();
+		loadRecords();
 		generateGrid(); //re-generate grid on click, so toggled difficulty can be visualized 
 	});
 
@@ -21,7 +22,9 @@ function init() {
 	if(localStorage.getItem("darkMode") === "enabled") {
 		document.body.classList.add("dark");
 	}
+	loadRecords();
 	generateGrid();  //on page load add base grid 
+
 };
 
 //initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
@@ -225,6 +228,11 @@ function checkRecord(val){
 
 //called when game ends; locks every element, resets everything, and unhides the play button, but with a different text
 function endGame(){
+	const recordToSave = { difficulty: selectedDifficulty, level: cards.length - 1 };
+	let history = JSON.parse(localStorage.getItem("sequence")) || [];
+	history.push(recordToSave);
+	localStorage.setItem("sequence", JSON.stringify(history));
+
 	for(let i = 0; i<cardList.length; i+=1){
 		const cardElement = cardList[i]; 
 		lock(cardElement);
@@ -248,5 +256,24 @@ function flipCard(card){
 		card.style.backgroundColor = "#BFE9E7";
 		card.classList.add("unflipped");
 		card.classList.remove("flipped");
+	}
+}
+
+function loadRecords() {
+	const statsGrid = document.getElementById("stats-grid");
+	const stats = statsGrid.querySelectorAll("p");
+
+	const records = JSON.parse(localStorage.getItem("sequence")) || [];
+	const filteredRecords = records.filter((record) => record.difficulty === selectedDifficulty);
+	if (filteredRecords.length > 0) {
+		const sortedLevels = filteredRecords
+			.map((record) => record.level)
+			.sort((a, b) => b - a);
+			
+		record = sortedLevels[0];
+		stats[1].innerHTML = `Record - ${record}`;
+	} else {
+		record = 0;
+		stats[1].innerHTML = `Record - 0`;
 	}
 }
