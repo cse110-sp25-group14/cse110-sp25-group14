@@ -133,6 +133,18 @@ body {
     border-radius: 20px;
 }
 
+#record-flex-container.sequence {
+    grid-template-columns: .5fr 10fr;
+}
+
+#record-flex-container .level {
+    font-weight: bold;
+    color: white;
+    background-color: #62B6CB;
+    padding: 5px;
+    border-radius: 20px;
+}
+
 @media (width <= 480px) {
     #records-container {
         background-color: #bee9e8;

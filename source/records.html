@@ -20,21 +20,28 @@
         <div id="records-container">
             <div id="records-header">
                 <h1 id="records-title">RECORDS</h1>
-                <label for="game"></label>
+                <label for="record-dropdown"></label>
                 <select name="game" id="record-dropdown">
                     <option value="default">Select a Game</option>
                     <option value="matching">Matching</option>
                     <option value="sequence">Sequence</option>
                 </select>
-            </div> 
+            </div>
+            
             <h1 id="best-title">Best Matches</h1>
             <select name="sort-by" id="header-dropdown">
                 <option value="default">Sort By</option>
                 <option value="time">Time</option>
                 <option value="moves">Moves</option>
             </select>
+
+            <select name="difficulty" id="header-dropdown">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
             
-            <div id="record-flex-container">
+            <div id="record-flex-container" class="record-flex-container">
                 <h3 class="header">#</h3>
                 <h3 class="header">Time</h3>
                 <h3 class="header">Moves</h3>
@@ -50,6 +57,20 @@
                 <p class="rank">3</p>
                 <p class="time">1:11</p>
                 <p class="moves">20</p>
+            </div>
+
+            <div id="record-flex-container" class="record-flex-container sequence">
+                <h3 class="header">#</h3>
+                <h3 class="header">Level</h3>
+
+                <p class="rank">1</p>
+                <p class="level">12</p>
+
+                <p class="rank">2</p>
+                <p class="level">10</p>
+
+                <p class="rank">3</p>
+                <p class="level">8</p>
             </div>
         </div>
     </main>
