@@ -1,6 +1,9 @@
 // run everything after page loads
 window.addEventListener("DOMContentLoaded", init);
 
+let sunIcon;
+let moonIcon;
+
 // Starts program, all functions calls originate here
 function init() {
 	//insert functions/eventListeners to functions
@@ -12,6 +15,9 @@ function init() {
 	const letsFindOutBtn = document.getElementsByClassName("primary-btn")[0];
 	const darkmodeToggle = document.getElementById("theme-toggle");
 
+	sunIcon = document.querySelector(".theme-icon.sun");
+	moonIcon = document.querySelector(".theme-icon.moon");
+
 
 	matchingBtn.addEventListener("click", matching_page);
 	sequenceBtn.addEventListener("click", sequence_page);
@@ -19,21 +25,36 @@ function init() {
 	sequenceRecBtn.addEventListener("click", leaderboard_page);
 	leaderboardBtn.addEventListener("click", leaderboard_page);
 	letsFindOutBtn.addEventListener("click", random_game_page);
+	darkmodeToggle.addEventListener("click", dark_mode);
+
 
 	if(localStorage.getItem("darkMode") === "enabled") {
 		document.body.classList.add("dark");
+
+		if(sunIcon && moonIcon){
+			sunIcon.style.opacity = "0";
+			moonIcon.style.opacity = "1";
+		}
+	}
+}
+
+function dark_mode(){
+	document.body.classList.toggle("dark");
+
+	const isDarkmode = document.body.classList.contains("dark");
+
+	if(sunIcon && moonIcon){
+		if(isDarkmode){
+			sunIcon.style.opacity = "0";
+			moonIcon.style.opacity = "1";
+		}
+		else{
+			sunIcon.style.opacity = "1";
+			moonIcon.style.opacity = "0";
+		}
 	}
 
-	darkmodeToggle.addEventListener("click", () => {
-		document.body.classList.toggle("dark");
-	
-		if(document.body.classList.contains("dark")) {
-			localStorage.setItem("darkMode", "enabled");
-		}
-		else {
-			localStorage.setItem("darkMode", "disabled");
-		}
-	});
+	localStorage.setItem("darkMode", isDarkmode? "enabled" : "disabled");
 }
 
 
