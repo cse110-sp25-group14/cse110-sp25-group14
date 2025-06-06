@@ -29,34 +29,34 @@ function init() {
 	letsFindOutBtn.addEventListener("click", random_game_page);
 
 
-    if (darkmodeToggle) {
-        darkmodeToggle.addEventListener("click", function() {
-            document.body.classList.toggle("dark");
-            
-            const isDarkmode = document.body.classList.contains("dark");
-            
-            if (this.sunIcon && this.moonIcon) {
-                if (isDarkmode) {
-                    this.sunIcon.style.opacity = "0";
-                    this.moonIcon.style.opacity = "1";
-                } else {
-                    this.sunIcon.style.opacity = "1";
-                    this.moonIcon.style.opacity = "0";
-                }
-            }
-            
-            localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
-        });
-    }
+	if (darkmodeToggle) {
+		darkmodeToggle.addEventListener("click", function() {
+			document.body.classList.toggle("dark");
+			
+			const isDarkmode = document.body.classList.contains("dark");
+			
+			if (this.sunIcon && this.moonIcon) {
+				if (isDarkmode) {
+					this.sunIcon.style.opacity = "0";
+					this.moonIcon.style.opacity = "1";
+				} else {
+					this.sunIcon.style.opacity = "1";
+					this.moonIcon.style.opacity = "0";
+				}
+			}
+			
+			localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
+		});
+	}
 
-    if (localStorage.getItem("darkMode") === "enabled") {
-        document.body.classList.add("dark");
-        
-        if (sunIcon && moonIcon) {
-            sunIcon.style.opacity = "0";
-            moonIcon.style.opacity = "1";
-        }
-    }
+	if (localStorage.getItem("darkMode") === "enabled") {
+		document.body.classList.add("dark");
+		
+		if (sunIcon && moonIcon) {
+			sunIcon.style.opacity = "0";
+			moonIcon.style.opacity = "1";
+		}
+	}
 }
 
 function random_game_page() {
