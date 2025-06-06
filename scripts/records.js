@@ -55,14 +55,26 @@ function init() {
 			dropdownHeader.style.display = "none";
 		}
 	});
+
+	difficultyDropdown.addEventListener("change", () => {
+		loadSequenceRecords();
+	});
 }
 
-function loadSequenceRecords() {
-	const sequenceRecords = JSON.parse(localStorage.getItem("sequence")) ?? [];
-	const sortedRecords = sequenceRecords.sort((a, b) => b.level - a.level);
-	const sortedLevels = sortedRecords.map((record) => record.level);
+const numRanks = 3;
 
-	const numRanks = 3;
+function loadSequenceRecords() {
+	const difficultyDropdown = document.getElementById("difficulty-dropdown");
+	const selectedDifficulty = difficultyDropdown.value;
+
+	const sequenceRecords = JSON.parse(localStorage.getItem("sequence")) ?? [];
+
+	const selectedDifficultyRecords = sequenceRecords.filter((record) => {
+		return record.difficulty === selectedDifficulty;
+	});
+	const recordLevels = selectedDifficultyRecords.map((record) => record.level);
+	const sortedLevels = recordLevels.sort((a, b) => b.level - a.level);
+
 	for (let i = 0; i < numRanks; i++) {
 		const level = document.querySelector(`p.level[data-rank="${i+1}"`);
 		level.textContent = `${sortedLevels[i] ?? ""}`;
