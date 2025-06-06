@@ -69,6 +69,7 @@ body {
 
 #card-grid {
     display: grid;
+
     gap: 1vh 1vw;
     justify-content: center;
     margin-top: 30px;
@@ -76,11 +77,12 @@ body {
     /* worried about accessibility on phone for hard mode testing auto fitting the size */
 
     /* NEEDS TO BE TESTED */
-
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
     max-width: 90vw;
+
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
 }
 
 .card-row {
