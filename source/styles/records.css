@@ -149,6 +149,7 @@ body {
     background-color: #62B6CB;
     padding: 5px;
     border-radius: 20px;
+		min-height: 2.5rem;
 }
 
 @media (width <= 480px) {
@@ -290,6 +291,7 @@ body.dark .record-flex-container .time {
     background-color: #174517;
     padding: 5px;
     border-radius: 20px;
+		min-height: 2.5rem;
 }
 
 body.dark .record-flex-container .moves {
@@ -298,4 +300,5 @@ body.dark .record-flex-container .moves {
     background-color: #174517;
     padding: 5px;
     border-radius: 20px;
+		min-height: 2.5rem;
 }
