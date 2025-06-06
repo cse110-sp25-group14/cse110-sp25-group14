@@ -35,8 +35,7 @@ body {
 
 #start-btn {
     display: block;
-    justify-self: center;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
     padding: 8px 35px;
     font-size: 1.25em;
     border-radius: 25px;
@@ -49,7 +48,7 @@ body {
 }
 
 #stats-grid{
-    flex-wrap: wrap;
+    display: grid;
     justify-items: center;
     font-weight: 800;
     color: #41677F;

@@ -25,7 +25,6 @@ body {
     background-color: #bee9e8;
     height: auto;
     width: 30vw;
-    justify-self: center;
     border-radius: 30px;
     box-shadow: 1px 2px 2px 2px rgb(0 0 0 / 15%);
     padding-bottom: 2vh;
@@ -56,7 +55,7 @@ body {
     font-family: "Pathway Extreme", sans-serif;
     font-weight: 700;
     font-size: 0.70em;
-    text-align: center;
+    text-align-last: center;
     color: #5a5d6c;
     border-color: #B3B2B3;
 }
@@ -64,10 +63,8 @@ body {
 #best-title {
     background-color: white;
     width: 70%;
-    justify-self: center;
     text-align: center;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin: 2vh auto;
     border-radius: 25px;
     padding: 5px 5px 5vh;
     color: #063635;
@@ -80,16 +77,15 @@ body {
     font-size: 1rem;
     border-radius: 15px;
     padding: 5px;
-    margin-top: -8vh;
-    justify-self: center;
-    text-align: center;
+    margin: -8vh auto 0 auto;
+    text-align-last: center;
     color: #5a5d6c;
     border-color: #B3B2B3;
     width: 55%;
     font-family: "Pathway Extreme", sans-serif;
 }
 
-.record-flex-container {
+.record-grid-container {
     display: grid;
     grid-template-columns: .5fr 2fr 1fr; /* rank, time, moves */
     gap: 10px;
@@ -97,10 +93,10 @@ body {
     text-align: center;
     justify-self: center;
     font-size: 1.5rem;
-    margin-top: 3vh;
+    margin: 3vh 1.5vw 0 1.5vw;
 }
 
-.record-flex-container .header {
+.record-grid-container .header {
     font-weight: bold;
     font-size: 1.5rem;
     color: #063635;
@@ -109,7 +105,7 @@ body {
     margin-top: 1vh;
 }
 
-.record-flex-container .rank {
+.record-grid-container .rank {
     font-weight: bold;
     color: white;
     background-color: #62B6CB;
@@ -117,7 +113,7 @@ body {
     border-radius: 20px;
 }
 
-.record-flex-container .time {
+.record-grid-container .time {
     font-weight: bold;
     color: white;
     background-color: #62B6CB;
@@ -125,7 +121,7 @@ body {
     border-radius: 20px;
 }
 
-.record-flex-container .moves {
+.record-grid-container .moves {
     font-weight: bold;
     color: white;
     background-color: #62B6CB;
@@ -133,17 +129,15 @@ body {
     border-radius: 20px;
 }
 
-.record-flex-container.sequence {
+.record-grid-container.sequence {
     grid-template-columns: .5fr 7fr;
-    margin: 1vw;
-    margin-top: 2vh;
 }
 
-.record-flex-container.sequence .rank{
+.record-grid-container.sequence .rank{
     width: 40px; 
 }
 
-.record-flex-container .level {
+.record-grid-container .level {
     font-weight: bold;
     color: white;
     background-color: #62B6CB;
@@ -162,9 +156,8 @@ body {
         padding-bottom: 2vh;
     }
 
-    #record-flex-container.sequence {
-        margin: 10px;
-        margin-top: 30px;
+    #record-grid-container.sequence {
+        margin: 30px 15px 15px;
     }
 }
 
@@ -187,9 +180,8 @@ body {
         margin-top: -8vh;
     }
 
-    #record-flex-container.sequence {
-        margin: 10px;
-        margin-top: 30px;
+    #record-grid-container.sequence {
+        margin: 30px 15px 15px;
     }
 }
 
@@ -276,7 +268,7 @@ body.dark .play-again:hover {
     background-color: #000;
 }
 
-body.dark .record-flex-container .rank {
+body.dark .record-grid-container .rank {
     font-weight: bold;
     color: white;
     background-color: #174517;
@@ -284,7 +276,7 @@ body.dark .record-flex-container .rank {
     border-radius: 20px;
 }
 
-body.dark .record-flex-container .time {
+body.dark .record-grid-container .time {
     font-weight: bold;
     color: white;
     background-color: #174517;
@@ -292,7 +284,7 @@ body.dark .record-flex-container .time {
     border-radius: 20px;
 }
 
-body.dark .record-flex-container .moves {
+body.dark .record-grid-container .moves {
     font-weight: bold;
     color: white;
     background-color: #174517;
