@@ -25,9 +25,29 @@ export class MatchingGame {
 		const playButton = document.getElementById("start-btn");
 		playButton.addEventListener("click", this.createBoard.bind(this));
 
-		if(localStorage.getItem("darkMode") === "enabled") {
+		if (localStorage.getItem("darkMode") === "enabled") {
 			document.body.classList.add("dark");
 		}
+
+		const records = JSON.parse(localStorage.getItem("matching")) || [];
+		if (records.length > 0) {
+			const sortedMoves = records
+				.sort((a, b) => a.moves - b.moves)
+				.map((record) => record.moves);
+			this.bestMoves = sortedMoves[0];
+			document.getElementById("record-moves").textContent =
+				`Record Moves - ${this.bestMoves}`;	
+				
+			const sortedTimes = records
+				.sort((a, b) => a.time - b.time)
+				.map((record) => record.time);
+			document.getElementById("record-time").textContent = 
+				`Record Time - ${sortedTimes[0]}`;
+
+			const mins = parseInt(sortedTimes[0].slice(0, 2));
+			const secs = parseInt(sortedTimes[0].slice(3));
+			this.bestTime = ((mins * 60) + secs) * 1000;
+		};
 	}
 
 	//shuffle cards
