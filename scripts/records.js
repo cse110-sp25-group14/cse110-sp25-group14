@@ -1,4 +1,5 @@
 window.addEventListener("DOMContentLoaded", init);
+
 function init() {
 
     const recordDropdown = document.getElementById("record-dropdown");
