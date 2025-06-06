@@ -134,7 +134,13 @@ body {
 }
 
 .record-flex-container.sequence {
-    grid-template-columns: 38px 200px; /* rank, level */
+    grid-template-columns: .5fr 7fr;
+    margin: 1vw;
+    margin-top: 2vh;
+}
+
+.record-flex-container.sequence .rank{
+    width: 40px; 
 }
 
 .record-flex-container .level {
@@ -155,6 +161,11 @@ body {
         box-shadow: 1px 2px 2px 2px rgb(0 0 0 / 15%);
         padding-bottom: 2vh;
     }
+
+    #record-flex-container.sequence {
+        margin: 10px;
+        margin-top: 30px;
+    }
 }
 
 @media (width <= 1024px) and (width > 480px) {
@@ -174,6 +185,11 @@ body {
 
     .header-dropdown {
         margin-top: -8vh;
+    }
+
+    #record-flex-container.sequence {
+        margin: 10px;
+        margin-top: 30px;
     }
 }
 
