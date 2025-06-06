@@ -208,7 +208,7 @@ function checkRecord(val){
 
 //called when game ends; locks every element, resets everything, and unhides the play button, but with a different text
 function endGame(){
-	const recordToSave = { level: cards.length - 1 };
+	const recordToSave = { difficulty: selectedDifficulty, level: cards.length - 1 };
 	let history = JSON.parse(localStorage.getItem("sequence")) || [];
 	history.push(recordToSave);
 	localStorage.setItem("sequence", JSON.stringify(history));
