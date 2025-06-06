@@ -1,27 +1,24 @@
 window.addEventListener("DOMContentLoaded", init);
+
 function init() {
 
-	const backButton = document.getElementById("page-info");
-	backButton.querySelector("img").addEventListener("click", ()=>{
-		window.location.href = "homepage.html";
-	});
-
 	const recordDropdown = document.getElementById("record-dropdown");
-
 	const matchingContainer = document.getElementById("matching-records");
 	const sequenceContainer = document.getElementById("sequence-records");
-
 	const sortByDropdown = document.getElementById("sort-dropdown");
 	const difficultyDropdown = document.getElementById("difficulty-dropdown");
+	const dropdownHeader = document.getElementById("best-title");
+	const backButton = document.getElementById("page-info");
 
 	matchingContainer.style.display = "none";
 	sequenceContainer.style.display = "none";
-
 	sortByDropdown.style.display = "none";
 	difficultyDropdown.style.display = "none";
-
-	const dropdownHeader = document.getElementById("best-title");
 	dropdownHeader.style.display = "none";
+
+	backButton.querySelector("img").addEventListener("click", ()=>{
+		window.location.href = "homepage.html";
+	});
 
 	recordDropdown.addEventListener("change", (e) => {
 		const value = e.target.value;
@@ -32,6 +29,7 @@ function init() {
 
 			sortByDropdown.style.display = "block";
 			difficultyDropdown.style.display = "none";
+
 			dropdownHeader.style.display = "";
 			dropdownHeader.textContent = "Best Matches";
 			loadMatchingRecords();
@@ -42,6 +40,7 @@ function init() {
 
 			sortByDropdown.style.display = "none";
 			difficultyDropdown.style.display = "block";
+			
 			dropdownHeader.style.display = "";
 			dropdownHeader.textContent = "Difficulty";
 			loadSequenceRecords();
@@ -64,6 +63,23 @@ function init() {
 	sortByDropdown.addEventListener("change", () => {
 		loadMatchingRecords();
 	});
+
+	if (localStorage.getItem("darkMode") === "enabled") {
+		document.body.classList.add("dark");
+		
+		const sunIcon = document.querySelector(".theme-icon.sun");
+		const moonIcon = document.querySelector(".theme-icon.moon");
+		
+		if (sunIcon && moonIcon) {
+			sunIcon.style.opacity = "0";
+			moonIcon.style.opacity = "1";
+		}
+	}
+	
+	const darkmodeToggle = document.getElementById("theme-toggle");
+	if (darkmodeToggle) {
+		darkmodeToggle.addEventListener("click", darkMode);
+	}
 }
 
 const numRanks = 3;
@@ -101,5 +117,25 @@ function loadSequenceRecords() {
 	for (let i = 0; i < numRanks; i++) {
 		const level = document.querySelector(`p.level[data-rank="${i+1}"`);
 		level.textContent = `${sortedLevels[i] ?? ""}`;
+	}
+}
+
+function darkMode() {
+	document.body.classList.toggle("dark");
+		
+	const isDarkmode = document.body.classList.contains("dark");
+	localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
+	
+	const sunIcon = document.querySelector(".theme-icon.sun");
+	const moonIcon = document.querySelector(".theme-icon.moon");
+	
+	if(sunIcon && moonIcon) {
+		if(isDarkmode) {
+			sunIcon.style.opacity = "0";
+			moonIcon.style.opacity = "1";
+		} else {
+			sunIcon.style.opacity = "1";
+			moonIcon.style.opacity = "0";
+		}
 	}
 }
