@@ -22,6 +22,18 @@ function init() {
 		document.body.classList.add("dark");
 	}
 	generateGrid();  //on page load add base grid 
+
+	const records = JSON.parse(localStorage.getItem("sequence")) || [];
+	if (records.length > 0) {
+		const sortedLevels = records
+			.map((record) => record.level)
+			.sort((a, b) => b - a);
+			
+		this.record = sortedLevels[0];
+		const statsGrid = document.getElementById("stats-grid");
+		const stats = statsGrid.querySelectorAll("p");
+		stats[1].innerHTML = `Record - ${this.record}`;
+	};
 };
 
 //initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
