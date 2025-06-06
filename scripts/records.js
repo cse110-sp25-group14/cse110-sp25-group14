@@ -7,15 +7,15 @@ function init() {
 	});
 
     const recordDropdown = document.getElementById("record-dropdown");
-    
-    const matchingContainer = document.querySelectorAll("#record-flex-container")[0];
-    const sequenceContainer = document.querySelectorAll("#record-flex-container")[1];
+
+    const matchingContainer = document.getElementById("matching-records");
+    const sequenceContainer = document.getElementById("sequence-records");
+
+    const sortByDropdown = document.getElementById("sort-dropdown");
+    const difficultyDropdown = document.getElementById("difficulty-dropdown");
 
     matchingContainer.style.display = "none";
     sequenceContainer.style.display = "none";
-
-    const sortByDropdown = document.querySelectorAll("#header-dropdown")[0];
-    const difficultyDropdown = document.querySelectorAll("#header-dropdown")[1];
 
     sortByDropdown.style.display = "none";
     difficultyDropdown.style.display = "none";
@@ -34,7 +34,7 @@ function init() {
             difficultyDropdown.style.display = "none";
             dropdownHeader.style.display = "";
             dropdownHeader.textContent = "Best Matches";
-            
+
         } else if (value === "sequence") {
             matchingContainer.style.display = "none";
             sequenceContainer.style.display = "grid";
