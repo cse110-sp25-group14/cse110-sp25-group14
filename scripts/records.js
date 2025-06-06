@@ -64,16 +64,13 @@ function init() {
 const numRanks = 3;
 
 function loadSequenceRecords() {
-	const difficultyDropdown = document.getElementById("difficulty-dropdown");
-	const selectedDifficulty = difficultyDropdown.value;
-
 	const sequenceRecords = JSON.parse(localStorage.getItem("sequence")) ?? [];
 
-	const selectedDifficultyRecords = sequenceRecords.filter((record) => {
-		return record.difficulty === selectedDifficulty;
-	});
-	const recordLevels = selectedDifficultyRecords.map((record) => record.level);
-	const sortedLevels = recordLevels.sort((a, b) => b.level - a.level);
+	const selectedDifficulty = document.getElementById("difficulty-dropdown").value;
+	const sortedLevels = sequenceRecords
+		.filter((record) => record.difficulty === selectedDifficulty)
+		.map((record) => record.level)
+		.sort((a, b) => b - a);
 
 	for (let i = 0; i < numRanks; i++) {
 		const level = document.querySelector(`p.level[data-rank="${i+1}"`);
