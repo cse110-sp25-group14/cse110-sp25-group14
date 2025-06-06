@@ -74,6 +74,7 @@ function generateGrid() {
 
 //initialize cards; first make play button go away, then push all cardElements in the page into the cardList array (cardList array doesn't change after this, it is only referenced), then runs playCards
 function initializeCardList(){
+	document.getElementById("difficulty-btn").disabled = true;
 	const playButton = document.getElementById("start-btn");
 	playButton.style.display = "none";
 	currPointer = 0;
@@ -233,6 +234,7 @@ function endGame(){
 	const playButton = document.getElementById("start-btn");
 	playButton.style.display = "block";
 	playButton.innerHTML = "You Lost! Try again";
+	document.getElementById("difficulty-btn").disabled = false;
 }
 
 //basic card flip animation; toggles the background color to change
