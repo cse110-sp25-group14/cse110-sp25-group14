@@ -261,7 +261,7 @@ function loadRecords() {
 	const statsGrid = document.getElementById("stats-grid");
 	const stats = statsGrid.querySelectorAll("p");
 
-	const records = JSON.parse(localStorage.getItem("sequence"));
+	const records = JSON.parse(localStorage.getItem("sequence")) || [];
 	const filteredRecords = records.filter((record) => record.difficulty === selectedDifficulty);
 	if (filteredRecords.length > 0) {
 		const sortedLevels = filteredRecords
