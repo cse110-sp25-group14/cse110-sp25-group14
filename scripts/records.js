@@ -52,7 +52,7 @@ function init() {
             difficultyDropdown.style.display = "none";
 
             dropdownHeader.style.display = "none";
-            
+
         }
     });
 }
