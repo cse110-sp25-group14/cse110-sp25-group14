@@ -43,6 +43,7 @@ function init() {
 			difficultyDropdown.style.display = "block";
 			dropdownHeader.style.display = "";
 			dropdownHeader.textContent = "Difficulty";
+			loadSequenceRecords();
 
 		} else {
 			matchingContainer.style.display = "none";
@@ -54,4 +55,16 @@ function init() {
 			dropdownHeader.style.display = "none";
 		}
 	});
+}
+
+function loadSequenceRecords() {
+	const sequenceRecords = JSON.parse(localStorage.getItem("sequence")) ?? [];
+	const sortedRecords = sequenceRecords.sort((a, b) => b.level - a.level);
+	const sortedLevels = sortedRecords.map((record) => record.level);
+
+	const numRanks = 3;
+	for (let i = 0; i < numRanks; i++) {
+		const level = document.querySelector(`p.level[data-rank="${i+1}"`);
+		level.textContent = `${sortedLevels[i] ?? ""}`;
+	}
 }
