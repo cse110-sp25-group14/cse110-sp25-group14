@@ -1,9 +1,6 @@
 // run everything after page loads
 window.addEventListener("DOMContentLoaded", init);
 
-let sunIcon;
-let moonIcon;
-
 // Starts program, all functions calls originate here
 function init() {
 	//insert functions/eventListeners to functions
@@ -15,8 +12,13 @@ function init() {
 	const letsFindOutBtn = document.getElementsByClassName("primary-btn")[0];
 	const darkmodeToggle = document.getElementById("theme-toggle");
 
-	sunIcon = document.querySelector(".theme-icon.sun");
-	moonIcon = document.querySelector(".theme-icon.moon");
+	const sunIcon = document.querySelector(".theme-icon.sun");
+	const moonIcon = document.querySelector(".theme-icon.moon");
+
+	if(darkmodeToggle && sunIcon && moonIcon){
+		darkmodeToggle.sunIcon = sunIcon;
+		darkmodeToggle.moonIcon = moonIcon;
+	}
 
 
 	matchingBtn.addEventListener("click", matching_page);
@@ -25,39 +27,37 @@ function init() {
 	sequenceRecBtn.addEventListener("click", leaderboard_page);
 	leaderboardBtn.addEventListener("click", leaderboard_page);
 	letsFindOutBtn.addEventListener("click", random_game_page);
-	darkmodeToggle.addEventListener("click", dark_mode);
 
 
-	if(localStorage.getItem("darkMode") === "enabled") {
-		document.body.classList.add("dark");
+    if (darkmodeToggle) {
+        darkmodeToggle.addEventListener("click", function() {
+            document.body.classList.toggle("dark");
+            
+            const isDarkmode = document.body.classList.contains("dark");
+            
+            if (this.sunIcon && this.moonIcon) {
+                if (isDarkmode) {
+                    this.sunIcon.style.opacity = "0";
+                    this.moonIcon.style.opacity = "1";
+                } else {
+                    this.sunIcon.style.opacity = "1";
+                    this.moonIcon.style.opacity = "0";
+                }
+            }
+            
+            localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
+        });
+    }
 
-		if(sunIcon && moonIcon){
-			sunIcon.style.opacity = "0";
-			moonIcon.style.opacity = "1";
-		}
-	}
+    if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark");
+        
+        if (sunIcon && moonIcon) {
+            sunIcon.style.opacity = "0";
+            moonIcon.style.opacity = "1";
+        }
+    }
 }
-
-function dark_mode(){
-	document.body.classList.toggle("dark");
-
-	const isDarkmode = document.body.classList.contains("dark");
-
-	if(sunIcon && moonIcon){
-		if(isDarkmode){
-			sunIcon.style.opacity = "0";
-			moonIcon.style.opacity = "1";
-		}
-		else{
-			sunIcon.style.opacity = "1";
-			moonIcon.style.opacity = "0";
-		}
-	}
-
-	localStorage.setItem("darkMode", isDarkmode? "enabled" : "disabled");
-}
-
-
 
 function random_game_page() {
 	const games = ["matching.html", "sequence.html"];
