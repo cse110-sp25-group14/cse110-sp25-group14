@@ -32,15 +32,17 @@ export class MatchingGame {
 		const records = JSON.parse(localStorage.getItem("matching")) || [];
 		if (records.length > 0) {
 			const sortedMoves = records
-				.sort((a, b) => a.moves - b.moves)
-				.map((record) => record.moves);
+				.map((record) => record.moves)
+				.sort((a, b) => a - b);
+				
 			this.bestMoves = sortedMoves[0];
 			document.getElementById("record-moves").textContent =
 				`Record Moves - ${this.bestMoves}`;	
 				
 			const sortedTimes = records
-				.sort((a, b) => a.time - b.time)
-				.map((record) => record.time);
+				.map((record) => record.time)
+				.sort((a, b) => a - b);
+				
 			document.getElementById("record-time").textContent = 
 				`Record Time - ${sortedTimes[0]}`;
 
