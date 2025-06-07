@@ -29,7 +29,7 @@ body {
 }
 
 .banner {
-  padding: 1.25rem 0;
+  margin-top: 7rem;
   text-align: center;
   font-family: Baloo, sans-serif;
   font-size: 22px;
@@ -38,18 +38,19 @@ body {
 .banner h1 {
   font-size: 3.25rem;
   font-weight: 700;
+  margin: 0;
 }
 
 .intro {
   text-align: center;
-  margin: clamp(1rem, 5vw, 3rem) 0;
+  margin-bottom: 2.5rem;
   font-family: "Baloo 2", sans-serif;
 }
 
 .tagline {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  margin-bottom: 2rem;
+  padding: 0rem 1.5rem;
+  margin-bottom: 1rem;
   font-family: "Baloo 2", sans-serif;
   font-style: normal;
   font-size: 27px;
@@ -331,6 +332,10 @@ body.dark .primary-btn {
 }
 
 @media (width <= 768px) {
+  .banner {
+    margin-top: 6rem;
+  }
+
   .tagline {
     padding: 0.6rem 1.25rem; 
   }
@@ -341,8 +346,18 @@ body.dark .primary-btn {
 }
 
 @media (width <= 480px) {
+  .banner {
+    margin-top: 4rem;
+  }
+
   .banner h1 {
-    font-size: 1.75rem;
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .tagline {
+    font-size: 1.5rem;
+    line-height: 1;
   }
 
   .welcome {
