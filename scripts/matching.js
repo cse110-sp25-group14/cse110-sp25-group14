@@ -76,7 +76,10 @@ export class MatchingGame {
 
 	stopStopwatch(){
 		//save time if it beats record
-		clearInterval(this.stopwatchInterval);
+		if(this.stopwatchInterval){
+			clearInterval(this.stopwatchInterval);
+			this.stopwatchInterval = null;
+		}
 	}
 
 	//appends the value of each card hidden to user
