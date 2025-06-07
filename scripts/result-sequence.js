@@ -28,7 +28,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		document.querySelector(".record").textContent = `Record: ${best}`;
 	}
 
-	const darkmodeToggle = document.getElementById('theme-toggle');
+	const darkmodeToggle = document.getElementById("theme-toggle");
 	darkmodeToggle.addEventListener("click", ()=>{
 		document.body.classList.toggle("dark");
 		const isDarkmode = document.body.classList.contains("dark");

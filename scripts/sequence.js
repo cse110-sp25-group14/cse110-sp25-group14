@@ -26,7 +26,7 @@ function init() {
 	loadRecords();
 	generateGrid();  //on page load add base grid 
 	
-	const darkmodeToggle = document.getElementById('theme-toggle');
+	const darkmodeToggle = document.getElementById("theme-toggle");
 	darkmodeToggle.addEventListener("click", ()=>{
 		document.body.classList.toggle("dark");
 		darkTheme = !darkTheme;
