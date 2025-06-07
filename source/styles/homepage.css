@@ -38,7 +38,6 @@ body {
 .banner h1 {
   font-size: 3.25rem;
   font-weight: 700;
-  margin: 0;
 }
 
 .intro {
@@ -81,7 +80,7 @@ body {
 
 .games {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(400px, max-content));
   gap: 2rem;
   padding: 0 1rem 3rem;
   justify-content: center;
@@ -103,7 +102,7 @@ body {
 
 .game-card h3 {
   margin: 1rem 0 0.5rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 
@@ -164,6 +163,11 @@ body {
 }
 
 .sec-btn:hover { filter: brightness(110%); }
+
+.game-card .primary-btn,
+.game-card .sec-btn {
+  font-size: 1rem;
+}
 
 .ghost { background: #62B6CB; }
 
