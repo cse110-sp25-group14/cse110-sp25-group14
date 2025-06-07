@@ -70,7 +70,7 @@ function init() {
 
 	function updateTooltip() {
 		const isDark = document.body.classList.contains("dark");
-		root.style.setProperty("--tooltip-text", isDark ? '"Light Mode"' : '"Dark Mode"');
+		root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
 	}
 
 	if (themeToggle) {
@@ -144,25 +144,5 @@ function loadSequenceRecords() {
 	for (let i = 0; i < numRanks; i++) {
 		const level = document.querySelector(`p.level[data-rank="${i+1}"`);
 		level.textContent = `${sortedLevels[i] ?? ""}`;
-	}
-}
-
-function darkMode() {
-	document.body.classList.toggle("dark");
-		
-	const isDarkmode = document.body.classList.contains("dark");
-	localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
-	
-	const sunIcon = document.querySelector(".theme-icon.sun");
-	const moonIcon = document.querySelector(".theme-icon.moon");
-	
-	if(sunIcon && moonIcon) {
-		if(isDarkmode) {
-			sunIcon.style.opacity = "0";
-			moonIcon.style.opacity = "1";
-		} else {
-			sunIcon.style.opacity = "1";
-			moonIcon.style.opacity = "0";
-		}
 	}
 }

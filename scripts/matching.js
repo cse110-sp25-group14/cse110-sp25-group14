@@ -36,7 +36,7 @@ export class MatchingGame {
 
 		function updateTooltip() {
 			const isDark = document.body.classList.contains("dark");
-			root.style.setProperty("--tooltip-text", isDark ? '"Light Mode"' : '"Dark Mode"');
+			root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
 		}
 
 		if (themeToggle) {
