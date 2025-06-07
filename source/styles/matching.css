@@ -244,7 +244,7 @@ body.dark .card {
 
 body.dark #leaderboard-btn img {
     content: url('../../assets/trophy-solid-white.svg');
-  }
+}
 
 body.dark #page-info img {
     content: url('../../assets/backarrow-white.svg');

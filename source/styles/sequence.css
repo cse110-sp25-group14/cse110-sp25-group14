@@ -98,6 +98,18 @@ body {
     box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
 }
 
+.card-click{
+    background-color: purple;
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+}
+
 footer {
     margin-top: auto;
     display: flex;
@@ -245,6 +257,10 @@ body.dark .card {
 
 body.dark #leaderboard-btn img {
     content: url('../../assets/trophy-solid-white.svg');
+}
+
+body.dark .card-click{
+    background-color: purple;
 }
 
 body.dark #page-info img {
