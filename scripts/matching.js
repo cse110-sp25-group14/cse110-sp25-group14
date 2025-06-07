@@ -81,6 +81,11 @@ export class MatchingGame {
 
 	//appends the value of each card hidden to user
 	createBoard() {
+		// Disable the theme toggle button once the game starts
+		const themeButton = document.getElementById("theme-btn");
+		if (themeButton) {
+			themeButton.disabled = true; //disable theme button upon board creation
+		}
 		this.moves = 0;
 		document.getElementById("move-counter").textContent = "Moves - 0";
 		this.hideButton();
@@ -123,8 +128,11 @@ export class MatchingGame {
 
 	//flips card and changes the img src, then checks if it matches with the first card if it is the second card
 	flipCard(event) {
-		//do not let user change theme mid-game
-		document.getElementById("theme-btn").disabled = true;
+		// Do not let user change theme mid-game
+		const themeButton = document.getElementById("theme-btn");
+		if (themeButton) {
+			themeButton.disabled = true; // Disable theme button 
+		}
 		const card = event.currentTarget;
 		if (this.lockBoard || card === this.firstCard || card.classList.contains("matched")) return;
 		//if cultures theme is selected, use cultures icons, otherwise use default matching icons
@@ -214,8 +222,11 @@ export class MatchingGame {
 		const playButton = document.getElementById("start-btn");
 		playButton.style.display = "block";
 		playButton.addEventListener("click", this.createBoard.bind(this));
-		//allow user to change theme again when game ends
-		document.getElementById("theme-btn").disabled = false;
+		// Allow user to change theme again when game ends
+		const themeButton = document.getElementById("theme-btn");
+		if (themeButton) {
+			themeButton.disabled = false; // Enable theme button 
+		}
 	}
 
 	loadRecords() {
