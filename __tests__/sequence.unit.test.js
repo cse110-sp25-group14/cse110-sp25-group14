@@ -1,9 +1,5 @@
-/**
- * @jest-environment jsdom
- */
-
  import { beforeEach, expect, test } from "@jest/globals";
- import fs from "fs";
+ import fs   from "fs";
  import path from "path";
  import { fileURLToPath } from "url";
  
@@ -24,13 +20,15 @@
 	 document = window.document;
 	 document.documentElement.innerHTML = html;
  
-	 await import("../scripts/sequence.js");
+	 /* 1️⃣  Import script that registers event-listeners */
+	 await import("../scripts/sequence.js");          // correct path
  
+	 /* 2️⃣  Fire DOMContentLoaded on *window* (where sequence.js listens) */
 	 const domReady = new Promise((resolve) =>
-		 document.addEventListener("DOMContentLoaded", resolve, { once: true }),
+		 window.addEventListener("DOMContentLoaded", resolve, { once: true }),
 	 );
-	 document.dispatchEvent(new window.Event("DOMContentLoaded"));
-	 await domReady; // wait until sequence.js handler finishes
+	 window.dispatchEvent(new window.Event("DOMContentLoaded"));
+	 await domReady;
  });
  
  /* ---------- Tests ---------- */
@@ -43,10 +41,12 @@
  test("Play button is present and visible before starting", () => {
 	 const playBtn = document.getElementById("start-btn");
 	 expect(playBtn).not.toBeNull();
-	 const hiddenInline = playBtn.style.display === "none";
-	 const hiddenAttr   = playBtn.hasAttribute("hidden");
-	 const hiddenClass  = playBtn.classList.contains("hidden") || playBtn.classList.contains("hide");
-     expect(hiddenInline || hiddenAttr || hiddenClass).toBe(true);
+	 const hidden =
+		 playBtn.hidden ||
+		 playBtn.style.display === "none" ||
+		 playBtn.classList.contains("hidden") ||
+		 playBtn.classList.contains("hide");
+	 expect(hidden).toBe(false); // should be visible initially
  });
  
  test("clicking Play hides button and attaches click listeners to cards", () => {
@@ -54,9 +54,14 @@
 	 playBtn.click(); // simulate user click
  
 	 /* Button should now be hidden by sequence.js */
-	 expect(playBtn.style.display).toBe("none");
+	 const hidden =
+		 playBtn.hidden ||
+		 playBtn.style.display === "none" ||
+		 playBtn.classList.contains("hidden") ||
+		 playBtn.classList.contains("hide");
+	 expect(hidden).toBe(true);
  
-	 /* Verify a card now responds to click without throwing */
+	 /* Verify a card responds to click without throwing */
 	 const firstCard = document.querySelector("#card-grid .card");
 	 expect(() => {
 		 firstCard.dispatchEvent(new window.Event("click"));
