@@ -5,12 +5,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	const backButton = document.querySelector("#page-info img");
 	backButton.addEventListener("click", () => {
-		window.location.href = "/source/homepage.html";
+		window.location.href = "../source/homepage.html";
 	});
 
 	const playAgainButton = document.getElementById("play-again-btn");
 	playAgainButton.addEventListener("click", () => {
-		window.location.href = "/source/sequence.html";
+		window.location.href = "../source/sequence.html";
 	});
 
 	const recent = JSON.parse(localStorage.getItem("sequence-recent"));
@@ -27,4 +27,11 @@ window.addEventListener("DOMContentLoaded", () => {
 		const best = difficultyRecords[0] ?? 0;
 		document.querySelector(".record").textContent = `Record: ${best}`;
 	}
+
+	const darkmodeToggle = document.getElementById("theme-toggle");
+	darkmodeToggle.addEventListener("click", ()=>{
+		document.body.classList.toggle("dark");
+		const isDarkmode = document.body.classList.contains("dark");
+		localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
+	});
 });
