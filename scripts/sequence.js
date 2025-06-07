@@ -282,8 +282,6 @@ function endGame(){
 	cards = [];
 	cardList = [];
 	const playButton = document.getElementById("start-btn");
-	playButton.style.display = "block";
-	playButton.innerHTML = "You Lost! Try again";
 	document.getElementById("difficulty-btn").disabled = false;
 
 	window.location.href = "result-sequence.html";
