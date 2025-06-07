@@ -253,7 +253,7 @@ body.dark {
 }
 
 body.dark #page-info img {
-    content: url('assets/backarrow-white.svg');
+    content: url('../../assets/backarrow-white.svg');
 }
 
 body.dark #records-header{ 
@@ -294,3 +294,7 @@ body.dark .record-grid-container .moves {
     border-radius: 20px;
 		min-height: 2.5rem;
 }
+
+body.dark p.level{
+    background-color: #174517;
+  }
