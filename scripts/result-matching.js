@@ -1,5 +1,7 @@
 window.addEventListener("DOMContentLoaded", function () {
 
+	const root = document.documentElement;
+
 	const themeToggle = document.getElementById("theme-toggle");
 	const sunIcon = document.querySelector(".theme-icon.sun");
 	const moonIcon = document.querySelector(".theme-icon.moon");
@@ -65,7 +67,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		recordTimeEl.textContent  = "Record: " + bestTimeRecord.time;
 		recordMovesEl.textContent = "Record: " + bestMovesRecord.moves;
 	}
-	
+
 	if (themeToggle) {
 		themeToggle.sunIcon = sunIcon;
 		themeToggle.moonIcon = moonIcon;
