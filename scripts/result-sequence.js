@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	const recordButton = document.getElementById("leaderboard-btn");
 	if (recordButton) {
 		recordButton.addEventListener("click", () => {
-			window.location.href = "records.html";
+			window.location.href = "../source/records.html";
 		});
 	}
 
@@ -54,7 +54,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		window.location.href = "../source/sequence.html";
 	});
 
-	const recordsButton = document.getElementById("footer-icon");
+	const recordsButton = document.querySelector(".footer-icon");
 	recordsButton.addEventListener("click", function () {
 		window.location.href = "../source/records.html";
 	});
