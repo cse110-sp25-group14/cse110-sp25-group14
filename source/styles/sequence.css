@@ -114,8 +114,8 @@ body {
     }
 
     .card {
-        width: 20vw;
-        height: 20vw;
+        width: min(24vw, 90px);
+        height: min(24vw, 90px);
         min-width: 40px;
         min-height: 40px;
         border-radius: 24px;
@@ -134,7 +134,7 @@ body {
     }
     
     #card-grid {
-        grid-template-columns: repeat(3, 0.3fr);
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
         gap: 2vh 2vw;
         justify-items: center;
         max-width: 320px;
@@ -145,8 +145,8 @@ body {
     }
 
     .card {
-        width: 20vw;
-        height: 20vw;
+        width: min(22vw, 100px);
+        height: min(22vw, 100px);
         min-width: 40px;
         min-height: 40px;
         border-radius: 25px;
