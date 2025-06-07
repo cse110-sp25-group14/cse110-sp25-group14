@@ -21,14 +21,20 @@ function init() {
 	updateDifficultyText();
 	if(localStorage.getItem("darkMode") === "enabled") {
 		document.body.classList.add("dark");
+		darkTheme = true;
 	}
 	loadRecords();
 	generateGrid();  //on page load add base grid 
-
+	const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+		darkTheme = !darkTheme;
+    });
 };
 
 //initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
 let cardList = [];
+let darkTheme = false;
 let cards = [];
 let currPointer = 0;
 let record = 0;
@@ -252,12 +258,19 @@ function endGame(){
 //basic card flip animation; toggles the background color to change
 function flipCard(card){
 	if(card.classList.contains("unflipped")){
-		card.style.backgroundColor = "purple";
+		//card.style.backgroundColor = "purple";
+		card.classList.add("card-click");
 		card.classList.add("flipped");
 		card.classList.remove("unflipped");
 	}
 	else{
-		card.style.backgroundColor = "#BFE9E7";
+		// if(darkTheme){
+		// 	card.style.backgroundColor = "#779F77";
+		// }
+		// else{
+		// 	card.style.backgroundColor = "#BFE9E7";
+		// }
+		card.classList.remove("card-click");
 		card.classList.add("unflipped");
 		card.classList.remove("flipped");
 	}
