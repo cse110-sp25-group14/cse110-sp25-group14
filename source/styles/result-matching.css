@@ -260,7 +260,7 @@
   
   body.dark #result-card{ 
     background-color: #174517;
-    background-image: url("../assets/blur-bg-darkmode.svg");
+    background-image: url("../../assets/blur-bg-darkmode.svg");
     color:#fff
   }
 
