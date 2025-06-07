@@ -246,7 +246,7 @@ function endGame(){
 	playButton.innerHTML = "You Lost! Try again";
 	document.getElementById("difficulty-btn").disabled = false;
 
-	window.location.href = "result-sequence.html"
+	window.location.href = "result-sequence.html";
 }
 
 //basic card flip animation; toggles the background color to change

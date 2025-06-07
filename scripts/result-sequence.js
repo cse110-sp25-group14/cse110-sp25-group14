@@ -15,9 +15,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
         const sequenceRecords = JSON.parse(localStorage.getItem("sequence")) || [];
         const difficultyRecords = sequenceRecords
-		    .filter((record) => record.difficulty === recent.difficulty)
-		    .map((record) => record.level)
-		    .sort((a, b) => b - a);
+            .filter((record) => record.difficulty === recent.difficulty)
+            .map((record) => record.level)
+            .sort((a, b) => b - a);
 
         const best = difficultyRecords[0] ?? 0;
         document.querySelector(".record").textContent = `Record: ${best}`;
