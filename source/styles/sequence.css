@@ -99,7 +99,7 @@ body {
     box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
 }
 
-@media (width <= 375px) {
+/* @media (width <= 375px) {
     #card-grid {
         grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
         gap: 2.5vh 5vw;
@@ -150,5 +150,59 @@ body {
         border-radius: 25px;
         margin-top: 0;
     }
+} */
+
+/* For devices 768 px and smaller */
+@media (max-width: 768px) {
+    #card-grid {
+        /* each column is at least 50px wide */
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); 
+        /* gap height and width take 2% of viewport */
+        gap: 2vh 2vw; 
+        justify-items: center;
+        /* Ensure the grid fits within the viewport */
+        max-width: 100%; 
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+    }
+
+    .card {
+        /* width of smaller cards is 20% of viewport or 70px */
+        width: min(20vw, 70px); 
+        /* height of smaller cards is 20% of viewport or 70px */
+        height: min(20vw, 70px); /* Smaller height for cards */
+        min-width: 40px; 
+        min-height: 40px; 
+        border-radius: 20px; 
+        margin-top: 1vw; 
+    }
 }
 
+/* For devices 480 px and smaller */
+@media (max-width: 480px) {
+    #card-grid {
+        /* each column is at least 40px wide */
+        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); 
+        /* add additional spacing between grid items */
+        gap: 2vh 2vw;
+        justify-items: center;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+    }
+
+    .card {
+        /* card width is 18% of viewport */
+        width: min(18vw, 60px); 
+        /* card height is 18% of viewport */
+        height: min(18vw, 60px); 
+        /* card does not shrink below 30px */
+        min-width: 30px; 
+        /* card does not shrink below 30px */
+        min-height: 30px; /* Minimum height */
+        border-radius: 15px; 
+        margin-top: 1vw; 
+    }
+}
