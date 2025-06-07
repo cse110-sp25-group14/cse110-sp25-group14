@@ -227,6 +227,8 @@ export class MatchingGame {
 		const playButton = document.getElementById("start-btn");
 		playButton.style.display = "block";
 		playButton.addEventListener("click", this.createBoard.bind(this));
+
+		window.location.href = "result-matching.html";
 	}
 
 	loadRecords() {

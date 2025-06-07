@@ -237,7 +237,7 @@
   }
   
   .icon button,
-  #footer-icon button {
+  .footer-icon button {
     font-size: 1.5rem;
   }
   
@@ -255,12 +255,12 @@
   }
 
   body.dark #page-info img {
-    content: url('assets/backarrow-white.svg');
+    content: url('../assets/backarrow-white.svg');
   }
   
   body.dark #result-card{ 
     background-color: #174517;
-    background-image: url("assets/blur-bg-darkmode.svg");
+    background-image: url("../assets/blur-bg-darkmode.svg");
     color:#fff
   }
 
