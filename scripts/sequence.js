@@ -25,11 +25,11 @@ function init() {
 	}
 	loadRecords();
 	generateGrid();  //on page load add base grid 
-	const toggle = document.getElementById('theme-toggle');
-    toggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
+	const toggle = document.getElementById("theme-toggle");
+	toggle.addEventListener("click", () => {
+		document.body.classList.toggle("dark");
 		darkTheme = !darkTheme;
-    });
+	});
 };
 
 //initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
