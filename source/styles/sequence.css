@@ -103,7 +103,7 @@ body {
 
 @media (width <= 375px) {
     #card-grid {
-        grid-template-columns: repeat(3, 0.2fr);
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
         gap: 2.5vh 5vw;
         justify-items: center;
         max-width: 320px;
