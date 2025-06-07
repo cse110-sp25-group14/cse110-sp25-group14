@@ -152,15 +152,11 @@ body {
     }
 } */
 
-/* For devices 768 px and smaller */
-@media (max-width: 768px) {
+@media (width <= 768px) {
     #card-grid {
-        /* each column is at least 50px wide */
-        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); 
-        /* gap height and width take 2% of viewport */
-        gap: 2vh 2vw; 
-        justify-items: center;
-        /* Ensure the grid fits within the viewport */
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* each column is at least 50px wide */
+        gap: 2vh 2vw; /* gap height and width take 2% of viewport */
+        justify-items: center; /* Ensure the grid fits within the viewport */
         max-width: 100%; 
         margin-left: auto;
         margin-right: auto;
@@ -168,10 +164,8 @@ body {
     }
 
     .card {
-        /* width of smaller cards is 20% of viewport or 70px */
-        width: min(20vw, 70px); 
-        /* height of smaller cards is 20% of viewport or 70px */
-        height: min(20vw, 70px); /* Smaller height for cards */
+        width: min(20vw, 70px); /* width of smaller cards is 20% of viewport or 70px */
+        height: min(20vw, 70px); /* height of smaller cards is 20% of viewport or 70px */
         min-width: 40px; 
         min-height: 40px; 
         border-radius: 20px; 
@@ -179,13 +173,10 @@ body {
     }
 }
 
-/* For devices 480 px and smaller */
-@media (max-width: 480px) {
+@media (width <= 480px) {
     #card-grid {
-        /* each column is at least 40px wide */
-        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); 
-        /* add additional spacing between grid items */
-        gap: 2vh 2vw;
+        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); /* each column is at least 40px wide */
+        gap: 2vh 2vw; /* add additional spacing between grid items */
         justify-items: center;
         max-width: 100%;
         margin-left: auto;
@@ -194,14 +185,10 @@ body {
     }
 
     .card {
-        /* card width is 18% of viewport */
-        width: min(18vw, 60px); 
-        /* card height is 18% of viewport */
-        height: min(18vw, 60px); 
-        /* card does not shrink below 30px */
-        min-width: 30px; 
-        /* card does not shrink below 30px */
-        min-height: 30px; /* Minimum height */
+        width: min(18vw, 60px); /* card width is 18% of viewport */  
+        height: min(18vw, 60px); /* card height is 18% of viewport */   
+        min-width: 30px; /* card does not shrink below 30px */     
+        min-height: 30px; /* card does not shrink below 30px */
         border-radius: 15px; 
         margin-top: 1vw; 
     }
