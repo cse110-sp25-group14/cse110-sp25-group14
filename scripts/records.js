@@ -1,7 +1,6 @@
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-
 	const recordDropdown = document.getElementById("record-dropdown");
 	const matchingContainer = document.getElementById("matching-records");
 	const sequenceContainer = document.getElementById("sequence-records");
@@ -64,21 +63,49 @@ function init() {
 		loadMatchingRecords();
 	});
 
-	if (localStorage.getItem("darkMode") === "enabled") {
-		document.body.classList.add("dark");
-		
-		const sunIcon = document.querySelector(".theme-icon.sun");
-		const moonIcon = document.querySelector(".theme-icon.moon");
-		
-		if (sunIcon && moonIcon) {
-			sunIcon.style.opacity = "0";
-			moonIcon.style.opacity = "1";
-		}
+	const themeToggle = document.getElementById("theme-toggle");
+	const sunIcon = document.querySelector(".theme-icon.sun");
+	const moonIcon = document.querySelector(".theme-icon.moon");
+	const root = document.documentElement;
+
+	function updateTooltip() {
+		const isDark = document.body.classList.contains("dark");
+		root.style.setProperty("--tooltip-text", isDark ? '"Light Mode"' : '"Dark Mode"');
 	}
-	
-	const darkmodeToggle = document.getElementById("theme-toggle");
-	if (darkmodeToggle) {
-		darkmodeToggle.addEventListener("click", darkMode);
+
+	if (themeToggle) {
+		themeToggle.sunIcon = sunIcon;
+		themeToggle.moonIcon = moonIcon;
+
+		themeToggle.addEventListener("click", function () {
+			document.body.classList.toggle("dark");
+			const isDark = document.body.classList.contains("dark");
+
+			if (this.sunIcon && this.moonIcon) {
+				this.sunIcon.style.opacity = isDark ? "0" : "1";
+				this.moonIcon.style.opacity = isDark ? "1" : "0";
+			}
+
+			localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+			updateTooltip();
+		});
+
+		const isDark = localStorage.getItem("darkMode") === "enabled";
+		if (isDark) {
+			document.body.classList.add("dark");
+			if (sunIcon && moonIcon) {
+				sunIcon.style.opacity = "0";
+				moonIcon.style.opacity = "1";
+			}
+		}
+		updateTooltip();
+	}
+
+	const recordButton = document.getElementById("leaderboard-btn");
+	if (recordButton) {
+		recordButton.addEventListener("click", () => {
+			window.location.href = "records.html";
+		});
 	}
 }
 

@@ -75,12 +75,19 @@
         </div>
     </main>
     <footer>
-        <div id="footer-icon">
+        <div class="footer-icon">
+          <button id="leaderboard-btn" aria-label="Go to leaderboard">
+            <img id="trophy" src="../assets/trophy-solid.svg" alt="trophy" />
+          </button>
         </div>
-        <div class="toggle" id="theme-toggle"
-        role="switch" aria-checked="false"
-        aria-label="Toggle dark mode">
-        </div>
-    </footer>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-icon sun">
+            <img src="../assets/sun_display.svg" alt="Sun Icon" width="20" height="20" />
+          </span>
+          <span class="theme-icon moon">
+            <img src="../assets/moon_display.svg" alt="Moon Icon" width="20" height="20" />
+          </span>
+        </button>
+      </footer>
 </body>
 </html>
