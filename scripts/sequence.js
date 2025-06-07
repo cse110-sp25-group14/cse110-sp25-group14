@@ -281,7 +281,6 @@ function endGame(){
 	}
 	cards = [];
 	cardList = [];
-	const playButton = document.getElementById("start-btn");
 	document.getElementById("difficulty-btn").disabled = false;
 
 	window.location.href = "result-sequence.html";
