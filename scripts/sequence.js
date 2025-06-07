@@ -233,6 +233,8 @@ function endGame(){
 	history.push(recordToSave);
 	localStorage.setItem("sequence", JSON.stringify(history));
 
+	localStorage.setItem("sequence-recent", JSON.stringify(recordToSave));
+
 	for(let i = 0; i<cardList.length; i+=1){
 		const cardElement = cardList[i]; 
 		lock(cardElement);
@@ -243,6 +245,8 @@ function endGame(){
 	playButton.style.display = "block";
 	playButton.innerHTML = "You Lost! Try again";
 	document.getElementById("difficulty-btn").disabled = false;
+
+	window.location.href = "result-sequence.html";
 }
 
 //basic card flip animation; toggles the background color to change
