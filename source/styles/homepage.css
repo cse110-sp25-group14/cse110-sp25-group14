@@ -173,6 +173,104 @@ footer {
   padding: 0.5rem 1rem;
 }
 
+.theme-toggle {
+  width: 70px;
+  height: 34px;
+  border-radius: 30px;
+  background: #ddd;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;  
+  justify-content: center;           
+}
+
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 30px;
+  height: 30px;
+  background: black;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.theme-toggle::after {
+  content: var(--tooltip-text, "Dark Mode");
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -140%);
+  background: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.theme-toggle:hover::after {
+  opacity: 1;
+}
+
+.theme-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0;   
+  margin: 0;
+  object-fit: cover;
+}
+
+.theme-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+  object-fit: contain; 
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.theme-icon.sun {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transform: translate(4%, -50%);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.theme-icon.moon {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  transform: translate(-4%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+
 button {
   -webkit-tap-highlight-color: transparent;
   font-size: 1rem;
@@ -214,8 +312,8 @@ body.dark .toggle {
   background: #444; 
 }
 
-body.dark .toggle::before { 
-  transform: translateX(24px); 
+body.dark .theme-toggle::before { 
+  transform: translateX(32px); 
 }
 
 body.dark {

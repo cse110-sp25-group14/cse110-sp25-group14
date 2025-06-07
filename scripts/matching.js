@@ -24,6 +24,12 @@ export class MatchingGame {
 		});
 		const playButton = document.getElementById("start-btn");
 		playButton.addEventListener("click", this.createBoard.bind(this));
+
+		if (localStorage.getItem("darkMode") === "enabled") {
+			document.body.classList.add("dark");
+		}
+
+		this.loadRecords();
 	}
 
 	//shuffle cards
@@ -146,6 +152,14 @@ export class MatchingGame {
 	//stop the stopwatch before calling endGame
 	endGame(){
 
+		const recordToSave = {
+			moves: this.moves,
+			time : document.getElementById("stopwatch").textContent
+		};
+		let history = JSON.parse(localStorage.getItem("matching")) || [];
+		history.push(recordToSave);
+		localStorage.setItem("matching", JSON.stringify(history));
+
 		const elapsedTime = Date.now() - this.startTime;
 
 		if (this.moves < this.bestMoves) {
@@ -168,6 +182,30 @@ export class MatchingGame {
 		const playButton = document.getElementById("start-btn");
 		playButton.style.display = "block";
 		playButton.addEventListener("click", this.createBoard.bind(this));
+	}
+
+	loadRecords() {
+		const records = JSON.parse(localStorage.getItem("matching")) || [];
+		if (records.length > 0) {
+			const sortedMoves = records
+				.map((record) => record.moves)
+				.sort((a, b) => a - b);
+				
+			this.bestMoves = sortedMoves[0];
+			document.getElementById("record-moves").textContent =
+				`Record Moves - ${this.bestMoves}`;	
+				
+			const sortedTimes = records
+				.map((record) => record.time)
+				.sort((a, b) => a - b);
+				
+			document.getElementById("record-time").textContent = 
+				`Record Time - ${sortedTimes[0]}`;
+
+			const mins = parseInt(sortedTimes[0].slice(0, 2));
+			const secs = parseInt(sortedTimes[0].slice(3));
+			this.bestTime = ((mins * 60) + secs) * 1000;
+		};
 	}
 }
 

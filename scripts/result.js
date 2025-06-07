@@ -1,7 +1,10 @@
 window.addEventListener("DOMContentLoaded", init);
-function init() {
-	const homeBtn = document.getElementById("homepage-btn");
-	homeBtn.addEventListener("click", ()=>{
+
+function init(){
+
+	const backButton = document.getElementById("back-arrow");
+
+	backButton.addEventListener("click", () => {
 		window.location.href = "homepage.html";
 	});
 

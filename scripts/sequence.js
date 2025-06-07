@@ -10,11 +10,21 @@ function init() {
 	playButton.addEventListener("click", initializeCardList);
 
 	const difficultySelection = document.getElementById("difficulty-btn");
-	difficultySelection.addEventListener("click", toggleDifficulty);
+	difficultySelection.addEventListener("click", () =>{
+		toggleDifficulty();
+		loadRecords();
+		generateGrid(); //re-generate grid on click, so toggled difficulty can be visualized 
+	});
 
 	//set initial difficulty as well as dynamic button text and apply difficulty mods
 	setDifficulties();
 	updateDifficultyText();
+	if(localStorage.getItem("darkMode") === "enabled") {
+		document.body.classList.add("dark");
+	}
+	loadRecords();
+	generateGrid();  //on page load add base grid 
+
 };
 
 //initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
@@ -38,20 +48,15 @@ const difficultyLabels = {
 //timer is a promise that returns when the timeout ends
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
-//initialize cards; first make play button go away, then push all cardElements in the page into the cardList array (cardList array doesn't change after this, it is only referenced), then runs playCards
-function initializeCardList(){
-	const playButton = document.getElementById("start-btn");
-	playButton.style.display = "none";
-	currPointer = 0;
-	cardList = [];
-	cards = [];
-
+//need to build dyanmically per click and on load so let's pull out the code that is inside initializeCardList that does that
+function generateGrid() {
 	//dynamically build grid based on chosen difficulty
 	const grid = document.getElementById("card-grid");
 	grid.innerHTML = "";
 
 	//update CSS to cover 3 grid option sizes instead of being a harcoded 3 x 3
-	grid.style.gridTemplateColumns = `repeat(${gridSize}, 110px)`;
+	//also adding auto-resizing if to support page responsivness on other devices --- NEEDS TO BE TESTED
+	grid.style.gridTemplateColumns = `repeat(${gridSize}, minmax(60px, 1fr))`;
 
 	//rebuild original HTML structure 
 	//each row is now a <div class="card-row">
@@ -67,6 +72,21 @@ function initializeCardList(){
 		}
 		grid.appendChild(row);
 	}
+}
+
+
+//initialize cards; first make play button go away, then push all cardElements in the page into the cardList array (cardList array doesn't change after this, it is only referenced), then runs playCards
+function initializeCardList(){
+	document.getElementById("difficulty-btn").disabled = true;
+	const playButton = document.getElementById("start-btn");
+	playButton.style.display = "none";
+	currPointer = 0;
+	cardList = [];
+	cards = [];
+
+	generateGrid();
+
+	const grid = document.getElementById("card-grid");
 	const rows = grid.getElementsByClassName("card-row");
 	for(let i = 0; i<rows.length; i+=1){
 		const cardArr = rows[i].getElementsByClassName("card");
@@ -208,6 +228,11 @@ function checkRecord(val){
 
 //called when game ends; locks every element, resets everything, and unhides the play button, but with a different text
 function endGame(){
+	const recordToSave = { difficulty: selectedDifficulty, level: cards.length - 1 };
+	let history = JSON.parse(localStorage.getItem("sequence")) || [];
+	history.push(recordToSave);
+	localStorage.setItem("sequence", JSON.stringify(history));
+
 	for(let i = 0; i<cardList.length; i+=1){
 		const cardElement = cardList[i]; 
 		lock(cardElement);
@@ -217,6 +242,7 @@ function endGame(){
 	const playButton = document.getElementById("start-btn");
 	playButton.style.display = "block";
 	playButton.innerHTML = "You Lost! Try again";
+	document.getElementById("difficulty-btn").disabled = false;
 }
 
 //basic card flip animation; toggles the background color to change
@@ -230,5 +256,24 @@ function flipCard(card){
 		card.style.backgroundColor = "#BFE9E7";
 		card.classList.add("unflipped");
 		card.classList.remove("flipped");
+	}
+}
+
+function loadRecords() {
+	const statsGrid = document.getElementById("stats-grid");
+	const stats = statsGrid.querySelectorAll("p");
+
+	const records = JSON.parse(localStorage.getItem("sequence")) || [];
+	const filteredRecords = records.filter((record) => record.difficulty === selectedDifficulty);
+	if (filteredRecords.length > 0) {
+		const sortedLevels = filteredRecords
+			.map((record) => record.level)
+			.sort((a, b) => b - a);
+			
+		record = sortedLevels[0];
+		stats[1].innerHTML = `Record - ${record}`;
+	} else {
+		record = 0;
+		stats[1].innerHTML = `Record - 0`;
 	}
 }
