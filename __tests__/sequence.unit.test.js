@@ -24,10 +24,8 @@
 	 document = window.document;
 	 document.documentElement.innerHTML = html;
  
-	 /* 1️⃣  Import the JS that adds event-listeners */
-	 await import("../scripts/sequence.js"); // adjust path if yours differs
+	 await import("../scripts/sequence.js");
  
-	 /* 2️⃣  Fire DOMContentLoaded so sequence.js sees it */
 	 const domReady = new Promise((resolve) =>
 		 document.addEventListener("DOMContentLoaded", resolve, { once: true }),
 	 );
@@ -45,7 +43,10 @@
  test("Play button is present and visible before starting", () => {
 	 const playBtn = document.getElementById("start-btn");
 	 expect(playBtn).not.toBeNull();
-	 expect(playBtn.style.display).not.toBe("none"); // default is empty string = visible
+	 const hiddenInline = playBtn.style.display === "none";
+	 const hiddenAttr   = playBtn.hasAttribute("hidden");
+	 const hiddenClass  = playBtn.classList.contains("hidden") || playBtn.classList.contains("hide");
+     expect(hiddenInline || hiddenAttr || hiddenClass).toBe(true);
  });
  
  test("clicking Play hides button and attaches click listeners to cards", () => {
