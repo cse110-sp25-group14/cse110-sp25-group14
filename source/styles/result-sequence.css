@@ -55,7 +55,7 @@ h1, h2 {
 /* Main result card styling */
 #result-card {
   background-color: #BEE9E8;
-  background-image: url("assets/blur-bg.svg");
+  background-image: url("../../assets/blur-bg.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -166,7 +166,7 @@ body.dark .toggle { background: #444; }
 body.dark .toggle::before { transform: translateX(24px); }
 
 body.dark #footer-icon img {
-  content: url('assets/record-white.svg');
+  content: url('../../assets/record-white.svg');
 }
 
 body.dark {
@@ -180,7 +180,7 @@ body.dark #page-info img {
 
 body.dark #result-card{ 
   background-color: #174517;
-  background-image: url("assets/blur-bg-darkmode.svg");
+  background-image: url("../../assets/blur-bg-darkmode.svg");
   color:#fff
 }
 

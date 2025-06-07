@@ -5,12 +5,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	const backButton = document.querySelector("#page-info img");
 	backButton.addEventListener("click", () => {
-		window.location.href = "/source/homepage.html";
+		window.location.href = "../source/homepage.html";
 	});
 
 	const playAgainButton = document.getElementById("play-again-btn");
 	playAgainButton.addEventListener("click", () => {
-		window.location.href = "/source/sequence.html";
+		window.location.href = "../source/sequence.html";
 	});
 
 	const recent = JSON.parse(localStorage.getItem("sequence-recent"));
