@@ -14,6 +14,15 @@ export class MatchingGame {
 		// timing
 		this.startTime = null;
 		this.stopwatchInterval = null;
+
+		//possible themes for user to choose from
+		this.themeLabels = {
+			Default: "Default",
+			Cultures: "Cultures",
+		};
+		//set theme to default
+		this.selectedTheme = "Default";
+
 	}
 
 	//initialize board
@@ -24,12 +33,26 @@ export class MatchingGame {
 		});
 		const playButton = document.getElementById("start-btn");
 		playButton.addEventListener("click", this.createBoard.bind(this));
-
+		const themeSelection = document.getElementById("theme-btn");
+		themeSelection.addEventListener("click", this.toggleTheme.bind(this));
+		this.updateThemeText();
 		if (localStorage.getItem("darkMode") === "enabled") {
 			document.body.classList.add("dark");
 		}
 
 		this.loadRecords();
+	}
+
+	//toggles between themes
+	toggleTheme() {
+        this.selectedTheme = this.selectedTheme === "Default" ? "Cultures" : "Default"; // Toggle theme
+        this.updateThemeText(); // Update the theme button text
+
+	}
+
+	updateThemeText() {
+		const button = document.getElementById("theme-btn");
+		button.querySelector("span").textContent = `Theme: ${this.themeLabels[this.selectedTheme]}`;
 	}
 
 	//shuffle cards
@@ -100,9 +123,18 @@ export class MatchingGame {
 
 	//flips card and changes the img src, then checks if it matches with the first card if it is the second card
 	flipCard(event) {
+		//do not let user change theme mid-game
+		document.getElementById("theme-btn").disabled = true;
 		const card = event.currentTarget;
 		if (this.lockBoard || card === this.firstCard || card.classList.contains("matched")) return;
-		card.src = `../assets/matching${card.dataset.number}.svg`;
+		//if cultures theme is selected, use cultures icons, otherwise use default matching icons
+		if(this.selectedTheme === "Cultures") {
+			card.src = `../assets/icons/icon${card.dataset.number}.png`;
+		}
+		else{
+			card.src = `../assets/matching${card.dataset.number}.svg`;
+		}
+
 		card.classList.add("flipped");
 		if (!this.firstCard) {
 			this.firstCard = card;
@@ -182,6 +214,8 @@ export class MatchingGame {
 		const playButton = document.getElementById("start-btn");
 		playButton.style.display = "block";
 		playButton.addEventListener("click", this.createBoard.bind(this));
+		//allow user to change theme again when game ends
+		document.getElementById("theme-btn").disabled = false;
 	}
 
 	loadRecords() {
