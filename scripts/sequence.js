@@ -19,25 +19,56 @@ function init() {
 	//set initial difficulty as well as dynamic button text and apply difficulty mods
 	setDifficulties();
 	updateDifficultyText();
-	if(localStorage.getItem("darkMode") === "enabled") {
-		document.body.classList.add("dark");
-		darkTheme = true;
+	const themeToggle = document.getElementById("theme-toggle");
+	const sunIcon = document.querySelector(".theme-icon.sun");
+	const moonIcon = document.querySelector(".theme-icon.moon");
+	const root = document.documentElement;
+
+	function updateTooltip() {
+		const isDark = document.body.classList.contains("dark");
+		root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
+	}
+
+	if (themeToggle) {
+		themeToggle.sunIcon = sunIcon;
+		themeToggle.moonIcon = moonIcon;
+
+		themeToggle.addEventListener("click", function () {
+			document.body.classList.toggle("dark");
+			const isDark = document.body.classList.contains("dark");
+
+			if (this.sunIcon && this.moonIcon) {
+				this.sunIcon.style.opacity = isDark ? "0" : "1";
+				this.moonIcon.style.opacity = isDark ? "1" : "0";
+			}
+
+			localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+			updateTooltip();
+		});
+
+		const isDark = localStorage.getItem("darkMode") === "enabled";
+		if (isDark) {
+			document.body.classList.add("dark");
+			if (sunIcon && moonIcon) {
+				sunIcon.style.opacity = "0";
+				moonIcon.style.opacity = "1";
+			}
+		}
+		updateTooltip();
+	}
+
+	const recordButton = document.getElementById("leaderboard-btn");
+	if (recordButton) {
+		recordButton.addEventListener("click", () => {
+			window.location.href = "records.html";
+		});
 	}
 	loadRecords();
 	generateGrid();  //on page load add base grid 
-	
-	const darkmodeToggle = document.getElementById("theme-toggle");
-	darkmodeToggle.addEventListener("click", ()=>{
-		document.body.classList.toggle("dark");
-		darkTheme = !darkTheme;
-		const isDarkmode = document.body.classList.contains("dark");
-		localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
-	});
 };
 
 //initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
 let cardList = [];
-let darkTheme = false;
 let cards = [];
 let currPointer = 0;
 let record = 0;
@@ -250,9 +281,6 @@ function endGame(){
 	}
 	cards = [];
 	cardList = [];
-	const playButton = document.getElementById("start-btn");
-	playButton.style.display = "block";
-	playButton.innerHTML = "You Lost! Try again";
 	document.getElementById("difficulty-btn").disabled = false;
 
 	window.location.href = "result-sequence.html";
@@ -267,12 +295,6 @@ function flipCard(card){
 		card.classList.remove("unflipped");
 	}
 	else{
-		// if(darkTheme){
-		// 	card.style.backgroundColor = "#779F77";
-		// }
-		// else{
-		// 	card.style.backgroundColor = "#BFE9E7";
-		// }
 		card.classList.remove("card-click");
 		card.classList.add("unflipped");
 		card.classList.remove("flipped");
