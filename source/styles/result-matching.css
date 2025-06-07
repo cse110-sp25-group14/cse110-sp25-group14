@@ -173,7 +173,7 @@
   body.dark .toggle::before { transform: translateX(24px); }
 
   body.dark #footer-icon img {
-    content: url('assets/record-white.svg');
+    content: url('assets/trophy-solid-white.svg');
   }
 
   body.dark {

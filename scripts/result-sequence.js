@@ -13,6 +13,11 @@ window.addEventListener("DOMContentLoaded", () => {
 		window.location.href = "../source/sequence.html";
 	});
 
+	const recordsButton = document.getElementById("footer-icon");
+	recordsButton.addEventListener("click", function () {
+		window.location.href = "../source/records.html";
+	});
+
 	const recent = JSON.parse(localStorage.getItem("sequence-recent"));
 
 	if (recent) {
