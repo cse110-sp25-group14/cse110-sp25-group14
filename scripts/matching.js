@@ -29,6 +29,13 @@ export class MatchingGame {
 			document.body.classList.add("dark");
 		}
 
+		const darkmodeToggle = document.getElementById('theme-toggle');
+		darkmodeToggle.addEventListener("click", ()=>{
+			document.body.classList.toggle("dark");
+			const isDarkmode = document.body.classList.contains("dark");
+			localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
+		});
+
 		this.loadRecords();
 	}
 

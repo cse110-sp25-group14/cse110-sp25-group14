@@ -27,4 +27,11 @@ window.addEventListener("DOMContentLoaded", () => {
 		const best = difficultyRecords[0] ?? 0;
 		document.querySelector(".record").textContent = `Record: ${best}`;
 	}
+
+	const darkmodeToggle = document.getElementById('theme-toggle');
+	darkmodeToggle.addEventListener("click", ()=>{
+		document.body.classList.toggle("dark");
+		const isDarkmode = document.body.classList.contains("dark");
+		localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
+	});
 });

@@ -25,10 +25,13 @@ function init() {
 	}
 	loadRecords();
 	generateGrid();  //on page load add base grid 
-	const toggle = document.getElementById("theme-toggle");
-	toggle.addEventListener("click", () => {
+	
+	const darkmodeToggle = document.getElementById('theme-toggle');
+	darkmodeToggle.addEventListener("click", ()=>{
 		document.body.classList.toggle("dark");
 		darkTheme = !darkTheme;
+		const isDarkmode = document.body.classList.contains("dark");
+		localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
 	});
 };
 
