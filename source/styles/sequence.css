@@ -69,7 +69,6 @@ body {
 
 #card-grid {
     display: grid;
-
     gap: 1vh 1vw;
     justify-content: center;
     margin-top: 30px;
@@ -81,7 +80,6 @@ body {
     margin-right: auto;
     width: fit-content;
     max-width: 90vw;
-
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
 }
 
