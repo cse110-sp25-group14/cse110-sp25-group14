@@ -45,8 +45,8 @@ export class MatchingGame {
 
 	//toggles between themes
 	toggleTheme() {
-        this.selectedTheme = this.selectedTheme === "Default" ? "Cultures" : "Default"; // Toggle theme
-        this.updateThemeText(); // Update the theme button text
+		this.selectedTheme = this.selectedTheme === "Default" ? "Cultures" : "Default"; // Toggle theme
+		this.updateThemeText(); // Update the theme button text
 
 	}
 
