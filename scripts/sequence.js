@@ -69,7 +69,6 @@ function init() {
 
 //initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
 let cardList = [];
-let darkTheme = false;
 let cards = [];
 let currPointer = 0;
 let record = 0;
@@ -299,12 +298,6 @@ function flipCard(card){
 		card.classList.remove("unflipped");
 	}
 	else{
-		// if(darkTheme){
-		// 	card.style.backgroundColor = "#779F77";
-		// }
-		// else{
-		// 	card.style.backgroundColor = "#BFE9E7";
-		// }
 		card.classList.remove("card-click");
 		card.classList.add("unflipped");
 		card.classList.remove("flipped");
