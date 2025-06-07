@@ -165,8 +165,8 @@ export class MatchingGame {
 
 			const matchedCards = document.querySelectorAll(".matched").length;
 			if (matchedCards === this.cards.length){
+				this.stopStopwatch();
 				setTimeout(() =>{
-					this.stopStopwatch();
 					this.endGame();
 				}, 200);
 				return;
