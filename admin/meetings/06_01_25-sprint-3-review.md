@@ -1,4 +1,5 @@
 # Part 3. Agile Sprint Review Meeting  
+**Date:** June 1, 2025  
 **10:30 AM – 11:30 AM**  
 
 **Attendance:**  

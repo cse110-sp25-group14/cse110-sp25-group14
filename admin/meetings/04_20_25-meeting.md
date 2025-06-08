@@ -1,7 +1,7 @@
-# CSE 110 4/20 WARM-UP MEETING
+# CSE 110 4/20/25 WARM-UP MEETING
 
 ## Present Members
-Gautam, Aarush, Victoria, Emily, Carl, Mark, Travis
+Gautam Mohandas, Aarush Mehrotra, Victoria Tran, Emily Cai, Carl Casares, Mark Escarrilla, Travis Huang
 
 ---
 
