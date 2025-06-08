@@ -2,7 +2,7 @@
 
 | status   | date decided | decision-makers      | consulted | informed |
 |----------|--------------|----------------------|-----------|----------|
-| proposed | 2025-05-27   | Mark, Eric, Srideep       | Aarush, Gautam, Travis, Nilay, Kilhoon, Victory, Emily, Carl         | Aarush, Gautam, Travis, Nilay, Kilhoon, Victory, Emily, Carl           |
+| proposed | 2025-05-27   | Mark, Eric, Srideep       | Aarush, Gautam, Travis, Nilay, Kilhoon, Victoria, Emily, Carl         | Aarush, Gautam, Travis, Nilay, Kilhoon, Victoria, Emily, Carl           |
 
 # ADR – Adopt Jest for Unit Testing with jsdom Environment
 
