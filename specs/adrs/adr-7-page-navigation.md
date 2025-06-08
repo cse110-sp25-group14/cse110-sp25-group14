@@ -1,6 +1,6 @@
 | status   | date decided | decision-makers                                                          | consulted                                                         | informed                        |
 |----------|--------------|--------------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------------|
-| accepted | 2025-05-25   | Aarush, Gautam, Victoria, Emily, Carl, Srideep, Eric, Mark, Kilhoon | Travis, Nilay | All team members via meetings |
+| accepted | 2025-05-18   | Aarush, Gautam, Victoria, Emily, Carl, Srideep, Eric, Mark, Kilhoon | Travis, Nilay | All team members via meetings |
 
 # ADR – Homepage Structure and Page Navigation
 
