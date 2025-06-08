@@ -28,6 +28,15 @@ body {
   background-size: cover;
 }
 
+noscript {
+  background-color: #ffeeee; 
+  padding: 1rem; 
+  text-align: center; 
+  border: 1px solid red;
+  font-size: 2rem;
+  z-index: 100; 
+}
+
 .banner {
   margin-top: 7rem;
   text-align: center;
@@ -368,11 +377,6 @@ body.dark .primary-btn {
   }
 
   .welcome {
-    font-size: 1.4rem;
-  }
-
-  .chicks {
-    grid-template-columns: repeat(3, 30px);
     font-size: 1.4rem;
   }
 

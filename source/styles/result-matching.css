@@ -12,6 +12,15 @@
     font-family: 'Baloo 2', sans-serif;
   }
 
+  noscript {
+    background-color: #ffeeee; 
+    padding: 1rem; 
+    text-align: center; 
+    border: 1px solid red;
+    font-size: 2rem;
+    z-index: 100; 
+  }
+
   .result {
     font-family: "Patua One", serif;
     color: #063635;
