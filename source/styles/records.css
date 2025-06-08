@@ -28,6 +28,7 @@ noscript {
     justify-content: space-between;
     position: relative;
     margin: 30px;
+    margin-top: 8vh;
 }
 
 #records-container {
