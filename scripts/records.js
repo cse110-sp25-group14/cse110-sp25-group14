@@ -117,9 +117,33 @@ function loadMatchingRecords() {
 	const selectedSort = document.getElementById("sort-dropdown").value;
 	let sortedRecords = [];
 	if (selectedSort == "moves") {
-		sortedRecords = matchingRecords.sort((a, b) => a.moves - b.moves);
+		sortedRecords = matchingRecords.sort((a, b) => {
+			if (a.moves < b.moves) {
+				return -1;
+			} else if (a.moves > b.moves) {
+				return 1;
+			} else {
+				if (parseTime(a.time) < parseTime(b.time)) {
+					return -1;
+				} else {
+					return 1;
+				}
+			}
+		});
 	} else {
-		sortedRecords = matchingRecords.sort((a, b) => parseTime(a.time) - parseTime(b.time));
+		sortedRecords = matchingRecords.sort((a, b) => {
+			if (parseTime(a.time) < parseTime(b.time)) {
+				return -1;
+			} else if (parseTime(a.time) > parseTime(b.time)) {
+				return 1;
+			} else {
+				if (a.moves < b.moves) {
+					return -1;
+				} else {
+					return 1;
+				}
+			}
+		});
 	}
 	const sortedTimes = sortedRecords.map((record) => record.time);
 	const sortedMoves = sortedRecords.map((record) => record.moves);
