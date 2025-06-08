@@ -241,6 +241,11 @@ body.dark {
 body.dark #start-btn {
     background-color: #fff;
     color: #1C4966;
+    box-shadow: 1px 2px 2px 2px rgb(255 255 255 / 20%);
+}
+
+body.dark #difficulty-btn {
+    box-shadow: 1px 2px 2px 1px rgb(255 255 255 / 20%);
 }
 
 body.dark #sequence-title {
@@ -253,6 +258,7 @@ body.dark #stats-grid {
 
 body.dark .card {
     background-color: #779F77;
+    box-shadow: 1px 2px 2px 2px rgb(255 255 255 / 20%);
 }
 
 body.dark #leaderboard-btn img {
