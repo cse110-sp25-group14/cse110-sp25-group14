@@ -1,98 +1,112 @@
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", init);
 
-	const root = document.documentElement;
+let root
+let themeToggle
+let sunIcon
+let moonIcon;
+let backButton;
+let playAgainButton;
+let recordsButton;
 
-	const themeToggle = document.getElementById("theme-toggle");
-	const sunIcon = document.querySelector(".theme-icon.sun");
-	const moonIcon = document.querySelector(".theme-icon.moon");
+function init() {
+	fetchDom();
+	initThemeState();
+	attachNavHandlers();
+	loadAndRenderRecords();
+	configureThemeToggle();
+}
 
+function fetchDom() {
+	root            = document.documentElement;
+	themeToggle     = document.getElementById("theme-toggle");
+	sunIcon         = document.querySelector(".theme-icon.sun");
+	moonIcon        = document.querySelector(".theme-icon.moon");
+	backButton      = document.querySelector("#page-info img");
+	playAgainButton = document.querySelector(".play-again");
+	recordsButton   = document.querySelector(".footer-icon");
+}
+
+function initThemeState() {
 	if (localStorage.getItem("darkMode") === "enabled") {
 		document.body.classList.add("dark");
 	}
+	updateTooltip();
+}
 
-	function updateTooltip() {
-		const isDark = document.body.classList.contains("dark");
-		root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
-	}
-
-	const backButton = document.querySelector("#page-info img");
-	backButton.addEventListener("click", function () {
+function attachNavHandlers() {
+	backButton.addEventListener("click", () => {
 		window.location.href = "../source/homepage.html";
 	});
-
-	const playAgainButton = document.querySelector(".play-again");
-	playAgainButton.addEventListener("click", function () {
+	playAgainButton.addEventListener("click", () => {
 		window.location.href = "../source/matching.html";
 	});
-
-	const recordsButton = document.querySelector(".footer-icon");
-	recordsButton.addEventListener("click", function () {
+	recordsButton.addEventListener("click", () => {
 		window.location.href = "../source/records.html";
 	});
+}
 
+function loadAndRenderRecords() {
 	const matchingRecords = JSON.parse(localStorage.getItem("matching")) || [];
+	if (matchingRecords.length === 0) return;
 
-	function parseTime(timeString) {
-		const parts   = timeString.split(":");
-		const minutes = parseInt(parts[0], 10);
-		const seconds = parseInt(parts[1], 10);
-		return minutes * 60 + seconds;
-	}
+	const parseTime = (t) => {
+		const [m, s] = t.split(":").map(Number);
+		return m * 60 + s;
+	};
 
+	const moveRecords = matchingRecords.slice().sort((a, b) => a.moves - b.moves);
+	const timeRecords = matchingRecords.slice().sort((a, b) => parseTime(a.time) - parseTime(b.time));
 
-	//sorts in place unlike in records
-	const moveRecords = matchingRecords.slice().sort(function (a, b) {
-		return a.moves - b.moves;
-	});
+	const latest = matchingRecords[matchingRecords.length - 1];
 
-	const timeRecords = matchingRecords.slice().sort(function (a, b) {
-		return parseTime(a.time) - parseTime(b.time);
-	});
+	document.querySelector(".current-time").textContent  = "Current: " + latest.time;
+	document.querySelector(".current-moves").textContent = "Current: " + latest.moves;
 
-	if (matchingRecords.length > 0) {
-		const latest = matchingRecords[matchingRecords.length - 1];
+	document.querySelector(".record-time").textContent   = "Record: " + timeRecords[0].time;
+	document.querySelector(".current-record").textContent = "Record: " + moveRecords[0].moves;
+}
 
-		const recentTimeEl  = document.querySelector(".current-time");
-		const recentMovesEl = document.querySelector(".current-moves");
+/**
+ * @function configureThemeToggle
+ * @description Initializes dark-mode based on localStorage and sets up the toggle to swap themes and icons.
+ * @returns {void}
+ * @example
+ * configureThemeToggle();
+ */
+function configureThemeToggle() {
+	if (!themeToggle) return;
 
-		recentTimeEl.textContent  = "Current: " + latest.time;
-		recentMovesEl.textContent = "Current: " + latest.moves;
+	themeToggle.sunIcon = sunIcon;
+	themeToggle.moonIcon = moonIcon;
 
-		const bestTimeRecord  = timeRecords[0];
-		const bestMovesRecord = moveRecords[0];
-
-		const recordTimeEl  = document.querySelector(".record-time");
-		const recordMovesEl = document.querySelector(".current-record");
-
-		recordTimeEl.textContent  = "Record: " + bestTimeRecord.time;
-		recordMovesEl.textContent = "Record: " + bestMovesRecord.moves;
-	}
-
-	if (themeToggle) {
-		themeToggle.sunIcon = sunIcon;
-		themeToggle.moonIcon = moonIcon;
-
-		themeToggle.addEventListener("click", function () {
-			document.body.classList.toggle("dark");
-			const isDark = document.body.classList.contains("dark");
-
-			if (this.sunIcon && this.moonIcon) {
-				this.sunIcon.style.opacity = isDark ? "0" : "1";
-				this.moonIcon.style.opacity = isDark ? "1" : "0";
-			}
-
-			localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
-			updateTooltip();
-		});
-
-		const isDark = localStorage.getItem("darkMode") === "enabled";
-		if (isDark) {
-			document.body.classList.add("dark");
-			if (sunIcon && moonIcon) {
-				sunIcon.style.opacity = "0";
-				moonIcon.style.opacity = "1";
-			}
+	themeToggle.addEventListener("click", () => {
+		document.body.classList.toggle("dark");
+		if (sunIcon && moonIcon) {
+			sunIcon.style.opacity  = document.body.classList.contains("dark") ? "0" : "1";
+			moonIcon.style.opacity = document.body.classList.contains("dark") ? "1" : "0";
 		}
+		localStorage.setItem("darkMode", document.body.classList.contains("dark") ? "enabled" : "disabled");
 		updateTooltip();
+	});
+
+	if (localStorage.getItem("darkMode") === "enabled") {
+		document.body.classList.add("dark");
+		if (sunIcon && moonIcon) {
+			sunIcon.style.opacity = "0";
+			moonIcon.style.opacity = "1";
+		}
 	}
-});
+	updateTooltip();
+}
+
+/**
+ * @function updateTooltip
+ * @description Updates the CSS property so the toggle tooltip reads “Dark Mode” or “Light Mode”.
+ * @returns {void}
+ * @example
+ * updateTooltip();
+ */
+function updateTooltip() {
+	const isDark = document.body.classList.contains("dark");
+	root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
+}

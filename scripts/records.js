@@ -167,7 +167,7 @@ function configureThemeToggle() {
 			sunIcon.style.opacity  = document.body.classList.contains("dark") ? "0" : "1";
 			moonIcon.style.opacity = document.body.classList.contains("dark") ? "1" : "0";
 		}
-		localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+		localStorage.setItem("darkMode", document.body.classList.contains("dark") ? "enabled" : "disabled");
 		updateTooltip();
 	});
 
@@ -177,7 +177,6 @@ function configureThemeToggle() {
 			sunIcon.style.opacity = "0";
 			moonIcon.style.opacity = "1";
 		}
-		swapIcons(true);
 	}
 	updateTooltip();
 }
