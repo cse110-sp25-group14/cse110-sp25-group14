@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", init);
  * @type {number} record - user's current record
  * @type {number} onTIme - Duration cards stay highlight
  * @type {number} delayTime - Delay between card highlight
- * @type {number} selectedDifficulty - current difficulty
+ * @type {string} selectedDifficulty - current difficulty
  * @type {number} gridSie - grid size of current game depends on difficulty
  * @type {number} cardsInPlay - Total number of cards in the grid. 
  */
