@@ -14,20 +14,90 @@ export class MatchingGame {
 		// timing
 		this.startTime = null;
 		this.stopwatchInterval = null;
+
+		//possible themes for user to choose from
+		this.themeLabels = {
+			Default: "Default",
+			Cultures: "Cultures",
+		};
+		//set theme to default
+		this.selectedTheme = "Default";
+
 	}
 
 	//initialize board
 	init() {
 		const backButton = document.getElementById("page-info");
-		backButton.querySelector("img").addEventListener("click", ()=>{
+		backButton.querySelector("img").addEventListener("click", () => {
 			window.location.href = "homepage.html";
 		});
 		const playButton = document.getElementById("start-btn");
 		playButton.addEventListener("click", this.createBoard.bind(this));
-
-		if(localStorage.getItem("darkMode") === "enabled") {
+		const themeSelection = document.getElementById("theme-btn");
+		themeSelection.addEventListener("click", this.toggleTheme.bind(this));
+		this.updateThemeText();
+		if (localStorage.getItem("darkMode") === "enabled") {
 			document.body.classList.add("dark");
 		}
+
+		const themeToggle = document.getElementById("theme-toggle");
+		const sunIcon = document.querySelector(".theme-icon.sun");
+		const moonIcon = document.querySelector(".theme-icon.moon");
+		const root = document.documentElement;
+
+		function updateTooltip() {
+			const isDark = document.body.classList.contains("dark");
+			root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
+		}
+
+		if (themeToggle) {
+			themeToggle.sunIcon = sunIcon;
+			themeToggle.moonIcon = moonIcon;
+
+			themeToggle.addEventListener("click", function () {
+				document.body.classList.toggle("dark");
+				const isDark = document.body.classList.contains("dark");
+
+				if (this.sunIcon && this.moonIcon) {
+					this.sunIcon.style.opacity = isDark ? "0" : "1";
+					this.moonIcon.style.opacity = isDark ? "1" : "0";
+				}
+
+				localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+				updateTooltip();
+			});
+
+			const isDark = localStorage.getItem("darkMode") === "enabled";
+			if (isDark) {
+				document.body.classList.add("dark");
+				if (sunIcon && moonIcon) {
+					sunIcon.style.opacity = "0";
+					moonIcon.style.opacity = "1";
+				}
+			}
+			updateTooltip();
+		}
+
+		const recordButton = document.getElementById("leaderboard-btn");
+		if (recordButton) {
+			recordButton.addEventListener("click", () => {
+				window.location.href = "records.html";
+			});
+		}
+
+		this.loadRecords();
+	}
+
+	//toggles between themes
+	toggleTheme() {
+		this.selectedTheme = this.selectedTheme === "Default" ? "Cultures" : "Default"; // Toggle theme
+		this.updateThemeText(); // Update the theme button text
+
+	}
+
+	updateThemeText() {
+		const button = document.getElementById("theme-btn");
+		button.querySelector("span").textContent = `Theme: ${this.themeLabels[this.selectedTheme]}`;
 	}
 
 	//shuffle cards
@@ -51,11 +121,19 @@ export class MatchingGame {
 
 	stopStopwatch(){
 		//save time if it beats record
-		clearInterval(this.stopwatchInterval);
+		if(this.stopwatchInterval){
+			clearInterval(this.stopwatchInterval);
+			this.stopwatchInterval = null;
+		}
 	}
 
 	//appends the value of each card hidden to user
 	createBoard() {
+		// Disable the theme toggle button once the game starts
+		const themeButton = document.getElementById("theme-btn");
+		if (themeButton) {
+			themeButton.disabled = true; //disable theme button upon board creation
+		}
 		this.moves = 0;
 		document.getElementById("move-counter").textContent = "Moves - 0";
 		this.hideButton();
@@ -98,9 +176,21 @@ export class MatchingGame {
 
 	//flips card and changes the img src, then checks if it matches with the first card if it is the second card
 	flipCard(event) {
+		// Do not let user change theme mid-game
+		const themeButton = document.getElementById("theme-btn");
+		if (themeButton) {
+			themeButton.disabled = true; // Disable theme button 
+		}
 		const card = event.currentTarget;
 		if (this.lockBoard || card === this.firstCard || card.classList.contains("matched")) return;
-		card.src = `../assets/matching${card.dataset.number}.svg`;
+		//if cultures theme is selected, use cultures icons, otherwise use default matching icons
+		if(this.selectedTheme === "Cultures") {
+			card.src = `../assets/icons/icon${card.dataset.number}.png`;
+		}
+		else{
+			card.src = `../assets/matching${card.dataset.number}.svg`;
+		}
+
 		card.classList.add("flipped");
 		if (!this.firstCard) {
 			this.firstCard = card;
@@ -123,8 +213,8 @@ export class MatchingGame {
 
 			const matchedCards = document.querySelectorAll(".matched").length;
 			if (matchedCards === this.cards.length){
+				this.stopStopwatch();
 				setTimeout(() =>{
-					this.stopStopwatch();
 					this.endGame();
 				}, 200);
 				return;
@@ -150,6 +240,14 @@ export class MatchingGame {
 	//stop the stopwatch before calling endGame
 	endGame(){
 
+		const recordToSave = {
+			moves: this.moves,
+			time : document.getElementById("stopwatch").textContent
+		};
+		let history = JSON.parse(localStorage.getItem("matching")) || [];
+		history.push(recordToSave);
+		localStorage.setItem("matching", JSON.stringify(history));
+
 		const elapsedTime = Date.now() - this.startTime;
 
 		if (this.moves < this.bestMoves) {
@@ -172,6 +270,37 @@ export class MatchingGame {
 		const playButton = document.getElementById("start-btn");
 		playButton.style.display = "block";
 		playButton.addEventListener("click", this.createBoard.bind(this));
+
+		window.location.href = "result-matching.html";
+		// Allow user to change theme again when game ends
+		const themeButton = document.getElementById("theme-btn");
+		if (themeButton) {
+			themeButton.disabled = false; // Enable theme button 
+		}
+	}
+
+	loadRecords() {
+		const records = JSON.parse(localStorage.getItem("matching")) || [];
+		if (records.length > 0) {
+			const sortedMoves = records
+				.map((record) => record.moves)
+				.sort((a, b) => a - b);
+				
+			this.bestMoves = sortedMoves[0];
+			document.getElementById("record-moves").textContent =
+				`Record Moves - ${this.bestMoves}`;	
+				
+			const sortedTimes = records
+				.map((record) => record.time)
+				.sort((a, b) => a - b);
+				
+			document.getElementById("record-time").textContent = 
+				`Record Time - ${sortedTimes[0]}`;
+
+			const mins = parseInt(sortedTimes[0].slice(0, 2));
+			const secs = parseInt(sortedTimes[0].slice(3));
+			this.bestTime = ((mins * 60) + secs) * 1000;
+		};
 	}
 }
 

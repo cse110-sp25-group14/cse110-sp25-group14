@@ -12,15 +12,58 @@ function init() {
 	const difficultySelection = document.getElementById("difficulty-btn");
 	difficultySelection.addEventListener("click", () =>{
 		toggleDifficulty();
+		loadRecords();
 		generateGrid(); //re-generate grid on click, so toggled difficulty can be visualized 
 	});
 
 	//set initial difficulty as well as dynamic button text and apply difficulty mods
 	setDifficulties();
 	updateDifficultyText();
-	if(localStorage.getItem("darkMode") === "enabled") {
-		document.body.classList.add("dark");
+	const themeToggle = document.getElementById("theme-toggle");
+	const sunIcon = document.querySelector(".theme-icon.sun");
+	const moonIcon = document.querySelector(".theme-icon.moon");
+	const root = document.documentElement;
+
+	function updateTooltip() {
+		const isDark = document.body.classList.contains("dark");
+		root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
 	}
+
+	if (themeToggle) {
+		themeToggle.sunIcon = sunIcon;
+		themeToggle.moonIcon = moonIcon;
+
+		themeToggle.addEventListener("click", function () {
+			document.body.classList.toggle("dark");
+			const isDark = document.body.classList.contains("dark");
+
+			if (this.sunIcon && this.moonIcon) {
+				this.sunIcon.style.opacity = isDark ? "0" : "1";
+				this.moonIcon.style.opacity = isDark ? "1" : "0";
+			}
+
+			localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+			updateTooltip();
+		});
+
+		const isDark = localStorage.getItem("darkMode") === "enabled";
+		if (isDark) {
+			document.body.classList.add("dark");
+			if (sunIcon && moonIcon) {
+				sunIcon.style.opacity = "0";
+				moonIcon.style.opacity = "1";
+			}
+		}
+		updateTooltip();
+	}
+
+	const recordButton = document.getElementById("leaderboard-btn");
+	if (recordButton) {
+		recordButton.addEventListener("click", () => {
+			window.location.href = "records.html";
+		});
+	}
+	loadRecords();
 	generateGrid();  //on page load add base grid 
 };
 
@@ -225,28 +268,54 @@ function checkRecord(val){
 
 //called when game ends; locks every element, resets everything, and unhides the play button, but with a different text
 function endGame(){
+	const recordToSave = { difficulty: selectedDifficulty, level: cards.length - 1 };
+	let history = JSON.parse(localStorage.getItem("sequence")) || [];
+	history.push(recordToSave);
+	localStorage.setItem("sequence", JSON.stringify(history));
+
+	localStorage.setItem("sequence-recent", JSON.stringify(recordToSave));
+
 	for(let i = 0; i<cardList.length; i+=1){
 		const cardElement = cardList[i]; 
 		lock(cardElement);
 	}
 	cards = [];
 	cardList = [];
-	const playButton = document.getElementById("start-btn");
-	playButton.style.display = "block";
-	playButton.innerHTML = "You Lost! Try again";
 	document.getElementById("difficulty-btn").disabled = false;
+
+	window.location.href = "result-sequence.html";
 }
 
 //basic card flip animation; toggles the background color to change
 function flipCard(card){
 	if(card.classList.contains("unflipped")){
-		card.style.backgroundColor = "purple";
+		//card.style.backgroundColor = "purple";
+		card.classList.add("card-click");
 		card.classList.add("flipped");
 		card.classList.remove("unflipped");
 	}
 	else{
-		card.style.backgroundColor = "#BFE9E7";
+		card.classList.remove("card-click");
 		card.classList.add("unflipped");
 		card.classList.remove("flipped");
+	}
+}
+
+function loadRecords() {
+	const statsGrid = document.getElementById("stats-grid");
+	const stats = statsGrid.querySelectorAll("p");
+
+	const records = JSON.parse(localStorage.getItem("sequence")) || [];
+	const filteredRecords = records.filter((record) => record.difficulty === selectedDifficulty);
+	if (filteredRecords.length > 0) {
+		const sortedLevels = filteredRecords
+			.map((record) => record.level)
+			.sort((a, b) => b - a);
+			
+		record = sortedLevels[0];
+		stats[1].innerHTML = `Record - ${record}`;
+	} else {
+		record = 0;
+		stats[1].innerHTML = `Record - 0`;
 	}
 }

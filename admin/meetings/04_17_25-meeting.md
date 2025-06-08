@@ -1,4 +1,7 @@
-# CSE 110 4/17 UI/UX Meeting
+# CSE 110 4/17/25 UI/UX Meeting
+
+## Present Members
+Gautam Mohandas, Victoria Tran, Emily Cai, Carl Casares
 
 ## GOALS
 

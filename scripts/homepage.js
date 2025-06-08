@@ -1,6 +1,7 @@
 // run everything after page loads
 window.addEventListener("DOMContentLoaded", init);
 
+
 // Starts program, all functions calls originate here
 function init() {
 	//insert functions/eventListeners to functions
@@ -14,12 +15,17 @@ function init() {
 
 	const sunIcon = document.querySelector(".theme-icon.sun");
 	const moonIcon = document.querySelector(".theme-icon.moon");
+	const root = document.documentElement;
+
+	function updateTooltip() {
+		const isDark = document.body.classList.contains("dark");
+		root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
+	}
 
 	if(darkmodeToggle && sunIcon && moonIcon){
 		darkmodeToggle.sunIcon = sunIcon;
 		darkmodeToggle.moonIcon = moonIcon;
 	}
-
 
 	matchingBtn.addEventListener("click", matching_page);
 	sequenceBtn.addEventListener("click", sequence_page);
@@ -28,6 +34,15 @@ function init() {
 	leaderboardBtn.addEventListener("click", records_page);
 	letsFindOutBtn.addEventListener("click", random_game_page);
 
+	if (localStorage.getItem("darkMode") === "enabled") {
+		document.body.classList.add("dark");
+		if (sunIcon && moonIcon) {
+			sunIcon.style.opacity = "0";
+			moonIcon.style.opacity = "1";
+		}
+	}
+
+	updateTooltip();
 
 	if (darkmodeToggle) {
 		darkmodeToggle.addEventListener("click", function() {
@@ -46,6 +61,8 @@ function init() {
 			}
 			
 			localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
+
+			updateTooltip();
 		});
 	}
 

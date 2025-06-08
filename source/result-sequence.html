@@ -8,40 +8,40 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Konkhmer+Sleokchher&family=Koulen&family=Pathway+Extreme:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Patua+One&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles/result-sequence.css" />
+  <script type="module" src="../scripts/result-sequence.js"></script>
 </head>
 <body>
+  <noscript>
+    <strong>Warning:</strong> This site relies on JavaScript for interactive features. Please enable it to get the full experience.
+  </noscript>
   <div id="page-info">
-    <img src="../assets/backarrow.svg" alt="black back arrow"/>
+    <img src="../../assets/backarrow-blue.svg" alt="back arrow"/>
   </div>
   <main id="content" aria-label="Score summary">
     <div id="result-card">
         <h1 class="result">RESULT</h1>
         <div class="section">
             <h2 class="level">Level</h2>
-            <h2 class="current">Current: 3</h2>
-            <h2 class="record">Record: 10</h2>
+            <h2 class="current" id="recent-level">Current: --</h2>
+            <h2 class="record" id="record-level">Record: --</h2>
         </div>
-        <button class="play-again">Play Again</button>
+        <button id="play-again-btn" class="play-again">Play Again</button>
     </div>
   </main>
   <footer>
-    <div id="footer-icon">
-      <img src="../assets/record.svg" alt="leaderboard button"/>
+    <div class="footer-icon">
+      <button id="leaderboard-btn" aria-label="Go to leaderboard">
+        <img id="trophy" src="../assets/trophy-solid.svg" alt="trophy" />
+      </button>
     </div>
-
-    <div class="toggle" id="theme-toggle"
-      role="switch" aria-checked="false"
-      aria-label="Toggle dark mode">
-    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+      <span class="theme-icon sun">
+        <img src="../assets/sun_display.svg" alt="Sun Icon" width="20" height="20" />
+      </span>
+      <span class="theme-icon moon">
+        <img src="../assets/moon_display.svg" alt="Moon Icon" width="20" height="20" />
+      </span>
+    </button>
   </footer>
-  <script>
-    /* Light / dark toggle */
-    const toggle = document.getElementById('theme-toggle');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      toggle.setAttribute('aria-checked',
-        document.body.classList.contains('dark'));
-    });
-  </script>
 </body>
 </html>
