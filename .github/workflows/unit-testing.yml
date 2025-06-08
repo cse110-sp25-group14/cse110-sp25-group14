@@ -10,7 +10,7 @@ jobs: # the things being executed
               uses: actions/checkout@v4 # using version 4 of Actions
 
             - name: Install dependencies
-              run: npm install
+              run: npm ci
 
             - name: Run unit tests
-              run: npm run test
+              run: npm run test:unit

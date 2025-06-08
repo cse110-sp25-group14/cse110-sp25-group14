@@ -13,12 +13,14 @@ export default defineConfig([
 		extends: ["js/recommended"],
 		languageOptions: {
 			globals: {
-				...globals.browser,				
+				...globals.browser,	
+				...globals.jest,
+				page: "readonly"			
 			}
 		},
 		rules: {
 			"@stylistic/indent": ["error", "tab"],
-			"@stylistic/quotes": ["error", "double"],
+			"@stylistic/quotes": ["error", "double", { "allowTemplateLiterals": true }],
 			"@stylistic/semi": ["error"],
 		},
 	},

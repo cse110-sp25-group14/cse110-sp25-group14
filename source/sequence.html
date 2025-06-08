@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Human Benchmark</title>
+    <link rel="stylesheet" href="./styles/sequence.css" />
+    <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Konkhmer+Sleokchher&family=Koulen&family=Pathway+Extreme:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Patua+One&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <script src="../scripts/sequence.js"></script>
+</head>
+
+<body>
+    <main>
+        <div id="page-info">
+            <img src="../assets/backarrow-blue.svg" alt="black back arrow"/>
+            <h1 id="sequence-title">Sequence</h1>
+        </div>
+        <button id="start-btn">Start Game</button>
+        <div id="stats-grid">
+            <p>Level - 0</p>
+            <p>Record - 0</p>
+            <button id="difficulty-btn"><span>Difficulty: Easy</span></button>
+        </div>
+
+
+        <div id="card-grid"></div>
+    </main>
+    <footer>
+      <div class="footer-icon">
+        <button id="leaderboard-btn" aria-label="Go to leaderboard">
+          <img id="trophy" src="../assets/trophy-solid.svg" alt="trophy" />
+        </button>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon sun">
+          <img src="../assets/sun_display.svg" alt="Sun Icon" width="20" height="20" />
+        </span>
+        <span class="theme-icon moon">
+          <img src="../assets/moon_display.svg" alt="Moon Icon" width="20" height="20" />
+        </span>
+      </button>
+    </footer>
+</body>
+</html>

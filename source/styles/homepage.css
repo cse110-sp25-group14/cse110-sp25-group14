@@ -1,0 +1,385 @@
+html { font-size: 100%; } /* 16 px */
+
+@media (width <= 480px) { /* phones */
+  html { font-size: 93.75%; } /* 15 px */
+}
+
+@media (width >= 1600px) { /* ultra-wide */
+  html { font-size: 112.5%; } /* 18 px */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #133D3C;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url('../../assets/title.svg');
+  background-repeat: no-repeat;
+  background-size: 500vw 100vh;
+  background-size: cover;
+}
+
+.banner {
+  margin-top: 7rem;
+  text-align: center;
+  font-family: Baloo, sans-serif;
+  font-size: 22px;
+}
+
+.banner h1 {
+  font-size: 3.25rem;
+  font-weight: 700;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-family: "Baloo 2", sans-serif;
+}
+
+.tagline {
+  display: inline-block;
+  padding: 0 1.5rem;
+  margin-bottom: 1rem;
+  font-family: "Baloo 2", sans-serif;
+  font-style: normal;
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.question {
+  font-family: Koulen, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.primary-btn {
+  background: #1C4966;
+  color: #fff;
+  padding: 0.75rem 2.25rem;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.25s;
+  font-family: "Pathway Extreme", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.primary-btn:hover { opacity: 0.85; }
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, max-content));
+  gap: 2rem;
+  padding: 0 1rem 3rem;
+  justify-content: center;
+  justify-items: center;
+}
+
+.game-card {
+  background: #BEE9E8;
+  border-radius: 1.25rem;
+  width: 100%;
+  max-width: 320px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
+}
+
+.game-card h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.matching,
+.sequence {
+  font-family: "Patua One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.icon-board {
+  height: 90px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.matching-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px; 
+  padding: 1rem;
+  justify-items: center;
+}
+
+.icon-board .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  padding: 0;
+}
+
+.item {
+  width: 30px;
+  height: 30px;
+}
+
+.actions {
+  background: #eef6f6;
+  width: 100%;
+  padding: 1rem 0.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: auto;
+}
+
+.sec-btn {
+  background: #62B6CB;
+  border: none;
+  border-radius: 1rem;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: filter 0.2s;
+  font-family: "Pathway Extreme", sans-serif;
+  font-weight: 700;
+}
+
+.sec-btn:hover { filter: brightness(110%); }
+
+.game-card .primary-btn,
+.game-card .sec-btn {
+  font-size: 1rem;
+}
+
+.ghost { background: #62B6CB; }
+
+footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.theme-toggle {
+  width: 70px;
+  height: 34px;
+  border-radius: 30px;
+  background: #ddd;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;  
+  justify-content: center;           
+}
+
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 30px;
+  height: 30px;
+  background: black;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.theme-toggle::after {
+  content: var(--tooltip-text, "Dark Mode");
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -140%);
+  background: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.theme-toggle:hover::after {
+  opacity: 1;
+}
+
+.theme-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0;   
+  margin: 0;
+  object-fit: cover;
+}
+
+.theme-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+  object-fit: contain; 
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.theme-icon.sun {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transform: translate(4%, -50%);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.theme-icon.moon {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  transform: translate(-4%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  font-size: 1rem;
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icon button,
+.footer-icon button {
+  font-size: 1.5rem;
+}
+
+body.dark .theme-toggle::before { 
+  transform: translateX(32px); 
+}
+
+body.dark {
+  background: #20202C;
+  color: #fff;
+  background-image: url("../../assets/dark-title.svg");
+  background-repeat: no-repeat;
+  background-size: 500vw 100vh;
+  background-size: cover;
+}
+
+body.dark .game-card   { 
+  background: #76A276; 
+}
+
+body.dark .matching{
+  color: #1B491C;
+}
+
+body.dark .sequence{
+  color: #1B491C;
+}
+
+body.dark .actions {
+  background: #1B491C;
+}
+
+body.dark .sec-btn {
+  background: #0F2B0F;
+}
+
+body.dark .grid span {
+  background: #fff;
+}
+
+body.dark #leaderboard-btn img {
+  content: url('../../assets/trophy-solid-white.svg');
+}
+
+body.dark .primary-btn {
+  background: #116212;
+}
+
+@media (width <= 768px) {
+  .banner {
+    margin-top: 6rem;
+  }
+
+  .tagline {
+    padding: 0.6rem 1.25rem; 
+  }
+  
+  .primary-btn {
+    padding: 0.6rem 1.8rem;
+  }
+}
+
+@media (width <= 480px) {
+  .banner {
+    margin-top: 4rem;
+  }
+
+  .banner h1 {
+    font-size: 2.8rem;
+    line-height: 1;
+  }
+
+  .tagline {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .welcome {
+    font-size: 1.4rem;
+  }
+
+  .chicks {
+    grid-template-columns: repeat(3, 30px);
+    font-size: 1.4rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 20px);
+  }
+
+  .grid span { 
+    width: 20px;
+    height: 20px; 
+  }
+}
