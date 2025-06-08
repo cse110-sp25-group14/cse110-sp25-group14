@@ -8,14 +8,29 @@ let backButton;
 let playAgainButton;
 let recordsButton;
 
+/**
+ * @function init
+ * @description Top-level entry point. Caches DOM nodes, wires up navigation, and theme toggle.
+ * @returns {void}
+ * @example
+ * // Called automatically on DOMContentLoaded
+ * init();
+ */
 function init() {
 	fetchDom();
 	initThemeState();
 	attachNavHandlers();
-	loadAndRenderRecords();
+	loadRecords();
 	configureThemeToggle();
 }
 
+/**
+ * @function fetchDom
+ * @description Queries the document once and stores references to all DOM elements this module needs.
+ * @returns {void}
+ * @example
+ * fetchDom();
+ */
 function fetchDom() {
 	root            = document.documentElement;
 	themeToggle     = document.getElementById("theme-toggle");
@@ -26,6 +41,13 @@ function fetchDom() {
 	recordsButton   = document.querySelector(".footer-icon");
 }
 
+/**
+ * @function initThemeState
+ * @description Applies the saved dark-mode preference on first load and refreshes the tooltip text.
+ * @returns {void}
+ * @example
+ * initThemeState();
+ */
 function initThemeState() {
 	if (localStorage.getItem("darkMode") === "enabled") {
 		document.body.classList.add("dark");
@@ -33,6 +55,13 @@ function initThemeState() {
 	updateTooltip();
 }
 
+/**
+ * @function attachNavHandlers
+ * @description Wires up click handlers for the back arrow, “Play Again”, and leaderboard buttons.
+ * @returns {void}
+ * @example
+ * attachNavHandlers();
+ */
 function attachNavHandlers() {
 	backButton.addEventListener("click", () => {
 		window.location.href = "../source/homepage.html";
@@ -45,7 +74,14 @@ function attachNavHandlers() {
 	});
 }
 
-function loadAndRenderRecords() {
+/**
+ * @function loadRecords
+ * @description Reads matching-game results from localStorage, finds the most-recent play and the best records, and updates the results card.
+ * @returns {void}
+ * @example
+ * loadRecords();
+ */
+function loadRecords() {
 	const matchingRecords = JSON.parse(localStorage.getItem("matching")) || [];
 	if (matchingRecords.length === 0) return;
 
