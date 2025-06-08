@@ -119,6 +119,7 @@ body {
     background-color: #62B6CB;
     padding: 5px;
     border-radius: 20px;
+    min-height: 2.5rem;
 }
 
 .record-grid-container .moves {
@@ -127,6 +128,7 @@ body {
     background-color: #62B6CB;
     padding: 5px;
     border-radius: 20px;
+    min-height: 2.5rem;
 }
 
 .record-grid-container.sequence {
@@ -143,10 +145,14 @@ body {
     background-color: #62B6CB;
     padding: 5px;
     border-radius: 20px;
-		min-height: 2.5rem;
+	min-height: 2.5rem;
 }
 
 @media (width <= 480px) {
+    #page-info {
+        margin-bottom: 2vh;
+    }
+    
     #records-container {
         background-color: #bee9e8;
         height: auto;
@@ -369,7 +375,7 @@ body.dark .record-grid-container .time {
     background-color: #174517;
     padding: 5px;
     border-radius: 20px;
-		min-height: 2.5rem;
+	min-height: 2.5rem;
 }
 
 body.dark .record-grid-container .moves {
@@ -378,7 +384,7 @@ body.dark .record-grid-container .moves {
     background-color: #174517;
     padding: 5px;
     border-radius: 20px;
-		min-height: 2.5rem;
+	min-height: 2.5rem;
 }
 
 body.dark p.level{
