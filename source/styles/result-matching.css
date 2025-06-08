@@ -255,7 +255,7 @@
   }
 
   body.dark #page-info img {
-    content: url('../assets/backarrow-white.svg');
+    content: url('../../assets/backarrow-white.svg');
   }
   
   body.dark #result-card{ 
