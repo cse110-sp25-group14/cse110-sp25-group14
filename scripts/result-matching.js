@@ -1,8 +1,8 @@
 window.addEventListener("DOMContentLoaded", init);
 
-let root
-let themeToggle
-let sunIcon
+let root;
+let themeToggle;
+let sunIcon;
 let moonIcon;
 let backButton;
 let playAgainButton;
