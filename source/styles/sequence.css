@@ -79,16 +79,8 @@ noscript {
     display: grid;
     gap: 1vh 1vw;
     justify-content: center;
-    margin-top: 30px;
-
-    /* worried about accessibility on phone for hard mode testing auto fitting the size */
-
-    /* NEEDS TO BE TESTED */
-
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto 5vh;
     width: fit-content;
-    max-width: 90vw;
 }
 
 .card-row {
@@ -97,8 +89,8 @@ noscript {
 
 .card {
     background-color: #BFE9E7;
-    width: 100px;
-    height: 100px;
+    width: min(22vw, 120px);
+    height: min(22vw, 120px);
     border-radius: 30px;
     margin-top: 15px;
     justify-content: center;
@@ -282,56 +274,44 @@ body.dark #page-info img {
     content: url('../../assets/backarrow-white.svg');
 }
 
-@media (width <= 375px) {
+@media (width <= 768px) {
     #card-grid {
-        grid-template-columns: repeat(3, 0.2fr);
-        gap: 2.5vh 5vw;
-        justify-items: center;
-        max-width: 320px;
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* each column is at least 50px wide */
+        gap: 2vh 2vw; /* gap height and width take 2% of viewport */
+        justify-items: center; /* Ensure the grid fits within the viewport */
+        max-width: 100%; 
         margin-left: auto;
         margin-right: auto;
         padding: 0;
-        margin-top: 5vh;
     }
 
     .card {
-        width: 20vw;
-        height: 20vw;
-        min-width: 40px;
-        min-height: 40px;
-        border-radius: 24px;
-        margin-top: 0;
+        width: min(20vw, 70px); /* width of smaller cards is 20% of viewport or 70px */
+        height: min(20vw, 70px); /* height of smaller cards is 20% of viewport or 70px */
+        min-width: 40px; 
+        min-height: 40px; 
+        border-radius: 20px; 
+        margin-top: 1vw; 
     }
 }
 
-@media (width <= 480px) and (width >= 380px) {
-    #sequence-title {
-        font-size: 2.25rem; 
-    }
-
-    #page-info img {
-        width: 25px;
-        height: 25px;
-    }
-    
+@media (width <= 480px) {
     #card-grid {
-        grid-template-columns: repeat(3, 0.3fr);
-        gap: 2vh 2vw;
+        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); /* each column is at least 40px wide */
+        gap: 2vh 2vw; /* add additional spacing between grid items */
         justify-items: center;
-        max-width: 320px;
+        max-width: 100%;
         margin-left: auto;
         margin-right: auto;
         padding: 0;
-        margin-top: 5vh;
     }
 
     .card {
-        width: 20vw;
-        height: 20vw;
-        min-width: 40px;
-        min-height: 40px;
-        border-radius: 25px;
-        margin-top: 0;
+        width: min(18vw, 60px); /* card width is 18% of viewport */  
+        height: min(18vw, 60px); /* card height is 18% of viewport */   
+        min-width: 30px; /* card does not shrink below 30px */     
+        min-height: 30px; /* card does not shrink below 30px */
+        border-radius: 15px; 
+        margin-top: 1vw; 
     }
 }
-
