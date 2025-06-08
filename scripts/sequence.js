@@ -1,6 +1,55 @@
+/**
+ * Sequence game Java Script 
+ * @file sequence.js
+ */
+
 window.addEventListener("DOMContentLoaded", init);
 
-//initialize board
+/**
+ * Global variables for the game
+ * @type {Array<HTMLElement>} cardList - list of card elements on the page.
+ * @type {Array<number>} cards - Indices of card for sequence card.
+ * @type {number} currPointer - current position in the sequence game where user playing.
+ * @type {number} record - user's current record
+ * @type {number} onTIme - Duration cards stay highlight
+ * @type {number} delayTime - Delay between card highlight
+ * @type {number} selectedDifficulty - current difficulty
+ * @type {number} gridSie - grid size of current game depends on difficulty
+ * @type {number} cardsInPlay - Total number of cards in the grid. 
+ */
+let cardList = [];
+let cards = [];
+let currPointer = 0;
+let record = 0;
+let onTime = 400;
+let delayTime = 500;
+let selectedDifficulty = "easy";
+let gridSize = 3;
+let cardsInPlay = 9;
+
+/**
+ * Labels for difficulty levels for the game
+ * @const {Object} difficultyLabels
+ */
+const difficultyLabels = {
+	easy: "Easy",
+	medium: "Medium",
+	hard: "Hard"
+};
+
+/**
+ * @func timer
+ * @param {number} ms - time in ms to wait
+ * @returns {Promise} - A promise that resolves after the specific time.
+ */
+const timer = ms => new Promise(res => setTimeout(res, ms));
+
+/**
+ * @description
+ * Initialize the game board and set up event listeners for buttons at the sequence page.
+ * Set up localstorage for dark mode.
+ * @func init
+ */
 function init() {
 	const backButton = document.getElementById("page-info");
 	backButton.querySelector("img").addEventListener("click", ()=>{
@@ -67,28 +116,11 @@ function init() {
 	generateGrid();  //on page load add base grid 
 };
 
-//initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
-let cardList = [];
-let cards = [];
-let currPointer = 0;
-let record = 0;
-let onTime = 400;
-let delayTime = 500;
-let selectedDifficulty = "easy";
-let gridSize = 3;
-let cardsInPlay = 9;
-
-//to pull values for dynamic text on difficulty button
-const difficultyLabels = {
-	easy: "Easy",
-	medium: "Medium",
-	hard: "Hard"
-};
-
-//timer is a promise that returns when the timeout ends
-const timer = ms => new Promise(res => setTimeout(res, ms));
-
-//need to build dyanmically per click and on load so let's pull out the code that is inside initializeCardList that does that
+/**
+ * @description
+ * Generates the game grid based on current difficulty
+ * @func generateGrid
+ */
 function generateGrid() {
 	//dynamically build grid based on chosen difficulty
 	const grid = document.getElementById("card-grid");
@@ -115,7 +147,11 @@ function generateGrid() {
 }
 
 
-//initialize cards; first make play button go away, then push all cardElements in the page into the cardList array (cardList array doesn't change after this, it is only referenced), then runs playCards
+/**
+ * @description
+ * Initializes the card list and starts game
+ * @func initializeCardList
+ */
 function initializeCardList(){
 	document.getElementById("difficulty-btn").disabled = true;
 	const playButton = document.getElementById("start-btn");
@@ -140,13 +176,21 @@ function initializeCardList(){
 	}, 500);
 }
 
-//appends a random number in the current number of cards that are in play (diff-based) to the array, which are the indices of cardList
+
+/**
+ * @ Adds a random card to current game
+ * @func appendRandom
+ * @param {Array<number>} array - The array of card indices to append to
+ */
 function appendRandom(array){
 	array.push(Math.floor(Math.random() * cardsInPlay));
 }
 
-//since button is a toggle we want to make sure that click on easy moves it to medium
-//and clicking medium takes it to hard and repeats that loop
+/**
+ * @description
+ * Sets up the game difficulty depends on user selected.
+ * @func toggleDifficulty
+ */
 function toggleDifficulty() {
 	switch (selectedDifficulty){
 		case "easy":
