@@ -119,7 +119,7 @@ function loadMatchingRecords() {
 	if (selectedSort == "moves") {
 		sortedRecords = matchingRecords.sort((a, b) => a.moves - b.moves);
 	} else {
-		sortedRecords = matchingRecords.sort((a, b) => a.time - b.time);
+		sortedRecords = matchingRecords.sort((a, b) => parseTime(a.time) - parseTime(b.time));
 	}
 	const sortedTimes = sortedRecords.map((record) => record.time);
 	const sortedMoves = sortedRecords.map((record) => record.moves);
@@ -131,6 +131,13 @@ function loadMatchingRecords() {
 		moves.textContent = `${sortedMoves[i] ?? ""}`;
 	}
 }
+
+function parseTime(timeString) {
+		const parts   = timeString.split(":");
+		const minutes = parseInt(parts[0], 10);
+		const seconds = parseInt(parts[1], 10);
+		return minutes * 60 + seconds;
+	}
 
 function loadSequenceRecords() {
 	const sequenceRecords = JSON.parse(localStorage.getItem("sequence")) || [];
