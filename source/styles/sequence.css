@@ -71,16 +71,8 @@ body {
     display: grid;
     gap: 1vh 1vw;
     justify-content: center;
-    margin-top: 30px;
-
-    /* worried about accessibility on phone for hard mode testing auto fitting the size */
-
-    /* NEEDS TO BE TESTED */
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto 5vh;
     width: fit-content;
-    max-width: 90vw;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
 }
 
 .card-row {
@@ -98,59 +90,6 @@ body {
     display: flex;
     box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
 }
-
-/* @media (width <= 375px) {
-    #card-grid {
-        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-        gap: 2.5vh 5vw;
-        justify-items: center;
-        max-width: 320px;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0;
-        margin-top: 5vh;
-    }
-
-    .card {
-        width: min(24vw, 90px);
-        height: min(24vw, 90px);
-        min-width: 40px;
-        min-height: 40px;
-        border-radius: 24px;
-        margin-top: 0;
-    }
-}
-
-@media (width <= 480px) and (width >= 380px) {
-    #sequence-title {
-        font-size: 2.25rem; 
-    }
-
-    #page-info img {
-        width: 25px;
-        height: 25px;
-    }
-    
-    #card-grid {
-        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-        gap: 2vh 2vw;
-        justify-items: center;
-        max-width: 320px;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0;
-        margin-top: 5vh;
-    }
-
-    .card {
-        width: min(22vw, 100px);
-        height: min(22vw, 100px);
-        min-width: 40px;
-        min-height: 40px;
-        border-radius: 25px;
-        margin-top: 0;
-    }
-} */
 
 @media (width <= 768px) {
     #card-grid {
