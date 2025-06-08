@@ -1,6 +1,6 @@
 | status | date | decision-makers | consulted | informed |
 | --- | --- | --- | --- | --- |
-| accepted | 2025-04-26 when the decision was last updated | Victoria, Emily, Carl | Aarush, Gautam, Mark, Eric, Travis, Nilay | Aarush, Gautam, Mark, Eric, Travis, Nilay |
+| accepted | 2025-04-26 when the decision was last updated | Victoria, Emily, Carl | Aarush, Gautam, Mark, Eric, Travis, Nilay, Srideep | Aarush, Gautam, Mark, Eric, Travis, Nilay, Srideep |
 
 
 # MVP-UI/UX Design of Homepage and Two Games
