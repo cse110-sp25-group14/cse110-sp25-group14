@@ -11,10 +11,10 @@ window.addEventListener("DOMContentLoaded", init);
  * @type {Array<number>} cards - Indices of card for sequence card.
  * @type {number} currPointer - current position in the sequence game where user playing.
  * @type {number} record - user's current record
- * @type {number} onTIme - Duration cards stay highlight
+ * @type {number} onTime - Duration cards stay highlight
  * @type {number} delayTime - Delay between card highlight
  * @type {string} selectedDifficulty - current difficulty
- * @type {number} gridSie - grid size of current game depends on difficulty
+ * @type {number} gridSize - grid size of current game depends on difficulty
  * @type {number} cardsInPlay - Total number of cards in the grid. 
  */
 let cardList = [];
