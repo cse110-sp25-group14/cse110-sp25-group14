@@ -24,7 +24,7 @@
         <div id="records-header">
             <h1 id="records-title">RECORDS</h1>
             <label for="record-dropdown"></label>
-            <select name="game" id="record-dropdown">
+            <select name="game" id="record-dropdown" aria-label="Choose a game">
                 <option value="default">Select a Game</option>
                 <option value="matching">Matching</option>
                 <option value="sequence">Sequence</option>
@@ -32,13 +32,13 @@
         </div>
         
         <h1 id="best-title">Best Matches</h1>
-        <select name="sort-by" id="sort-dropdown" class="header-dropdown">
+        <select name="sort-by" id="sort-dropdown" class="header-dropdown" aria-label="Sort by time or moves">
             <option value="default">Sort By</option>
             <option value="time">Time</option>
             <option value="moves">Moves</option>
         </select>
 
-        <select name="difficulty" id="difficulty-dropdown" class="header-dropdown">
+        <select name="difficulty" id="difficulty-dropdown" class="header-dropdown" aria-label="Sort by difficulty">
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
