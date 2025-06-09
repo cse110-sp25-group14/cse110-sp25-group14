@@ -41,7 +41,6 @@ This decision was confirmed through the working process of the front-end members
 Basic shape icons with solid colors. 
 
 * Good, because they are simple and not distracting no matter the user.
-<!-- use "neutral" if the given argument weights neither for good nor bad -->
 * Bad, because this theme might be *too* simple for the user to enjoy.
 
 ### Basketball theme
