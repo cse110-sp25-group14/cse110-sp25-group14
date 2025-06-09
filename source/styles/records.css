@@ -31,6 +31,12 @@ noscript {
     margin-top: 8vh;
 }
 
+#page-info img {
+    position: absolute;
+    top: -55px;
+    left: 0;
+}
+
 #records-container {
     background-color: #bee9e8;
     height: auto;

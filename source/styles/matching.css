@@ -31,6 +31,12 @@ noscript {
     margin-top: 8vh;
 }
 
+#page-info img {
+    position: absolute;
+    top: -55px;
+    left: 0;
+}
+
 #matching-title {
     position: absolute;
     left: 50%;

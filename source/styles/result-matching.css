@@ -46,6 +46,12 @@
 		margin-top: 8vh;
     gap: 10px;
   }
+
+  #page-info img {
+    position: absolute;
+    top: -55px;
+    left: 0;
+  }
   
   #content {
     display: flex;
