@@ -12,5 +12,8 @@
 	"tagname-specialchars": true,
 	"tagname-lowercase": true,
 	"id-unique": true,
-	"id-class-value": "dash"
+	"id-class-value": "dash",
+	"ignore": [
+		"scripts/jsdocs/"
+	]
 }
