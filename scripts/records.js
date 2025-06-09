@@ -18,7 +18,6 @@ let root;
  * @description Top-level entry point. Caches DOM nodes, hides sections, wires up navigation, dropdowns, and theme toggle.
  * @returns {void}
  * @example
- * // Called automatically on DOMContentLoaded
  * init();
  */
 function init() {
@@ -255,7 +254,7 @@ function loadMatchingRecords() {
  * @param {string} timeString - Time in the format "mm:ss".
  * @returns {number} Total seconds represented by the string.
  * @example
- * parseTime("01:15"); //→ 75
+ * parseTime("01:15");
  */
 function parseTime(timeString) {
 	const parts   = timeString.split(":");

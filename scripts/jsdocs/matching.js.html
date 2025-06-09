@@ -43,10 +43,7 @@ export class MatchingGame {
 	 * @returns {MatchingGame} A new game instance.
 	 */
 	constructor() {
-		// game data
 		this.cards = ["1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", "7", "8", "8"];
-
-		// game state tracking
 		this.firstCard = null;
 		this.secondCard = null;
 		this.lockBoard = false;
@@ -54,16 +51,13 @@ export class MatchingGame {
 		this.bestMoves = Infinity;
 		this.bestTime = Infinity;
 
-		// timing
 		this.startTime = null;
 		this.stopwatchInterval = null;
 
-		//possible themes for user to choose from
 		this.themeLabels = {
 			Default: "Default",
 			Cultures: "Cultures",
 		};
-		//set theme to default
 		this.selectedTheme = "Default";
 
 	}
@@ -142,8 +136,8 @@ export class MatchingGame {
 	 * @returns {void}
 	 */
 	toggleTheme() {
-		this.selectedTheme = this.selectedTheme === "Default" ? "Cultures" : "Default"; // Toggle theme
-		this.updateThemeText(); // Update the theme button text
+		this.selectedTheme = this.selectedTheme === "Default" ? "Cultures" : "Default";
+		this.updateThemeText();
 
 	}
 
@@ -191,7 +185,6 @@ export class MatchingGame {
 	 * @returns {void}
 	 */
 	stopStopwatch(){
-		//save time if it beats record
 		if(this.stopwatchInterval){
 			clearInterval(this.stopwatchInterval);
 			this.stopwatchInterval = null;
@@ -204,10 +197,9 @@ export class MatchingGame {
 	 * @returns {void}
 	 */
 	createBoard() {
-		// Disable the theme toggle button once the game starts
 		const themeButton = document.getElementById("theme-btn");
 		if (themeButton) {
-			themeButton.disabled = true; //disable theme button upon board creation
+			themeButton.disabled = true;
 		}
 		this.moves = 0;
 		document.getElementById("move-counter").textContent = "Moves - 0";
@@ -223,10 +215,6 @@ export class MatchingGame {
 				const cardElement = cardArr[j];
 				cardElement.dataset.number = this.cards[j+i*rows.length];
 				cardElement.addEventListener("click", this.flipCard.bind(this));
-				//for testing: makes all cards face up and matched
-				// const image = cardElement.querySelector("img");
-				// image.src = `./assets/matching${cardElement.dataset.number}.svg`;
-				// cardElement.classList.add("matched");
 				if(cardElement.classList.contains("matched")){
 					cardElement.classList.remove("matched");
 				}
@@ -264,14 +252,12 @@ export class MatchingGame {
 	 * @returns {void}
 	 */
 	flipCard(event) {
-		// Do not let user change theme mid-game
 		const themeButton = document.getElementById("theme-btn");
 		if (themeButton) {
-			themeButton.disabled = true; // Disable theme button 
+			themeButton.disabled = true;
 		}
 		const card = event.currentTarget;
 		if (this.lockBoard || card === this.firstCard || card.classList.contains("matched")) return;
-		//if cultures theme is selected, use cultures icons, otherwise use default matching icons
 		if(this.selectedTheme === "Cultures") {
 			card.src = `../assets/icons/icon${card.dataset.number}.png`;
 		}
@@ -372,10 +358,9 @@ export class MatchingGame {
 		playButton.addEventListener("click", this.createBoard.bind(this));
 
 		window.location.href = "result-matching.html";
-		// Allow user to change theme again when game ends
 		const themeButton = document.getElementById("theme-btn");
 		if (themeButton) {
-			themeButton.disabled = false; // Enable theme button 
+			themeButton.disabled = false;
 		}
 	}
 
