@@ -13,51 +13,70 @@
 </head>
 
 <body>
-    <main>
-        <div id="page-info">
-            <img src="../assets/backarrow-blue.svg" alt="black back arrow"/>
-            <h1 id="matching-title">Matching</h1>
-        </div>
-        <button id="start-btn">Start Game</button>
-        <div class="stats">
-            <div class="stats-grid">
-                <div class="row">
-                    <p class="column">Time - <span id="stopwatch">00:00</span></p>
-                    <p id="move-counter" class="column">Moves - 0</p>
-                </div>
-                <div class="row">
-                    <p id="record-time"  class="column">Record Time - --:--</p>
-                    <p id="record-moves" class="column">Record Moves - --</p>
-                </div>
-            </div>
-        </div>
+  <noscript>
+    <strong>Warning:</strong> This site relies on JavaScript for interactive features. Please enable it to get the full experience.
+  </noscript>
+  <main>
+      <div id="page-info">
+          <img src="../assets/backarrow-blue.svg" alt="black back arrow"/>
+          <h1 id="matching-title">Matching</h1>
+      </div>
+      <button id="start-btn">Start Game</button>
+      <button id="theme-btn"><span>Theme: Default Theme</span></button>
+      <div class="stats">
+          <div class="stats-grid">
+              <div class="row">
+                  <p class="column">Time - <span id="stopwatch">00:00</span></p>
+                  <p id="move-counter" class="column">Moves - 0</p>
+              </div>
+              <div class="row">
+                  <p id="record-time"  class="column">Record Time - --:--</p>
+                  <p id="record-moves" class="column">Record Moves - --</p>
+              </div>
+          </div>
+      </div>
 
-        <div id="card-grid">
-            <div class="card-row">
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-            </div>
-            <div class="card-row">
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-                    <img class="card" src="../assets/G14.png" alt="flower icon"/>
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-            </div>
-            <div class="card-row">
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-            </div>
-            <div class="card-row">
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-                    <img class="card" src="../assets/G14.png" alt="G14 logo"/>
-            </div>
-        </div>
-    </main>
+      <div id="card-grid">
+          <div class="card-row">
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+          </div>
+          <div class="card-row">
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+                  <img class="card" src="../assets/G14.png" alt="flower icon"/>
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+          </div>
+          <div class="card-row">
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+          </div>
+          <div class="card-row">
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+                  <img class="card" src="../assets/G14.png" alt="G14 logo"/>
+          </div>
+      </div>
+  </main>
+  <footer>
+      <div class="footer-icon">
+        <button id="leaderboard-btn" aria-label="Go to leaderboard">
+          <img id="trophy" src="../assets/trophy-solid.svg" alt="trophy"/>
+        </button>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon sun">
+          <img src="../assets/sun_display.svg" alt="Sun Icon" width="20" height="20" />
+        </span>
+        <span class="theme-icon moon">
+          <img src="../assets/moon_display.svg" alt="Moon Icon" width="20" height="20" />
+        </span>
+      </button>
+  </footer>
 </body>
 </html>

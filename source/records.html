@@ -9,66 +9,83 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Konkhmer+Sleokchher&family=Koulen&family=Pathway+Extreme:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Patua+One&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <script src="../scripts/records.js"></script>
 </head>
 
 <body>
-    <main>
-        <div id="page-info">
-            <img id="back-arrow" img src="../assets/backarrow.svg" alt="back arrow"/>
-        </div>
-        <div id="records-container">
-            <div id="records-header">
-                <h1 id="records-title">RECORDS</h1>
-                <label for="game"></label>
-                <select name="game" id="record-dropdown">
-                    <option value="default">Select a Game</option>
-                    <option value="matching">Matching</option>
-                    <option value="sequence">Sequence</option>
-                </select>
-            </div> 
-            <h1 id="best-title">Best Matches</h1>
-            <select name="sort-by" id="header-dropdown">
-                <option value="default">Sort By</option>
-                <option value="time">Time</option>
-                <option value="moves">Moves</option>
+  <noscript>
+    <strong>Warning:</strong> This site relies on JavaScript for interactive features. Please enable it to get the full experience.
+  </noscript>
+  <main>
+    <div id="page-info">
+        <img id="back-arrow" src="../assets/backarrow-blue.svg" alt="back arrow"/>
+    </div>
+    <div id="records-container">
+        <div id="records-header">
+            <h1 id="records-title">RECORDS</h1>
+            <label for="record-dropdown"></label>
+            <select name="game" id="record-dropdown" aria-label="Choose a game">
+                <option value="default">Select a Game</option>
+                <option value="matching">Matching</option>
+                <option value="sequence">Sequence</option>
             </select>
-            
-            <div id="record-flex-container">
-                <h3 class="header">#</h3>
-                <h3 class="header">Time</h3>
-                <h3 class="header">Moves</h3>
-
-                <p class="rank">1</p>
-                <p class="time">1:01</p>
-                <p class="moves">16</p>
-
-                <p class="rank">2</p>
-                <p class="time">1:05</p>
-                <p class="moves">17</p>
-
-                <p class="rank">3</p>
-                <p class="time">1:11</p>
-                <p class="moves">20</p>
-            </div>
         </div>
-    </main>
-    <footer>
-        <div id="footer-icon">
+        
+        <h1 id="best-title">Best Matches</h1>
+        <select name="sort-by" id="sort-dropdown" class="header-dropdown" aria-label="Sort by time or moves">
+            <option value="default">Sort By</option>
+            <option value="time">Time</option>
+            <option value="moves">Moves</option>
+        </select>
+
+        <select name="difficulty" id="difficulty-dropdown" class="header-dropdown" aria-label="Sort by difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        
+        <div id="matching-records" class="record-grid-container">
+            <h3 class="header">#</h3>
+            <h3 class="header">Time</h3>
+            <h3 class="header">Moves</h3>
+
+            <p class="rank">1</p>
+            <p class="time" data-rank="1"></p>
+            <p class="moves" data-rank="1"></p>
+
+            <p class="rank">2</p>
+            <p class="time" data-rank="2"></p>
+            <p class="moves" data-rank="2"></p>
+
+            <p class="rank">3</p>
+            <p class="time" data-rank="3"></p>
+            <p class="moves" data-rank="3"></p>
         </div>
 
-        <div class="toggle" id="theme-toggle"
-        role="switch" aria-checked="false"
-        aria-label="Toggle dark mode">
+        <div id="sequence-records" class="record-grid-container sequence">
+            <h3 class="header">#</h3>
+            <h3 class="header">Level</h3>
+
+            <p class="rank">1</p>
+            <p class="level" data-rank="1"></p>
+
+            <p class="rank">2</p>
+            <p class="level" data-rank="2"></p>
+
+            <p class="rank">3</p>
+            <p class="level" data-rank="3"></p>
         </div>
-    </footer>
-    <script>
-        /* Light / dark toggle */
-        const toggle = document.getElementById('theme-toggle');
-        toggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        toggle.setAttribute('aria-checked',
-            document.body.classList.contains('dark'));
-        });
-    </script>
+    </div>
+  </main>
+  <footer>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon sun">
+          <img src="../assets/sun_display.svg" alt="Sun Icon" width="20" height="20" />
+        </span>
+        <span class="theme-icon moon">
+          <img src="../assets/moon_display.svg" alt="Moon Icon" width="20" height="20" />
+        </span>
+      </button>
+  </footer>
 </body>
 </html>

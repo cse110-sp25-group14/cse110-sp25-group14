@@ -13,19 +13,29 @@ body {
     min-height: 100vh;
 }
 
+noscript {
+  background-color: #fee; 
+  padding: 1rem; 
+  text-align: center; 
+  border: 1px solid red;
+  font-size: 2rem;
+  z-index: 100; 
+}
+
 #page-info {
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
     margin: 30px;
+    margin-top: 8vh;
 }
 
 #records-container {
     background-color: #bee9e8;
     height: auto;
+    min-height: 12rem;
     width: 30vw;
-    justify-self: center;
     border-radius: 30px;
     box-shadow: 1px 2px 2px 2px rgb(0 0 0 / 15%);
     padding-bottom: 2vh;
@@ -56,7 +66,7 @@ body {
     font-family: "Pathway Extreme", sans-serif;
     font-weight: 700;
     font-size: 0.70em;
-    text-align: center;
+    text-align-last: center;
     color: #5a5d6c;
     border-color: #B3B2B3;
 }
@@ -64,32 +74,29 @@ body {
 #best-title {
     background-color: white;
     width: 70%;
-    justify-self: center;
     text-align: center;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin: 2vh auto;
     border-radius: 25px;
     padding: 5px 5px 5vh;
     color: #063635;
     font-family: "Konkhmer Sleokchher", sans-serif;
 }
 
-#header-dropdown {
+.header-dropdown {
     display: block;
     font-weight: bold;
     font-size: 1rem;
     border-radius: 15px;
     padding: 5px;
-    margin-top: -8vh;
-    justify-self: center;
-    text-align: center;
+    margin: -8vh auto 0;
+    text-align-last: center;
     color: #5a5d6c;
     border-color: #B3B2B3;
     width: 55%;
     font-family: "Pathway Extreme", sans-serif;
 }
 
-#record-flex-container {
+.record-grid-container {
     display: grid;
     grid-template-columns: .5fr 2fr 1fr; /* rank, time, moves */
     gap: 10px;
@@ -97,10 +104,10 @@ body {
     text-align: center;
     justify-self: center;
     font-size: 1.5rem;
-    margin-top: 3vh;
+    margin: 3vh 1.5vw 0;
 }
 
-#record-flex-container .header {
+.record-grid-container .header {
     font-weight: bold;
     font-size: 1.5rem;
     color: #063635;
@@ -109,7 +116,7 @@ body {
     margin-top: 1vh;
 }
 
-#record-flex-container .rank {
+.record-grid-container .rank {
     font-weight: bold;
     color: white;
     background-color: #62B6CB;
@@ -117,23 +124,46 @@ body {
     border-radius: 20px;
 }
 
-#record-flex-container .time {
+.record-grid-container .time {
     font-weight: bold;
     color: white;
     background-color: #62B6CB;
     padding: 5px;
     border-radius: 20px;
+    min-height: 2.5rem;
 }
 
-#record-flex-container .moves {
+.record-grid-container .moves {
     font-weight: bold;
     color: white;
     background-color: #62B6CB;
     padding: 5px;
     border-radius: 20px;
+    min-height: 2.5rem;
+}
+
+.record-grid-container.sequence {
+    grid-template-columns: .5fr 7fr;
+}
+
+.record-grid-container.sequence .rank{
+    width: 40px; 
+}
+
+.record-grid-container .level {
+    font-weight: bold;
+    color: white;
+    background-color: #62B6CB;
+    padding: 5px;
+    border-radius: 20px;
+	min-height: 2.5rem;
 }
 
 @media (width <= 480px) {
+    #page-info {
+        margin-bottom: 2vh;
+    }
+
     #records-container {
         background-color: #bee9e8;
         height: auto;
@@ -142,6 +172,10 @@ body {
         border-radius: 30px;
         box-shadow: 1px 2px 2px 2px rgb(0 0 0 / 15%);
         padding-bottom: 2vh;
+    }
+
+    #record-grid-container.sequence {
+        margin: 30px 15px 15px;
     }
 }
 
@@ -160,8 +194,12 @@ body {
         margin-top: 2vh;
     }
 
-    #header-dropdown {
+    .header-dropdown {
         margin-top: -8vh;
+    }
+
+    #record-grid-container.sequence {
+        margin: 30px 15px 15px;
     }
 }
 
@@ -170,7 +208,7 @@ body {
         padding: 5px 5px 8vh;
     }
 
-    #header-dropdown {
+    .header-dropdown {
         margin-top: -10vh;
     }
 }
@@ -180,51 +218,133 @@ body {
         padding: 5px 5px 4vh;
     }
 
-    #header-dropdown {
+    .header-dropdown {
         margin-top: -6.5vh;
     }
 }
 
-/* footer */
 footer {
     margin-top: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 0.5rem 1rem;
-  }
+}
 
-.icon button,
-.footer-icon button {
+.theme-toggle {
+    width: 70px;
+    height: 34px;
+    border-radius: 30px;
+    background: #ddd;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;  
+    justify-content: center;
+    margin-left: auto;
+}
+  
+.theme-toggle::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    width: 30px;
+    height: 30px;
+    background: black;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
+  
+.theme-toggle::after {
+    content: var(--tooltip-text, "Dark Mode");
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -140%);
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    white-space: nowrap;
+}
+  
+.theme-toggle:hover::after {
+    opacity: 1;
+}
+  
+.theme-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0;   
+    margin: 0;
+    object-fit: cover;
+}
+  
+.theme-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+    object-fit: contain; 
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+  
+.theme-icon.sun {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 3px;
+    top: 50%;
+    transform: translate(4%, -50%);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+  
+.theme-icon.moon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    transform: translate(-4%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+  
+button {
+    -webkit-tap-highlight-color: transparent;
+    font-size: 1rem;
+    font-family: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.icon button{
   font-size: 1.5rem;
 }
 
-/* toggle */
-.toggle {
-  width: 50px;
-  height: 26px;
-  border-radius: 13px;
-  background: #ccc;
-  position: relative;
-  cursor: pointer;
-  transition: background 0.3s ease;
+body.dark .theme-toggle::before { 
+    transform: translateX(32px); 
 }
-
-.toggle::before {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 20px;
-  height: 20px;
-  background: white;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
- /* dark mode overrides */
-body.dark .toggle { background: #444; }
-body.dark .toggle::before { transform: translateX(24px); }
 
 body.dark {
     background: #20202C;
@@ -232,7 +352,7 @@ body.dark {
 }
 
 body.dark #page-info img {
-    content: url('assets/backarrow-white.svg');
+    content: url('../../assets/backarrow-white.svg');
 }
 
 body.dark #records-header{ 
@@ -242,13 +362,14 @@ body.dark #records-header{
   
 body.dark #records-container{
     background-color: #487B48;
+    box-shadow: 1px 2px 2px 2px rgb(255 255 255 / 20%);
 }
 
 body.dark .play-again:hover {
     background-color: #000;
 }
 
-body.dark #record-flex-container .rank {
+body.dark .record-grid-container .rank {
     font-weight: bold;
     color: white;
     background-color: #174517;
@@ -256,18 +377,24 @@ body.dark #record-flex-container .rank {
     border-radius: 20px;
 }
 
-body.dark #record-flex-container .time {
+body.dark .record-grid-container .time {
     font-weight: bold;
     color: white;
     background-color: #174517;
     padding: 5px;
     border-radius: 20px;
+	min-height: 2.5rem;
 }
 
-body.dark #record-flex-container .moves {
+body.dark .record-grid-container .moves {
     font-weight: bold;
     color: white;
     background-color: #174517;
     padding: 5px;
     border-radius: 20px;
+	min-height: 2.5rem;
 }
+
+body.dark p.level{
+    background-color: #174517;
+  }

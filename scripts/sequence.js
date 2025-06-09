@@ -1,23 +1,22 @@
+/**
+ * Sequence game Java Script 
+ * @file sequence.js
+ */
+
 window.addEventListener("DOMContentLoaded", init);
 
-//initialize board
-function init() {
-	const backButton = document.getElementById("page-info");
-	backButton.querySelector("img").addEventListener("click", ()=>{
-		window.location.href = "homepage.html";
-	});
-	const playButton = document.getElementById("start-btn");
-	playButton.addEventListener("click", initializeCardList);
-
-	const difficultySelection = document.getElementById("difficulty-btn");
-	difficultySelection.addEventListener("click", toggleDifficulty);
-
-	//set initial difficulty as well as dynamic button text and apply difficulty mods
-	setDifficulties();
-	updateDifficultyText();
-};
-
-//initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
+/**
+ * Global variables for the game
+ * @type {Array<HTMLElement>} cardList - list of card elements on the page.
+ * @type {Array<number>} cards - Indices of card for sequence card.
+ * @type {number} currPointer - current position in the sequence game where user playing.
+ * @type {number} record - user's current record
+ * @type {number} onTime - Duration cards stay highlight
+ * @type {number} delayTime - Delay between card highlight
+ * @type {string} selectedDifficulty - current difficulty
+ * @type {number} gridSize - grid size of current game depends on difficulty
+ * @type {number} cardsInPlay - Total number of cards in the grid. 
+ */
 let cardList = [];
 let cards = [];
 let currPointer = 0;
@@ -28,35 +27,103 @@ let selectedDifficulty = "easy";
 let gridSize = 3;
 let cardsInPlay = 9;
 
-//to pull values for dynamic text on difficulty button
+/**
+ * Labels for difficulty levels for the game
+ * @const {Object} difficultyLabels
+ */
 const difficultyLabels = {
 	easy: "Easy",
 	medium: "Medium",
 	hard: "Hard"
 };
 
-//timer is a promise that returns when the timeout ends
+/**
+ * @func timer
+ * @param {number} ms - time in ms to wait
+ * @returns {Promise} - A promise that resolves after the specific time.
+ */
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
-//initialize cards; first make play button go away, then push all cardElements in the page into the cardList array (cardList array doesn't change after this, it is only referenced), then runs playCards
-function initializeCardList(){
+/**
+ * @description
+ * Initialize the game board and set up event listeners for buttons at the sequence page.
+ * Set up localstorage for dark mode.
+ * @func init
+ */
+function init() {
+	const backButton = document.getElementById("page-info");
+	backButton.querySelector("img").addEventListener("click", ()=>{
+		window.location.href = "homepage.html";
+	});
 	const playButton = document.getElementById("start-btn");
-	playButton.style.display = "none";
-	currPointer = 0;
-	cardList = [];
-	cards = [];
+	playButton.addEventListener("click", initializeCardList);
 
-	//dynamically build grid based on chosen difficulty
+	const difficultySelection = document.getElementById("difficulty-btn");
+	difficultySelection.addEventListener("click", () =>{
+		toggleDifficulty();
+		loadRecords();
+		generateGrid(); 
+	});
+
+	setDifficulties();
+	updateDifficultyText();
+	const themeToggle = document.getElementById("theme-toggle");
+	const sunIcon = document.querySelector(".theme-icon.sun");
+	const moonIcon = document.querySelector(".theme-icon.moon");
+	const root = document.documentElement;
+
+	function updateTooltip() {
+		const isDark = document.body.classList.contains("dark");
+		root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
+	}
+
+	if (themeToggle) {
+		themeToggle.sunIcon = sunIcon;
+		themeToggle.moonIcon = moonIcon;
+
+		themeToggle.addEventListener("click", function () {
+			document.body.classList.toggle("dark");
+			const isDark = document.body.classList.contains("dark");
+
+			if (this.sunIcon && this.moonIcon) {
+				this.sunIcon.style.opacity = isDark ? "0" : "1";
+				this.moonIcon.style.opacity = isDark ? "1" : "0";
+			}
+
+			localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+			updateTooltip();
+		});
+
+		const isDark = localStorage.getItem("darkMode") === "enabled";
+		if (isDark) {
+			document.body.classList.add("dark");
+			if (sunIcon && moonIcon) {
+				sunIcon.style.opacity = "0";
+				moonIcon.style.opacity = "1";
+			}
+		}
+		updateTooltip();
+	}
+
+	const recordButton = document.getElementById("leaderboard-btn");
+	if (recordButton) {
+		recordButton.addEventListener("click", () => {
+			window.location.href = "records.html";
+		});
+	}
+	loadRecords();
+	generateGrid();
+};
+
+/**
+ * @description
+ * Generates the game grid based on current difficulty
+ * @func generateGrid
+ */
+function generateGrid() {
 	const grid = document.getElementById("card-grid");
 	grid.innerHTML = "";
-
-	//update CSS to cover 3 grid option sizes instead of being a harcoded 3 x 3
-	grid.style.gridTemplateColumns = `repeat(${gridSize}, 110px)`;
-
-	//rebuild original HTML structure 
-	//each row is now a <div class="card-row">
-	//each card is now a <div class="card">
-	//structure added under #card-grid
+	grid.style.gridTemplateColumns = `repeat(${gridSize}, minmax(60px, 1fr))`;
 	for(let i = 0; i<gridSize; i+=1) {
 		const row = document.createElement("div");
 		row.className = "card-row";
@@ -67,6 +134,25 @@ function initializeCardList(){
 		}
 		grid.appendChild(row);
 	}
+}
+
+
+/**
+ * @description
+ * Initializes the card list and starts game, generates all the base elements
+ * @func initializeCardList
+ */
+function initializeCardList(){
+	document.getElementById("difficulty-btn").disabled = true;
+	const playButton = document.getElementById("start-btn");
+	playButton.style.display = "none";
+	currPointer = 0;
+	cardList = [];
+	cards = [];
+
+	generateGrid();
+
+	const grid = document.getElementById("card-grid");
 	const rows = grid.getElementsByClassName("card-row");
 	for(let i = 0; i<rows.length; i+=1){
 		const cardArr = rows[i].getElementsByClassName("card");
@@ -80,13 +166,21 @@ function initializeCardList(){
 	}, 500);
 }
 
-//appends a random number in the current number of cards that are in play (diff-based) to the array, which are the indices of cardList
+
+/**
+ * @func appendRandom
+ * @description Adds a random card to current game
+ * @param {Array<number>} array - The array of card indices to append to
+ */
 function appendRandom(array){
 	array.push(Math.floor(Math.random() * cardsInPlay));
 }
 
-//since button is a toggle we want to make sure that click on easy moves it to medium
-//and clicking medium takes it to hard and repeats that loop
+/**
+ * @description
+ * Cycles through the difficulties when the user clicks the button to change difficulties
+ * @func toggleDifficulty
+ */
 function toggleDifficulty() {
 	switch (selectedDifficulty){
 		case "easy":
@@ -103,7 +197,11 @@ function toggleDifficulty() {
 	updateDifficultyText();
 }
 
-//set the actual values that increase our idea of difficulty
+/**
+ * @description
+ * Sets up the game difficulty depending on the current difficulty. Each difficulty has a different number of cards in play and time between outputs.
+ * @func setDifficulties
+ */
 function setDifficulties() {
 	switch (selectedDifficulty){
 		case "easy":
@@ -127,12 +225,21 @@ function setDifficulties() {
 	}
 }
 
+/**
+ * @description
+ * Changes the outputted text to mirror the current game difficulty
+ * @func updateDifficultyText
+ */
 function updateDifficultyText() {
 	const button = document.getElementById("difficulty-btn");
 	button.querySelector("span").textContent = `Difficulty: ${difficultyLabels[selectedDifficulty]}`;
 }
 
-//async function, since timeouts are used extensively for better user experience. code adds one extra card to the current user sequence, then shows all of the current cards in order (user buttons should be locked before this call). it will then unlock every card on the page
+/**
+ * @description
+ * Asynchronous function because of the usage of timeout. Appends one more card to the current user sequence, shows the current sequence to the user, then unlocks all the cards for the user.
+ * @func playCards
+ */
 async function playCards(){
 	appendRandom(cards);
 	for(let j = 0; j<cards.length; j+=1){
@@ -150,7 +257,12 @@ async function playCards(){
 	}
 }
 
-//when element is pressed and unlocked, this function is ran; it locks the current element, ends the game instantly if it is incorrect, or displays animation, increases currPointer, and checks if the user finished the sequence, which if they did, runs playCards again
+/**
+ * @description
+ * Checks if the card clicked is the correct card, if it isn't, it runs @see endGame, if it is and if it is the last card in the sequence the function runs @see playCards for the next sequence. 
+ * Will also run @see flipCard twice, with a timeout between both to show the user that the card has been clicked, and update the record through @see checkRecord if needed
+ * @func checkClicked
+ */
 async function checkClicked(){
 	lock(this);
 	this.classList.add("unflipped");
@@ -185,17 +297,32 @@ async function checkClicked(){
 	}
 }
 
-//lock element from user input
+/**
+ * @description
+ * Basic function to lock the element from user input
+ * @func lock
+ * @param {Object} element
+ */
 function lock(element){
 	element.removeEventListener("click", checkClicked, false);
 }
 
-//allow element to be clicked again, runs checkClicked when pressed
+/**
+ * @description
+ * Basic function to unlock the element from user input
+ * @func unlock
+ * @param {Object} element 
+ */
 function unlock(element){
 	element.addEventListener("click", checkClicked);
 }
 
-//when the game ends, or when a new card is added to the sequence, this updates the Level and Record divs appropriately
+/**
+ * @description
+ * Checks the if the new level beats the current record and updates the html appropriately
+ * @func checkRecord
+ * @param {number} val
+ */
 function checkRecord(val){
 	const statsGrid = document.getElementById("stats-grid");
 	const stats = statsGrid.querySelectorAll("p");
@@ -206,29 +333,69 @@ function checkRecord(val){
 	}
 }
 
-//called when game ends; locks every element, resets everything, and unhides the play button, but with a different text
+/**
+ * @description
+ * Saves the new score to localStorage, and locks all elements, then resets the cards and the sequence array and navigates to result-sequence.html file.
+ * @func endGame
+ */
 function endGame(){
+	const recordToSave = { difficulty: selectedDifficulty, level: cards.length - 1 };
+	let history = JSON.parse(localStorage.getItem("sequence")) || [];
+	history.push(recordToSave);
+	localStorage.setItem("sequence", JSON.stringify(history));
+
+	localStorage.setItem("sequence-recent", JSON.stringify(recordToSave));
+
 	for(let i = 0; i<cardList.length; i+=1){
 		const cardElement = cardList[i]; 
 		lock(cardElement);
 	}
 	cards = [];
 	cardList = [];
-	const playButton = document.getElementById("start-btn");
-	playButton.style.display = "block";
-	playButton.innerHTML = "You Lost! Try again";
+	document.getElementById("difficulty-btn").disabled = false;
+
+	window.location.href = "result-sequence.html";
 }
 
-//basic card flip animation; toggles the background color to change
+/**
+ * @description
+ * Flips the card by changing the card class between unflipped and flipped
+ * @func flipCard
+ * @param {Object} card
+ */
 function flipCard(card){
 	if(card.classList.contains("unflipped")){
-		card.style.backgroundColor = "purple";
+		card.classList.add("card-click");
 		card.classList.add("flipped");
 		card.classList.remove("unflipped");
 	}
 	else{
-		card.style.backgroundColor = "#BFE9E7";
+		card.classList.remove("card-click");
 		card.classList.add("unflipped");
 		card.classList.remove("flipped");
+	}
+}
+
+/**
+ * @description
+ * Displays the record and the current score
+ * @func loadRecords
+ */
+function loadRecords() {
+	const statsGrid = document.getElementById("stats-grid");
+	const stats = statsGrid.querySelectorAll("p");
+
+	const records = JSON.parse(localStorage.getItem("sequence")) || [];
+	const filteredRecords = records.filter((record) => record.difficulty === selectedDifficulty);
+	if (filteredRecords.length > 0) {
+		const sortedLevels = filteredRecords
+			.map((record) => record.level)
+			.sort((a, b) => b - a);
+			
+		record = sortedLevels[0];
+		stats[1].innerHTML = `Record - ${record}`;
+	} else {
+		record = 0;
+		stats[1].innerHTML = `Record - 0`;
 	}
 }

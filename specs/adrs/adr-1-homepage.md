@@ -1,6 +1,6 @@
 | status | date | decision-makers | consulted | informed |
 | --- | --- | --- | --- | --- |
-| accepted | 2025-04-26 when the decision was last updated | Victoria, Emily, Carl | Aarush, Gautam, Mark, Eric, Travis, Nilay | Aarush, Gautam, Mark, Eric, Travis, Nilay |
+| accepted | 2025-04-26 when the decision was last updated | Victoria, Emily, Carl | Aarush, Gautam, Mark, Eric, Travis, Nilay, Srideep | Aarush, Gautam, Mark, Eric, Travis, Nilay, Srideep |
 
 
 # MVP-UI/UX Design of Homepage and Two Games
@@ -9,7 +9,7 @@
 
 After deciding on creating a memory card game inspired by the human benchmark website, the UI/UX team worked to design how our team will approach creating it with our own flair. Described below is what we developed as a team after consulting similar products and designing together.
 
-<!-- This is an optional element. Feel free to remove. -->
+
 ## Decision Drivers
 
 * We considered the two extreme sides of a memory card matching game. The first are older users who want the UI/UX to be straightforward and not too complicated.
@@ -27,27 +27,27 @@ After deciding on creating a memory card game inspired by the human benchmark we
 
 Chosen option: A combination of Victoria and Carl's design because after viewing both as a team, we loved many elements from Victoria's design, especially how she chose squares with rounded corners to create a "friendlier" look. We combined the strong elements of her design with the strong elements of Carl's design. Emily then helped with finalizing which font we will use to further communicate the type of website we were going for: a website welcoming to all ages from both extremes of age groups.  
 
-<!-- This is an optional element. Feel free to remove. -->
+
 ### Consequences
 
 * Good, because based on our user personas we created, we designed everything so that it is not too complicated for older users but not too boring for younger users. We believe that it is an overall clean design.
 * Bad, because the design may be seen as too boring by some users. As we continue to develop this project, we may think of ways to further elevate the design and the UI/UX.
 
-<!-- This is an optional element. Feel free to remove. -->
+
 ### Confirmation
 
 This decision was confirmed through critiques and advice as the UI/UX team developed these designs and finally through a team vote from two options where the font was different. Ultimately, the combined design of Victoria and Carl's work with the fonts Baloo, Baloo 2, and Konkhmer Sleokchher won by popular vote (7) vs the fonts Pridi and Kiwi Maru (1).   
 
-<!-- This is an optional element. Feel free to remove. -->
+
 ## Pros and Cons of the Options
 
 ### Design with Baloo, Baloo 2, and Konkhmer Sleokchher
 
-<!-- This is an optional element. Feel free to remove. -->
+
 The fonts altogether are more "round" and less "sharp."
 
 * Good, because these fonts work well with the rounded edges of the squares to create a more welcoming design.
-<!-- use "neutral" if the given argument weights neither for good nor bad -->
+
 * Bad, because it might be seen as too "childish."
 
 ### Design with Pridi and Kiwi Maru 

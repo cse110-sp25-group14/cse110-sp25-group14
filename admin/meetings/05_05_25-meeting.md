@@ -1,4 +1,4 @@
-# CSE 110 5/5 Meeting (8:15–9:00 pm)
+# CSE 110 5/5/25 Meeting (8:15–9:00 pm)
 
 ## Attendance
 Carl Casares, Travis Huang, Gautam Mohandas, Aarush Mehrotra, Emily Cai, Mark Escarrilla, Srideep Dornala, Nilay Bhoot, Victoria Tran, Kilhoon Kim

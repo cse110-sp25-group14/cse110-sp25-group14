@@ -1,4 +1,4 @@
-# CSE 110 Meeting Notes – 4/24, 2–3 PM
+# CSE 110 Meeting Notes – 4/24/25, 2–3 PM
 
 **Attendance:**
 - Carl Casares  

@@ -9,7 +9,7 @@
 
 After learning the theme for projects would be cards, we needed to decide together what the topic of our project would be. We did not want our project topic to be too simple but not too complicated, so that we can focus on building a functional, high-quality product. 
 
-<!-- This is an optional element. Feel free to remove. -->
+
 ## Decision Drivers
 
 * We considered our skills, experience, and capabilities as a group and did not want to attempt a topic that was too complicated, especially backend-wise. 
@@ -28,7 +28,7 @@ After learning the theme for projects would be cards, we needed to decide togeth
 
 Chosen option: We ultimately decided on working to build our own version of a memory card game inspired by the human benchmark website. We additionally will be working towards a sequence card/tile game also inspired by the human benchmark website.  
 
-<!-- This is an optional element. Feel free to remove. -->
+
 ### Consequences
 
 * Good, because it is a product that can be used for all ages: young and old.
@@ -37,20 +37,20 @@ Chosen option: We ultimately decided on working to build our own version of a me
 * Bad, because we run the risk of the project being too plain or unoriginal.
 * Bad, because the project may be disproportionately frontend-heavy and we have considerably fewer frontend members than backend members. 
 
-<!-- This is an optional element. Feel free to remove. -->
+
 ### Confirmation
 
 This decision was confirmed through a unanimous vote from all eight members who attended the 2025-04-23 meeting.   
 
-<!-- This is an optional element. Feel free to remove. -->
+
 ## Pros and Cons of the Options
 
 ### Collector application
 
-<!-- This is an optional element. Feel free to remove. -->
+
 
 * Good, a good opportunity for learning more about backend development.
-<!-- use "neutral" if the given argument weights neither for good nor bad -->
+
 * Bad, because it might be too backend-heavy.
 * Bad, because a collector app is too broad. What cards will users collect, and what is our scope? Pokemon cards? K-Pop photocards? Baseball cards? How will we possibly store all the possible cards users could collect if there are so many variations of these? We did not want to give users the task of inputting all the information of their collectable cards themselves. 
 
