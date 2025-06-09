@@ -1,9 +1,9 @@
 name: JSDoc
 
-on:
+on: 
   push:
     branches:
-    - JSDocs
+      JSDOCS
 
 jobs:
   docs:
