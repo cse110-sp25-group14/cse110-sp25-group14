@@ -101,8 +101,8 @@ noscript {
 
 .card-click{
     background-color: purple;
-    width: 100px;
-    height: 100px;
+    width: min(22vw, 120px);
+    height: min(22vw, 120px);
     border-radius: 30px;
     margin-top: 15px;
     justify-content: center;
