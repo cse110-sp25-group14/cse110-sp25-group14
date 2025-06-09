@@ -32,17 +32,10 @@ describe("basic user flow", () => {
 
 		await page.click("#start-btn");
 		await page.waitForSelector("#start-btn", { hidden: true });
-
-		// await cards[0].click();
-		// const flippedCard = await page.$(".flipped");
-		// expect(flippedCard).toBe(cards[0]);
 	});
 
 	test("sequence game should allow interaction", async () => {
 		await page.goto("http://localhost:3000/source/sequence.html");
-
-		// const cards = await page.$$(".card");
-		// expect(cards.length).toBe(16);
 
 		await page.click("#start-btn");
 		await page.waitForSelector("#start-btn", { hidden: true });
