@@ -13,4 +13,4 @@ jobs: # the things being executed
               run: npm ci
 
             - name: StyleLint test
-              run: npx stylelint "**/*.css" --ignore '**/jsdocs/**,script/jsdocs/**,docs/**'
+              run: npx stylelint "**/*.css" --ignore-path .stylelintignore
