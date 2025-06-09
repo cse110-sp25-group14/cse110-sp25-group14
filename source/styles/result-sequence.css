@@ -42,6 +42,7 @@ h1, h2 {
   justify-content: flex-start;
   position: relative;
   margin: 30px;
+	margin-top: 8vh;
   gap: 10px; 
 }
 
