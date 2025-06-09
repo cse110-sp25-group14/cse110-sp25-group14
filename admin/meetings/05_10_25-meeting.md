@@ -1,4 +1,4 @@
-# CSE 110 5/10 Meeting (3:00 pm)
+# CSE 110 5/10/25 Meeting (3:00 pm)
 
 ## Attendance
 Aarush Mehrota, Gautam Mohandas, Eric Wang, Mark Escarrilla, Kilhoon Kim, Travis Huang, Victoria Tran, Srideep Dornala

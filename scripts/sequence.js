@@ -1,6 +1,22 @@
+/**
+ * Sequence game Java Script 
+ * @file sequence.js
+ */
+
 export class SequenceGame {
 	constructor() {
-		//initialize variables; cardList is the list of cards on the page, cards is the list of current cards in the user's sequence listed by index, currPointer is what card the user is on in their sequence, record stores the user's current record
+		/**
+		 * Global variables for the game
+		 * @type {Array<HTMLElement>} cardList - list of card elements on the page.
+		 * @type {Array<number>} cards - Indices of card for sequence card.
+		 * @type {number} currPointer - current position in the sequence game where user playing.
+		 * @type {number} record - user's current record
+		 * @type {number} onTime - Duration cards stay highlight
+		 * @type {number} delayTime - Delay between card highlight
+		 * @type {string} selectedDifficulty - current difficulty
+		 * @type {number} gridSize - grid size of current game depends on difficulty
+		 * @type {number} cardsInPlay - Total number of cards in the grid. 
+		 */
 		this.cardList = [];
 		this.cards = [];
 		this.currPointer = 0;
@@ -11,18 +27,30 @@ export class SequenceGame {
 		this.gridSize = 3;
 		this.cardsInPlay = 9;
 
-		//to pull values for dynamic text on difficulty button
+		/**
+		 * Labels for difficulty levels for the game
+		 * @const {Object} difficultyLabels
+		 */
 		this.difficultyLabels = {
 			easy: "Easy",
 			medium: "Medium",
 			hard: "Hard"
 		};
 
-		//timer is a promise that returns when the timeout ends
+		/**
+		 * @func timer
+		 * @param {number} ms - time in ms to wait
+		 * @returns {Promise} - A promise that resolves after the specific time.
+		 */
 		this.timer = ms => new Promise(res => setTimeout(res, ms));
 	}
 
-	//initialize board
+	/**
+	 * @description
+	 * Initialize the game board and set up event listeners for buttons at the sequence page.
+	 * Set up localstorage for dark mode.
+	 * @func init
+	 */
 	init() {
 		const backButton = document.getElementById("page-info");
 		backButton.querySelector("img").addEventListener("click", ()=>{
@@ -89,7 +117,11 @@ export class SequenceGame {
 		this.generateGrid();  //on page load add base grid 
 	};
 
-	//need to build dyanmically per click and on load so let's pull out the code that is inside initializeCardList that does that
+	/**
+	 * @description
+	 * Generates the game grid based on current difficulty
+	 * @func generateGrid
+	 */
 	generateGrid() {
 	//dynamically build grid based on chosen difficulty
 		const grid = document.getElementById("card-grid");
@@ -115,7 +147,11 @@ export class SequenceGame {
 		}
 	}
 
-	//initialize cards; first make play button go away, then push all cardElements in the page into the cardList array (cardList array doesn't change after this, it is only referenced), then runs playCards
+	/**
+	 * @description
+	 * Initializes the card list and starts game, generates all the base elements
+	 * @func initializeCardList
+	 */
 	initializeCardList(){
 		document.getElementById("difficulty-btn").disabled = true;
 		const playButton = document.getElementById("start-btn");
@@ -140,13 +176,20 @@ export class SequenceGame {
 		}, 500);
 	}
 
-	//appends a random number in the current number of cards that are in play (diff-based) to the array, which are the indices of cardList
+	/**
+	 * @func appendRandom
+	 * @description Adds a random card to current game
+	 * @param {Array<number>} array - The array of card indices to append to
+	 */
 	appendRandom(array){
 		array.push(Math.floor(Math.random() * this.cardsInPlay));
 	}
 
-	//since button is a toggle we want to make sure that click on easy moves it to medium
-	//and clicking medium takes it to hard and repeats that loop
+	/**
+	 * @description
+	 * Cycles through the difficulties when the user clicks the button to change difficulties
+	 * @func toggleDifficulty
+	 */
 	toggleDifficulty() {
 		switch (this.selectedDifficulty){
 			case "easy":
@@ -163,7 +206,11 @@ export class SequenceGame {
 		this.updateDifficultyText();
 	}
 
-	//set the actual values that increase our idea of difficulty
+	/**
+	 * @description
+	 * Sets up the game difficulty depending on the current difficulty. Each difficulty has a different number of cards in play and time between outputs.
+	 * @func setDifficulties
+	 */
 	setDifficulties() {
 		switch (this.selectedDifficulty){
 			case "easy":
@@ -187,13 +234,22 @@ export class SequenceGame {
 		}
 	}
 
+	/**
+	 * @description
+	 * Changes the outputted text to mirror the current game difficulty
+	 * @func updateDifficultyText
+	 */
 	updateDifficultyText() {
 		const button = document.getElementById("difficulty-btn");
 		button.querySelector("span").textContent = 
 			`Difficulty: ${this.difficultyLabels[this.selectedDifficulty]}`;
 	}
 
-	//async function, since timeouts are used extensively for better user experience. code adds one extra card to the current user sequence, then shows all of the current cards in order (user buttons should be locked before this call). it will then unlock every card on the page
+	/**
+	 * @description
+	 * Asynchronous function because of the usage of timeout. Appends one more card to the current user sequence, shows the current sequence to the user, then unlocks all the cards for the user.
+	 * @func playCards
+	 */
 	async playCards(){
 		this.appendRandom(this.cards);
 		for(let j = 0; j<this.cards.length; j+=1){
@@ -211,7 +267,12 @@ export class SequenceGame {
 		}
 	}
 
-	//when element is pressed and unlocked, this function is ran; it locks the current element, ends the game instantly if it is incorrect, or displays animation, increases currPointer, and checks if the user finished the sequence, which if they did, runs playCards again
+	/**
+	 * @description
+	 * Checks if the card clicked is the correct card, if it isn't, it runs @see endGame, if it is and if it is the last card in the sequence the function runs @see playCards for the next sequence. 
+	 * Will also run @see flipCard twice, with a timeout between both to show the user that the card has been clicked, and update the record through @see checkRecord if needed
+	 * @func checkClicked
+	 */
 	async checkClicked(event){
 		const card = event.currentTarget;
 		this.lock(card);
@@ -249,17 +310,32 @@ export class SequenceGame {
 
 	boundCheckClicked = this.checkClicked.bind(this);
 
-	//lock element from user input
+	/**
+	 * @description
+	 * Basic function to lock the element from user input
+	 * @func lock
+	 * @param {Object} element
+	 */
 	lock(element){
 		element.removeEventListener("click", this.boundCheckClicked, false);
 	}
 
-	//allow element to be clicked again, runs checkClicked when pressed
+	/**
+	 * @description
+	 * Basic function to unlock the element from user input
+	 * @func unlock
+	 * @param {Object} element 
+	 */
 	unlock(element){
 		element.addEventListener("click", this.boundCheckClicked);
 	}
 
-	//when the game ends, or when a new card is added to the sequence, this updates the Level and Record divs appropriately
+	/**
+	 * @description
+	 * Checks the if the new level beats the current record and updates the html appropriately
+	 * @func checkRecord
+	 * @param {number} val
+	 */
 	checkRecord(val){
 		const statsGrid = document.getElementById("stats-grid");
 		const stats = statsGrid.querySelectorAll("p");
@@ -270,7 +346,11 @@ export class SequenceGame {
 		}
 	}
 
-	//called when game ends; locks every element, resets everything, and unhides the play button, but with a different text
+	/**
+	 * @description
+	 * Saves the new score to localStorage, and locks all elements, then resets the cards and the sequence array and navigates to result-sequence.html file.
+	 * @func endGame
+	 */
 	endGame(){
 		const recordToSave = { 
 			difficulty: this.selectedDifficulty, 
@@ -293,7 +373,12 @@ export class SequenceGame {
 		window.location.href = "result-sequence.html";
 	}
 
-	//basic card flip animation; toggles the background color to change
+	/**
+	 * @description
+	 * Flips the card by changing the card class between unflipped and flipped
+	 * @func flipCard
+	 * @param {Object} card
+	 */
 	flipCard(card){
 		if(card.classList.contains("unflipped")){
 		//card.style.backgroundColor = "purple";
@@ -308,6 +393,11 @@ export class SequenceGame {
 		}
 	}
 
+	/**
+	 * @description
+	 * Displays the record and the current score
+	 * @func loadRecords
+	 */
 	loadRecords() {
 		const statsGrid = document.getElementById("stats-grid");
 		const stats = statsGrid.querySelectorAll("p");

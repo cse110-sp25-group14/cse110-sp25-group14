@@ -1,8 +1,26 @@
+/**
+ * Homepage Java Script for our game
+ * navigation between pages and switching functionality
+ * @file homepage.js
+ * @author Kilhoon Kim
+ */
 // run everything after page loads
 window.addEventListener("DOMContentLoaded", init);
 
-
-// Starts program, all functions calls originate here
+/**
+ * Initializes button event listeners for page navigation.
+ *
+ * @func init
+ * @description
+ * Sets up the main interface by linking DOM buttons to their
+ * respective navigation functions.
+ * Sets up localstorage for dark mode.
+ * @see random_game_page
+ * @see records_page
+ * @see sequence_page
+ * @see matching_page
+ * 
+ */
 function init() {
 	//insert functions/eventListeners to functions
 	const leaderboardBtn = document.getElementById("leaderboard-btn");
@@ -17,6 +35,12 @@ function init() {
 	const moonIcon = document.querySelector(".theme-icon.moon");
 	const root = document.documentElement;
 
+
+	/**
+	 * @func updateTooltip
+	 * @description
+	 * Update the tooltip string based on currnetmode.
+	 */
 	function updateTooltip() {
 		const isDark = document.body.classList.contains("dark");
 		root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
@@ -76,21 +100,41 @@ function init() {
 	}
 }
 
+
+/**
+ * @func random_game_page
+ * @description
+ * Navigate to a random game page.
+ */
 function random_game_page() {
 	const games = ["matching.html", "sequence.html"];
 	const randomIndex = Math.floor(Math.random() * games.length);
 	window.location.href = games[randomIndex];
 }
 
-
+/**
+ * @func records_page
+ * @description
+ * Navigate to a records page.
+ */
 function records_page(){
 	window.location.href = "records.html";
 }
 
+/**
+ * @func matching_page
+ * @description
+ * Navigate to a matching game page.
+ */
 function matching_page(){
 	window.location.href = "matching.html";
 }
 
+/**
+ * @func sequence_page
+ * @description
+ * Navigate to a sequence game page.
+ */
 function sequence_page(){
 	window.location.href = "sequence.html";
 }

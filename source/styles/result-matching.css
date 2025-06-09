@@ -12,6 +12,15 @@
     font-family: 'Baloo 2', sans-serif;
   }
 
+  noscript {
+    background-color: #fee; 
+    padding: 1rem; 
+    text-align: center; 
+    border: 1px solid red;
+    font-size: 2rem;
+    z-index: 100; 
+  }
+
   .result {
     font-family: "Patua One", serif;
     color: #063635;
@@ -34,7 +43,8 @@
     justify-content: flex-start;
     position: relative;
     margin: 30px;
-    gap: 10px; 
+		margin-top: 8vh;
+    gap: 10px;
   }
   
   #content {
@@ -58,7 +68,7 @@
   /* Main result card styling */
   #result-card {
     background-color: #BEE9E8;
-    background-image: url("assets/blur-bg.svg");
+    background-image: url("../../assets/blur-bg.svg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -129,6 +139,12 @@
     align-items: center;
     padding: 0.5rem 1rem;
   }
+
+ @media (width <= 480px) {
+    #result-card {
+      max-width: 85%;
+    }
+ }
   
   .theme-toggle {
     width: 70px;
@@ -255,12 +271,12 @@
   }
 
   body.dark #page-info img {
-    content: url('../assets/backarrow-white.svg');
+    content: url('../../assets/backarrow-white.svg');
   }
   
   body.dark #result-card{ 
     background-color: #174517;
-    background-image: url("../assets/blur-bg-darkmode.svg");
+    background-image: url("../../assets/blur-bg-darkmode.svg");
     color:#fff
   }
 

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: homepage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: homepage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Homepage Java Script for our game
+ * navigation between pages and switching functionality
+ * @file homepage.js
+ * @author Kilhoon Kim
+ */
+// run everything after page loads
+window.addEventListener("DOMContentLoaded", init);
+
+/**
+ * Initializes button event listeners for page navigation.
+ *
+ * @func init
+ * @description
+ * Sets up the main interface by linking DOM buttons to their
+ * respective navigation functions.
+ * Sets up localstorage for dark mode.
+ * @see random_game_page
+ * @see records_page
+ * @see sequence_page
+ * @see matching_page
+ * 
+ */
+function init() {
+	//insert functions/eventListeners to functions
+	const leaderboardBtn = document.getElementById("leaderboard-btn");
+	const matchingBtn = document.getElementById("matching-button");
+	const matchingRecBtn = document.getElementById("matching-record");
+	const sequenceBtn = document.getElementsByClassName("sec-btn")[2];
+	const sequenceRecBtn = document.getElementsByClassName("sec-btn ghost")[1];
+	const letsFindOutBtn = document.getElementsByClassName("primary-btn")[0];
+	const darkmodeToggle = document.getElementById("theme-toggle");
+
+	const sunIcon = document.querySelector(".theme-icon.sun");
+	const moonIcon = document.querySelector(".theme-icon.moon");
+	const root = document.documentElement;
+
+
+	/**
+	 * @func updateTooltip
+	 * @description
+	 * Update the tooltip string based on currnetmode.
+	 */
+	function updateTooltip() {
+		const isDark = document.body.classList.contains("dark");
+		root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
+	}
+
+	if(darkmodeToggle &amp;&amp; sunIcon &amp;&amp; moonIcon){
+		darkmodeToggle.sunIcon = sunIcon;
+		darkmodeToggle.moonIcon = moonIcon;
+	}
+
+	matchingBtn.addEventListener("click", matching_page);
+	sequenceBtn.addEventListener("click", sequence_page);
+	matchingRecBtn.addEventListener("click", records_page);
+	sequenceRecBtn.addEventListener("click", records_page);
+	leaderboardBtn.addEventListener("click", records_page);
+	letsFindOutBtn.addEventListener("click", random_game_page);
+
+	if (localStorage.getItem("darkMode") === "enabled") {
+		document.body.classList.add("dark");
+		if (sunIcon &amp;&amp; moonIcon) {
+			sunIcon.style.opacity = "0";
+			moonIcon.style.opacity = "1";
+		}
+	}
+
+	updateTooltip();
+
+	if (darkmodeToggle) {
+		darkmodeToggle.addEventListener("click", function() {
+			document.body.classList.toggle("dark");
+			
+			const isDarkmode = document.body.classList.contains("dark");
+			
+			if (this.sunIcon &amp;&amp; this.moonIcon) {
+				if (isDarkmode) {
+					this.sunIcon.style.opacity = "0";
+					this.moonIcon.style.opacity = "1";
+				} else {
+					this.sunIcon.style.opacity = "1";
+					this.moonIcon.style.opacity = "0";
+				}
+			}
+			
+			localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
+
+			updateTooltip();
+		});
+	}
+
+	if (localStorage.getItem("darkMode") === "enabled") {
+		document.body.classList.add("dark");
+		
+		if (sunIcon &amp;&amp; moonIcon) {
+			sunIcon.style.opacity = "0";
+			moonIcon.style.opacity = "1";
+		}
+	}
+}
+
+
+/**
+ * @func random_game_page
+ * @description
+ * Navigate to a random game page.
+ */
+function random_game_page() {
+	const games = ["matching.html", "sequence.html"];
+	const randomIndex = Math.floor(Math.random() * games.length);
+	window.location.href = games[randomIndex];
+}
+
+/**
+ * @func records_page
+ * @description
+ * Navigate to a records page.
+ */
+function records_page(){
+	window.location.href = "records.html";
+}
+
+/**
+ * @func matching_page
+ * @description
+ * Navigate to a matching game page.
+ */
+function matching_page(){
+	window.location.href = "matching.html";
+}
+
+/**
+ * @func sequence_page
+ * @description
+ * Navigate to a sequence game page.
+ */
+function sequence_page(){
+	window.location.href = "sequence.html";
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="MatchingGame.html">MatchingGame</a></li><li><a href="MatchingGame_MatchingGame.html">MatchingGame</a></li></ul><h3>Global</h3><ul><li><a href="global.html#appendRandom">appendRandom</a></li><li><a href="global.html#attachDropdownHandlers">attachDropdownHandlers</a></li><li><a href="global.html#attachNavHandlers">attachNavHandlers</a></li><li><a href="global.html#cardList">cardList</a></li><li><a href="global.html#checkClicked">checkClicked</a></li><li><a href="global.html#checkMatch">checkMatch</a></li><li><a href="global.html#checkRecord">checkRecord</a></li><li><a href="global.html#configureThemeToggle">configureThemeToggle</a></li><li><a href="global.html#createBoard">createBoard</a></li><li><a href="global.html#difficultyLabels">difficultyLabels</a></li><li><a href="global.html#endGame">endGame</a></li><li><a href="global.html#fetchDOM">fetchDOM</a></li><li><a href="global.html#fetchDom">fetchDom</a></li><li><a href="global.html#flipCard">flipCard</a></li><li><a href="global.html#generateGrid">generateGrid</a></li><li><a href="global.html#handleRecordDropdownChange">handleRecordDropdownChange</a></li><li><a href="global.html#hideButton">hideButton</a></li><li><a href="global.html#hideInitialSections">hideInitialSections</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initThemeState">initThemeState</a></li><li><a href="global.html#initializeCardList">initializeCardList</a></li><li><a href="global.html#loadMatchingRecords">loadMatchingRecords</a></li><li><a href="global.html#loadRecords">loadRecords</a></li><li><a href="global.html#loadSequenceRecords">loadSequenceRecords</a></li><li><a href="global.html#lock">lock</a></li><li><a href="global.html#matching_page">matching_page</a></li><li><a href="global.html#pageNav">pageNav</a></li><li><a href="global.html#parseTime">parseTime</a></li><li><a href="global.html#playCards">playCards</a></li><li><a href="global.html#random_game_page">random_game_page</a></li><li><a href="global.html#records_page">records_page</a></li><li><a href="global.html#resetBoard">resetBoard</a></li><li><a href="global.html#sequence_page">sequence_page</a></li><li><a href="global.html#setDifficulties">setDifficulties</a></li><li><a href="global.html#showMatchingUI">showMatchingUI</a></li><li><a href="global.html#showSequenceUI">showSequenceUI</a></li><li><a href="global.html#shuffle">shuffle</a></li><li><a href="global.html#startStopwatch">startStopwatch</a></li><li><a href="global.html#stopStopwatch">stopStopwatch</a></li><li><a href="global.html#timer">timer</a></li><li><a href="global.html#toggleDifficulty">toggleDifficulty</a></li><li><a href="global.html#toggleTheme">toggleTheme</a></li><li><a href="global.html#unflipAll">unflipAll</a></li><li><a href="global.html#unlock">unlock</a></li><li><a href="global.html#updateDifficultyText">updateDifficultyText</a></li><li><a href="global.html#updateThemeText">updateThemeText</a></li><li><a href="global.html#updateTooltip">updateTooltip</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Jun 09 2025 05:35:05 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

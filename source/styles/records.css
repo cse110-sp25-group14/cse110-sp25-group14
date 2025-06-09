@@ -13,17 +13,28 @@ body {
     min-height: 100vh;
 }
 
+noscript {
+  background-color: #fee; 
+  padding: 1rem; 
+  text-align: center; 
+  border: 1px solid red;
+  font-size: 2rem;
+  z-index: 100; 
+}
+
 #page-info {
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
     margin: 30px;
+    margin-top: 8vh;
 }
 
 #records-container {
     background-color: #bee9e8;
     height: auto;
+    min-height: 12rem;
     width: 30vw;
     border-radius: 30px;
     box-shadow: 1px 2px 2px 2px rgb(0 0 0 / 15%);
@@ -119,6 +130,7 @@ body {
     background-color: #62B6CB;
     padding: 5px;
     border-radius: 20px;
+    min-height: 2.5rem;
 }
 
 .record-grid-container .moves {
@@ -127,6 +139,7 @@ body {
     background-color: #62B6CB;
     padding: 5px;
     border-radius: 20px;
+    min-height: 2.5rem;
 }
 
 .record-grid-container.sequence {
@@ -143,10 +156,14 @@ body {
     background-color: #62B6CB;
     padding: 5px;
     border-radius: 20px;
-		min-height: 2.5rem;
+	min-height: 2.5rem;
 }
 
 @media (width <= 480px) {
+    #page-info {
+        margin-bottom: 2vh;
+    }
+
     #records-container {
         background-color: #bee9e8;
         height: auto;
@@ -209,7 +226,7 @@ body {
 footer {
     margin-top: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 0.5rem 1rem;
 }
@@ -224,7 +241,8 @@ footer {
     transition: background 0.3s ease;
     display: flex;
     align-items: center;  
-    justify-content: center;           
+    justify-content: center;
+    margin-left: auto;
 }
   
 .theme-toggle::before {
@@ -320,8 +338,7 @@ button {
     cursor: pointer;
 }
 
-.icon button,
-#footer-icon button {
+.icon button{
   font-size: 1.5rem;
 }
 
@@ -332,10 +349,6 @@ body.dark .theme-toggle::before {
 body.dark {
     background: #20202C;
     color: #fff;
-}
-
-body.dark #leaderboard-btn img {
-    content: url('../../assets/trophy-solid-white.svg');
 }
 
 body.dark #page-info img {
@@ -349,6 +362,7 @@ body.dark #records-header{
   
 body.dark #records-container{
     background-color: #487B48;
+    box-shadow: 1px 2px 2px 2px rgb(255 255 255 / 20%);
 }
 
 body.dark .play-again:hover {
@@ -369,7 +383,7 @@ body.dark .record-grid-container .time {
     background-color: #174517;
     padding: 5px;
     border-radius: 20px;
-		min-height: 2.5rem;
+	min-height: 2.5rem;
 }
 
 body.dark .record-grid-container .moves {
@@ -378,7 +392,7 @@ body.dark .record-grid-container .moves {
     background-color: #174517;
     padding: 5px;
     border-radius: 20px;
-		min-height: 2.5rem;
+	min-height: 2.5rem;
 }
 
 body.dark p.level{

@@ -12,6 +12,14 @@ body {
   font-family: 'Baloo 2', sans-serif;
 }
 
+noscript {
+  background-color: #fee; 
+  padding: 1rem; 
+  text-align: center; 
+  border: 1px solid red;
+  font-size: 2rem;
+}
+
 .result {
   font-family: "Patua One", serif;
   color: #063635;
@@ -34,6 +42,7 @@ h1, h2 {
   justify-content: flex-start;
   position: relative;
   margin: 30px;
+	margin-top: 8vh;
   gap: 10px; 
 }
 
@@ -116,6 +125,12 @@ footer {
   padding: 0.5rem 1rem;
 }
 
+@media (width <= 480px) {
+    #result-card {
+      max-width: 85%;
+    }
+ }
+ 
 .theme-toggle {
   width: 70px;
   height: 34px;
@@ -247,7 +262,7 @@ body.dark #page-info img {
 body.dark #result-card{ 
   background-color: #174517;
   background-image: url("../../assets/blur-bg-darkmode.svg");
-  color:#fff
+  color:#fff;
 }
 
 body.dark .play-again{ 

@@ -28,6 +28,15 @@ body {
   background-size: cover;
 }
 
+noscript {
+  background-color: #fee; 
+  padding: 1rem; 
+  text-align: center; 
+  border: 1px solid red;
+  font-size: 2rem;
+  z-index: 100; 
+}
+
 .banner {
   margin-top: 7rem;
   text-align: center;
@@ -74,6 +83,7 @@ body {
   font-family: "Pathway Extreme", sans-serif;
   font-weight: 800;
   font-style: normal;
+  box-shadow: 1px 2px 2px 2px rgb(0 0 0 / 15%);
 }
 
 .primary-btn:hover { opacity: 0.85; }
@@ -97,7 +107,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
 }
 
 .game-card h3 {
@@ -305,6 +315,7 @@ body.dark {
 
 body.dark .game-card   { 
   background: #76A276; 
+  box-shadow: 1px 2px 2px 2px rgb(0 0 0 / 30%);
 }
 
 body.dark .matching{
@@ -366,11 +377,6 @@ body.dark .primary-btn {
   }
 
   .welcome {
-    font-size: 1.4rem;
-  }
-
-  .chicks {
-    grid-template-columns: repeat(3, 30px);
     font-size: 1.4rem;
   }
 
