@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: homepage.js</title>
+    <title>JSDoc: Source: result-sequence.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: homepage.js</h1>
+    <h1 class="page-title">Source: result-sequence.js</h1>
 
     
 
@@ -26,147 +26,148 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Homepage Java Script for our game
- * navigation between pages and switching functionality
- * @file homepage.js
- * @author Kilhoon Kim
- */
-// run everything after page loads
-window.addEventListener("DOMContentLoaded", init);
+            <pre class="prettyprint source linenums"><code>window.addEventListener("DOMContentLoaded", init);
+
+let root;
+let themeToggle;
+let sunIcon;
+let moonIcon;
+let backButton;
+let playAgainButton;
+let recordsButton;
 
 /**
- * Initializes button event listeners for page navigation.
- *
- * @func init
- * @description
- * Sets up the main interface by linking DOM buttons to their
- * respective navigation functions.
- * Sets up localstorage for dark mode.
- * @see random_game_page
- * @see records_page
- * @see sequence_page
- * @see matching_page
- * 
+ * @function init
+ * @description Top-level entry point. Caches DOM nodes, wires up navigation, and theme toggle.
+ * @returns {void}
+ * @example
+ * // Called automatically on DOMContentLoaded
+ * init();
  */
 function init() {
-	//insert functions/eventListeners to functions
-	const leaderboardBtn = document.getElementById("leaderboard-btn");
-	const matchingBtn = document.getElementById("matching-button");
-	const matchingRecBtn = document.getElementById("matching-record");
-	const sequenceBtn = document.getElementsByClassName("sec-btn")[2];
-	const sequenceRecBtn = document.getElementsByClassName("sec-btn ghost")[1];
-	const letsFindOutBtn = document.getElementsByClassName("primary-btn")[0];
-	const darkmodeToggle = document.getElementById("theme-toggle");
+	fetchDom();
+	initThemeState();
+	attachNavHandlers();
+	loadRecords();
+	configureThemeToggle();
+}
 
-	const sunIcon = document.querySelector(".theme-icon.sun");
-	const moonIcon = document.querySelector(".theme-icon.moon");
-	const root = document.documentElement;
+/**
+ * @function fetchDom
+ * @description Caches all DOM elements.
+ * @returns {void}
+ * @example
+ * fetchDom();
+ */
+function fetchDom() {
+	root            = document.documentElement;
+	themeToggle     = document.getElementById("theme-toggle");
+	sunIcon         = document.querySelector(".theme-icon.sun");
+	moonIcon        = document.querySelector(".theme-icon.moon");
+	backButton      = document.querySelector("#page-info img");
+	playAgainButton = document.getElementById("play-again-btn");
+	recordsButton   = document.querySelector(".footer-icon");
+}
 
-
-	/**
-	 * @func updateTooltip
-	 * @description
-	 * Update the tooltip string based on currnetmode.
-	 */
-	function updateTooltip() {
-		const isDark = document.body.classList.contains("dark");
-		root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
-	}
-
-	if(darkmodeToggle &amp;&amp; sunIcon &amp;&amp; moonIcon){
-		darkmodeToggle.sunIcon = sunIcon;
-		darkmodeToggle.moonIcon = moonIcon;
-	}
-
-	matchingBtn.addEventListener("click", matching_page);
-	sequenceBtn.addEventListener("click", sequence_page);
-	matchingRecBtn.addEventListener("click", records_page);
-	sequenceRecBtn.addEventListener("click", records_page);
-	leaderboardBtn.addEventListener("click", records_page);
-	letsFindOutBtn.addEventListener("click", random_game_page);
-
+/**
+ * @function initThemeState
+ * @description Applies the dark-mode preference on first load and refreshes the toggle tooltip.
+ * @returns {void}
+ * @example
+ * initThemeState();
+ */
+function initThemeState() {
 	if (localStorage.getItem("darkMode") === "enabled") {
 		document.body.classList.add("dark");
-		if (sunIcon &amp;&amp; moonIcon) {
-			sunIcon.style.opacity = "0";
-			moonIcon.style.opacity = "1";
-		}
 	}
-
 	updateTooltip();
+}
 
-	if (darkmodeToggle) {
-		darkmodeToggle.addEventListener("click", function() {
-			document.body.classList.toggle("dark");
-			
-			const isDarkmode = document.body.classList.contains("dark");
-			
-			if (this.sunIcon &amp;&amp; this.moonIcon) {
-				if (isDarkmode) {
-					this.sunIcon.style.opacity = "0";
-					this.moonIcon.style.opacity = "1";
-				} else {
-					this.sunIcon.style.opacity = "1";
-					this.moonIcon.style.opacity = "0";
-				}
-			}
-			
-			localStorage.setItem("darkMode", isDarkmode ? "enabled" : "disabled");
+/**
+ * @function attachNavHandlers
+ * @description Attaches click handlers for the back arrow, “Play Again”, and footer records buttons.
+ * @returns {void}
+ * @example
+ * attachNavHandlers();
+ */
+function attachNavHandlers() {
+	backButton.addEventListener("click", () => {
+		window.location.href = "../source/homepage.html";
+	});
+	playAgainButton.addEventListener("click", () => {
+		window.location.href = "../source/sequence.html";
+	});
+	recordsButton.addEventListener("click", () => {
+		window.location.href = "../source/records.html";
+	});
+}
 
-			updateTooltip();
-		});
-	}
+/**
+ * @function loadRecords
+ * @description Loads the most-recent Sequence result and the best level for the current difficulty from localStorage, then updates the results card.
+ * @returns {void}
+ * @example
+ * loadRecords();
+ */
+function loadRecords() {
+	const recent = JSON.parse(localStorage.getItem("sequence-recent"));
+	if (!recent) return;
+
+	document.querySelector(".current").textContent = `Current: ${recent.level}`;
+
+	const sequenceRecords = JSON.parse(localStorage.getItem("sequence")) || [];
+	const bestLevel = sequenceRecords
+		.filter((r) => r.difficulty === recent.difficulty)
+		.map((r) => r.level)
+		.sort((a, b) => b - a)[0] ?? 0;
+
+	document.querySelector(".record").textContent = `Record: ${bestLevel}`;
+}
+
+/**
+ * @function configureThemeToggle
+ * @description Initializes dark-mode based on localStorage and sets up the toggle to swap themes and icons.
+ * @returns {void}
+ * @example
+ * configureThemeToggle();
+ */
+function configureThemeToggle() {
+	if (!themeToggle) return;
+
+	themeToggle.sunIcon = sunIcon;
+	themeToggle.moonIcon = moonIcon;
+
+	themeToggle.addEventListener("click", () => {
+		document.body.classList.toggle("dark");
+		if (sunIcon &amp;&amp; moonIcon) {
+			sunIcon.style.opacity  = document.body.classList.contains("dark") ? "0" : "1";
+			moonIcon.style.opacity = document.body.classList.contains("dark") ? "1" : "0";
+		}
+		localStorage.setItem("darkMode", document.body.classList.contains("dark") ? "enabled" : "disabled");
+		updateTooltip();
+	});
 
 	if (localStorage.getItem("darkMode") === "enabled") {
 		document.body.classList.add("dark");
-		
 		if (sunIcon &amp;&amp; moonIcon) {
 			sunIcon.style.opacity = "0";
 			moonIcon.style.opacity = "1";
 		}
 	}
-}
-
-
-/**
- * @func random_game_page
- * @description
- * Navigate to a random game page.
- */
-function random_game_page() {
-	const games = ["matching.html", "sequence.html"];
-	const randomIndex = Math.floor(Math.random() * games.length);
-	window.location.href = games[randomIndex];
+	updateTooltip();
 }
 
 /**
- * @func records_page
- * @description
- * Navigate to a records page.
+ * @function updateTooltip
+ * @description Updates the CSS property so the toggle tooltip reads “Dark Mode” or “Light Mode”.
+ * @returns {void}
+ * @example
+ * updateTooltip();
  */
-function records_page(){
-	window.location.href = "records.html";
-}
-
-/**
- * @func matching_page
- * @description
- * Navigate to a matching game page.
- */
-function matching_page(){
-	window.location.href = "matching.html";
-}
-
-/**
- * @func sequence_page
- * @description
- * Navigate to a sequence game page.
- */
-function sequence_page(){
-	window.location.href = "sequence.html";
-}
-</code></pre>
+function updateTooltip() {
+	const isDark = document.body.classList.contains("dark");
+	root.style.setProperty("--tooltip-text", isDark ? "\"Light Mode\"" : "\"Dark Mode\"");
+}</code></pre>
         </article>
     </section>
 
