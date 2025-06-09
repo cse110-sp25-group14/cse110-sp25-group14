@@ -1,3 +1,8 @@
+/**
+ * Matching game Java Script 
+ * @file matching.js
+ */
+
 export class MatchingGame {
 	constructor() {
 		// game data
