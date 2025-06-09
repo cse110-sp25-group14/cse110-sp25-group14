@@ -13,4 +13,4 @@ jobs: # the things being executed
               run: npm ci
 
             - name: ESLint test
-              run: npx eslint .
+              run: npx eslint . --ignore-pattern "**/jsdoc/**" --ignore-pattern "**/jsdocs/**" --ignore-pattern "script/jsdocs/**" --ignore-pattern "docs/**"
