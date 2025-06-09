@@ -264,16 +264,16 @@ export class SequenceGame {
 	 * Will also run @see flipCard twice, with a timeout between both to show the user that the card has been clicked, and update the record through @see checkRecord if needed
 	 * @func checkClicked
 	 */
-	async checkClicked(){
-		this.lock(this);
-		this.classList.add("unflipped");
-		if(this != this.cardList[this.cards[this.currPointer]]){
+	async checkClicked(clickedCard){
+		this.lock(clickedCard);
+		clickedCard.classList.add("unflipped");
+		if(clickedCard != this.cardList[this.cards[this.currPointer]]){
 			this.endGame();
 			this.checkRecord(this.cards.length);
 			setTimeout(()=>{
-				this.flipCard(this);
+				this.flipCard(clickedCard);
 			}, this.onTime);
-			this.flipCard(this);
+			this.flipCard(clickedCard);
 			return;
 		}
 		this.currPointer += 1;
@@ -281,11 +281,11 @@ export class SequenceGame {
 			this.checkRecord(this.cards.length);
 		}
 		setTimeout(()=>{
-			this.flipCard(this);
+			this.flipCard(clickedCard);
 		}, this.onTime);
-		this.flipCard(this);
+		this.flipCard(clickedCard);
 		await this.timer(this.onTime);
-		this.unlock(this);
+		this.unlock(clickedCard);
 		if(this.currPointer == this.cards.length){
 			this.checkRecord(this.cards.length);
 			this.currPointer = 0;
@@ -305,7 +305,10 @@ export class SequenceGame {
 	 * @param {Object} element
 	 */
 	lock(element){
-		element.removeEventListener("click", this.checkClicked, false);
+		if (element._clickHandler) {
+			element.removeEventListener("click", element._clickHandler);
+			delete element._clickHandler;
+		}
 	}
 
 	/**
@@ -314,8 +317,10 @@ export class SequenceGame {
 	 * @func unlock
 	 * @param {Object} element 
 	 */
-	unlock(element){
-		element.addEventListener("click", this.checkClicked);
+	unlock(element) {
+		const handler = (event) => this.checkClicked(event.currentTarget);
+		element._clickHandler = handler;
+		element.addEventListener("click", handler);
 	}
 
 	/**
