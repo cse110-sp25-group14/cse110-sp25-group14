@@ -116,26 +116,26 @@ export class SequenceGame {
 		this.generateGrid();
 	};
 
-/**
- * @description
- * Generates the game grid based on current difficulty
- * @func generateGrid
- */
-generateGrid() {
-	const grid = document.getElementById("card-grid");
-	grid.innerHTML = "";
-	grid.style.gridTemplateColumns = `repeat(${gridSize}, minmax(60px, 1fr))`;
-	for(let i = 0; i<gridSize; i+=1) {
-		const row = document.createElement("div");
-		row.className = "card-row";
-		for(let j = 0; j<gridSize; j+=1) {
-			const card = document.createElement("div");
-			card.className = "card";
-			row.appendChild(card);
+	/**
+	* @description
+	* Generates the game grid based on current difficulty
+	* @func generateGrid
+	*/
+	generateGrid() {
+		const grid = document.getElementById("card-grid");
+		grid.innerHTML = "";
+		grid.style.gridTemplateColumns = `repeat(${this.gridSize}, minmax(60px, 1fr))`;
+		for(let i = 0; i<this.gridSize; i+=1) {
+			const row = document.createElement("div");
+			row.className = "card-row";
+			for(let j = 0; j<this.gridSize; j+=1) {
+				const card = document.createElement("div");
+				card.className = "card";
+				row.appendChild(card);
+			}
+			grid.appendChild(row);
 		}
-		grid.appendChild(row);
 	}
-}
 
 
 	/**
@@ -197,33 +197,33 @@ generateGrid() {
 		this.updateDifficultyText();
 	}
 
-/**
- * @description
- * Sets up the game difficulty depending on the current difficulty. Each difficulty has a different number of cards in play and time between outputs.
- * @func setDifficulties
- */
-setDifficulties() {
-	switch (selectedDifficulty){
-		case "easy":
-			onTime = 400;
-			delayTime = 500;
-			gridSize = 3;
-			cardsInPlay = 9;
-			break;
-		case "medium":
-			onTime = 200;
-			delayTime = 300;
-			gridSize = 4;
-			cardsInPlay = 16;
-			break;
-		case "hard":
-			onTime = 150;
-			delayTime = 250;
-			gridSize = 5;
-			cardsInPlay = 25;
-			break;
+	/**
+	 * @description
+	 * Sets up the game difficulty depending on the current difficulty. Each difficulty has a different number of cards in play and time between outputs.
+	 * @func setDifficulties
+	 */
+	setDifficulties() {
+		switch (this.selectedDifficulty){
+			case "easy":
+				this.onTime = 400;
+				this.delayTime = 500;
+				this.gridSize = 3;
+				this.cardsInPlay = 9;
+				break;
+			case "medium":
+				this.onTime = 200;
+				this.delayTime = 300;
+				this.gridSize = 4;
+				this.cardsInPlay = 16;
+				break;
+			case "hard":
+				this.onTime = 150;
+				this.delayTime = 250;
+				this.gridSize = 5;
+				this.cardsInPlay = 25;
+				break;
+		}
 	}
-}
 
 	/**
 	 * @description
@@ -236,103 +236,103 @@ setDifficulties() {
 			`Difficulty: ${this.difficultyLabels[this.selectedDifficulty]}`;
 	}
 
-/**
- * @description
- * Asynchronous function because of the usage of timeout. Appends one more card to the current user sequence, shows the current sequence to the user, then unlocks all the cards for the user.
- * @func playCards
- */
-async playCards(){
-	appendRandom(cards);
-	for(let j = 0; j<cards.length; j+=1){
-		const cardElement = cardList[cards[j]];
-		cardElement.classList.add("unflipped");
-		flipCard(cardElement);
-		setTimeout(()=>{
-			flipCard(cardElement);
-		}, onTime);
-		await timer(delayTime);
-	}
-	for(let i = 0; i<cardList.length; i+=1){
-		const cardElement = cardList[i]; 
-		unlock(cardElement);
-	}
-}
-
-/**
- * @description
- * Checks if the card clicked is the correct card, if it isn't, it runs @see endGame, if it is and if it is the last card in the sequence the function runs @see playCards for the next sequence. 
- * Will also run @see flipCard twice, with a timeout between both to show the user that the card has been clicked, and update the record through @see checkRecord if needed
- * @func checkClicked
- */
-async checkClicked(){
-	lock(this);
-	this.classList.add("unflipped");
-	if(this != cardList[cards[currPointer]]){
-		endGame();
-		checkRecord(cards.length);
-		setTimeout(()=>{
-			flipCard(this);
-		}, onTime);
-		flipCard(this);
-		return;
-	}
-	currPointer += 1;
-	if(currPointer == cards.length){
-		checkRecord(cards.length);
-	}
-	setTimeout(()=>{
-		flipCard(this);
-	}, onTime);
-	flipCard(this);
-	await timer(onTime);
-	unlock(this);
-	if(currPointer == cards.length){
-		checkRecord(cards.length);
-		currPointer = 0;
-		for(let i = 0; i<cardList.length; i+=1){
-			const cardElement = cardList[i]; 
-			lock(cardElement);
+	/**
+	 * @description
+	 * Asynchronous function because of the usage of timeout. Appends one more card to the current user sequence, shows the current sequence to the user, then unlocks all the cards for the user.
+	 * @func playCards
+	 */
+	async playCards(){
+		this.appendRandom(this.cards);
+		for(let j = 0; j<this.cards.length; j+=1){
+			const cardElement = this.cardList[this.cards[j]];
+			cardElement.classList.add("unflipped");
+			this.flipCard(cardElement);
+			setTimeout(()=>{
+				this.flipCard(cardElement);
+			}, this.onTime);
+			await this.timer(this.delayTime);
 		}
-		await timer(delayTime);
-		playCards();
+		for(let i = 0; i<this.cardList.length; i+=1){
+			const cardElement = this.cardList[i]; 
+			this.unlock(cardElement);
+		}
 	}
-}
 
-/**
- * @description
- * Basic function to lock the element from user input
- * @func lock
- * @param {Object} element
- */
-lock(element){
-	element.removeEventListener("click", checkClicked, false);
-}
-
-/**
- * @description
- * Basic function to unlock the element from user input
- * @func unlock
- * @param {Object} element 
- */
-unlock(element){
-	element.addEventListener("click", checkClicked);
-}
-
-/**
- * @description
- * Checks the if the new level beats the current record and updates the html appropriately
- * @func checkRecord
- * @param {number} val
- */
-checkRecord(val){
-	const statsGrid = document.getElementById("stats-grid");
-	const stats = statsGrid.querySelectorAll("p");
-	stats[0].innerHTML = `Level - ${val}`;
-	if(val > record){
-		record = val;
-		stats[1].innerHTML = `Record - ${val}`;
+	/**
+	 * @description
+	 * Checks if the card clicked is the correct card, if it isn't, it runs @see endGame, if it is and if it is the last card in the sequence the function runs @see playCards for the next sequence. 
+	 * Will also run @see flipCard twice, with a timeout between both to show the user that the card has been clicked, and update the record through @see checkRecord if needed
+	 * @func checkClicked
+	 */
+	async checkClicked(){
+		this.lock(this);
+		this.classList.add("unflipped");
+		if(this != this.cardList[this.cards[this.currPointer]]){
+			this.endGame();
+			this.checkRecord(this.cards.length);
+			setTimeout(()=>{
+				this.flipCard(this);
+			}, this.onTime);
+			this.flipCard(this);
+			return;
+		}
+		this.currPointer += 1;
+		if(this.currPointer == this.cards.length){
+			this.checkRecord(this.cards.length);
+		}
+		setTimeout(()=>{
+			this.flipCard(this);
+		}, this.onTime);
+		this.flipCard(this);
+		await this.timer(this.onTime);
+		this.unlock(this);
+		if(this.currPointer == this.cards.length){
+			this.checkRecord(this.cards.length);
+			this.currPointer = 0;
+			for(let i = 0; i<this.cardList.length; i+=1){
+				const cardElement = this.cardList[i]; 
+				this.lock(cardElement);
+			}
+			await this.timer(this.delayTime);
+			this.playCards();
+		}
 	}
-}
+
+	/**
+	 * @description
+	 * Basic function to lock the element from user input
+	 * @func lock
+	 * @param {Object} element
+	 */
+	lock(element){
+		element.removeEventListener("click", this.checkClicked, false);
+	}
+
+	/**
+	 * @description
+	 * Basic function to unlock the element from user input
+	 * @func unlock
+	 * @param {Object} element 
+	 */
+	unlock(element){
+		element.addEventListener("click", this.checkClicked);
+	}
+
+	/**
+	 * @description
+	 * Checks the if the new level beats the current record and updates the html appropriately
+	 * @func checkRecord
+	 * @param {number} val
+	 */
+	checkRecord(val){
+		const statsGrid = document.getElementById("stats-grid");
+		const stats = statsGrid.querySelectorAll("p");
+		stats[0].innerHTML = `Level - ${val}`;
+		if(val > this.record){
+			this.record = val;
+			stats[1].innerHTML = `Record - ${val}`;
+		}
+	}
 
 	/**
 	 * @description
@@ -361,24 +361,24 @@ checkRecord(val){
 		window.location.href = "result-sequence.html";
 	}
 
-/**
- * @description
- * Flips the card by changing the card class between unflipped and flipped
- * @func flipCard
- * @param {Object} card
- */
-flipCard(card){
-	if(card.classList.contains("unflipped")){
-		card.classList.add("card-click");
-		card.classList.add("flipped");
-		card.classList.remove("unflipped");
+	/**
+	 * @description
+	 * Flips the card by changing the card class between unflipped and flipped
+	 * @func flipCard
+	 * @param {Object} card
+	 */
+	flipCard(card){
+		if(card.classList.contains("unflipped")){
+			card.classList.add("card-click");
+			card.classList.add("flipped");
+			card.classList.remove("unflipped");
+		}
+		else{
+			card.classList.remove("card-click");
+			card.classList.add("unflipped");
+			card.classList.remove("flipped");
+		}
 	}
-	else{
-		card.classList.remove("card-click");
-		card.classList.add("unflipped");
-		card.classList.remove("flipped");
-	}
-}
 
 	/**
 	 * @description
