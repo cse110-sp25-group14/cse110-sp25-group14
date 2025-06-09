@@ -4,7 +4,6 @@
  * @file homepage.js
  * @author Kilhoon Kim
  */
-// run everything after page loads
 window.addEventListener("DOMContentLoaded", init);
 
 /**
@@ -22,7 +21,6 @@ window.addEventListener("DOMContentLoaded", init);
  * 
  */
 function init() {
-	//insert functions/eventListeners to functions
 	const leaderboardBtn = document.getElementById("leaderboard-btn");
 	const matchingBtn = document.getElementById("matching-button");
 	const matchingRecBtn = document.getElementById("matching-record");

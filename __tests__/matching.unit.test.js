@@ -64,7 +64,6 @@ test("shuffle doesn't modify elements", () => {
 });
 
 test("createBoard assigns data-number and adds click listener to each card", () => {
-	// remove the functionality of these functions
 	jest.spyOn(game, "hideButton").mockImplementation(() => {});
 	jest.spyOn(game, "unflipAll").mockImplementation(() => {});
 	const mockFlipCard = jest.spyOn(game, "flipCard").mockImplementation(() => {});
@@ -82,8 +81,6 @@ test("createBoard assigns data-number and adds click listener to each card", () 
 
 test("unflipAll sets all card images to the same image", () => {
 	game.unflipAll();
-
-	// if all cards have the same image, they are all unflipped
 	const cards = document.getElementsByClassName("card");
 	const firstCardImage = cards[0].src;
 	for (const card of cards) {

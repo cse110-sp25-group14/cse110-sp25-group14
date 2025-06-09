@@ -62,10 +62,9 @@ function init() {
 	difficultySelection.addEventListener("click", () =>{
 		toggleDifficulty();
 		loadRecords();
-		generateGrid(); //re-generate grid on click, so toggled difficulty can be visualized 
+		generateGrid(); 
 	});
 
-	//set initial difficulty as well as dynamic button text and apply difficulty mods
 	setDifficulties();
 	updateDifficultyText();
 	const themeToggle = document.getElementById("theme-toggle");
@@ -113,7 +112,7 @@ function init() {
 		});
 	}
 	loadRecords();
-	generateGrid();  //on page load add base grid 
+	generateGrid();
 };
 
 /**
@@ -122,18 +121,9 @@ function init() {
  * @func generateGrid
  */
 function generateGrid() {
-	//dynamically build grid based on chosen difficulty
 	const grid = document.getElementById("card-grid");
 	grid.innerHTML = "";
-
-	//update CSS to cover 3 grid option sizes instead of being a harcoded 3 x 3
-	//also adding auto-resizing if to support page responsivness on other devices --- NEEDS TO BE TESTED
 	grid.style.gridTemplateColumns = `repeat(${gridSize}, minmax(60px, 1fr))`;
-
-	//rebuild original HTML structure 
-	//each row is now a <div class="card-row">
-	//each card is now a <div class="card">
-	//structure added under #card-grid
 	for(let i = 0; i<gridSize; i+=1) {
 		const row = document.createElement("div");
 		row.className = "card-row";
@@ -207,7 +197,6 @@ function toggleDifficulty() {
 	updateDifficultyText();
 }
 
-//set the actual values that increase our idea of difficulty
 /**
  * @description
  * Sets up the game difficulty depending on the current difficulty. Each difficulty has a different number of cards in play and time between outputs.
@@ -246,7 +235,6 @@ function updateDifficultyText() {
 	button.querySelector("span").textContent = `Difficulty: ${difficultyLabels[selectedDifficulty]}`;
 }
 
-//async function, since timeouts are used extensively for better user experience. code adds one extra card to the current user sequence, then shows all of the current cards in order (user buttons should be locked before this call). it will then unlock every card on the page
 /**
  * @description
  * Asynchronous function because of the usage of timeout. Appends one more card to the current user sequence, shows the current sequence to the user, then unlocks all the cards for the user.
@@ -269,7 +257,6 @@ async function playCards(){
 	}
 }
 
-//when element is pressed and unlocked, this function is ran; it locks the current element, ends the game instantly if it is incorrect, or displays animation, increases currPointer, and checks if the user finished the sequence, which if they did, runs playCards again
 /**
  * @description
  * Checks if the card clicked is the correct card, if it isn't, it runs @see endGame, if it is and if it is the last card in the sequence the function runs @see playCards for the next sequence. 
@@ -316,12 +303,10 @@ async function checkClicked(){
  * @func lock
  * @param {Object} element
  */
-//lock element from user input
 function lock(element){
 	element.removeEventListener("click", checkClicked, false);
 }
 
-//allow element to be clicked again, runs checkClicked when pressed
 /**
  * @description
  * Basic function to unlock the element from user input
@@ -338,7 +323,6 @@ function unlock(element){
  * @func checkRecord
  * @param {number} val
  */
-//when the game ends, or when a new card is added to the sequence, this updates the Level and Record divs appropriately
 function checkRecord(val){
 	const statsGrid = document.getElementById("stats-grid");
 	const stats = statsGrid.querySelectorAll("p");
@@ -354,7 +338,6 @@ function checkRecord(val){
  * Saves the new score to localStorage, and locks all elements, then resets the cards and the sequence array and navigates to result-sequence.html file.
  * @func endGame
  */
-//called when game ends; locks every element, resets everything, and unhides the play button, but with a different text
 function endGame(){
 	const recordToSave = { difficulty: selectedDifficulty, level: cards.length - 1 };
 	let history = JSON.parse(localStorage.getItem("sequence")) || [];
@@ -380,10 +363,8 @@ function endGame(){
  * @func flipCard
  * @param {Object} card
  */
-//basic card flip animation; toggles the background color to change
 function flipCard(card){
 	if(card.classList.contains("unflipped")){
-		//card.style.backgroundColor = "purple";
 		card.classList.add("card-click");
 		card.classList.add("flipped");
 		card.classList.remove("unflipped");

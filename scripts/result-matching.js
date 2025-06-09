@@ -13,7 +13,6 @@ let recordsButton;
  * @description Top-level entry point. Caches DOM nodes, wires up navigation, and theme toggle.
  * @returns {void}
  * @example
- * // Called automatically on DOMContentLoaded
  * init();
  */
 function init() {
