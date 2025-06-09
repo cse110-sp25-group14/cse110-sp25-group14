@@ -225,7 +225,7 @@ noscript {
 footer {
     margin-top: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 0.5rem 1rem;
 }
@@ -240,7 +240,8 @@ footer {
     transition: background 0.3s ease;
     display: flex;
     align-items: center;  
-    justify-content: center;           
+    justify-content: center;
+    margin-left: auto;
 }
   
 .theme-toggle::before {
@@ -336,8 +337,7 @@ button {
     cursor: pointer;
 }
 
-.icon button,
-#footer-icon button {
+.icon button{
   font-size: 1.5rem;
 }
 
@@ -348,10 +348,6 @@ body.dark .theme-toggle::before {
 body.dark {
     background: #20202C;
     color: #fff;
-}
-
-body.dark #leaderboard-btn img {
-    content: url('../../assets/trophy-solid-white.svg');
 }
 
 body.dark #page-info img {
