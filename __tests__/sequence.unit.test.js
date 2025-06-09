@@ -1,38 +1,18 @@
-import { beforeEach, expect, test } from "@jest/globals";
-import fs   from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
- 
-/* ---------- resolve dirname in ESM ---------- */
-const __filename = fileURLToPath(import.meta.url);
-const __dirname  = path.dirname(__filename);
- 
-/* ---------- load raw HTML ---------- */
-const html = fs.readFileSync(
-	path.join(__dirname, "../sequence.html"),
-	"utf8",
-);
- 
-let document;
- 
-/* ---------- reset DOM & run page script before each test ---------- */
-beforeEach(async () => {
-	document = window.document;
-	document.documentElement.innerHTML = html;
- 
-	/* 1️⃣  Import script that registers event-listeners */
-	await import("../scripts/sequence.js");          // correct path
- 
-	/* 2️⃣  Fire DOMContentLoaded on *window* (where sequence.js listens) */
-	const domReady = new Promise((resolve) =>
-		window.addEventListener("DOMContentLoaded", resolve, { once: true }),
-	);
-	window.dispatchEvent(new window.Event("DOMContentLoaded"));
-	await domReady;
+import { expect, test, beforeEach } from "@jest/globals";
+import { SequenceGame } from "../scripts/sequence.js";
+
+let game;
+
+beforeEach(() => {
+	document.body.innerHTML = `
+		<div id="start-btn"></div>
+		<div id="difficulty-btn"></div>
+		<div id="card-grid"></div>
+	`;
+	
+	game = new SequenceGame();
 });
- 
-/* ---------- Tests ---------- */
- 
+  
 test("page renders 9 cards", () => {
 	const cards = document.querySelectorAll("#card-grid .card");
 	expect(cards.length).toBe(9);
@@ -66,5 +46,34 @@ test("clicking Play hides button and attaches click listeners to cards", () => {
 	expect(() => {
 		firstCard.dispatchEvent(new window.Event("click"));
 	}).not.toThrow();
+});
+
+test("generateGrid generates the amount of cards corresponding to the gridSize", () => {
+	const sizes = [3, 4, 5];
+	for (const size of sizes) {
+		game.gridSize = size;
+		game.generateGrid();
+		const cards = document.querySelectorAll(".card");
+		expect(cards.length).toBe(size*size);
+	}
+});
+
+test("initializeCardList removes play button", () => {
+	game.initializeCardList();
+	expect(document.getElementById("start-btn").style.display).toBe("none");
+});
+
+test("initializeCardList creates array of card elements", () => {
+	game.initializeCardList();
+	game.gridSize = 3;
+	expect(game.cardList.length).toBe(9);
+
+	for (const card of game.cardList) {
+		expect(card instanceof HTMLElement).toBe(true);
+	}
+});
+
+test("playCards adds a card to the current sequence", () => {
+	game.playCards();
 });
  
