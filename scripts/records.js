@@ -117,9 +117,33 @@ function loadMatchingRecords() {
 	const selectedSort = document.getElementById("sort-dropdown").value;
 	let sortedRecords = [];
 	if (selectedSort == "moves") {
-		sortedRecords = matchingRecords.sort((a, b) => a.moves - b.moves);
+		sortedRecords = matchingRecords.sort((a, b) => {
+			if (a.moves < b.moves) {
+				return -1;
+			} else if (a.moves > b.moves) {
+				return 1;
+			} else {
+				if (parseTime(a.time) < parseTime(b.time)) {
+					return -1;
+				} else {
+					return 1;
+				}
+			}
+		});
 	} else {
-		sortedRecords = matchingRecords.sort((a, b) => a.time - b.time);
+		sortedRecords = matchingRecords.sort((a, b) => {
+			if (parseTime(a.time) < parseTime(b.time)) {
+				return -1;
+			} else if (parseTime(a.time) > parseTime(b.time)) {
+				return 1;
+			} else {
+				if (a.moves < b.moves) {
+					return -1;
+				} else {
+					return 1;
+				}
+			}
+		});
 	}
 	const sortedTimes = sortedRecords.map((record) => record.time);
 	const sortedMoves = sortedRecords.map((record) => record.moves);
@@ -130,6 +154,13 @@ function loadMatchingRecords() {
 		time.textContent = `${sortedTimes[i] ?? ""}`;
 		moves.textContent = `${sortedMoves[i] ?? ""}`;
 	}
+}
+
+function parseTime(timeString) {
+	const parts   = timeString.split(":");
+	const minutes = parseInt(parts[0], 10);
+	const seconds = parseInt(parts[1], 10);
+	return minutes * 60 + seconds;
 }
 
 function loadSequenceRecords() {
