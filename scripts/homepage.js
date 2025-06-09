@@ -55,12 +55,24 @@ function init() {
  * This function redirects the user to the leaderboard page.
  * This function is called when the user clicks on the leaderboard button
  */
+/**
+ * @function randomgame_page
+ * @description
+ * This function redirects the user to the leaderboard page.
+ * This function is called when the user clicks on the leaderboard button
+ */
 function random_game_page() {
 	const games = ["matching.html", "sequence.html"];
 	const randomIndex = Math.floor(Math.random() * games.length);
 	window.location.href = games[randomIndex];
 }
 
+/**
+ * @function leaderboard_page
+ * @description
+ * This function redirects the user to the leaderboard page.
+ * This function is called when the user clicks on the leaderboard button
+ */
 function leaderboard_page(){
 	window.location.href = "leaderboard.html";
 }
@@ -70,9 +82,21 @@ function leaderboard_page(){
  * Redirects the user to the matching game page.
  * This function is called when the user clicks on the matching button
  */
+/**
+ * @function matching_page
+ * @description
+ * Redirects the user to the matching game page.
+ * This function is called when the user clicks on the matching button
+ */
 function matching_page(){
 	window.location.href = "matching.html";
 }
+/**
+ * @function sequence_page
+ * @description
+ * Redirects the user to the sequence game page.
+ * This function is called when the user clicks on the sequence button 
+ */
 /**
  * @function sequence_page
  * @description
