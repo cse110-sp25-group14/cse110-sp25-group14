@@ -6,47 +6,17 @@ let game;
 beforeEach(() => {
 	document.body.innerHTML = `
 		<div id="start-btn"></div>
-		<div id="difficulty-btn"></div>
+		<div id="stats-grid">
+            <p></p>
+            <p></p>
+            <button id="difficulty-btn"></button>
+        </div>
 		<div id="card-grid"></div>
+
 	`;
 	
 	game = new SequenceGame();
 });
-  
-// test("page renders 9 cards", () => {
-// 	const cards = document.querySelectorAll("#card-grid .card");
-// 	expect(cards.length).toBe(9);
-// });
- 
-// test("Play button is present and visible before starting", () => {
-// 	const playBtn = document.getElementById("start-btn");
-// 	expect(playBtn).not.toBeNull();
-// 	const hidden =
-// 		 playBtn.hidden ||
-// 		 playBtn.style.display === "none" ||
-// 		 playBtn.classList.contains("hidden") ||
-// 		 playBtn.classList.contains("hide");
-// 	expect(hidden).toBe(false); // should be visible initially
-// });
- 
-// test("clicking Play hides button and attaches click listeners to cards", () => {
-// 	const playBtn = document.getElementById("start-btn");
-// 	playBtn.click(); // simulate user click
- 
-// 	/* Button should now be hidden by sequence.js */
-// 	const hidden =
-// 		 playBtn.hidden ||
-// 		 playBtn.style.display === "none" ||
-// 		 playBtn.classList.contains("hidden") ||
-// 		 playBtn.classList.contains("hide");
-// 	expect(hidden).toBe(true);
- 
-// 	/* Verify a card responds to click without throwing */
-// 	const firstCard = document.querySelector("#card-grid .card");
-// 	expect(() => {
-// 		firstCard.dispatchEvent(new window.Event("click"));
-// 	}).not.toThrow();
-// });
 
 test("generateGrid generates the amount of cards corresponding to the gridSize", () => {
 	const sizes = [3, 4, 5];
@@ -73,7 +43,55 @@ test("initializeCardList creates array of card elements", () => {
 	}
 });
 
-test("playCards adds a card to the current sequence", () => {
-	game.playCards();
+test("playCards adds one card to sequence", async () => {
+	game.onTime = 10;
+	game.delayTime = 10;
+
+	game.initializeCardList();
+	const initialLength = game.cards.length;
+	await game.playCards();
+
+	expect(game.cards.length).toBe(initialLength + 1);
+});
+
+test("checkRecord updates level and record elements correctly", () => {
+	const level = 5;
+	game.record = 0;
+	game.checkRecord(level);
+
+	const stats = document.querySelectorAll("#stats-grid p");
+	expect(stats[0].innerHTML).toBe(`Level - ${level}`);
+	expect(stats[1].innerHTML).toBe(`Record - ${level}`);
+	expect(game.record).toBe(level);
+});
+
+test("checkRecord only updates record if new value is higher", () => {
+	game.record = 7;
+	game.checkRecord(5);
+
+	const stats = document.querySelectorAll("#stats-grid p");
+	expect(stats[1].innerHTML).toBe("");
+});
+
+test("endGame stores record", () => {
+	game.cards = [1, 2, 3];
+	game.endGame();
+
+	const saved = JSON.parse(localStorage.getItem("sequence-recent"));
+	expect(saved).toEqual({ difficulty: "easy", level: 2 });
+});
+
+test("endGame clears cards", () => {
+	game.cards = [1, 2, 3];
+	game.cardList = Array.from({ length: 9 }, () => {
+		const el = document.createElement("div");
+		el.addEventListener("click", () => {});
+		return el;
+	});
+
+	game.endGame();
+
+	expect(game.cards.length).toBe(0);
+	expect(game.cardList.length).toBe(0);
 });
  
