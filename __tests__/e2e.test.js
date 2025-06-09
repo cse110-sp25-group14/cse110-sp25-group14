@@ -62,8 +62,27 @@ describe("basic user flow", () => {
 
 		const firstCard = cards[0];
 		await firstCard.click();
-		const flippedCard = await page.waitForSelector(".flipped")
-			.then(expect(flippedCard).toBe(firstCard));
+
+		await page.waitForFunction(
+			card => card.classList.contains("flipped"),
+			{},
+			firstCard
+		);
+
+		const className = await firstCard.evaluate(el => el.className);
+		expect(className.includes("flipped")).toBe(true);
+	});
+
+	test("records page should allow interaction", async () => {
+		await page.goto("http://localhost:3000/source/records.html");
+
+		await page.select("#record-dropdown", "matching");
+		const selectedGame = await page.$eval("#record-dropdown", el => el.value);
+		expect(selectedGame).toBe("matching");
+
+		await page.select("#header-dropdown", "moves");
+		const sortBy = await page.$eval("#header-dropdown", el => el.value);
+		expect(sortBy).toBe("moves");
 	});
 });
 
