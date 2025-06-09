@@ -10,6 +10,7 @@
 		"puppeteer": "^24.9.0"
 	},
 	"dependencies": {
+		"20": "^1.0.0",
 		"eslint": "^9.26.0",
 		"stylelint": "^16.19.1",
 		"stylelint-config-standard": "^38.0.0"
