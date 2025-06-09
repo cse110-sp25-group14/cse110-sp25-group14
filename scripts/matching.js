@@ -1,4 +1,9 @@
 /**
+ * Matching game Java Script 
+ * @file matching.js
+ */
+
+/**
  * @class MatchingGame
  * @classdesc Implements the entire Matching-Pairs memory game, including UI wiring,
  *            theme handling, record tracking, and stopwatch timing.
