@@ -6,7 +6,7 @@
 
 [Final Project Video - Private Version](https://youtu.be/t18wsrx3nFI)
 
-[Final Project Video - Public Version](https://youtu.be/D7SX_gcow58)
+[Final Project Video - Public Version](https://youtu.be/9zF-QVs2hr8)
 
 [Game Website Link](https://cse110-sp25-group14.github.io/cse110-sp25-group14/source/homepage.html)
 
